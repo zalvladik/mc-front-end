@@ -1,9 +1,9 @@
-import type { getAllUsersApiT } from 'src/services/types'
+import type { GetAllUsersApiT } from 'src/services/types'
 
 import { api } from 'src/configs/ky'
 import { FetchEndpoint } from 'src/constants'
 
-const getAllUsersApi = async (): Promise<getAllUsersApiT[]> => {
+const getAllUsersApi = async (): Promise<GetAllUsersApiT[]> => {
   return api.get(FetchEndpoint.USER_ADVANCEMENTS).json()
 }
 
