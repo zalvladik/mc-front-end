@@ -44,7 +44,7 @@ export const Rules = styled.ul<RulesProps>`
   font-size: 20px;
   padding-left: 20px;
   right: 0px;
-  margin-bottom: ${props => '-' + props.height + 'px'};
+  margin-bottom: ${props => `-${props.height}px`};
   opacity: 0;
   transform: translateY(-120%);
   transition:

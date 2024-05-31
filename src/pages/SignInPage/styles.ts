@@ -69,6 +69,7 @@ export const ButtonClose = styled.button`
     transform: scale(1.1);
   }
 `
+
 export const CrossWrapper = styled.div`
   position: relative;
   width: 90px;

@@ -1,6 +1,7 @@
+import type { UserInventoryT } from 'src/services/api/UserInventory/types'
+
 import { api } from 'src/configs/ky'
 import { FetchEndpoint } from 'src/constants'
-import { UserInventoryT } from 'src/services/api/UserInventory/types'
 
 class UserInventory {
   async get(): Promise<UserInventoryT> {

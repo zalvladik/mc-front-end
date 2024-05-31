@@ -1,7 +1,6 @@
-import { COMPONENT_IDS } from 'src/constants'
-
 import type { SocialCardProps } from 'src/components/Social/types'
 
+import { COMPONENT_IDS } from 'src/constants'
 import { useCustomSpring } from 'src/hooks/useCustomSpring'
 
 import { CardContainer } from 'src/components/Social/styles'

@@ -1,9 +1,9 @@
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch'
 
-import { useAdvancementsMap } from 'src/components/AdvancementsMap/useAdvancementsMap'
-
-import AdvancementsRoad from 'src/assets/SVG/AdvancementsRoadFinal'
 import AdvancementsIcon from 'src/assets/SVG/AdvancementsIcon'
+import AdvancementsRoad from 'src/assets/SVG/AdvancementsRoadFinal'
+import { useAdvancementsMap } from 'src/components/AdvancementsMap/useAdvancementsMap'
+import { ADVANCEMENTS_ICONS } from 'src/constants'
 
 import {
   ContainerImage,
@@ -13,10 +13,9 @@ import {
   Description,
 } from 'src/components/AdvancementsMap/styles'
 
-import { ADVANCEMENTS_ICONS } from 'src/constants'
-
 import './cssStyles.css'
-import { AdvancementsMapProps } from 'src/components/AdvancementsMap/types'
+
+import type { AdvancementsMapProps } from 'src/components/AdvancementsMap/types'
 
 const AdvancementsMap = ({ realname }: AdvancementsMapProps): JSX.Element => {
   const {

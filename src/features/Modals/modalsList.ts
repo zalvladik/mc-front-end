@@ -1,7 +1,6 @@
 import { Modals } from 'src/features/Modals/constants'
-
-import ModalPay from 'src/features/Modals/ModalPay'
 import ModalAdvancements from 'src/features/Modals/ModalAdvancements'
+import ModalPay from 'src/features/Modals/ModalPay'
 
 const modalsList = [
   { name: Modals.PAY, component: ModalPay },

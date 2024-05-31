@@ -1,5 +1,4 @@
 import { useNavBar } from 'src/components/Navbar/useNavbar'
-
 import { RoutesPath } from 'src/router/routes'
 
 import {
@@ -29,7 +28,7 @@ const Navbar = (): JSX.Element => {
               style={{
                 opacity: isProfilePage ? 1 : 0.5,
               }}
-              aria-disabled={true}
+              aria-disabled
               onClick={() =>
                 isProfilePage ? undefined : navigate(RoutesPath.PROFILE)
               }
@@ -38,7 +37,7 @@ const Navbar = (): JSX.Element => {
             </p>
             <p
               style={{ opacity: currentPath === RoutesPath.RULES ? 1 : 0.5 }}
-              aria-disabled={true}
+              aria-disabled
               onClick={() =>
                 currentPath === RoutesPath.RULES
                   ? undefined

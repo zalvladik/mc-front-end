@@ -1,6 +1,5 @@
 import MainTitle from 'src/components/MainTitle'
 import SocialCard from 'src/components/Social'
-
 import props from 'src/pages/HomePage/screens/Social/properties.json'
 
 import { Container } from 'src/pages/HomePage/screens/Social/styles'

@@ -1,5 +1,4 @@
 import { useModals } from 'src/contexts/ModalProvider/useModals'
-
 import rulesForPay from 'src/locales/rulesForPay.json'
 
 export const useModalPay = () => {

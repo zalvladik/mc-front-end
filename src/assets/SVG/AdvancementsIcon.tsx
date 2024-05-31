@@ -1,10 +1,11 @@
 import type { AchIconDoneSquareProps } from 'src/assets/SVG/types'
+
 import { ADVANCEMENTS_ICONS } from 'src/constants'
 
 const AchIconDoneSquare = ({
   isDone = false,
   figure = ADVANCEMENTS_ICONS.SQUARE,
-}: AchIconDoneSquareProps): JSX.Element | undefined => {
+}: AchIconDoneSquareProps): JSX.Element => {
   const bg = isDone ? '#AA7E0F' : '#4F4F4F'
   const lineUp = isDone ? '#DBA213' : '#666666'
   const lineDown = isDone ? '#493606' : '#222222'
@@ -117,52 +118,50 @@ const AchIconDoneSquare = ({
     )
   }
 
-  if (figure === ADVANCEMENTS_ICONS.OVAL) {
-    return (
-      <svg width="22" height="26" viewBox="0 0 22 26" fill="none">
-        <g clip-path="url(#clip0_6_90)">
-          <line x1="7" y1="0.5" x2="15" y2="0.5" stroke="black" />
-          <line x1="7" y1="25.5" x2="15" y2="25.5" stroke="black" />
-          <line x1="4" y1="1.5" x2="7" y2="1.5" stroke="black" />
-          <line x1="15" y1="1.5" x2="18" y2="1.5" stroke="black" />
-          <line x1="18" y1="2.5" x2="20" y2="2.5" stroke="black" />
-          <line x1="2" y1="2.5" x2="4" y2="2.5" stroke="black" />
-          <line x1="1" y1="3.5" x2="2" y2="3.5" stroke="black" />
-          <line x1="20" y1="3.5" x2="21" y2="3.5" stroke="black" />
-          <line x1="20" y1="22.5" x2="21" y2="22.5" stroke="black" />
-          <line x1="1" y1="22.5" x2="2" y2="22.5" stroke="black" />
-          <line x1="2" y1="23.5" x2="4" y2="23.5" stroke="black" />
-          <line x1="4" y1="24.5" x2="7" y2="24.5" stroke="black" />
-          <line x1="15" y1="24.5" x2="18" y2="24.5" stroke="black" />
-          <line x1="18" y1="23.5" x2="20" y2="23.5" stroke="black" />
-          <line x1="0.5" y1="22" x2="0.5" y2="4" stroke="black" />
-          <line x1="21.5" y1="22" x2="21.5" y2="4" stroke="black" />
-          <rect x="2" y="4" width="18" height="18" fill={bg} />
-          <rect x="4" y="21" width="14" height="2" fill={bg} />
-          <rect x="7" y="22" width="8" height="2" fill={bg} />
-          <rect x="7" y="2" width="8" height="2" fill={bg} />
-          <rect x="4" y="3" width="14" height="2" fill={bg} />
-          <line x1="7" y1="1.5" x2="15" y2="1.5" stroke={lineUp} />
-          <line x1="4" y1="2.5" x2="7" y2="2.5" stroke={lineUp} />
-          <line x1="2" y1="3.5" x2="4" y2="3.5" stroke={lineUp} />
-          <line x1="18" y1="3.5" x2="20" y2="3.5" stroke={lineUp} />
-          <line x1="15" y1="2.5" x2="18" y2="2.5" stroke={lineUp} />
-          <line x1="1.5" y1="22" x2="1.5" y2="4" stroke={lineUp} />
-          <line x1="20.5" y1="22" x2="20.5" y2="4" stroke={lineDown} />
-          <line x1="7" y1="24.5" x2="15" y2="24.5" stroke={lineDown} />
-          <line x1="15" y1="23.5" x2="18" y2="23.5" stroke={lineDown} />
-          <line x1="18" y1="22.5" x2="20" y2="22.5" stroke={lineDown} />
-          <line x1="2" y1="22.5" x2="4" y2="22.5" stroke={lineDown} />
-          <line x1="4" y1="23.5" x2="7" y2="23.5" stroke={lineDown} />
-        </g>
-        <defs>
-          <clipPath id="clip0_6_90">
-            <rect width="22" height="26" fill="white" />
-          </clipPath>
-        </defs>
-      </svg>
-    )
-  }
+  return (
+    <svg width="22" height="26" viewBox="0 0 22 26" fill="none">
+      <g clip-path="url(#clip0_6_90)">
+        <line x1="7" y1="0.5" x2="15" y2="0.5" stroke="black" />
+        <line x1="7" y1="25.5" x2="15" y2="25.5" stroke="black" />
+        <line x1="4" y1="1.5" x2="7" y2="1.5" stroke="black" />
+        <line x1="15" y1="1.5" x2="18" y2="1.5" stroke="black" />
+        <line x1="18" y1="2.5" x2="20" y2="2.5" stroke="black" />
+        <line x1="2" y1="2.5" x2="4" y2="2.5" stroke="black" />
+        <line x1="1" y1="3.5" x2="2" y2="3.5" stroke="black" />
+        <line x1="20" y1="3.5" x2="21" y2="3.5" stroke="black" />
+        <line x1="20" y1="22.5" x2="21" y2="22.5" stroke="black" />
+        <line x1="1" y1="22.5" x2="2" y2="22.5" stroke="black" />
+        <line x1="2" y1="23.5" x2="4" y2="23.5" stroke="black" />
+        <line x1="4" y1="24.5" x2="7" y2="24.5" stroke="black" />
+        <line x1="15" y1="24.5" x2="18" y2="24.5" stroke="black" />
+        <line x1="18" y1="23.5" x2="20" y2="23.5" stroke="black" />
+        <line x1="0.5" y1="22" x2="0.5" y2="4" stroke="black" />
+        <line x1="21.5" y1="22" x2="21.5" y2="4" stroke="black" />
+        <rect x="2" y="4" width="18" height="18" fill={bg} />
+        <rect x="4" y="21" width="14" height="2" fill={bg} />
+        <rect x="7" y="22" width="8" height="2" fill={bg} />
+        <rect x="7" y="2" width="8" height="2" fill={bg} />
+        <rect x="4" y="3" width="14" height="2" fill={bg} />
+        <line x1="7" y1="1.5" x2="15" y2="1.5" stroke={lineUp} />
+        <line x1="4" y1="2.5" x2="7" y2="2.5" stroke={lineUp} />
+        <line x1="2" y1="3.5" x2="4" y2="3.5" stroke={lineUp} />
+        <line x1="18" y1="3.5" x2="20" y2="3.5" stroke={lineUp} />
+        <line x1="15" y1="2.5" x2="18" y2="2.5" stroke={lineUp} />
+        <line x1="1.5" y1="22" x2="1.5" y2="4" stroke={lineUp} />
+        <line x1="20.5" y1="22" x2="20.5" y2="4" stroke={lineDown} />
+        <line x1="7" y1="24.5" x2="15" y2="24.5" stroke={lineDown} />
+        <line x1="15" y1="23.5" x2="18" y2="23.5" stroke={lineDown} />
+        <line x1="18" y1="22.5" x2="20" y2="22.5" stroke={lineDown} />
+        <line x1="2" y1="22.5" x2="4" y2="22.5" stroke={lineDown} />
+        <line x1="4" y1="23.5" x2="7" y2="23.5" stroke={lineDown} />
+      </g>
+      <defs>
+        <clipPath id="clip0_6_90">
+          <rect width="22" height="26" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  )
 }
 
 export default AchIconDoneSquare

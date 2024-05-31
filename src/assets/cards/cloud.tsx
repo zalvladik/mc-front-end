@@ -1,4 +1,4 @@
-const Cloud = () => {
+const Cloud = (): JSX.Element => {
   return (
     <svg
       width="51"

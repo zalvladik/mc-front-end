@@ -1,4 +1,4 @@
-const season = () => {
+const season = (): JSX.Element => {
   return (
     <svg
       width="34"

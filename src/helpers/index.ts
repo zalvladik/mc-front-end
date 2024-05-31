@@ -1,4 +1,4 @@
-import { LocalStorageKey } from 'src/constants'
+import type { LocalStorageKey } from 'src/constants'
 import type { ValueOf } from 'src/types'
 
 export const copyText = (text: string) => {
@@ -58,13 +58,15 @@ export const millisecondsToTime = (milliseconds: number | string): string => {
 export const moneyCalculator = (count: number): string => {
   if (count <= 64) {
     return `У вас &b${count}⟡ шт. алмазної руди`
-  } else {
-    const remainder: number = count % 64
-    return `[ ${Math.floor((count - remainder) / 64)}ст. ${remainder}шт. ]`
   }
+
+  const remainder: number = count % 64
+
+  return `[ ${Math.floor((count - remainder) / 64)}ст. ${remainder}шт. ]`
 }
 
 export const moneyCalculatorShulker = (count: number): string => {
   const shulkers: number = count / 1728.0
+
   return `[ ${shulkers.toFixed(2)} ]`
 }

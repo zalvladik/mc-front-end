@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-
 import type { ModalDialogProps } from 'src/features/Modals/types'
 import type { ReactChildrenT } from 'src/types'
 

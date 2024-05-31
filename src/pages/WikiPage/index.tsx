@@ -1,6 +1,6 @@
-import useWikiPage from 'src/pages/WikiPage/useWikiPage'
-import SearchInput from 'src/components/inputs/SearchInput'
 import MedalIcon from 'src/assets/SVG/MedalIcon'
+import SearchInput from 'src/components/inputs/SearchInput'
+import useWikiPage from 'src/pages/WikiPage/useWikiPage'
 
 import {
   WikiPageContainer,
@@ -35,7 +35,7 @@ const WikiPage = (): JSX.Element => {
 
         <SelectContainer>
           <OptionFilter onClick={() => setOption('optionToTop')}>
-            <MedalIcon medalIsUp={true} />
+            <MedalIcon medalIsUp />
           </OptionFilter>
           <OptionFilter onClick={() => setOption('optionToDown')}>
             <MedalIcon />

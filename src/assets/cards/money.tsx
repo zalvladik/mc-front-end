@@ -1,4 +1,4 @@
-const money = () => {
+const money = (): JSX.Element => {
   return (
     <svg
       width="34"

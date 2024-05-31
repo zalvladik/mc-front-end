@@ -1,8 +1,9 @@
 import type { MainTitleProps } from 'src/components/MainTitle/types'
 
-import { Container } from 'src/components/MainTitle/styles'
 import { COMPONENT_IDS } from 'src/constants'
 import { useCustomSpring } from 'src/hooks/useCustomSpring'
+
+import { Container } from 'src/components/MainTitle/styles'
 
 const MainTitle = ({ text, icon, alt }: MainTitleProps): JSX.Element => {
   const springProps = useCustomSpring(COMPONENT_IDS.MAIN_TITLE + text)

@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
 import debounce from 'lodash.debounce'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 export const useRuleCategory = () => {
   const [selected, setSelected] = useState<boolean>(false)

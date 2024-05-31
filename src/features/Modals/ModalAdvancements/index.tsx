@@ -1,5 +1,6 @@
-import AdvancementsMap from 'src/components/AdvancementsMap'
+import type { ModalAdvancementsProps } from 'src/features/Modals/ModalAdvancements/types'
 
+import AdvancementsMap from 'src/components/AdvancementsMap'
 import { useModalAdvancements } from 'src/features/Modals/ModalAdvancements/useModalAdvancements'
 import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
 
@@ -8,7 +9,6 @@ import {
   ButtonClose,
   CrossWrapper,
 } from 'src/features/Modals/ModalAdvancements/styles'
-import { ModalAdvancementsProps } from 'src/features/Modals/ModalAdvancements/types'
 
 const ModalAdvancements = ({
   isOpen,
@@ -26,7 +26,7 @@ const ModalAdvancements = ({
         </CrossWrapper>
       </ButtonClose>
       <AdvancementsMapWrapper>
-        <AdvancementsMap realname={data.realname}></AdvancementsMap>
+        <AdvancementsMap realname={data.realname} />
       </AdvancementsMapWrapper>
     </SettingsModalsLayout>
   )

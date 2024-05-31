@@ -1,7 +1,8 @@
-import InfoCategory from 'src/components/InfoCategory'
-
 import type { ModalDialogProps } from 'src/features/Modals/types'
+
+import InfoCategory from 'src/components/InfoCategory'
 import { useModalPay } from 'src/features/Modals/ModalPay/useModalPay'
+import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
 
 import {
   Container,
@@ -15,8 +16,6 @@ import {
   Cloud_2,
   Cloud_3,
 } from 'src/features/Modals/ModalPay/styles'
-
-import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
 
 const ModalPay = ({ isOpen, closeModal }: ModalDialogProps): JSX.Element => {
   const { onClose, category, rules } = useModalPay()

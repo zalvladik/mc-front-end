@@ -1,11 +1,9 @@
 import { Suspense, useEffect } from 'react'
-import { RouterProvider } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
-
-import { Router } from './router'
+import { RouterProvider } from 'react-router-dom'
 
 import LoadingPage from './pages/LoadingPage'
-
+import { Router } from './router'
 import './App.css'
 
 const App = () => {

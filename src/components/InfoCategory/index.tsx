@@ -28,7 +28,7 @@ const InfoCategory = ({ category, rules }: InfoCategoryProps): JSX.Element => {
         <Rules>
           {rules.map((item, i) => (
             <li key={i}>
-              {i + 1 + '.'}
+              {`${i + 1}.`}
               {` ${item}`}
             </li>
           ))}

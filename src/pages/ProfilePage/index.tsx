@@ -1,3 +1,7 @@
+import UserInventory from 'src/components/UserInventory'
+import { millisecondsToDate, millisecondsToTime } from 'src/helpers'
+import useProfilePage from 'src/pages/ProfilePage/useProfilePage'
+
 import {
   Container,
   SkinIcon,
@@ -7,10 +11,6 @@ import {
   LasLogin,
   UserContainer,
 } from 'src/pages/ProfilePage/styles'
-import useProfilePage from 'src/pages/ProfilePage/useProfilePage'
-
-import UserInventory from 'src/components/UserInventory'
-import { millisecondsToDate, millisecondsToTime } from 'src/helpers'
 
 const ProfilePage = (): JSX.Element => {
   const {
@@ -26,7 +26,7 @@ const ProfilePage = (): JSX.Element => {
   return (
     <Container>
       <UserContainer>
-        <SkinIcon ref={canvasRef} id="canvas"></SkinIcon>
+        <SkinIcon ref={canvasRef} id="canvas" />
         <PlayerInfo>
           <NickName>{user.realname}</NickName>
           <ButtonList>

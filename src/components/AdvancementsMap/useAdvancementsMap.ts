@@ -1,7 +1,6 @@
-import schema from 'src/components/AdvancementsMap/schema.json'
-
 import type { Advancement } from 'src/components/AdvancementsMap/types'
 
+import schema from 'src/components/AdvancementsMap/schema.json'
 import getUserAdvancements from 'src/hooks/getUserAdvancements'
 
 export const useAdvancementsMap = (realname: string) => {

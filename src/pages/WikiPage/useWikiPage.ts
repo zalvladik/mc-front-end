@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react'
 
-import type { getAllUsersApiT } from 'src/services/types'
-import useGetAllUsers from 'src/hooks/useGetAllUsers'
+import type { GetAllUsersApiT } from 'src/services/types'
+
 import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { Modals } from 'src/features/Modals/constants'
+import useGetAllUsers from 'src/hooks/useGetAllUsers'
 
 const useWikiPage = () => {
   const { onOpen } = useModals()
@@ -25,7 +26,7 @@ const useWikiPage = () => {
       case 'optionToDown':
         return copyData?.sort((a, b) => b.rating - a.rating)
       case 'optionAbc': {
-        const otherNames: getAllUsersApiT[] = []
+        const otherNames: GetAllUsersApiT[] = []
 
         const result = copyData
           ?.filter(item => {
@@ -49,7 +50,7 @@ const useWikiPage = () => {
     }
   }, [option, data])
 
-  const filteredData = sorteredData?.filter((item: getAllUsersApiT) =>
+  const filteredData = sorteredData?.filter((item: GetAllUsersApiT) =>
     item.realname.toLowerCase().includes(value.toLowerCase()),
   )
 

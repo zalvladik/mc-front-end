@@ -1,4 +1,4 @@
-import { UserT } from 'src/contexts/UserProvider/types'
+import type { UserT } from 'src/contexts/UserProvider/types'
 
 export type AuthResponseT = {
   accessToken: string

@@ -1,12 +1,9 @@
-import advantages from 'src/locales/advantages.json'
-
 import AdvantageCard from 'src/components/AdvancementCard'
 import MainTitle from 'src/components/MainTitle'
-
-import { useAdvantage } from 'src/pages/HomePage/screens/Advantages/useAdvantages'
-
-import { useCustomSpring } from 'src/hooks/useCustomSpring'
 import { COMPONENT_IDS } from 'src/constants'
+import { useCustomSpring } from 'src/hooks/useCustomSpring'
+import advantages from 'src/locales/advantages.json'
+import { useAdvantage } from 'src/pages/HomePage/screens/Advantages/useAdvantages'
 
 import {
   CardContainer,

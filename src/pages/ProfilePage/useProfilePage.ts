@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-
 import * as skinview3d from 'skinview3d'
+
 import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { useUser } from 'src/contexts/UserProvider/useUser'
 import { Modals } from 'src/features/Modals/constants'

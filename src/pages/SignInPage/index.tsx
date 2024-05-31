@@ -1,6 +1,10 @@
-import { ChangeEvent } from 'react'
 import { Controller } from 'react-hook-form'
+
+import type { ChangeEvent } from 'react'
+
 import InputSignIn from 'src/features/InputSignIn'
+import { useSignInPage } from 'src/pages/SignInPage/useSignInPage'
+
 import {
   Container,
   InputWrapper,
@@ -12,7 +16,6 @@ import {
   CrossWrapper,
   Description,
 } from 'src/pages/SignInPage/styles'
-import { useSignInPage } from 'src/pages/SignInPage/useSignInPage'
 
 const SignInPage = (): JSX.Element => {
   const { navigate, errors, control, trigger, isLoading, handleSubmit } =

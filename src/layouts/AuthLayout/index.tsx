@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom'
 
 import UserProvider from 'src/contexts/UserProvider'
-
 import { useCheckAuth } from 'src/hooks/useCheckAuth'
 import { useGetUser } from 'src/hooks/useGetUser'
 

@@ -1,8 +1,7 @@
 import { animated } from '@react-spring/web'
 
-import PayForm from 'src/components/PayForm'
 import MainTitle from 'src/components/MainTitle'
-
+import PayForm from 'src/components/PayForm'
 import { useStore } from 'src/pages/HomePage/screens/Store/useStore'
 
 import { StoreSection } from 'src/pages/HomePage/screens/Store/styles'

@@ -1,9 +1,8 @@
-import { createBrowserRouter } from 'react-router-dom'
 import { lazy } from 'react'
+import { createBrowserRouter } from 'react-router-dom'
 
-import NavLayout from 'src/layouts/NavLayouts'
 import AuthLayout from 'src/layouts/AuthLayout'
-
+import NavLayout from 'src/layouts/NavLayouts'
 import { RoutesPath } from 'src/router/routes'
 
 const ErrorPage = lazy(() => import('src/pages/ErrorPage'))

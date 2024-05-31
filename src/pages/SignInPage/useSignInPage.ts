@@ -1,11 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-
-import { validationSchema } from 'src/pages/SignInPage/validationSchema'
+import { useNavigate } from 'react-router-dom'
 
 import type { SignInFormT } from 'src/pages/SignInPage/types'
-import { useNavigate } from 'react-router-dom'
+
 import { useLogin } from 'src/hooks/useLogin'
+import { validationSchema } from 'src/pages/SignInPage/validationSchema'
 
 export const useSignInPage = () => {
   const navigate = useNavigate()

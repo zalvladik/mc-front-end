@@ -1,7 +1,7 @@
+import RuleCategory from 'src/components/RuleCategory'
 import rulesData from 'src/locales/rules.json'
 
 import { Container } from 'src/pages/RulePage/styles'
-import RuleCategory from 'src/components/RuleCategory'
 
 const RulePage = (): JSX.Element => {
   return (

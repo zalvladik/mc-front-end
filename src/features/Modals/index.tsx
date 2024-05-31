@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom'
 
-import type { ModalsPropsT } from 'src/features/Modals/types'
 import type { ReactPortal } from 'react'
+import type { ModalsPropsT } from 'src/features/Modals/types'
 import type { UnionToIntersection } from 'src/types'
 
 import { useModals } from 'src/contexts/ModalProvider/useModals'

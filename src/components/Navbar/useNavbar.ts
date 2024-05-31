@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 import { RoutesPath } from 'src/router/routes'
 
 export const useNavBar = () => {

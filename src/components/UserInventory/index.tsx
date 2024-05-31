@@ -1,9 +1,7 @@
 import { TfiReload } from 'react-icons/tfi'
 
 import ItemCard from 'src/components/ItemCard'
-
 import { useUserInventory } from 'src/components/UserInventory/useUserInventory'
-
 import { moneyCalculator, moneyCalculatorShulker } from 'src/helpers'
 
 import {
@@ -60,10 +58,7 @@ const UserInventory = (): JSX.Element => {
                   }}
                 />
                 {item.amount > 1 && <ItemAmount>{item.amount}</ItemAmount>}
-                <ItemCard
-                  description={item.description}
-                  title={item.display_name}
-                ></ItemCard>
+                <ItemCard description={item.description} title={item.display_name} />
               </li>
             ))}
         </ItemList>
