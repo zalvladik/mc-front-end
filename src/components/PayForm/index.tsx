@@ -29,7 +29,7 @@ const PayForm = (): JSX.Element => {
           <HeroButton
             icon={priceIcons[0]}
             onClick={() => {
-              onOpen({ name: Modals.MODAL_PAY })
+              onOpen({ name: Modals.PAY })
             }}
             styles={{ background: '#7F00FF' }}
             text="Почати грати"

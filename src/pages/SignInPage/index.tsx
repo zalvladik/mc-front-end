@@ -15,7 +15,7 @@ import {
 import { useSignInPage } from 'src/pages/SignInPage/useSignInPage'
 
 const SignInPage = (): JSX.Element => {
-  const { navigate, errors, control, trigger, isError, isLoading, handleSubmit } =
+  const { navigate, errors, control, trigger, isLoading, handleSubmit } =
     useSignInPage()
 
   return (
