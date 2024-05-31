@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Minecraft';
+  src: url('./minecraft.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('./nunito.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

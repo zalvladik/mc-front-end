@@ -1,0 +1,94 @@
+import styled from 'styled-components'
+
+export const Container = styled.div`
+  padding: 150px 50px 50px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+`
+
+export const SkinIcon = styled.canvas`
+  background: radial-gradient(
+    circle,
+    rgba(11, 31, 50, 1) 0%,
+    rgba(10, 28, 38, 1) 25%,
+    rgba(15, 39, 52, 1) 50%,
+    rgba(10, 28, 38, 1) 75%,
+    rgba(11, 31, 50, 1) 100%
+  );
+
+  border: 2px solid gray;
+  border-radius: 10px;
+`
+
+export const NickName = styled.h1`
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Minecraft', sans-serif;
+  font-weight: 500;
+`
+
+export const LasLogin = styled.div`
+  position: relative;
+  background: radial-gradient(
+    circle,
+    rgba(100, 100, 100, 1) 0%,
+    rgba(50, 50, 50, 0.8) 100%
+  );
+
+  -webkit-box-shadow: inset 0px 0px 50px 15px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0px 0px 50px 15px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px 0px 50px 15px rgba(0, 0, 0, 0.75);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px 0px;
+
+  & > div:nth-child(1) {
+    margin-bottom: 20px;
+  }
+
+  & > div {
+    font-size: 20px;
+    font-family: 'Minecraft', sans-serif;
+    font-weight: 500;
+  }
+`
+
+export const PlayerInfo = styled.div``
+
+export const ButtonList = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & > button {
+    all: none;
+    margin: auto auto 0px auto;
+    color: white;
+    width: 280px;
+    height: 50px;
+    border: none;
+    font-size: 25px;
+    font-family: 'Minecraft', sans-serif;
+    font-weight: 500;
+    margin-top: 25px;
+    background-image: url(${'button.png'});
+    background-color: inherit;
+    background-repeat: no-repeat;
+    transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
+`
+
+export const UserContainer = styled.div`
+  display: flex;
+  gap: 40px;
+`
