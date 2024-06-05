@@ -1,9 +1,9 @@
 import type { LocalStorageKey } from 'src/constants'
 import type { ValueOf } from 'src/types'
 
-export const copyText = (text: string) => {
+export const copyText = (text: string): Promise<void> => {
   if (!navigator.clipboard.writeText) {
-    return Promise.reject('The Clipboard API is not available.')
+    return Promise.reject(new Error('The Clipboard API is not available.'))
   }
 
   return navigator.clipboard.writeText(text)

@@ -19,6 +19,7 @@ const ItemCategoryFilter = ({
           style={styleSlot}
           type="button"
           onClick={() => selectToogle(category)}
+          aria-label={`Select category ${category}`}
         >
           <div style={style} />
         </button>
