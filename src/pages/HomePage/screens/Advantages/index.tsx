@@ -1,15 +1,15 @@
-import AdvantageCard from 'src/components/AdvancementCard'
-import MainTitle from 'src/components/MainTitle'
-import { COMPONENT_IDS } from 'src/constants'
+import { ComponentIds } from 'src/constants'
 import { useCustomSpring } from 'src/hooks/useCustomSpring'
 import advantages from 'src/locales/advantages.json'
-import { useAdvantage } from 'src/pages/HomePage/screens/Advantages/useAdvantages'
-
 import {
+  AdvantagesSection,
   CardContainer,
   CustomAnimated,
-  AdvantagesSection,
 } from 'src/pages/HomePage/screens/Advantages/styles'
+import { useAdvantage } from 'src/pages/HomePage/screens/Advantages/useAdvantages'
+
+import AdvantageCard from 'src/components/AdvancementCard'
+import MainTitle from 'src/components/MainTitle'
 
 const Advantages = (): JSX.Element => {
   const { images } = useAdvantage()
@@ -22,8 +22,8 @@ const Advantages = (): JSX.Element => {
         {advantages.map(({ title, text }, i: number) => (
           <CustomAnimated
             key={title}
-            id={COMPONENT_IDS.ADVANTAGE + title}
-            style={useCustomSpring(COMPONENT_IDS.ADVANTAGE + title)}
+            id={ComponentIds.ADVANTAGE + title}
+            style={useCustomSpring(ComponentIds.ADVANTAGE + title)}
           >
             <AdvantageCard text={text} title={title} img={images[i]()} />
           </CustomAnimated>

@@ -8,7 +8,7 @@ export const Container = styled.div`
 export const FormImage = styled.div`
   position: relative;
   margin: 0px auto;
-  background-image: url(${'src/assets/authBG.png'});
+  background-image: url(${'/assets/authBG.png'});
   width: 584px;
   height: 720px;
 `
@@ -23,9 +23,10 @@ export const FormContainer = styled.div`
 
 export const InputWrapper = styled.div`
   position: relative;
+
   & > input {
     width: 300px;
-    border-bottom: 2px solid black;
+    border-bottom: 3px solid black;
 
     &:focus-visible {
       outline: none;
@@ -40,7 +41,7 @@ export const InputWrapper = styled.div`
 export const ButtonSubmit = styled.button`
   margin: auto auto 0px auto;
   color: white;
-  background-image: url(${'button.png'});
+  background-image: url(${'/assets/buttons/button_280.png'});
   background-repeat: no-repeat;
   width: 280px;
   height: 50px;
@@ -80,7 +81,7 @@ export const CrossWrapper = styled.div`
     position: absolute;
     width: 90px;
     height: 90px;
-    background-image: url(${'src/assets/minecraftItems/redstone_torch.png'});
+    background-image: url(${'/assets/items_for_ui/redstone_torch.png'});
     background-size: contain;
     background-repeat: no-repeat;
 
@@ -106,7 +107,6 @@ export const ErrorMessage = styled.p`
 export const Description = styled.p`
   text-align: center;
   width: 70%;
-
   color: black;
   font-size: 18px;
   margin-top: 30px;

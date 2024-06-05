@@ -1,11 +1,10 @@
-import { createPortal } from 'react-dom'
-
 import type { ReactPortal } from 'react'
-import type { ModalsPropsT } from 'src/features/Modals/types'
+import { createPortal } from 'react-dom'
+import { useModals } from 'src/contexts/ModalProvider/useModals'
 import type { UnionToIntersection } from 'src/types'
 
-import { useModals } from 'src/contexts/ModalProvider/useModals'
 import modalsList from 'src/features/Modals/modalsList'
+import type { ModalsPropsT } from 'src/features/Modals/types'
 
 const Modals = (): ReactPortal | null => {
   const { modal, onClose } = useModals()

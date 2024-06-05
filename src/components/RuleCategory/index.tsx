@@ -1,14 +1,12 @@
-import type { RuleCategoryProps } from 'src/components/RuleCategory/types'
-
-import { useRuleCategory } from 'src/components/RuleCategory/useRuleCategory'
-
 import {
-  CategoryTitle,
-  Rules,
   Arrow,
+  CategoryTitle,
   Container,
+  Rules,
   RulesOverflow,
 } from 'src/components/RuleCategory/styles'
+import type { RuleCategoryProps } from 'src/components/RuleCategory/types'
+import { useRuleCategory } from 'src/components/RuleCategory/useRuleCategory'
 
 const RuleCategory = ({
   category,

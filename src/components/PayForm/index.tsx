@@ -1,16 +1,17 @@
-import HeroButton from 'src/components/HeroButton'
-import { usePayForm } from 'src/components/PayForm/usePayForm'
-import TitleDescription from 'src/components/TitleDescription'
-import { Modals } from 'src/features/Modals/constants'
 import { copyText } from 'src/helpers'
 import payForm from 'src/locales/payForm.json'
 
+import HeroButton from 'src/components/HeroButton'
 import {
   AboutBox,
+  ButtonsBox,
   FormBox,
   PriceBox,
-  ButtonsBox,
 } from 'src/components/PayForm/styles'
+import { usePayForm } from 'src/components/PayForm/usePayForm'
+import TitleDescription from 'src/components/TitleDescription'
+
+import { Modals } from 'src/features/Modals/constants'
 
 const PayForm = (): JSX.Element => {
   const { aboutIcons, onOpen, priceIcons } = usePayForm()

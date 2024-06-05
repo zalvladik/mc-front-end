@@ -39,11 +39,12 @@ ol[class] {
 }
 
 body {
-  background: linear-gradient(168deg, #050a11 2.8%, #151f2c 140.19%);
+  background: linear-gradient(168deg, #050a11 3%, #151f2c 140%);
   height: 100%;
+  scroll-behavior: smooth;
 }
 
-body.modal-open {
+.no-scroll {
   overflow: hidden;
 }
 

@@ -1,6 +1,6 @@
 import { Container } from 'src/pages/LoadingPage/styles'
 
-const LoadingPage = () => {
+const LoadingPage = (): JSX.Element => {
   return (
     <Container
       className="ip"

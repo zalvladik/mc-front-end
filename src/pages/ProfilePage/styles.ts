@@ -1,10 +1,17 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  padding: 150px 50px 50px 50px;
+  padding: 150px 50px 200px 50px;
   display: flex;
   flex-direction: column;
   gap: 50px;
+`
+
+export const UserInventoryWrapper = styled.div`
+  display: flex;
+  width: max-content;
+  flex-direction: column;
+  gap: 25px;
 `
 
 export const SkinIcon = styled.canvas`
@@ -16,6 +23,16 @@ export const SkinIcon = styled.canvas`
     rgba(10, 28, 38, 1) 75%,
     rgba(11, 31, 50, 1) 100%
   );
+
+  -webkit-box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
+    0px 0px 15px -5px rgba(255, 255, 255, 1);
+  -moz-box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
+    0px 0px 15px -5px rgba(255, 255, 255, 1);
+  box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
+    0px 0px 15px -5px rgba(255, 255, 255, 1);
 
   border: 2px solid gray;
   border-radius: 10px;
@@ -76,7 +93,7 @@ export const ButtonList = styled.div`
     font-family: 'Minecraft', sans-serif;
     font-weight: 500;
     margin-top: 25px;
-    background-image: url(${'button.png'});
+    background-image: url(${'/assets/buttons/button_280.png'});
     background-color: inherit;
     background-repeat: no-repeat;
     transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);

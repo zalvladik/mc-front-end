@@ -1,69 +1,81 @@
-import { TfiReload } from 'react-icons/tfi'
+import { FETCH_URL_IMG } from 'src/constants'
 
-import ItemCard from 'src/components/ItemCard'
-import { useUserInventory } from 'src/components/UserInventory/useUserInventory'
-import { moneyCalculator, moneyCalculatorShulker } from 'src/helpers'
-
+import SearchInput from 'src/components/inputs/SearchInput'
 import {
-  Cotnainer,
-  ItemList,
-  ItemIcon,
-  ContainerWrapper,
+  Container,
+  HeaderInventory,
+  InventoryEmpty,
+  InventoryWrapper,
   ItemAmount,
-  MoneyAmountContainer,
-  TfiReloadWrapper,
+  ItemIcon,
+  ItemList,
+  SearchInputWrapper,
 } from 'src/components/UserInventory/styles'
+import { useUserInventory } from 'src/components/UserInventory/useUserInventory'
+
+import ItemCategoryFilter from 'src/features/ItemCategoryFilter'
+import ItemTicket from 'src/features/ItemTicket'
+import ShulkerIndicator from 'src/features/ShulkerIndicator'
+
+import InventoryHeader from '../InventoryHeader'
+import ItemCard from '../ItemCard'
 
 const UserInventory = (): JSX.Element => {
-  const { data, isLoading, refetch } = useUserInventory()
-
-  if (!data) return <p>Error fetching data or data is empty</p>
-
-  const { items, money } = data
+  const {
+    itemTicketData,
+    styleForItemBorder,
+    items,
+    selectToogle,
+    setSearch,
+    itemCategoryFilterProps,
+    inventoryHeaderProps,
+    isLoading,
+    search,
+    selectedItemsLength,
+  } = useUserInventory()
 
   return (
-    <ContainerWrapper>
-      <MoneyAmountContainer>
-        <li>
-          <h1>Валюта: {money}</h1>
-          <div />
-        </li>
-        {money > 64 && (
-          <li>
-            <h1>{moneyCalculator(money)}</h1>
-            <div />
-          </li>
-        )}
-        {money > 256 && (
-          <li>
-            <h1>{moneyCalculatorShulker(money)}</h1>
-            <div />
-          </li>
-        )}
-      </MoneyAmountContainer>
-
-      <Cotnainer>
-        <TfiReloadWrapper disabled={isLoading} onClick={() => refetch()}>
-          <TfiReload size={50} />
-        </TfiReloadWrapper>
-        <h1>{items?.length ? 'Інвентар' : 'Інвентар пустий'}</h1>
-        <ItemList>
-          {!isLoading &&
-            items &&
-            items.map(item => (
-              <li>
-                <ItemIcon
-                  style={{
-                    backgroundImage: `url(http://localhost:8080/public/${item?.type.slice(0, 2)}/${item?.type}.png)`,
-                  }}
-                />
-                {item.amount > 1 && <ItemAmount>{item.amount}</ItemAmount>}
-                <ItemCard description={item.description} title={item.display_name} />
-              </li>
-            ))}
-        </ItemList>
-      </Cotnainer>
-    </ContainerWrapper>
+    <InventoryWrapper>
+      <HeaderInventory>
+        <SearchInputWrapper>
+          <SearchInput
+            style={{ zIndex: 2, position: 'absolute', right: 0, bottom: 0 }}
+            placeholder="Пошук"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
+          <ShulkerIndicator value={selectedItemsLength} />
+        </SearchInputWrapper>
+      </HeaderInventory>
+      <Container>
+        <InventoryHeader {...inventoryHeaderProps}>
+          <ItemCategoryFilter {...itemCategoryFilterProps} />
+        </InventoryHeader>
+        {!isLoading &&
+          (items.length ? (
+            <ItemList className="scroll-y">
+              {items.map(({ amount, id, display_name, type, description }) => (
+                <button
+                  key={id}
+                  onClick={() => selectToogle(id)}
+                  style={styleForItemBorder(id)}
+                >
+                  <ItemIcon
+                    style={{
+                      backgroundImage: `url(${FETCH_URL_IMG}/${type.slice(0, 2)}/${type}.png)`,
+                    }}
+                  />
+                  {amount > 1 && <ItemAmount>{amount}</ItemAmount>}
+                  <ItemCard description={description} title={display_name} />
+                </button>
+              ))}
+            </ItemList>
+          ) : (
+            <InventoryEmpty>Інвентар пустий</InventoryEmpty>
+          ))}
+      </Container>
+      <ItemTicket ticketId={itemTicketData?.id} />
+    </InventoryWrapper>
   )
 }
 

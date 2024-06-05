@@ -1,10 +1,10 @@
 import { animated } from '@react-spring/web'
 
-import MainTitle from 'src/components/MainTitle'
-import PayForm from 'src/components/PayForm'
+import { StoreSection } from 'src/pages/HomePage/screens/Store/styles'
 import { useStore } from 'src/pages/HomePage/screens/Store/useStore'
 
-import { StoreSection } from 'src/pages/HomePage/screens/Store/styles'
+import MainTitle from 'src/components/MainTitle'
+import PayForm from 'src/components/PayForm'
 
 const Store = (): JSX.Element => {
   const { springProps } = useStore()

@@ -1,5 +1,4 @@
 import { useQuery } from 'react-query'
-
 import { CacheKeys } from 'src/constants'
 import getAllUsersApi from 'src/services/api/getAllUsersApi'
 

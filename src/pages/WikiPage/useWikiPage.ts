@@ -1,10 +1,9 @@
 import { useMemo, useState } from 'react'
-
+import { useModals } from 'src/contexts/ModalProvider/useModals'
+import useGetAllUsers from 'src/hooks/useGetAllUsers'
 import type { GetAllUsersApiT } from 'src/services/types'
 
-import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { Modals } from 'src/features/Modals/constants'
-import useGetAllUsers from 'src/hooks/useGetAllUsers'
 
 const useWikiPage = () => {
   const { onOpen } = useModals()

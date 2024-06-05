@@ -1,6 +1,7 @@
+import type { ValueOf } from 'src/types'
+
 import type { Modals } from 'src/features/Modals/constants'
 import type { ModalsPropsT } from 'src/features/Modals/types'
-import type { ValueOf } from 'src/types'
 
 export type ModalContextT = {
   modal: ModalDataT

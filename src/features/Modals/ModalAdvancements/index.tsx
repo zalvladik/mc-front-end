@@ -1,14 +1,9 @@
-import type { ModalAdvancementsProps } from 'src/features/Modals/ModalAdvancements/types'
-
 import AdvancementsMap from 'src/components/AdvancementsMap'
+import ButtonModalClose from 'src/components/ButtonModalClose'
+
+import type { ModalAdvancementsProps } from 'src/features/Modals/ModalAdvancements/types'
 import { useModalAdvancements } from 'src/features/Modals/ModalAdvancements/useModalAdvancements'
 import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
-
-import {
-  AdvancementsMapWrapper,
-  ButtonClose,
-  CrossWrapper,
-} from 'src/features/Modals/ModalAdvancements/styles'
 
 const ModalAdvancements = ({
   isOpen,
@@ -18,16 +13,13 @@ const ModalAdvancements = ({
   const { onClose } = useModalAdvancements()
 
   return (
-    <SettingsModalsLayout isOpen={isOpen} closeModal={closeModal}>
-      <ButtonClose onClick={() => onClose()}>
-        <CrossWrapper>
-          <div />
-          <div />
-        </CrossWrapper>
-      </ButtonClose>
-      <AdvancementsMapWrapper>
-        <AdvancementsMap realname={data.realname} />
-      </AdvancementsMapWrapper>
+    <SettingsModalsLayout
+      isOpen={isOpen}
+      closeModal={closeModal}
+      style={{ backgroundColor: 'rgba(0, 0, 0, 0.92)' }}
+    >
+      <ButtonModalClose onClose={onClose} />
+      <AdvancementsMap realname={data.realname} />
     </SettingsModalsLayout>
   )
 }

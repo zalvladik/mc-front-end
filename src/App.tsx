@@ -1,12 +1,13 @@
+import './App.css'
+
 import { Suspense, useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { RouterProvider } from 'react-router-dom'
 
 import LoadingPage from './pages/LoadingPage'
 import { Router } from './router'
-import './App.css'
 
-const App = () => {
+const App = (): JSX.Element => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])

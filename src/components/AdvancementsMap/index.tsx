@@ -1,21 +1,19 @@
-import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch'
+import './cssStyles.css'
 
+import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch'
 import AdvancementsIcon from 'src/assets/SVG/AdvancementsIcon'
 import AdvancementsRoad from 'src/assets/SVG/AdvancementsRoadFinal'
-import { useAdvancementsMap } from 'src/components/AdvancementsMap/useAdvancementsMap'
-import { ADVANCEMENTS_ICONS } from 'src/constants'
+import { AdvancementsIcons } from 'src/constants'
 
 import {
   ContainerImage,
+  Description,
   IconContainer,
   RoadContainer,
   Title,
-  Description,
 } from 'src/components/AdvancementsMap/styles'
-
-import './cssStyles.css'
-
 import type { AdvancementsMapProps } from 'src/components/AdvancementsMap/types'
+import { useAdvancementsMap } from 'src/components/AdvancementsMap/useAdvancementsMap'
 
 const AdvancementsMap = ({ realname }: AdvancementsMapProps): JSX.Element => {
   const {
@@ -42,11 +40,11 @@ const AdvancementsMap = ({ realname }: AdvancementsMapProps): JSX.Element => {
                   <IconContainer key={title} style={{ top, left }}>
                     <ContainerImage
                       style={{
-                        backgroundImage: `url(http://localhost:8080/public/${itemIcon.slice(0, 2)}/${itemIcon}.png)`,
+                        backgroundImage: `url(/assets/items_for_advancements/${itemIcon}.png)`,
                       }}
                     >
                       <AdvancementsIcon
-                        figure={figure ?? ADVANCEMENTS_ICONS.SQUARE}
+                        figure={figure ?? AdvancementsIcons.SQUARE}
                         isDone={isDone}
                       />
                     </ContainerImage>

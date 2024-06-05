@@ -7,4 +7,10 @@ export const Input = styled.input`
   font-size: 25px;
   font-family: 'Minecraft', sans-serif;
   color: black;
+
+  &[type='password' i] {
+    -webkit-text-security: circle !important;
+    padding-block: 1px;
+    padding-inline: 12px;
+  }
 `

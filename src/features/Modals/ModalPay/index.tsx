@@ -1,21 +1,20 @@
-import type { ModalDialogProps } from 'src/features/Modals/types'
-
 import InfoCategory from 'src/components/InfoCategory'
-import { useModalPay } from 'src/features/Modals/ModalPay/useModalPay'
-import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
 
 import {
-  Container,
-  Info,
-  ContainerWrapper,
+  Breeze,
   ButtonContainer,
   ButtonWrapper,
   CloseButton,
-  Breeze,
-  Cloud_1,
-  Cloud_2,
-  Cloud_3,
+  Cloud1,
+  Cloud2,
+  Cloud3,
+  Container,
+  ContainerWrapper,
+  Info,
 } from 'src/features/Modals/ModalPay/styles'
+import { useModalPay } from 'src/features/Modals/ModalPay/useModalPay'
+import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
+import type { ModalDialogProps } from 'src/features/Modals/types'
 
 const ModalPay = ({ isOpen, closeModal }: ModalDialogProps): JSX.Element => {
   const { onClose, category, rules } = useModalPay()
@@ -23,10 +22,10 @@ const ModalPay = ({ isOpen, closeModal }: ModalDialogProps): JSX.Element => {
   return (
     <SettingsModalsLayout isOpen={isOpen} closeModal={closeModal}>
       <ContainerWrapper>
-        <Breeze width="220" src="assets/the_breeze.png" />
-        <Cloud_1 width="120" src="assets/cloud_1.png" />
-        <Cloud_2 width="150" src="assets/cloud_2.png" />
-        <Cloud_3 width="130" src="assets/cloud_3.png" />
+        <Breeze width="220" src="/assets/the_breeze.png" />
+        <Cloud1 width="120" src="/assets/cloud_1.png" />
+        <Cloud2 width="150" src="/assets/cloud_2.png" />
+        <Cloud3 width="130" src="/assets/cloud_3.png" />
 
         <Container>
           <CloseButton width="30" src="assets/close.svg" onClick={onClose} />

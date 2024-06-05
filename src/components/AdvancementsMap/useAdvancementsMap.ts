@@ -1,14 +1,16 @@
-import type { Advancement } from 'src/components/AdvancementsMap/types'
+import { useUserAdvancements } from 'src/hooks/useUserAdvancements'
 
 import schema from 'src/components/AdvancementsMap/schema.json'
-import getUserAdvancements from 'src/hooks/getUserAdvancements'
+import type { Advancement } from 'src/components/AdvancementsMap/types'
 
 export const useAdvancementsMap = (realname: string) => {
-  const { data, isLoading } = getUserAdvancements(realname)
+  const { data, isLoading } = useUserAdvancements(realname)
 
   const schemaAdvancements: Record<string, Advancement> = schema
 
-  data?.advancements.forEach(item => (schemaAdvancements[item].isDone = true))
+  data?.advancements.forEach(item => {
+    schemaAdvancements[item].isDone = true
+  })
 
   const userAdvancements = Object.values(schemaAdvancements)
 

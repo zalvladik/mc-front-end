@@ -1,9 +1,8 @@
 import { Outlet } from 'react-router-dom'
+import ProvideModals from 'src/contexts/ModalProvider'
+import { Container } from 'src/layouts/NavLayouts/styles'
 
 import Navbar from 'src/components/Navbar'
-import ProvideModals from 'src/contexts/ModalProvider'
-
-import { Container } from 'src/layouts/NavLayouts/styles'
 
 const NavLayout = (): JSX.Element => {
   return (

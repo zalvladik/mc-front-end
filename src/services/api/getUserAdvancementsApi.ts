@@ -1,7 +1,6 @@
-import type { GetUserAdvancementsApiT } from 'src/services/types'
-
 import { api } from 'src/configs/ky'
 import { FetchEndpoint } from 'src/constants'
+import type { GetUserAdvancementsApiT } from 'src/services/types'
 
 const getUserAdvancementsApi = async (
   realname: string,

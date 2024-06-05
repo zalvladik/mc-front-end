@@ -1,12 +1,12 @@
-import { useNavBar } from 'src/components/Navbar/useNavbar'
 import { RoutesPath } from 'src/router/routes'
 
 import {
+  ButtonBack,
   Header,
   HeaderContainer,
   NavList,
-  ButtonBack,
 } from 'src/components/Navbar/styles'
+import { useNavBar } from 'src/components/Navbar/useNavbar'
 
 const Navbar = (): JSX.Element => {
   const { navigate, isScrollingUp, currentPath, isProfilePage } = useNavBar()
@@ -34,6 +34,17 @@ const Navbar = (): JSX.Element => {
               }
             >
               Кабінет
+            </p>
+            <p
+              style={{ opacity: currentPath === RoutesPath.AUCTION ? 1 : 0.5 }}
+              aria-disabled
+              onClick={() =>
+                currentPath === RoutesPath.AUCTION
+                  ? undefined
+                  : navigate(RoutesPath.AUCTION)
+              }
+            >
+              Аукціон
             </p>
             <p
               style={{ opacity: currentPath === RoutesPath.RULES ? 1 : 0.5 }}

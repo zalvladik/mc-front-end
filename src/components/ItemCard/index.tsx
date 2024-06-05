@@ -1,6 +1,5 @@
-import type { ItemCardProps, IsJsonItemT } from 'src/components/ItemCard/types'
-
 import { Container, Description, Title } from 'src/components/ItemCard/styles'
+import type { IsJsonItemT, ItemCardProps } from 'src/components/ItemCard/types'
 
 const ItemCard = ({ description, title }: ItemCardProps): JSX.Element => {
   return (
@@ -11,14 +10,14 @@ const ItemCard = ({ description, title }: ItemCardProps): JSX.Element => {
 
       {description && (
         <Description>
-          {description.map(item => {
+          {description.map((item, i) => {
             if (item.startsWith('{') && item.endsWith('}')) {
               const correctedJsonString = item.replace(/_/g, ',')
 
               const itemJson: IsJsonItemT = JSON.parse(correctedJsonString)
 
               return (
-                <li>
+                <li key={i}>
                   <p
                     style={{
                       color: itemJson.color,
@@ -36,6 +35,7 @@ const ItemCard = ({ description, title }: ItemCardProps): JSX.Element => {
                 style={{
                   visibility: item === 'null' ? 'hidden' : 'visible',
                 }}
+                key={i}
               >
                 <p style={{ color: '#a8a8a8' }}>{item}</p>
               </li>

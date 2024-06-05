@@ -1,25 +1,30 @@
 import styled from 'styled-components'
 
-export const Cotnainer = styled.div`
+export const Container = styled.div`
   background: radial-gradient(
     circle,
     rgba(30, 67, 89, 1) 0%,
     rgba(20, 47, 61, 1) 100%
   );
 
-  -webkit-box-shadow: inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75);
-  box-shadow: inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
+    0px 0px 18px -5px rgba(255, 255, 255, 1);
+  -moz-box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
+    0px 0px 18px -5px rgba(255, 255, 255, 1);
+  box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
+    0px 0px 18px -5px rgba(255, 255, 255, 1);
 
   position: relative;
   border: 1px solid black;
   border-radius: 10px;
   padding: 10px;
-  max-width: 1000px;
-  min-height: 100px;
+  width: 1020px;
+  height: 600px;
   display: flex;
   flex-direction: column;
-  width: 90%;
   gap: 15px;
 
   & > h1 {
@@ -29,83 +34,62 @@ export const Cotnainer = styled.div`
   }
 `
 
-export const TfiReloadWrapper = styled.button`
-  background-image: url(${'src/assets/slot.png'});
-  background-color: inherit;
-  background-size: contain;
-  width: 100px;
-  height: 100px;
-  border-radius: 5px;
-  border: none;
+export const InventoryWrapper = styled.div`
+  display: flex;
+  position: relative;
+  width: max-content;
+  flex-direction: column;
+  gap: 25px;
+`
+
+export const InventoryEmpty = styled.div`
   position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 40px;
+  transform: translate(-50%, -50%);
+  font-family: 'Minecraft', sans-serif;
+  font-weight: 500;
+`
+
+export const HeaderInventory = styled.div`
   right: 0px;
-  top: -120px;
-  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  top: -20px;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+`
 
-  &:hover {
-    border: none;
-    cursor: pointer;
-    transform: scale(1.05);
+export const SearchInputWrapper = styled.div`
+  position: relative;
+
+  & > input {
+    border: 1px solid gray;
   }
 `
 
-export const MoneyAmountContainer = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  & > li {
-    position: relative;
-    width: max-content;
-
-    & > h1 {
-      font-family: 'Minecraft', sans-serif;
-      padding-left: 10px;
-      font-weight: 500;
-      color: #e2e2e2;
-    }
-
-    & > div {
-      position: absolute;
-      width: 48px;
-      height: 48px;
-      background-image: url('http://localhost:8080/public/de/deepslate_diamond_ore.png');
-      background-size: contain;
-      right: -52px;
-      top: 0px;
-    }
-
-    &:nth-child(3) {
-      & > div {
-        background-image: url('http://localhost:8080/public/sh/shulker_box.png');
-      }
-    }
-  }
-`
-
-export const ContainerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`
-
-export const ItemList = styled.ul`
+export const ItemList = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   gap: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 10px 0px 300px 0px;
 
-  & > li {
-    background-image: url(${'src/assets/slot.png'});
+  & > button {
     background-color: inherit;
     background-size: contain;
+    border: none;
+
     padding: 20px;
     position: relative;
     z-index: 0;
-    border: none;
+    border-radius: 10px;
     transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
     &:hover {
-      border: none;
       z-index: 20;
       cursor: pointer;
       transform: scale(1.05);

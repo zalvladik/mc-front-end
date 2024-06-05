@@ -1,10 +1,8 @@
 import ky from 'ky'
-
-import type { AuthResponseT, CredentialsT } from 'src/services/api/Auth/types'
-
 import { api } from 'src/configs/ky'
 import { FETCH_URL, FetchEndpoint, LocalStorageKey } from 'src/constants'
 import { getFromLocalStorage } from 'src/helpers'
+import type { AuthResponseT, CredentialsT } from 'src/services/api/Auth/types'
 
 class Auth {
   async login(data: CredentialsT): Promise<AuthResponseT> {
@@ -18,7 +16,7 @@ class Auth {
 
   async logout(): Promise<void> {
     return ky
-      .post(`${FETCH_URL}${FetchEndpoint.LOG_OUT}`, {
+      .post(`${FETCH_URL}/${FetchEndpoint.LOG_OUT}`, {
         credentials: 'include',
         headers: {
           Authorization: `Bearer ${getFromLocalStorage<string>(LocalStorageKey.ACCESS_TOKEN)}`,
@@ -29,7 +27,7 @@ class Auth {
 
   async refreshToken(): Promise<AuthResponseT> {
     return ky
-      .get(`${FETCH_URL}${FetchEndpoint.REFRESH_TOKEN}`, { credentials: 'include' })
+      .get(`${FETCH_URL}/${FetchEndpoint.REFRESH_TOKEN}`, { credentials: 'include' })
       .json()
   }
 }

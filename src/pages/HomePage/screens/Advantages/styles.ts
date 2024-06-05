@@ -1,4 +1,5 @@
 import { animated } from '@react-spring/web'
+
 import styled from 'styled-components'
 
 export const AdvantagesSection = styled.div`

@@ -2,11 +2,11 @@ import styled from 'styled-components'
 
 export const Modal = styled.div`
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.7);
   z-index: 999;
+  position: fixed;
+  display: flex;
   width: 100vw;
   height: 100vh;
-  position: absolute;
   top: 0px;
   left: 0px;
   display: flex;
@@ -20,4 +20,6 @@ export const Container = styled.div`
 
 export const ChildrenContainer = styled.div`
   padding: 0px 20px;
+  width: 100vw;
+  height: 100vh;
 `

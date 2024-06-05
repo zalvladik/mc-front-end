@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 export const CloseButton = styled.img`
   float: right;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const ContainerWrapper = styled.div`
@@ -16,7 +20,7 @@ export const ContainerWrapper = styled.div`
 `
 
 export const Container = styled.div`
-  height: 440px;
+  height: 470px;
   overflow-y: auto;
   scrollbar-width: thin;
   position: relative;
@@ -42,7 +46,6 @@ export const ButtonWrapper = styled.div`
   }
 
   a {
-    cursor: pointer;
     font-size: 30px;
     background: none;
     color: white;
@@ -62,6 +65,7 @@ export const ButtonWrapper = styled.div`
     }
 
     &:hover {
+      cursor: pointer;
       border-color: #209ac4;
       color: #209ac4;
     }
@@ -101,7 +105,7 @@ export const Breeze = styled.img`
   }
 `
 
-export const Cloud_1 = styled.img`
+export const Cloud1 = styled.img`
   position: absolute;
   z-index: 9;
   right: 0px;
@@ -112,8 +116,8 @@ export const Cloud_1 = styled.img`
     display: none;
   }
 
-  animation: animation_Cloud_1 6s infinite ease-in-out;
-  @keyframes animation_Cloud_1 {
+  animation: animationCloud1 6s infinite ease-in-out;
+  @keyframes animationCloud1 {
     0% {
       transform: rotate(-10deg) translateY(0px) translateX(0px);
     }
@@ -126,7 +130,7 @@ export const Cloud_1 = styled.img`
   }
 `
 
-export const Cloud_2 = styled.img`
+export const Cloud2 = styled.img`
   position: absolute;
   z-index: 9;
   right: 0px;
@@ -137,8 +141,8 @@ export const Cloud_2 = styled.img`
     display: none;
   }
 
-  animation: animation_Cloud_2 10s infinite ease-in-out;
-  @keyframes animation_Cloud_2 {
+  animation: animationCloud2 10s infinite ease-in-out;
+  @keyframes animationCloud2 {
     0% {
       transform: rotate(10deg) translateY(0px) translateX(0px);
     }
@@ -151,7 +155,7 @@ export const Cloud_2 = styled.img`
   }
 `
 
-export const Cloud_3 = styled.img`
+export const Cloud3 = styled.img`
   position: absolute;
   z-index: 9;
   left: 0px;
@@ -162,8 +166,8 @@ export const Cloud_3 = styled.img`
     display: none;
   }
 
-  animation: animation_Cloud_3 10s infinite ease-in-out;
-  @keyframes animation_Cloud_3 {
+  animation: animationCloud3 10s infinite ease-in-out;
+  @keyframes animationCloud3 {
     0% {
       transform: rotate(-10deg) translateY(0px) translateX(0px);
     }

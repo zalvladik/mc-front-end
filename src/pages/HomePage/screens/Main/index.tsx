@@ -1,16 +1,17 @@
 import copy from 'src/assets/cards/copy'
 import play from 'src/assets/cards/play'
-import HeroButton from 'src/components/HeroButton'
-import { Modals } from 'src/features/Modals/constants'
 import { copyText } from 'src/helpers'
-import { useMain } from 'src/pages/HomePage/screens/Main/useMain'
-
 import {
-  HeroSection,
-  HeroText,
   ButtonsContainer,
   Container,
+  HeroSection,
+  HeroText,
 } from 'src/pages/HomePage/screens/Main/styles'
+import { useMain } from 'src/pages/HomePage/screens/Main/useMain'
+
+import HeroButton from 'src/components/HeroButton'
+
+import { Modals } from 'src/features/Modals/constants'
 
 const Main = (): JSX.Element => {
   const { props, onOpen } = useMain()

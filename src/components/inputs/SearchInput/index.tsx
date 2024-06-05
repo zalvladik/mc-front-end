@@ -1,6 +1,5 @@
-import type { SearchInputProps } from 'src/components/inputs/SearchInput/types'
-
 import { Input } from 'src/components/inputs/SearchInput/styles'
+import type { SearchInputProps } from 'src/components/inputs/SearchInput/types'
 
 const SearchInput = ({
   styles,

@@ -1,6 +1,5 @@
-import type { TitleDescriptionProps } from 'src/components/TitleDescription/types'
-
 import { Title } from 'src/components/TitleDescription/styles'
+import type { TitleDescriptionProps } from 'src/components/TitleDescription/types'
 
 const TitleDescription = ({
   title,

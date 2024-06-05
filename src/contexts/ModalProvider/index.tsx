@@ -1,10 +1,9 @@
 import { useMemo, useState } from 'react'
-
+import { ModalContext } from 'src/contexts'
+import { initialModalData } from 'src/contexts/ModalProvider/constants'
 import type { ModalContextT, ModalDataT } from 'src/contexts/ModalProvider/types'
 import type { ReactChildrenT } from 'src/types'
 
-import { ModalContext } from 'src/contexts'
-import { initialModalData } from 'src/contexts/ModalProvider/constants'
 import Modals from 'src/features/Modals'
 
 const ProvideModals = ({ children }: ReactChildrenT): JSX.Element => {

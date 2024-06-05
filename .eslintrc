@@ -19,14 +19,14 @@
     "plugin:import/typescript",
     "plugin:prettier/recommended",
   ],
-  "plugins": ["react", "prettier"],
+  "plugins": [
+    "react",
+    "prettier",
+    "@typescript-eslint/eslint-plugin",
+    "simple-import-sort",
+  ],
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto",
-      },
-    ],
+    "prettier/prettier": ["error", { "endOfLine": "auto", "semi": false }],
     "newline-before-return": "error",
     "no-nested-ternary": "off",
     "react/no-array-index-key": "off",
@@ -45,12 +45,10 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/consistent-type-imports": [
       "error",
-      {
-        "prefer": "type-imports",
-      },
+      { "prefer": "type-imports" },
     ],
     "no-restricted-syntax": "off",
-    "jsx-a11y/media-has-caption": "off",
+    "react/button-has-type": "off",
     "react/no-unknown-property": "off",
     "react/no-unescaped-entities": "off",
     "react/jsx-no-duplicate-props": "off",
@@ -61,39 +59,22 @@
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "class-methods-use-this": "off",
-    "import/order": [
+    "simple-import-sort/imports": [
       "error",
       {
         "groups": [
-          "builtin",
-          "external",
-          "type",
-          "parent",
-          "sibling",
-          "index",
-          "object",
+          ["^\\u0000"],
+          ["^@"],
+          ["^\\w"],
+          ["^[^.]", "^\\.(?!\\.)"],
+          ["^src/components/"],
+          ["^src/features/"],
+          ["^src/.*\\.types$", "^\\.\\/.*\\.types$"],
+          ["^\\.\\/use.*"],
+          ["^\\.\\/types"],
+          ["^\\.\\/styles"],
+          ["^\\.", "^\\.(?!\\.)"],
         ],
-        "alphabetize": { "order": "asc", "caseInsensitive": true },
-        "warnOnUnassignedImports": true,
-        "newlines-between": "always",
-        "pathGroups": [
-          {
-            "pattern": "src/**/*styles",
-            "group": "sibling",
-            "position": "after",
-          },
-          {
-            "pattern": "src/**/*styles/*",
-            "group": "sibling",
-            "position": "before",
-          },
-          {
-            "pattern": "src/**/*",
-            "group": "parent",
-            "position": "before",
-          },
-        ],
-        "pathGroupsExcludedImportTypes": ["builtin", "type"],
       },
     ],
   },

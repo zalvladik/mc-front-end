@@ -1,6 +1,7 @@
+import type { ValueOf } from 'src/types'
+
 import type { Modals } from 'src/features/Modals/constants'
 import type modalsList from 'src/features/Modals/modalsList'
-import type { ValueOf } from 'src/types'
 
 type ExtractData<T> = T extends [{ data: infer D }] ? D : never
 

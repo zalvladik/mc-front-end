@@ -5,12 +5,11 @@ export type ItemT = {
   display_name: string
   description?: string[]
   categories: string[]
-  serialized: string
 }
 
-export type TradeTokenT = {
+export type ItemTicketT = {
   id: number
-  items: ItemT[]
+  items: number[]
 }
 
 export type UserInventoryT = {
@@ -18,5 +17,9 @@ export type UserInventoryT = {
   realname: string
   money: number
   items: ItemT[]
-  tradeTokens: TradeTokenT[]
+  itemTickets: ItemTicketT[]
+}
+
+export type UserMoneyT = {
+  money: number
 }

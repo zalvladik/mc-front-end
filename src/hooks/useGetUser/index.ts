@@ -1,6 +1,5 @@
 import { useQuery } from 'react-query'
 import { useNavigate } from 'react-router-dom'
-
 import { CacheKeys, defaultUser } from 'src/constants'
 import { RoutesPath } from 'src/router/routes'
 import User from 'src/services/api/User'
@@ -14,8 +13,8 @@ export const useGetUser = (isAuth: boolean) => {
     onSuccess: () => {
       navigate(RoutesPath.PROFILE)
     },
-    onError: (error: Error) => {
-      console.error({ message: error.message, title: error.name })
+    onError: () => {
+      // console.error({ message: error.message, title: error.name })
     },
   })
 

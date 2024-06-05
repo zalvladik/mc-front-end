@@ -1,11 +1,6 @@
 import styled from 'styled-components'
 
-export const AdvancementsMapWrapper = styled.div`
-  background-color: rgba(20, 20, 20, 0.9);
-  width: 100vw;
-`
-
-export const ButtonClose = styled.button`
+export const Container = styled.button`
   z-index: 1000;
   position: absolute;
   top: 20px;
@@ -31,7 +26,7 @@ export const CrossWrapper = styled.div`
     position: absolute;
     width: 90px;
     height: 90px;
-    background-image: url(${'src/assets/minecraftItems/redstone_torch.png'});
+    background-image: url(${'/assets/items_for_ui/redstone_torch.png'});
     background-size: contain;
 
     background-repeat: no-repeat;

@@ -1,11 +1,9 @@
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
-
-import type { AuthResponseT, CredentialsT } from 'src/services/api/Auth/types'
-
 import { LocalStorageKey } from 'src/constants'
 import { RoutesPath } from 'src/router/routes'
 import Auth from 'src/services/api/Auth'
+import type { AuthResponseT, CredentialsT } from 'src/services/api/Auth/types'
 
 export const useLogin = () => {
   const navigate = useNavigate()

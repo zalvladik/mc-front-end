@@ -1,16 +1,16 @@
 import MedalIcon from 'src/assets/SVG/MedalIcon'
-import SearchInput from 'src/components/inputs/SearchInput'
-import useWikiPage from 'src/pages/WikiPage/useWikiPage'
-
 import {
-  WikiPageContainer,
+  FormContainer,
+  OptionFilter,
   PasportLi,
   PasportUl,
   RealNameContainer,
   SelectContainer,
-  OptionFilter,
-  FormContainer,
+  WikiPageContainer,
 } from 'src/pages/WikiPage/styles'
+import useWikiPage from 'src/pages/WikiPage/useWikiPage'
+
+import SearchInput from 'src/components/inputs/SearchInput'
 
 const WikiPage = (): JSX.Element => {
   const {

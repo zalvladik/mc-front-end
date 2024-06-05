@@ -1,8 +1,6 @@
-import type { AdvancementCardProps } from 'src/components/AdvancementCard/types'
-
-import TitleDescription from 'src/components/TitleDescription'
-
 import { Container, Text } from 'src/components/AdvancementCard/styles'
+import type { AdvancementCardProps } from 'src/components/AdvancementCard/types'
+import TitleDescription from 'src/components/TitleDescription'
 
 const AdvancementCard = ({
   text,

@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from 'react-query'
 import { useNavigate } from 'react-router-dom'
-
 import { RoutesPath } from 'src/router/routes'
 import Auth from 'src/services/api/Auth'
 

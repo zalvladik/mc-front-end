@@ -1,8 +1,6 @@
-import type { HeroButtonProps } from 'src/components/HeroButton/types'
-
-import { useHeroButton } from 'src/components/HeroButton/useHeroButton'
-
 import { Button } from 'src/components/HeroButton/styles'
+import type { HeroButtonProps } from 'src/components/HeroButton/types'
+import { useHeroButton } from 'src/components/HeroButton/useHeroButton'
 
 const HeroButton = ({
   text = 'Click',

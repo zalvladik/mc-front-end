@@ -1,14 +1,12 @@
-import type { InfoCategoryProps } from 'src/components/InfoCategory/types'
-
-import { useInfoCategory } from 'src/components/InfoCategory/useInfoCategory'
-
 import {
-  CategoryTitle,
-  Rules,
   Arrow,
-  RulesWrapper,
+  CategoryTitle,
   Container,
+  Rules,
+  RulesWrapper,
 } from 'src/components/InfoCategory/styles'
+import type { InfoCategoryProps } from 'src/components/InfoCategory/types'
+import { useInfoCategory } from 'src/components/InfoCategory/useInfoCategory'
 
 const InfoCategory = ({ category, rules }: InfoCategoryProps): JSX.Element => {
   const { selected, handleClick } = useInfoCategory()

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  z-index: 21;
+  z-index: 120;
   position: absolute;
   display: none;
   flex-direction: column;

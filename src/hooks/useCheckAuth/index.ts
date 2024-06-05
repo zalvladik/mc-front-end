@@ -1,6 +1,5 @@
 import { useQuery } from 'react-query'
 import { useLocation, useNavigate } from 'react-router-dom'
-
 import { LocalStorageKey, STALE_TIME } from 'src/constants'
 import { RoutesPath } from 'src/router/routes'
 import Auth from 'src/services/api/Auth'

@@ -1,16 +1,15 @@
 import type { AchIconDoneSquareProps } from 'src/assets/SVG/types'
-
-import { ADVANCEMENTS_ICONS } from 'src/constants'
+import { AdvancementsIcons } from 'src/constants'
 
 const AchIconDoneSquare = ({
   isDone = false,
-  figure = ADVANCEMENTS_ICONS.SQUARE,
+  figure = AdvancementsIcons.SQUARE,
 }: AchIconDoneSquareProps): JSX.Element => {
   const bg = isDone ? '#AA7E0F' : '#4F4F4F'
   const lineUp = isDone ? '#DBA213' : '#666666'
   const lineDown = isDone ? '#493606' : '#222222'
 
-  if (figure === ADVANCEMENTS_ICONS.SQUARE) {
+  if (figure === AdvancementsIcons.SQUARE) {
     return (
       <svg width="24" height="24" viewBox="0 0 26 26" fill="none">
         <g clip-path="url(#clip0_2_4)">
@@ -37,7 +36,7 @@ const AchIconDoneSquare = ({
     )
   }
 
-  if (figure === ADVANCEMENTS_ICONS.STAR) {
+  if (figure === AdvancementsIcons.STAR) {
     return (
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
         <g clip-path="url(#clip0_5_2)">

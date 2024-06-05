@@ -1,5 +1,4 @@
 import ky from 'ky'
-
 import { FETCH_URL, LocalStorageKey } from 'src/constants'
 import { getFromLocalStorage } from 'src/helpers'
 import Auth from 'src/services/api/Auth'
@@ -28,7 +27,7 @@ export const api = ky.create({
 
             return new Response(newRes.body, { status: newRes.status })
           } catch (e) {
-            console.error(e)
+            // console.error(e)
           }
         }
 

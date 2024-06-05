@@ -1,32 +1,40 @@
-import type { ReactNode } from 'react'
-import type { ModalDialogProps } from 'src/features/Modals/types'
+import type { CSSProperties } from 'react'
+import { useEffect } from 'react'
 import type { ReactChildrenT } from 'src/types'
 
 import {
-  Modal,
-  Container,
   ChildrenContainer,
+  Container,
+  Modal,
 } from 'src/features/Modals/SettingsModalsLayout/styles'
+import type { ModalDialogProps } from 'src/features/Modals/types'
 
 type SettingsModalsLayoutProps = {
-  ButtonStyles?: React.CSSProperties
-  title?: string
-  description?: string | JSX.Element
-  isLoading?: boolean
-  Button?: ReactNode
+  style?: CSSProperties
 } & Partial<ReactChildrenT> &
   Pick<ModalDialogProps, 'closeModal' | 'isOpen' | 'onConfirm'>
 
 const SettingsModalsLayout = ({
   children,
   closeModal,
+  style,
 }: SettingsModalsLayoutProps): JSX.Element => {
-  const handleContainerClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleContainerClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ): void => {
     e.stopPropagation()
   }
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [])
+
   return (
-    <Modal onClick={closeModal}>
+    <Modal onClick={closeModal} style={style}>
       <Container onClick={handleContainerClick}>
         <ChildrenContainer>{children}</ChildrenContainer>
       </Container>
