@@ -55,18 +55,6 @@ export const useUserInventory = () => {
     }
   }
 
-  const inventoryHeaderProps = {
-    isLoadingGetInventory: isLoading || isRefetching,
-    itemLength: data.length,
-    refetch,
-    putItemsFromInventory,
-  }
-
-  const itemCategoryFilterProps = {
-    setSelectedCaterogies,
-    selectedCaterogies,
-  }
-
   const filteredItems = () => {
     const searchedItems = data.filter(item => {
       const type = item.type.toLowerCase()
@@ -82,15 +70,31 @@ export const useUserInventory = () => {
     })
   }
 
-  return {
-    itemTicketData,
-    styleForItemBorder,
+  const listItemProps = {
     items: filteredItems(),
+    isLoading,
     selectToogle,
+    styleForItemBorder,
+  }
+
+  const inventoryHeaderProps = {
+    isLoadingGetInventory: isLoading || isRefetching,
+    itemLength: data.length,
+    refetch,
+    putItemsFromInventory,
+  }
+
+  const itemCategoryFilterProps = {
+    setSelectedCaterogies,
+    selectedCaterogies,
+  }
+
+  return {
+    listItemProps,
+    itemTicketData,
     setSearch,
     itemCategoryFilterProps,
     inventoryHeaderProps,
-    isLoading,
     search,
     selectedItemsLength: selectedItems.length,
   }
