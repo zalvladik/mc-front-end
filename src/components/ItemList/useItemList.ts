@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { SelectAreaColors } from 'src/constants'
 
 import type { CoordsProps, UseItemListProps } from 'src/components/ItemList/types'
