@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { SelectAreaColors } from 'src/constants'
 
 import type { CoordsProps, UseItemListProps } from 'src/components/ItemList/types'
@@ -13,15 +13,6 @@ export const UseItemList = ({ selectToogle, selectAreaColor }: UseItemListProps)
   const [isMouseInside, setIsMouseInside] = useState(false)
 
   const [isDrawing, setIsDrawing] = useState(false)
-
-  useEffect(() => {
-    const container = containerRef.current
-
-    if (!container) return
-
-    const rect = container.getBoundingClientRect()
-    setContainerRect(rect)
-  }, [])
 
   const setDivSize = (cords: CoordsProps) => {
     if (!areaSelectRef.current || !startCoords) return
@@ -97,6 +88,13 @@ export const UseItemList = ({ selectToogle, selectAreaColor }: UseItemListProps)
 
     const onMouseUp = () => {
       const itemIds = []
+
+      const container = containerRef.current
+
+      if (!container) return
+
+      const rect = container.getBoundingClientRect()
+      setContainerRect(rect)
 
       if (containerRect && areaSelectRef.current && itemMiddlewareRef.current) {
         itemMiddlewareRef.current.style.display = 'none'
