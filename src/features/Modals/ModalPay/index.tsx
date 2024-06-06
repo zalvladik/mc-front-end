@@ -20,7 +20,11 @@ const ModalPay = ({ isOpen, closeModal }: ModalDialogProps): JSX.Element => {
   const { onClose, category, rules } = useModalPay()
 
   return (
-    <SettingsModalsLayout isOpen={isOpen} closeModal={closeModal}>
+    <SettingsModalsLayout
+      isOpen={isOpen}
+      closeModal={closeModal}
+      style={{ backgroundColor: 'rgba(0, 0, 0, 0.90)' }}
+    >
       <ContainerWrapper>
         <Breeze width="220" src="/assets/the_breeze.png" />
         <Cloud1 width="120" src="/assets/cloud_1.png" />

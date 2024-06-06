@@ -15,6 +15,11 @@ export enum AdvancementsIcons {
   OVAL = 'oval',
 }
 
+export enum SelectAreaColors {
+  Red = 'red',
+  Green = 'green',
+}
+
 export enum CacheKeys {
   USER = 'user',
   USER_INVENTORY_ITEMS = 'user_inventory_items',

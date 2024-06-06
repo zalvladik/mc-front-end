@@ -1,7 +1,10 @@
 import type { HTMLProps } from 'react'
 
 export type InventoryHeaderProps = {
-  isLoadingGetInventory: boolean
-  refetch: () => void
-  putItemsFromInventory?: () => void
+  isLoading?: boolean
+  refetch?: () => void
+  submitButton: () => void
+  buttonText: string
+  title: string
+  itemsLength: number
 } & HTMLProps<HTMLDivElement>

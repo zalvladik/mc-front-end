@@ -4,34 +4,39 @@ import { Container, TfiReloadWrapper } from 'src/components/InventoryHeader/styl
 import type { InventoryHeaderProps } from 'src/components/InventoryHeader/types'
 
 const InventoryHeader = ({
-  isLoadingGetInventory,
+  isLoading,
   refetch,
-  putItemsFromInventory,
+  submitButton,
+  buttonText,
   children,
+  title,
+  itemsLength,
 }: InventoryHeaderProps): JSX.Element => {
+  const isCanPress = isLoading || !itemsLength
+
   return (
     <Container>
       <h1>
-        Інвентар
-        <TfiReloadWrapper
-          disabled={isLoadingGetInventory}
-          style={{ opacity: isLoadingGetInventory ? 0.5 : 1 }}
-          onClick={() => refetch()}
-        >
-          <TfiReload size={30} />
-        </TfiReloadWrapper>
+        {title}
+        {refetch && (
+          <TfiReloadWrapper
+            disabled={isLoading}
+            style={{ opacity: isLoading ? 0.7 : 1 }}
+            onClick={() => refetch()}
+          >
+            <TfiReload size={25} />
+          </TfiReloadWrapper>
+        )}
       </h1>
       {children}
-      {putItemsFromInventory && (
-        <button
-          type="button"
-          disabled={isLoadingGetInventory}
-          style={{ opacity: isLoadingGetInventory ? 0.5 : 1 }}
-          onClick={() => putItemsFromInventory()}
-        >
-          Забрати
-        </button>
-      )}
+      <button
+        type="button"
+        disabled={isCanPress}
+        style={{ opacity: isCanPress ? 0.7 : 1 }}
+        onClick={() => submitButton()}
+      >
+        {buttonText}
+      </button>
     </Container>
   )
 }

@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  padding: 150px 50px 200px 50px;
+  padding: 150px 50px 150px 50px;
   display: flex;
+  align-items: center;
   flex-direction: column;
-  gap: 50px;
+  gap: 100px;
 `
 
 export const UserInventoryWrapper = styled.div`

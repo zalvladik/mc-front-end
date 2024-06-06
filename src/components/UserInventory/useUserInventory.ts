@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
+import { SelectAreaColors } from 'src/constants'
+import { filterItems } from 'src/helpers/filterItems'
 import { useCreateItemTicket } from 'src/hooks/useCreateItemTicket'
 import { useGetItemsFromUserInventory } from 'src/hooks/useGetItemsFromUserInventory'
 
@@ -16,72 +18,73 @@ export const useUserInventory = () => {
 
   const { data: itemTicketData, mutate } = useCreateItemTicket()
 
-  const putItemsFromInventory = () => {
-    if (!selectedItems.length) return
-
-    if (selectedItems.length > 27) return
+  const submitButton = () => {
+    if (!selectedItems.length || selectedItems.length > 27) return
 
     mutate(selectedItems)
     setSelectedItems([])
   }
+  const selectToogleArrayFilter = (value: number[]): number[] => {
+    if (!selectedItems.length) return [...value]
 
-  const selectToogle = (id: number) => {
-    if (selectedItems.length >= 27) {
-      const isSelected = selectedItems.find(item => item === id)
+    const oldIds = selectedItems.filter(itemId => value.includes(itemId))
 
-      if (isSelected) {
-        setSelectedItems(selectedItems.filter(item => item !== id))
+    if (!oldIds.length) return [...selectedItems, ...value]
+
+    const newIdsArray = Array.from(new Set([...value, ...selectedItems]))
+
+    return newIdsArray.filter(itemId => !oldIds.includes(itemId))
+  }
+
+  const selectToogle = useCallback(
+    (value: number | number[]) => {
+      if (Array.isArray(value)) {
+        const itemsIds27count = selectToogleArrayFilter(value).slice(0, 27)
+
+        setSelectedItems(itemsIds27count)
       }
 
-      return
-    }
+      if (typeof value === 'number') {
+        if (selectedItems.length >= 27) {
+          const isSelected = selectedItems.find(item => item === value)
 
-    const isSelected = selectedItems.find(item => item === id)
+          if (isSelected) {
+            setSelectedItems(selectedItems.filter(item => item !== value))
+          }
 
-    if (!isSelected) {
-      setSelectedItems([...selectedItems, id])
+          return
+        }
 
-      return
-    }
+        const isSelected = selectedItems.find(item => item === value)
 
-    setSelectedItems(selectedItems.filter(item => item !== id))
-  }
+        if (!isSelected) {
+          setSelectedItems([...selectedItems, value])
+
+          return
+        }
+
+        setSelectedItems(selectedItems.filter(item => item !== value))
+      }
+    },
+    [selectedItems],
+  )
 
   const styleForItemBorder = (id: number) => {
     return {
-      backgroundImage: selectedItems.find(item => item === id)
+      backgroundImage: selectedItems.find(item => Number(item) === Number(id))
         ? 'url(/assets/slot_green.png)'
         : 'url(/assets/slot.png)',
     }
   }
 
-  const filteredItems = () => {
-    const searchedItems = data.filter(item => {
-      const type = item.type.toLowerCase()
-      const value = search.toLowerCase()
-
-      return type.includes(value) || item.display_name.toLowerCase().includes(value)
-    })
-
-    if (!selectedCaterogies.length) return searchedItems
-
-    return searchedItems.filter(({ categories }) => {
-      return categories.find(category => !!selectedCaterogies.includes(category))
-    })
-  }
-
-  const listItemProps = {
-    items: filteredItems(),
-    isLoading,
-    selectToogle,
-    styleForItemBorder,
-  }
-
   const inventoryHeaderProps = {
-    isLoadingGetInventory: isLoading || isRefetching,
+    isLoading: isLoading || isRefetching,
     itemLength: data.length,
     refetch,
-    putItemsFromInventory,
+    submitButton,
+    title: 'Інвентар',
+    buttonText: 'Забрати',
+    itemsLength: selectedItems.length,
   }
 
   const itemCategoryFilterProps = {
@@ -89,12 +92,20 @@ export const useUserInventory = () => {
     selectedCaterogies,
   }
 
+  const itemListProps = {
+    items: filterItems({ items: data, searchValue: search, selectedCaterogies }),
+    isLoading,
+    selectToogle,
+    styleForItemBorder,
+    selectAreaColor: SelectAreaColors.Green,
+  }
+
   return {
-    listItemProps,
     itemTicketData,
     setSearch,
-    itemCategoryFilterProps,
     inventoryHeaderProps,
+    itemCategoryFilterProps,
+    itemListProps,
     search,
     selectedItemsLength: selectedItems.length,
   }

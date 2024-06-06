@@ -42,7 +42,7 @@ export const TfiReloadWrapper = styled.button`
   background-color: inherit;
   background-repeat: no-repeat;
   background-size: contain;
-  padding: 10px;
+  padding: 12px;
   transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   border: none;
   margin-left: 10px;

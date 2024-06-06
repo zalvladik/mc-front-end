@@ -1,5 +1,9 @@
 import ButtonModalClose from 'src/components/ButtonModalClose'
+import InventoryHeader from 'src/components/InventoryHeader'
+import ItemList from 'src/components/ItemList'
 
+import ItemCategoryFilter from 'src/features/ItemCategoryFilter'
+import { Container } from 'src/features/Modals/ModalItemsInTicket/styles'
 import { useModalItemsInTicket } from 'src/features/Modals/ModalItemsInTicket/useModalItemsInTicket'
 import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
 
@@ -10,7 +14,8 @@ const ModalItemsInTicket = ({
   closeModal,
   data: { itemTicketId },
 }: ModalItemsInTicketProps): JSX.Element => {
-  const { onClose } = useModalItemsInTicket(itemTicketId)
+  const { onClose, inventoryHeaderProps, itemCategoryFilterProps, itemListProps } =
+    useModalItemsInTicket(itemTicketId)
 
   return (
     <SettingsModalsLayout
@@ -19,6 +24,12 @@ const ModalItemsInTicket = ({
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.92)' }}
     >
       <ButtonModalClose onClose={onClose} />
+      <Container>
+        <InventoryHeader {...inventoryHeaderProps}>
+          <ItemCategoryFilter {...itemCategoryFilterProps} />
+        </InventoryHeader>
+        <ItemList {...itemListProps} />
+      </Container>
     </SettingsModalsLayout>
   )
 }

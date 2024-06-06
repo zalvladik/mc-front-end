@@ -10,14 +10,33 @@ export const InventoryEmpty = styled.div`
   font-weight: 500;
 `
 
+export const AreaSelect = styled.div`
+  display: none;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 999;
+`
+
+export const ItemMiddleware = styled.div`
+  display: none;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+`
+
 export const Container = styled.div`
+  user-select: none;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   gap: 5px;
   overflow-y: scroll;
   overflow-x: hidden;
-  padding: 10px 0px 300px 0px;
+  padding: 10px 0px 100px 0px;
 
   & > button {
     background-color: inherit;
@@ -41,6 +60,8 @@ export const Container = styled.div`
     }
   }
 `
+
+export const ItemButton = styled.button``
 
 export const ItemIcon = styled.div`
   width: 64px;

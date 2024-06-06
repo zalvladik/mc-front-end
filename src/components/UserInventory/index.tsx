@@ -15,10 +15,10 @@ import ShulkerIndicator from 'src/features/ShulkerIndicator'
 const UserInventory = (): JSX.Element => {
   const {
     itemTicketData,
-    listItemProps,
     setSearch,
-    itemCategoryFilterProps,
     inventoryHeaderProps,
+    itemCategoryFilterProps,
+    itemListProps,
     search,
     selectedItemsLength,
   } = useUserInventory()
@@ -38,7 +38,7 @@ const UserInventory = (): JSX.Element => {
         <InventoryHeader {...inventoryHeaderProps}>
           <ItemCategoryFilter {...itemCategoryFilterProps} />
         </InventoryHeader>
-        <ItemList {...listItemProps} />
+        <ItemList {...itemListProps} />
       </Container>
       <ItemTicket ticketId={itemTicketData?.id} />
     </InventoryWrapper>

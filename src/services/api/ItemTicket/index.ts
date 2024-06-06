@@ -16,8 +16,16 @@ class ItemTicket {
     return api(FetchEndpoint.USER_ITEM_TICKETS).json()
   }
 
-  async getItemsFromTicket(itemTicketId: number): Promise<ItemT[]> {
+  async getItems(itemTicketId: number): Promise<ItemT[]> {
     return api(`${FetchEndpoint.ITEM_TICKET}/${itemTicketId}`).json()
+  }
+
+  async removeItems(itemIds: number[]): Promise<ItemT[]> {
+    return api
+      .put(`${FetchEndpoint.ITEM_TICKET}`, {
+        json: { itemIds },
+      })
+      .json()
   }
 }
 

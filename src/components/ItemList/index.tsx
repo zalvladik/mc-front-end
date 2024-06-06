@@ -1,28 +1,47 @@
 import { FETCH_URL_IMG } from 'src/constants'
 
+import ItemCard from 'src/components/ItemCard'
 import {
+  AreaSelect,
   Container,
   InventoryEmpty,
   ItemAmount,
   ItemIcon,
+  ItemMiddleware,
 } from 'src/components/ItemList/styles'
+import { useAreaSelect } from 'src/components/ItemList/useAreaSelect'
 
 import type { ItemListProps } from './types'
-
-import ItemCard from '../ItemCard'
 
 const ItemList = ({
   items,
   isLoading,
   selectToogle,
   styleForItemBorder,
+  selectAreaColor,
 }: ItemListProps): JSX.Element => {
+  const {
+    areaSelectRef,
+    containerRef,
+    itemMiddlewareRef,
+    setIsMouseInside,
+    areaSelectStyle,
+  } = useAreaSelect({ selectToogle, selectAreaColor })
+
   if (isLoading) return <InventoryEmpty>Інвентар пустий</InventoryEmpty>
 
   return items.length ? (
-    <Container className="scroll-y">
+    <Container
+      ref={containerRef}
+      onMouseEnter={() => setIsMouseInside(true)}
+      onMouseLeave={() => setIsMouseInside(false)}
+      className="scroll-y"
+    >
+      <AreaSelect ref={areaSelectRef} style={areaSelectStyle} />
+      <ItemMiddleware ref={itemMiddlewareRef} />
       {items.map(({ amount, id, display_name, type, description }) => (
         <button
+          id={`${id}`}
           key={id}
           onClick={() => selectToogle(id)}
           style={styleForItemBorder(id)}
