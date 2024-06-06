@@ -3,10 +3,7 @@ import { SelectAreaColors } from 'src/constants'
 
 import type { CoordsProps, UseItemListProps } from 'src/components/ItemList/types'
 
-export const useAreaSelect = ({
-  selectToogle,
-  selectAreaColor,
-}: UseItemListProps) => {
+export const UseItemList = ({ selectToogle, selectAreaColor }: UseItemListProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const areaSelectRef = useRef<HTMLDivElement>(null)
   const itemMiddlewareRef = useRef<HTMLDivElement>(null)
@@ -62,13 +59,13 @@ export const useAreaSelect = ({
   }
 
   useEffect(() => {
-    // if (!isMouseInside && areaSelectRef.current && itemMiddlewareRef.current) {
-    //   areaSelectRef.current.style.width = `0px`
-    //   areaSelectRef.current.style.height = `0px`
+    if (!isMouseInside && areaSelectRef.current && itemMiddlewareRef.current) {
+      areaSelectRef.current.style.width = `0px`
+      areaSelectRef.current.style.height = `0px`
 
-    //   itemMiddlewareRef.current.style.display = 'none'
-    //   areaSelectRef.current.style.display = 'none'
-    // }
+      itemMiddlewareRef.current.style.display = 'none'
+      areaSelectRef.current.style.display = 'none'
+    }
 
     const onDblClick = (e: MouseEvent) => {
       if (!containerRect || !areaSelectRef.current || !itemMiddlewareRef.current)
@@ -115,6 +112,8 @@ export const useAreaSelect = ({
 
             if (child.nodeName !== 'BUTTON') continue
 
+            if (!child.id) continue
+
             const childRect = child.getBoundingClientRect()
 
             const overlapLeft = Math.max(childRect.left, areaSelectRect.left)
@@ -130,7 +129,7 @@ export const useAreaSelect = ({
 
             const overlapPercentage = (overlapArea / buttonArea) * 100
 
-            if (overlapPercentage >= 15) itemIds.push(Number(child.id))
+            if (overlapPercentage >= 20) itemIds.push(Number(child.id))
           }
         }
 
@@ -151,7 +150,7 @@ export const useAreaSelect = ({
       document.removeEventListener('mousemove', onMouseMove)
       document.removeEventListener('mouseup', onMouseUp)
     }
-  }, [containerRect, isDrawing, startCoords, isMouseInside, selectToogle, ,])
+  }, [containerRect, isDrawing, startCoords, isMouseInside, selectToogle])
 
   const isGreen = selectAreaColor === SelectAreaColors.Green
 

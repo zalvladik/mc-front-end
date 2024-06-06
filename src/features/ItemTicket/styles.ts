@@ -14,6 +14,7 @@ export const Container = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url('/assets/item_ticket_crop.png');
+
   transform-origin: left center;
   transition:
     transform 0.3s ease,

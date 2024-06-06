@@ -26,6 +26,7 @@
     "simple-import-sort",
   ],
   "rules": {
+    "no-continue": "off",
     "prettier/prettier": ["error", { "endOfLine": "auto", "semi": false }],
     "newline-before-return": "error",
     "no-nested-ternary": "off",

@@ -22,9 +22,6 @@ export const Container = styled.div`
   border-radius: 10px;
   padding: 10px;
 
-  width: 1020px;
-  height: 600px;
-
   display: flex;
   flex-direction: column;
   gap: 15px;

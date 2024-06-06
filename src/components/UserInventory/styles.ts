@@ -20,9 +20,7 @@ export const Container = styled.div`
   position: relative;
   border: 1px solid black;
   border-radius: 10px;
-  padding: 10px;
-  width: 1020px;
-  height: 600px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 15px;

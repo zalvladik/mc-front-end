@@ -10,17 +10,19 @@ import { useUserInventory } from 'src/components/UserInventory/useUserInventory'
 
 import ItemCategoryFilter from 'src/features/ItemCategoryFilter'
 import ItemTicket from 'src/features/ItemTicket'
+import PaginationTab from 'src/features/PaginationTab'
 import ShulkerIndicator from 'src/features/ShulkerIndicator'
 
 const UserInventory = (): JSX.Element => {
   const {
     itemTicketData,
-    setSearch,
-    inventoryHeaderProps,
-    itemCategoryFilterProps,
-    itemListProps,
-    search,
+    searchFilter,
+    searchValue,
     selectedItemsLength,
+    itemCategoryFilterProps,
+    inventoryHeaderProps,
+    paginationTabProps,
+    itemListProps,
   } = useUserInventory()
 
   return (
@@ -29,8 +31,8 @@ const UserInventory = (): JSX.Element => {
         <SearchInput
           style={{ zIndex: 2, position: 'absolute', right: 0, bottom: 0 }}
           placeholder="Пошук"
-          value={search}
-          onChange={e => setSearch(e.target.value)}
+          value={searchValue}
+          onChange={e => searchFilter(e.target.value)}
         />
         <ShulkerIndicator value={selectedItemsLength} />
       </SearchInputWrapper>
@@ -41,6 +43,7 @@ const UserInventory = (): JSX.Element => {
         <ItemList {...itemListProps} />
       </Container>
       <ItemTicket ticketId={itemTicketData?.id} />
+      {paginationTabProps.maxPage > 1 && <PaginationTab {...paginationTabProps} />}
     </InventoryWrapper>
   )
 }

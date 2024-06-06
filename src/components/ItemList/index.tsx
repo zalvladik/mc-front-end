@@ -4,14 +4,15 @@ import ItemCard from 'src/components/ItemCard'
 import {
   AreaSelect,
   Container,
+  EmptySlot,
   InventoryEmpty,
   ItemAmount,
+  ItemButtom,
   ItemIcon,
   ItemMiddleware,
 } from 'src/components/ItemList/styles'
-import { useAreaSelect } from 'src/components/ItemList/useAreaSelect'
-
-import type { ItemListProps } from './types'
+import type { ItemListProps } from 'src/components/ItemList/types'
+import { UseItemList } from 'src/components/ItemList/useItemList'
 
 const ItemList = ({
   items,
@@ -26,21 +27,20 @@ const ItemList = ({
     itemMiddlewareRef,
     setIsMouseInside,
     areaSelectStyle,
-  } = useAreaSelect({ selectToogle, selectAreaColor })
+  } = UseItemList({ selectToogle, selectAreaColor })
 
   if (isLoading) return <InventoryEmpty>Інвентар пустий</InventoryEmpty>
 
-  return items.length ? (
+  return (
     <Container
       ref={containerRef}
       onMouseEnter={() => setIsMouseInside(true)}
       onMouseLeave={() => setIsMouseInside(false)}
-      className="scroll-y"
     >
       <AreaSelect ref={areaSelectRef} style={areaSelectStyle} />
       <ItemMiddleware ref={itemMiddlewareRef} />
       {items.map(({ amount, id, display_name, type, description }) => (
-        <button
+        <ItemButtom
           id={`${id}`}
           key={id}
           onClick={() => selectToogle(id)}
@@ -53,11 +53,13 @@ const ItemList = ({
           />
           {amount > 1 && <ItemAmount>{amount}</ItemAmount>}
           <ItemCard description={description} title={display_name} />
-        </button>
+        </ItemButtom>
+      ))}
+
+      {Array.from({ length: 27 - items.length }).map((item, i) => (
+        <EmptySlot key={`EmptySlot${i}`} />
       ))}
     </Container>
-  ) : (
-    <InventoryEmpty>Інвентар пустий</InventoryEmpty>
   )
 }
 

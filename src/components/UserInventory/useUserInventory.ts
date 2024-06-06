@@ -7,7 +7,9 @@ import { useGetItemsFromUserInventory } from 'src/hooks/useGetItemsFromUserInven
 export const useUserInventory = () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([])
   const [selectedCaterogies, setSelectedCaterogies] = useState<string[]>([])
-  const [search, setSearch] = useState('')
+  const [searchValue, setSearchValue] = useState('')
+
+  const [page, setPage] = useState(1)
 
   const {
     data = [],
@@ -77,6 +79,27 @@ export const useUserInventory = () => {
     }
   }
 
+  const items = filterItems({ items: data, searchValue, selectedCaterogies })
+
+  const maxPage = Math.ceil(items.length / 27)
+
+  const getItemsForPage = () => {
+    const firstItemInPage = 27 * (page - 1)
+    const lastItemInPage = firstItemInPage + 27
+
+    return items.slice(firstItemInPage, lastItemInPage)
+  }
+
+  const itemsOnPage = getItemsForPage()
+
+  const searchFilter = (value: string) => {
+    setSearchValue(value)
+
+    if (maxPage === 1) return
+
+    if (page > 1) setPage(1)
+  }
+
   const inventoryHeaderProps = {
     isLoading: isLoading || isRefetching,
     itemLength: data.length,
@@ -93,20 +116,27 @@ export const useUserInventory = () => {
   }
 
   const itemListProps = {
-    items: filterItems({ items: data, searchValue: search, selectedCaterogies }),
+    items: itemsOnPage,
     isLoading,
     selectToogle,
     styleForItemBorder,
     selectAreaColor: SelectAreaColors.Green,
   }
 
+  const paginationTabProps = {
+    page,
+    setPage,
+    maxPage,
+  }
+
   return {
+    searchFilter,
+    paginationTabProps,
     itemTicketData,
-    setSearch,
     inventoryHeaderProps,
     itemCategoryFilterProps,
     itemListProps,
-    search,
+    searchValue,
     selectedItemsLength: selectedItems.length,
   }
 }
