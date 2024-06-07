@@ -32,3 +32,35 @@ export const Container = styled.div`
     font-weight: 500;
   }
 `
+
+export const DeleteItemTicket = styled.button`
+  position: absolute;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  background-color: inherit;
+
+  left: 0px;
+  top: 0px;
+
+  translate: -50% -50%;
+
+  rotate: 20deg;
+
+  width: 64px;
+  height: 64px;
+
+  background-image: url(${'/assets/items_for_ui/barrier.png'});
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transition:
+    transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    rotate 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    rotate: 0deg;
+  }
+`

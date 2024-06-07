@@ -3,6 +3,8 @@ import { TfiReload } from 'react-icons/tfi'
 import { Container, TfiReloadWrapper } from 'src/components/InventoryHeader/styles'
 import type { InventoryHeaderProps } from 'src/components/InventoryHeader/types'
 
+import SimpleButton from '../SimpleButton'
+
 const InventoryHeader = ({
   isLoading,
   refetch,
@@ -29,14 +31,15 @@ const InventoryHeader = ({
         )}
       </h1>
       {children}
-      <button
+      <SimpleButton
         type="button"
-        disabled={isCanPress}
-        style={{ opacity: isCanPress ? 0.7 : 1 }}
-        onClick={() => submitButton()}
+        style={{ width: 200, opacity: isCanPress ? 0.7 : 1 }}
+        onClick={() => {
+          submitButton()
+        }}
       >
         {buttonText}
-      </button>
+      </SimpleButton>
     </Container>
   )
 }

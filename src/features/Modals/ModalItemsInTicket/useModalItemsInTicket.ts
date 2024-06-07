@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react'
 import { SelectAreaColors } from 'src/constants'
 import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { filterItems } from 'src/helpers/filterItems'
+import { useDeleteItemTicket } from 'src/hooks/useDeleteItemTicket'
 import { useGetItemsFromTicket } from 'src/hooks/useGetItemsFromTicket'
 import { useRemoveItemsFromTicket } from 'src/hooks/useRemoveItemsFromTicket'
 
@@ -12,12 +13,28 @@ export const useModalItemsInTicket = (itemTicketId: number) => {
   const [selectedCaterogies, setSelectedCaterogies] = useState<string[]>([])
   const [search, setSearch] = useState('')
 
-  const { mutate } = useRemoveItemsFromTicket(itemTicketId, selectedItems)
-
   const { isLoading, data = [] } = useGetItemsFromTicket(itemTicketId)
+
+  const { mutate } = useRemoveItemsFromTicket(itemTicketId, selectedItems)
+  const { mutate: deleteTicket } = useDeleteItemTicket(
+    itemTicketId,
+    selectedItems.length ? selectedItems : data.map(item => item.id),
+  )
+
+  const deleteItemTicket = () => {
+    deleteTicket()
+    onClose()
+  }
 
   const submitButton = () => {
     if (!selectedItems.length) return
+
+    if (selectedItems.length === data.length) {
+      deleteTicket()
+      onClose()
+
+      return
+    }
 
     mutate()
     setSelectedItems([])
@@ -71,8 +88,8 @@ export const useModalItemsInTicket = (itemTicketId: number) => {
   const styleForItemBorder = (id: number) => {
     return {
       backgroundImage: selectedItems.find(item => item === id)
-        ? 'url(/assets/slot_red.png)'
-        : 'url(/assets/slot.png)',
+        ? 'url(/assets/items_for_ui/slot_red.png)'
+        : 'url(/assets/items_for_ui/slot.png)',
     }
   }
 
@@ -105,5 +122,6 @@ export const useModalItemsInTicket = (itemTicketId: number) => {
     itemCategoryFilterProps,
     itemListProps,
     setSearch,
+    deleteItemTicket,
   }
 }

@@ -21,7 +21,9 @@ const PaginationTab = ({
       </div>
       <ButtonRight
         onClick={() => maxPage > page && setPage(page + 1)}
-        style={{ opacity: maxPage > page ? 1 : 0.4 }}
+        style={{
+          opacity: maxPage > page ? 1 : 0.4,
+        }}
       />
     </Container>
   )

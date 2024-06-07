@@ -12,6 +12,7 @@ import {
 import useProfilePage from 'src/pages/ProfilePage/useProfilePage'
 
 import MoneyTable from 'src/components/MoneyTable'
+import SimpleButton from 'src/components/SimpleButton'
 import UserInventory from 'src/components/UserInventory'
 import UserItemTicket from 'src/components/UserItemTicket'
 
@@ -63,9 +64,9 @@ const ProfilePage = (): JSX.Element => {
         <PlayerInfo>
           <NickName>{user.realname}</NickName>
           <ButtonList>
-            <button onClick={openAdvancementsModal}>Досягнення</button>
+            <SimpleButton onClick={openAdvancementsModal}>Досягнення</SimpleButton>
 
-            <button
+            <SimpleButton
               style={{ opacity: inventoryState.isVisible ? 0.6 : 1 }}
               onClick={() => {
                 setInventoryState({
@@ -75,9 +76,9 @@ const ProfilePage = (): JSX.Element => {
               }}
             >
               Інвентар
-            </button>
+            </SimpleButton>
 
-            <button
+            <SimpleButton
               style={{ opacity: itemTicketState.isVisible ? 0.6 : 1 }}
               onClick={() => {
                 setItemTicketState({
@@ -87,18 +88,18 @@ const ProfilePage = (): JSX.Element => {
               }}
             >
               Квитки
-            </button>
+            </SimpleButton>
 
-            <button disabled={isLoading} onClick={logout}>
+            <SimpleButton disabled={isLoading} onClick={logout}>
               Вийти
-            </button>
-
-            <LasLogin>
-              <div>Останній вхід </div>
-              <div>{millisecondsToDate(user.lastlogin)}</div>
-              <div>{millisecondsToTime(user.lastlogin)}</div>
-            </LasLogin>
+            </SimpleButton>
           </ButtonList>
+
+          <LasLogin>
+            <div>Останній вхід </div>
+            <div>{millisecondsToDate(user.lastlogin)}</div>
+            <div>{millisecondsToTime(user.lastlogin)}</div>
+          </LasLogin>
         </PlayerInfo>
       </UserContainer>
 

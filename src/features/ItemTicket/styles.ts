@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   position: absolute;
+  user-select: none;
 
   right: 0px;
   top: 100px;

@@ -8,7 +8,10 @@ export const Container = styled.div`
   border: 2px solid #555555;
   border-radius: 5px;
   overflow: hidden;
+  /* left: 50%; */
+  /* translate: -50% -0%; */
   background-color: #212121;
+  pointer-events: none;
 `
 
 export const Title = styled.div`

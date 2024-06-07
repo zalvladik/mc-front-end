@@ -114,20 +114,27 @@ export const UseItemList = ({ selectToogle, selectAreaColor }: UseItemListProps)
 
             const childRect = child.getBoundingClientRect()
 
-            const overlapLeft = Math.max(childRect.left, areaSelectRect.left)
-            const overlapRight = Math.min(childRect.right, areaSelectRect.right)
-            const overlapTop = Math.max(childRect.top, areaSelectRect.top)
-            const overlapBottom = Math.min(childRect.bottom, areaSelectRect.bottom)
+            // const overlapLeft = Math.max(childRect.left, areaSelectRect.left)
+            // const overlapRight = Math.min(childRect.right, areaSelectRect.right)
+            // const overlapTop = Math.max(childRect.top, areaSelectRect.top)
+            // const overlapBottom = Math.min(childRect.bottom, areaSelectRect.bottom)
 
-            const overlapArea =
-              Math.max(0, overlapRight - overlapLeft) *
-              Math.max(0, overlapBottom - overlapTop)
+            // const overlapArea =
+            //   Math.max(0, overlapRight - overlapLeft) *
+            //   Math.max(0, overlapBottom - overlapTop)
 
-            const buttonArea = childRect.width * childRect.height
+            // const buttonArea = childRect.width * childRect.height
 
-            const overlapPercentage = (overlapArea / buttonArea) * 100
+            // const overlapPercentage = (overlapArea / buttonArea) * 100
 
-            if (overlapPercentage >= 20) itemIds.push(Number(child.id))
+            // if (overlapPercentage >= 20) itemIds.push(Number(child.id))
+            const isOverlap =
+              areaSelectRect.left < childRect.right &&
+              areaSelectRect.right > childRect.left &&
+              areaSelectRect.top < childRect.bottom &&
+              areaSelectRect.bottom > childRect.top
+
+            if (isOverlap) itemIds.push(Number(child.id))
           }
         }
 
@@ -155,8 +162,8 @@ export const UseItemList = ({ selectToogle, selectAreaColor }: UseItemListProps)
   const areaSelectStyle = {
     backgroundColor: isGreen ? 'rgba(0, 200, 0, 0.12)' : 'rgba(200, 0, 0, 0.15)',
     border: isGreen
-      ? '3px solid rgba(50, 200, 0, 0.8)'
-      : '3px solid rgba(200, 0, 0, 0.8)',
+      ? '2px solid rgba(50, 200, 0, 0.8)'
+      : '2px solid rgba(200, 0, 0, 0.8)',
   }
 
   return {

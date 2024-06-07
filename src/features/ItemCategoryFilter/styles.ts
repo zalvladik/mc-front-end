@@ -2,12 +2,11 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
-  /* flex-direction: column; */
 
   gap: 3px;
   & > button {
     border: none;
-    background-image: url('/assets/slot.png');
+    background-image: url('/assets/items_for_ui/slot.png');
     background-color: inherit;
     background-repeat: no-repeat;
     background-size: contain;

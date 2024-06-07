@@ -19,7 +19,13 @@ export const Container = styled.div`
   border: 1px solid rgb(78, 81, 85);
   border-top: none;
 
-  background: rgb(12, 27, 35);
+  background: rgb(10, 22, 29);
+  background: linear-gradient(
+    180deg,
+    rgba(10, 22, 29, 1) 0%,
+    rgba(16, 36, 47, 1) 100%
+  );
+
   padding: 8px 10px;
 
   & > div {

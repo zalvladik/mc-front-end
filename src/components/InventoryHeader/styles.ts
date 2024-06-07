@@ -5,31 +5,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
 
-  & > button {
-    all: none;
-    color: white;
-    width: 190px;
-    height: 50px;
-    border: none;
-    font-size: 25px;
-    font-family: 'Minecraft', sans-serif;
-    font-weight: 500;
-    margin-right: 20px;
-    background-image: url(${'/assets/buttons/button_190.png'});
-    background-color: inherit;
-    background-repeat: no-repeat;
-    transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.05);
-    }
-
-    &:disabled {
-      opacity: 0.5;
-    }
-  }
-
   & > h1 {
     font-family: 'Minecraft', sans-serif;
     padding-left: 20px;
@@ -38,7 +13,7 @@ export const Container = styled.div`
 `
 
 export const TfiReloadWrapper = styled.button`
-  background-image: url(${'/assets/slot.png'});
+  background-image: url(${'/assets/items_for_ui/slot.png'});
   background-color: inherit;
   background-repeat: no-repeat;
   background-size: contain;

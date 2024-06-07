@@ -83,26 +83,13 @@ export const ButtonList = styled.div`
   display: flex;
   flex-direction: column;
 
-  & > button {
+  & > div {
     all: none;
     margin: auto auto 0px auto;
     color: white;
     width: 280px;
-    height: 50px;
-    border: none;
-    font-size: 25px;
-    font-family: 'Minecraft', sans-serif;
-    font-weight: 500;
-    margin-top: 25px;
-    background-image: url(${'/assets/buttons/button_280.png'});
-    background-color: inherit;
-    background-repeat: no-repeat;
-    transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.05);
-    }
+    margin-top: 25px;
   }
 `
 

@@ -74,8 +74,8 @@ export const useUserInventory = () => {
   const styleForItemBorder = (id: number) => {
     return {
       backgroundImage: selectedItems.find(item => Number(item) === Number(id))
-        ? 'url(/assets/slot_green.png)'
-        : 'url(/assets/slot.png)',
+        ? 'url(/assets/items_for_ui/slot_green.png)'
+        : 'url(/assets/items_for_ui/slot.png)',
     }
   }
 

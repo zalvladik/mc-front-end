@@ -1,27 +1,22 @@
 import styled from 'styled-components'
 
-export const TicketIdWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
+export const Empty = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
 
-  & > div {
-    position: absolute;
+  translate: 0% -50%;
 
-    color: #4e4400;
+  & > h1 {
+    text-align: center;
+    font-weight: 500;
     font-family: 'Minecraft', sans-serif;
-    font-size: 40px;
-
-    top: 20%;
-    right: 50%;
-
-    translate: 50% 0%;
+    font-size: 30px;
+    translate: -50% 0%;
   }
 `
 
-export const Container = styled.div`
-  position: relative;
-
+export const ContainerWrapper = styled.div`
   background: radial-gradient(
     circle,
     rgba(30, 67, 89, 1) 0%,
@@ -38,16 +33,41 @@ export const Container = styled.div`
     inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
     0px 0px 18px -5px rgba(255, 255, 255, 1);
 
-  border-radius: 20px;
+  border-radius: 10px;
+
+  padding: 20px;
+`
+
+export const Container = styled.div`
+  position: relative;
+
+  background: radial-gradient(
+    circle,
+    rgba(100, 110, 120, 1) 0%,
+    rgba(50, 55, 60, 1) 70%,
+    rgba(50, 55, 60, 1) 100%
+  );
+
+  -webkit-box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
+  -moz-box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
+  box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
 
   height: 500px;
   width: 670px;
+
+  border-radius: 10px;
 
   & > h1 {
     position: absolute;
     bottom: 40px;
     left: 50%;
-
+    font-weight: 500;
     font-family: 'Minecraft', sans-serif;
     font-size: 30px;
     translate: -50% 0%;
@@ -199,5 +219,24 @@ export const Container = styled.div`
         right: 47%;
       }
     }
+  }
+`
+
+export const TicketIdWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  & > div {
+    position: absolute;
+
+    color: #4e4400;
+    font-family: 'Minecraft', sans-serif;
+    font-size: 40px;
+
+    top: 20%;
+    right: 50%;
+
+    translate: 50% 0%;
   }
 `

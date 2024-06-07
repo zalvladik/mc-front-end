@@ -27,6 +27,14 @@ class ItemTicket {
       })
       .json()
   }
+
+  async deleteItemTicket(itemIds: number[], itemTicketId: number): Promise<ItemT[]> {
+    return api
+      .delete(`${FetchEndpoint.ITEM_TICKET}`, {
+        json: { itemIds, itemTicketId },
+      })
+      .json()
+  }
 }
 
 export default new ItemTicket()

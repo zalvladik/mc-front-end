@@ -19,8 +19,8 @@ export const useItemCategoryFilter = ({
   const styleForItemBorder = (category: string) => {
     return {
       backgroundImage: selectedCaterogies.find(item => item === category)
-        ? 'url(/assets/slot_green.png)'
-        : 'url(/assets/slot.png)',
+        ? 'url(/assets/items_for_ui/slot_green.png)'
+        : 'url(/assets/items_for_ui/slot.png)',
     }
   }
 

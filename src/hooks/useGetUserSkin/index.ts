@@ -7,9 +7,6 @@ export const useGetUserSkin = () => {
     queryKey: CacheKeys.USER_SKIN,
     queryFn: User.getSkin,
     onSuccess: () => {},
-    onError: () => {
-      // console.error({ message: error.message, title: error.name })
-    },
   })
 
   return { data, isLoading }

@@ -37,7 +37,6 @@ export const Container = styled.div`
     margin: 4px;
     position: relative;
     z-index: 0;
-    border-radius: 10px;
   }
 `
 
@@ -55,7 +54,7 @@ export const AreaSelect = styled.div`
   display: none;
   border-radius: 4px;
   position: absolute;
-  z-index: 999;
+  z-index: 100;
 `
 
 export const ItemMiddleware = styled.div`
@@ -72,10 +71,13 @@ export const EmptySlot = styled.button`
   width: 104px;
   height: 104px;
   margin: 4px;
+
   display: inline-block;
+
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url('/assets/slot.png');
+  background-image: url('/assets/items_for_ui/slot.png');
+
   opacity: 0.4;
 `
 
