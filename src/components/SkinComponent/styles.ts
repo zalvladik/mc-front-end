@@ -1,11 +1,10 @@
 import styled from 'styled-components'
 
-export const SkinContainer = styled.div`
-  position: relative;
-`
+export const PlayerRoleImageWrapper = styled.div`
+  z-index: 1;
 
-export const PlayerRoleImage = styled.div`
-  z-index: 999;
+  width: 100px;
+  height: 100px;
 
   position: absolute;
   top: 0px;
@@ -13,6 +12,24 @@ export const PlayerRoleImage = styled.div`
 
   translate: -50% -50%;
 
+  &:hover {
+    z-index: 999;
+  }
+
+  & > div {
+    position: relative;
+
+    &:hover > div.HoverDescription {
+      display: flex;
+    }
+  }
+`
+
+export const SkinContainer = styled.div`
+  position: relative;
+`
+
+export const PlayerRoleImage = styled.div`
   width: 100px;
   height: 100px;
 
@@ -20,11 +37,7 @@ export const PlayerRoleImage = styled.div`
   background-repeat: no-repeat;
 
   &:hover {
-    cursor: pointer;
-  }
-
-  &:hover > div.HoverDescription {
-    display: flex;
+    cursor: help;
   }
 
   animation: animation_PlayerRoleImage 8s infinite ease-in-out;

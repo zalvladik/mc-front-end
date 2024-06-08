@@ -11,7 +11,10 @@ const UserItemTicket = (): JSX.Element => {
 
   return (
     <ContainerWrapper>
-      <Container className={`itemTicket${data.length}`}>
+      <Container
+        style={{ height: data.length ? 500 : 150 }}
+        className={`itemTicket${data.length}`}
+      >
         {data.map(({ id }) => (
           <button key={id} onClick={() => openItemsInTicketModal(id)}>
             <TicketIdWrapper>

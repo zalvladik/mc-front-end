@@ -1,9 +1,12 @@
 import { Container, Description } from 'src/components/HoverDescription/styles'
 import type { HoverDescriptionProps } from 'src/components/HoverDescription/types'
 
-const HoverDescription = ({ description }: HoverDescriptionProps): JSX.Element => {
+const HoverDescription = ({
+  description,
+  ...props
+}: HoverDescriptionProps): JSX.Element => {
   return (
-    <Container className="HoverDescription">
+    <Container className="HoverDescription" {...props}>
       <Description>
         {description.map((item, i) => (
           <li

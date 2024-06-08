@@ -26,6 +26,10 @@ export const TfiReloadWrapper = styled.button`
     border: none;
     cursor: pointer;
     transform: scale(1.05);
+
+    & > .HoverDescription {
+      display: flex;
+    }
   }
 
   &:disabled {

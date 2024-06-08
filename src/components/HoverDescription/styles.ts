@@ -9,7 +9,7 @@ export const Container = styled.div`
   border-radius: 5px;
   overflow: hidden;
   left: 50%;
-  translate: -50% -50%;
+  translate: -50% -120%;
   background-color: #212121;
   pointer-events: none;
 `
@@ -26,7 +26,6 @@ export const Description = styled.ul`
   & > li {
     text-align: center;
     white-space: nowrap;
-    font-size: 25px;
     font-family: 'Minecraft', sans-serif;
   }
 `
