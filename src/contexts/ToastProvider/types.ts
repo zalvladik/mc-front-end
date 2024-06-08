@@ -1,12 +1,14 @@
-export type AlertColor = 'success' | 'info' | 'warning' | 'error'
+export type ToastType = 'success' | 'info' | 'warning' | 'error'
+
+export type ToastPosition = 'right' | 'left' | 'center'
 
 export type ToastContextDataT = {
-  [key in AlertColor]: (props: ToastHandlersParamsT) => void
+  [key in ToastType]: (props: ToastHandlersParamsT) => void
 }
 
 export type ToastStateT = {
-  status: AlertColor
-  autoHideDuration?: number
+  status: ToastType
+  autoHideDuration: number
   message: string[]
   isOpen: boolean
   width: number
@@ -15,7 +17,7 @@ export type ToastStateT = {
 }
 
 export type ToastHandlersParamsT = {
-  status?: AlertColor
+  status?: ToastType
   autoHideDuration?: number
   message: string[]
   width?: number

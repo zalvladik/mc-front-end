@@ -5,7 +5,6 @@ import {
   LasLogin,
   NickName,
   PlayerInfo,
-  SkinIcon,
   UserContainer,
   UserInventoryWrapper,
 } from 'src/pages/ProfilePage/styles'
@@ -13,6 +12,7 @@ import useProfilePage from 'src/pages/ProfilePage/useProfilePage'
 
 import MoneyTable from 'src/components/MoneyTable'
 import SimpleButton from 'src/components/SimpleButton'
+import SkinComponent from 'src/components/SkinComponent'
 import UserInventory from 'src/components/UserInventory'
 import UserItemTicket from 'src/components/UserItemTicket'
 
@@ -20,7 +20,6 @@ const ProfilePage = (): JSX.Element => {
   const {
     user,
     isLoading,
-    canvasRef,
     inventoryState,
     itemTicketState,
     logout,
@@ -60,7 +59,7 @@ const ProfilePage = (): JSX.Element => {
   return (
     <Container>
       <UserContainer>
-        <SkinIcon ref={canvasRef} id="canvas" />
+        <SkinComponent />
         <PlayerInfo>
           <NickName>{user.realname}</NickName>
           <ButtonList>

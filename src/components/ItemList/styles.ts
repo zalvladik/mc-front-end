@@ -86,11 +86,11 @@ export const ItemButtom = styled.button`
 
   &:hover {
     z-index: 20;
-    cursor: pointer;
+    cursor: cell;
     transform: scale(1.05);
   }
 
-  &:hover > div {
+  &:hover > div.ItemCard {
     display: flex;
   }
 `

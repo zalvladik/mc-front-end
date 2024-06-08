@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
 import { UserContext } from 'src/contexts'
-import type { UserContextDataT } from 'src/contexts/UserProvider/types'
+import type { UserContextDataT, UserT } from 'src/contexts/UserProvider/types'
 import type { ReactChildrenT } from 'src/types'
 
 type UserProviderT = {
-  user: any
+  user: UserT
 } & ReactChildrenT
 
 const UserProvider = ({ children, user }: UserProviderT): JSX.Element => {

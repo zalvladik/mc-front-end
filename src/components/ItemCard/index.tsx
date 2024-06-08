@@ -3,7 +3,7 @@ import type { IsJsonItemT, ItemCardProps } from 'src/components/ItemCard/types'
 
 const ItemCard = ({ description, title }: ItemCardProps): JSX.Element => {
   return (
-    <Container>
+    <Container className="ItemCard">
       <Title style={{ borderBottom: description?.length ? '0.5px solid gray' : '' }}>
         <p>{title}</p>
       </Title>

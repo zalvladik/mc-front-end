@@ -1,10 +1,6 @@
-export type UserResponseT = {
-  id: number
-  realname: string
-  lastlogin: string
-  userInventory: number
-  advancements: number
-}
+import type { UserT } from 'src/contexts/UserProvider/types'
+
+export type UserResponseT = UserT
 
 export type SkinTexturesT = {
   SKIN: {

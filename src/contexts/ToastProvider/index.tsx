@@ -6,6 +6,7 @@ import type {
   ToastContextDataT,
   ToastHandlersParamsT,
   ToastStateT,
+  ToastType,
 } from 'src/contexts/ToastProvider/types'
 
 import Toast from 'src/features/Toast'
@@ -13,17 +14,21 @@ import Toast from 'src/features/Toast'
 export const ToastProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [toast, setToast] = useState<ToastStateT>(INITIAL_PARAMS)
 
-  const handleClose = (): void => setToast(INITIAL_PARAMS)
+  const handleClose = (): void => setToast({ ...toast, isOpen: false })
 
   const handleToast = useCallback(
-    (status: ToastStateT['status']) => (props: ToastHandlersParamsT) => {
+    (status: ToastType) => (props: ToastHandlersParamsT) => {
       setToast({
         ...INITIAL_PARAMS,
         status,
+        fontSize: props.fontSize ?? INITIAL_PARAMS.fontSize,
         width: props.width + 430,
         height: props.height + 110,
         message: props.message,
         isOpen: true,
+        autoHideDuration: props.autoHideDuration
+          ? props.autoHideDuration * 1000
+          : INITIAL_PARAMS.autoHideDuration * 1000,
       })
     },
     [],

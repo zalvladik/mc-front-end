@@ -9,6 +9,22 @@ export enum ComponentIds {
   SOCIAL = 'social',
 }
 
+export enum Role {
+  ADMIN = 'admin',
+  MODERATOR = 'moderator',
+  HELPER = 'helper',
+  POLICE = 'police',
+  USER = 'user',
+}
+
+export enum RoleUA {
+  ADMIN = 'Адмін',
+  MODERATOR = 'Модератор',
+  HELPER = 'Хелпер',
+  POLICE = 'Поліція',
+  USER = 'Гравець',
+}
+
 export enum AdvancementsIcons {
   SQUARE = 'square',
   STAR = 'star',

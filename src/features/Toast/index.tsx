@@ -10,9 +10,9 @@ import {
 import type { ToastProps } from 'src/features/Toast/types'
 
 const Toast = ({
-  width = 500,
-  height = 130,
-  fontSize = 20,
+  width,
+  height,
+  fontSize,
   message,
   isOpen,
   autoHideDuration,
