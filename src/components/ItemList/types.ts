@@ -4,7 +4,6 @@ import type { ItemT } from 'src/services/api/UserInventory/types'
 
 export type ItemListProps = {
   items: ItemT[]
-  isLoading: boolean
   selectToogle: (id: number | number[]) => void
   styleForItemBorder: (id: number) => CSSProperties
   selectAreaColor: SelectAreaColors

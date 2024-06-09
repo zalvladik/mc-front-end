@@ -26,6 +26,12 @@ export const useUserInventory = () => {
     mutate(selectedItems)
     setSelectedItems([])
   }
+
+  const filterFilterByCaterogies = (categories: string[]): void => {
+    setSelectedCaterogies(categories)
+    setSelectedItems([])
+  }
+
   const selectToogleArrayFilter = (value: number[]): number[] => {
     if (!selectedItems.length) return [...value]
 
@@ -111,13 +117,12 @@ export const useUserInventory = () => {
   }
 
   const itemCategoryFilterProps = {
-    setSelectedCaterogies,
+    filterFilterByCaterogies,
     selectedCaterogies,
   }
 
   const itemListProps = {
     items: itemsOnPage,
-    isLoading,
     selectToogle,
     styleForItemBorder,
     selectAreaColor: SelectAreaColors.Green,

@@ -108,7 +108,6 @@ export const useModalItemsInTicket = (itemTicketId: number) => {
 
   const itemListProps = {
     items: filterItems({ items: data, searchValue: search, selectedCaterogies }),
-    isLoading,
     selectToogle,
     styleForItemBorder,
     selectAreaColor: SelectAreaColors.Red,

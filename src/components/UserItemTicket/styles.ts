@@ -41,6 +41,8 @@ export const ContainerWrapper = styled.div`
 export const Container = styled.div`
   position: relative;
 
+  overflow: hidden;
+
   transition: height 0.5s ease;
 
   background: radial-gradient(

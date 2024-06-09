@@ -5,7 +5,6 @@ import {
   AreaSelect,
   Container,
   EmptySlot,
-  InventoryEmpty,
   ItemAmount,
   ItemButtom,
   ItemIcon,
@@ -16,7 +15,6 @@ import { UseItemList } from 'src/components/ItemList/useItemList'
 
 const ItemList = ({
   items,
-  isLoading,
   selectToogle,
   styleForItemBorder,
   selectAreaColor,
@@ -28,8 +26,6 @@ const ItemList = ({
     setIsMouseInside,
     areaSelectStyle,
   } = UseItemList({ selectToogle, selectAreaColor })
-
-  if (isLoading) return <InventoryEmpty>Інвентар пустий</InventoryEmpty>
 
   return (
     <Container

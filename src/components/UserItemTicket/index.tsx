@@ -1,3 +1,4 @@
+import InformationButton from 'src/components/InformationButton'
 import {
   Container,
   ContainerWrapper,
@@ -12,7 +13,7 @@ const UserItemTicket = (): JSX.Element => {
   return (
     <ContainerWrapper>
       <Container
-        style={{ height: data.length ? 500 : 150 }}
+        style={{ height: data.length ? 500 : 170 }}
         className={`itemTicket${data.length}`}
       >
         {data.map(({ id }) => (
@@ -24,13 +25,16 @@ const UserItemTicket = (): JSX.Element => {
         ))}
 
         {data.length ? (
-          <h1>Квитки</h1>
+          <h1>Квитки {data.length}/5</h1>
         ) : (
           <Empty>
             <h1>У вас наразі</h1>
             <h1>відсутні квитки</h1>
+            <h1>0/5</h1>
           </Empty>
         )}
+
+        <InformationButton style={{ left: 0, bottom: 0 }} />
       </Container>
     </ContainerWrapper>
   )

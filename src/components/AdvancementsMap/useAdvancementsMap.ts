@@ -8,7 +8,9 @@ export const useAdvancementsMap = (realname: string) => {
 
   const schemaAdvancements: Record<string, Advancement> = schema
 
-  data?.advancements.forEach(item => {
+  const advancements = data?.advancements ?? []
+
+  advancements.forEach((item: string) => {
     schemaAdvancements[item].isDone = true
   })
 

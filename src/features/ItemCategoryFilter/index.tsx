@@ -5,11 +5,11 @@ import type { ItemCategoryFilterProps } from 'src/features/ItemCategoryFilter/ty
 import { useItemCategoryFilter } from 'src/features/ItemCategoryFilter/useItemCategoryFilter'
 
 const ItemCategoryFilter = ({
-  setSelectedCaterogies,
+  filterFilterByCaterogies,
   selectedCaterogies,
 }: ItemCategoryFilterProps): JSX.Element => {
   const { categories, selectToogle } = useItemCategoryFilter({
-    setSelectedCaterogies,
+    filterFilterByCaterogies,
     selectedCaterogies,
   })
 

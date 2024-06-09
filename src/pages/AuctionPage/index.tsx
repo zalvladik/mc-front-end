@@ -1,9 +1,19 @@
-import { Container } from 'src/pages/AuctionPage/styles'
+import { BodyContainer, Container } from 'src/pages/AuctionPage/styles'
+
+import {
+  AuctionCategory,
+  AuctionItemList,
+  AuctionPagination,
+} from 'src/components/Auction'
 
 const AuctionPage = (): JSX.Element => {
   return (
     <Container>
-      <h1 style={{ fontFamily: 'Minecraft' }}>Аукціон</h1>
+      <BodyContainer>
+        <AuctionCategory />
+        <AuctionItemList />
+      </BodyContainer>
+      <AuctionPagination />
     </Container>
   )
 }

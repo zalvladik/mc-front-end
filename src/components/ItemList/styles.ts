@@ -7,6 +7,8 @@ export const Container = styled.div`
   border-radius: 5px;
   padding: 20px;
 
+  transition: height 0.5s ease;
+
   width: 1056px;
   height: 376px;
 
@@ -38,16 +40,6 @@ export const Container = styled.div`
     position: relative;
     z-index: 0;
   }
-`
-
-export const InventoryEmpty = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 40px;
-  transform: translate(-50%, -50%);
-  font-family: 'Minecraft', sans-serif;
-  font-weight: 500;
 `
 
 export const AreaSelect = styled.div`
@@ -83,6 +75,9 @@ export const EmptySlot = styled.button`
 
 export const ItemButtom = styled.button`
   transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  background-size: contain;
+  background-repeat: no-repeat;
 
   &:hover {
     z-index: 20;

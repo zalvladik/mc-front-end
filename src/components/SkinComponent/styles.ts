@@ -44,13 +44,13 @@ export const PlayerRoleImage = styled.div`
 
   @keyframes animation_PlayerRoleImage {
     0% {
-      transform: rotate(-7deg) translateY(0px);
+      transform: rotate(-4deg) translateY(0px);
     }
     50% {
-      transform: rotate(7deg) translateY(10px);
+      transform: rotate(4deg) translateY(10px);
     }
     100% {
-      transform: rotate(-7deg) translateY(0px);
+      transform: rotate(-4deg) translateY(0px);
     }
   }
 `

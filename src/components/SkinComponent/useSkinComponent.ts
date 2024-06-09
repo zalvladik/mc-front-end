@@ -56,7 +56,7 @@ export const useSkinComponent = () => {
       if (role.find(item => item === Role.USER)) return Role.USER
     }
 
-    return Role.POLICE
+    return Role.USER
   }
 
   const roleToUa = (): string => {

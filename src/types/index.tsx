@@ -11,3 +11,7 @@ export type UnionToIntersection<U> = (
 export type ReactChildrenT = {
   children: ReactNode
 }
+
+export type ErrorResponse = {
+  messages: string[]
+}

@@ -32,7 +32,10 @@ const Toast = ({
   }, [isOpen, autoHideDuration, onClose])
 
   return (
-    <Wrapper className={`${isOpen ? 'visible' : 'vanish'}`}>
+    <Wrapper
+      className={`${isOpen ? 'visible' : 'vanish'}`}
+      onClick={() => onClose()}
+    >
       <Border style={{ width, height }}>
         <div className="angle angle_left_top" />
         <div className="angle angle_left_bottom" />

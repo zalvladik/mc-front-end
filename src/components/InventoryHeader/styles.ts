@@ -18,9 +18,10 @@ export const TfiReloadWrapper = styled.button`
   background-repeat: no-repeat;
   background-size: contain;
   padding: 12px;
-  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   border: none;
   margin-left: 10px;
+
+  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   &:hover {
     border: none;

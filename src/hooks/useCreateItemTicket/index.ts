@@ -3,6 +3,7 @@ import { CacheKeys } from 'src/constants'
 import { useToast } from 'src/contexts/ToastProvider/useToast'
 import ItemTicket from 'src/services/api/ItemTicket'
 import type { ItemT, ItemTicketT } from 'src/services/api/UserInventory/types'
+import type { ErrorResponse } from 'src/types'
 
 export const useCreateItemTicket = () => {
   const toast = useToast()
@@ -23,6 +24,14 @@ export const useCreateItemTicket = () => {
       toast.success({ message: ['Квиток створено'] })
     },
     onError: (error: Error) => {
+      if (error.message.startsWith('{') && error.message.endsWith('}')) {
+        const data: ErrorResponse = JSON.parse(error.message)
+
+        toast.error({ message: data.messages, height: 20 })
+
+        return
+      }
+
       toast.error({ message: [error.message] })
     },
   })
