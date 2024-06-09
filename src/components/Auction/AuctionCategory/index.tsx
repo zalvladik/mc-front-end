@@ -41,24 +41,6 @@ const AuctionCategory = (): JSX.Element => {
               </ButtonCategory>
             )
           })}
-          <ButtonCategory
-            type="button"
-            onClick={() => setSelectedCaterogy('foods')}
-            aria-label="Select category foods"
-            key="foods"
-            isSelected={false}
-          >
-            <ButtonItems isSelected={false}>
-              <div
-                style={{
-                  backgroundImage: `url(${FETCH_URL_IMG}/sh/shulker_box.png)`,
-                }}
-              />
-              <DescriptionCategory>
-                <p>Шалкера з предметами</p>
-              </DescriptionCategory>
-            </ButtonItems>
-          </ButtonCategory>
         </CategoryList>
       </CategoryContainer>
     </Container>

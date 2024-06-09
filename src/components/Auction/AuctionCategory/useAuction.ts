@@ -55,6 +55,12 @@ export const useAuction = () => {
 
       description: 'Інгредієнти',
     },
+    {
+      category: 'shulkers',
+      style: { backgroundImage: `url(${baseUrl}/shulker_box.png)` },
+
+      description: 'Шалкера з предметами',
+    },
   ]
 
   return { categories, setSelectedCaterogy, selectedCaterogy }
