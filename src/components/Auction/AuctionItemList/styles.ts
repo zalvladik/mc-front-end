@@ -1,11 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-  width: 700px;
-  border-left: 2px solid gray;
-
-  padding: 10px 20px 10px 20px;
-`
+export const Container = styled.div``
 
 export const TheadContainer = styled.div`
   font-family: 'Minecraft', sans-serif;
@@ -58,7 +53,7 @@ export const TheadContainer = styled.div`
       width: 58%;
 
       & > div {
-        background-image: url('assets/items_for_auction_ui/name_tag.png');
+        background-image: url('/assets/items_for_auction_ui/name_tag.png');
       }
     }
 
@@ -66,7 +61,7 @@ export const TheadContainer = styled.div`
       width: 38%;
 
       & > div {
-        background-image: url('assets/items_for_auction_ui/diamond.png');
+        background-image: url('/assets/items_for_auction_ui/diamond.png');
       }
     }
   }
@@ -74,7 +69,7 @@ export const TheadContainer = styled.div`
 
 export const TbodyContainer = styled.div`
   width: 100%;
-  height: 90%;
+  height: calc(90% - 3px);
 
   display: flex;
   flex-direction: column;
@@ -105,6 +100,8 @@ export const TbodyContainer = styled.div`
     display: flex;
     justify-content: space-around;
 
+    align-items: center;
+
     padding: 4px 0px;
 
     border-radius: 5px;
@@ -130,9 +127,9 @@ export const TbodyContainer = styled.div`
 
       &:nth-child(2) {
         width: 1%;
-        height: 100%;
+        height: 90%;
         width: 2px;
-        background-color: whitesmoke;
+        background-color: lightgray;
       }
 
       &:nth-child(3) {
@@ -155,6 +152,10 @@ export const ItemDesriptionContainer = styled.div`
       font-family: 'Minecraft', sans-serif;
       font-size: 20px;
       font-weight: 500;
+
+      text-shadow:
+        0px 0px 25px #000000,
+        0px 0px 25px #000000;
     }
   }
 `
@@ -169,6 +170,10 @@ export const ItemPriceContainer = styled.div`
     font-family: 'Minecraft', sans-serif;
     font-size: 25px;
     font-weight: 500;
+
+    text-shadow:
+      0px 0px 25px #000000,
+      0px 0px 25px #000000;
   }
 `
 
@@ -198,8 +203,8 @@ export const ItemSlotIcon = styled.div`
 
 export const ItemAmount = styled.p`
   position: absolute;
-  right: -5px;
-  bottom: -5px;
+  right: -8px;
+  bottom: -8px;
   padding: 5px;
   font-size: 16px;
   font-family: 'Minecraft', sans-serif;

@@ -3,7 +3,7 @@ import UserProvider from 'src/contexts/UserProvider'
 import { useCheckAuth } from 'src/hooks/useCheckAuth'
 import { useGetUser } from 'src/hooks/useGetUser'
 
-const AuthLayout = (): JSX.Element => {
+const AuthLayout = (): JSX.Element | null => {
   const { isLoading, isSuccess } = useCheckAuth()
 
   const { isUserLoading, user } = useGetUser(isSuccess)

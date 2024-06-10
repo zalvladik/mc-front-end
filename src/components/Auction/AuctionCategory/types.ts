@@ -1,3 +1,7 @@
+import type { HTMLProps } from 'react'
+
+export type AuctionCategoryProps = HTMLProps<HTMLDivElement>
+
 export type ButtonItemsProps = {
   isSelected: boolean
 }

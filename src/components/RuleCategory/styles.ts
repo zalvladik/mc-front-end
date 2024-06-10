@@ -1,10 +1,6 @@
 import styled from 'styled-components'
 
-import type { RulesProps } from 'src/components/RuleCategory/types'
-
-export const Container = styled.li<RulesProps>`
-  display: inline;
-`
+export const Container = styled.div``
 
 export const CategoryTitle = styled.h1`
   font-family: 'Minecraft', sans-serif;
@@ -37,27 +33,26 @@ export const Arrow = styled.span`
 
 export const RulesOverflow = styled.div`
   overflow: hidden;
+  position: relative;
+
+  transition: height 0.5s ease-in-out;
+
   max-width: 800px;
 `
 
-export const Rules = styled.ul<RulesProps>`
-  font-size: 20px;
-  padding-left: 20px;
-  right: 0px;
-  margin-bottom: ${props => `-${props.height}px`};
-  opacity: 0;
-  transform: translateY(-120%);
-  transition:
-    display 0.5s ease,
-    opacity 0.5s ease,
-    transform 0.5s ease,
-    margin-bottom 0.5s ease;
+export const Rules = styled.ul`
+  position: absolute;
 
-  &.active {
-    margin-bottom: 0px;
-    padding: 20px;
-    opacity: 0.8;
-    transform: translateY(0%);
+  top: 0px;
+  left: 0px;
+
+  font-size: 20px;
+  padding: 20px;
+
+  transition: transform 0.5s ease-in-out;
+
+  :hover {
+    cursor: cursor;
   }
 
   & > li + li {
@@ -65,6 +60,8 @@ export const Rules = styled.ul<RulesProps>`
   }
 
   & > li {
+    user-select: text;
+
     @media screen and (max-width: 390px) {
       font-size: 12px;
       font-weight: 300;

@@ -16,8 +16,8 @@ export const Header = styled.div`
 `
 
 export const ButtonBack = styled.div`
-  width: 80px;
-  height: 70px;
+  width: 60px;
+  height: 55px;
   transition: scale 0.2s ease;
 
   @media screen and (max-width: 767px) {
@@ -33,24 +33,6 @@ export const ButtonBack = styled.div`
   &:hover {
     scale: 1.05;
     cursor: pointer;
-  }
-
-  & > p {
-    left: 50%;
-    top: 50%;
-    translate: -50% -50%;
-    position: absolute;
-    display: flex;
-    font-size: 45px;
-    font-family: 'Minecraft';
-
-    @media screen and (max-width: 767px) {
-      font-size: 35px;
-    }
-
-    @media screen and (max-width: 390px) {
-      font-size: 25px;
-    }
   }
 `
 
@@ -68,14 +50,6 @@ export const HeaderContainer = styled.div`
     padding: 15px 20px;
   }
 
-  & > img {
-    width: 80px;
-    height: 70px;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
   & > div {
     display: flex;
     gap: 60px;
@@ -85,8 +59,12 @@ export const HeaderContainer = styled.div`
 export const NavList = styled.div`
   display: flex;
 
-  & > p {
+  & > button {
     font-family: 'Minecraft', sans-serif;
+
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+
     padding: 30px 0px;
     margin: -30px 0px;
     font-weight: 500;
@@ -96,14 +74,21 @@ export const NavList = styled.div`
     &:hover {
       cursor: pointer;
     }
+
+    transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
   }
 
-  & > p + p {
+  & > button + button {
     margin-left: 60px;
   }
 
   @media screen and (max-width: 767px) {
-    & > p + p {
+    & > button + button {
       margin-left: 20px;
     }
   }

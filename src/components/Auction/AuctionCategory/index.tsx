@@ -1,25 +1,24 @@
-import { FETCH_URL_IMG } from 'src/constants'
-
 import {
   ButtonCategory,
   ButtonItems,
   CategoryContainer,
   CategoryList,
-  CategoryTitleContainer,
   Container,
   DescriptionCategory,
 } from 'src/components/Auction/AuctionCategory/styles'
+import type { AuctionCategoryProps } from 'src/components/Auction/AuctionCategory/types'
 import { useAuction } from 'src/components/Auction/AuctionCategory/useAuction'
+import { TitleContainer } from 'src/components/Auction/styles'
 
-const AuctionCategory = (): JSX.Element => {
+const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
   const { categories, setSelectedCaterogy, selectedCaterogy } = useAuction()
 
   return (
-    <Container>
+    <Container {...props}>
       <CategoryContainer>
-        <CategoryTitleContainer>
+        <TitleContainer>
           <p>Категорії</p>
-        </CategoryTitleContainer>
+        </TitleContainer>
         <CategoryList>
           {categories.map(({ style, category, description }) => {
             const isSelected = selectedCaterogy === category

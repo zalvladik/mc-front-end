@@ -1,5 +1,3 @@
-import InfoCategory from 'src/components/InfoCategory'
-
 import {
   Breeze,
   ButtonContainer,
@@ -11,6 +9,7 @@ import {
   Container,
   ContainerWrapper,
   Info,
+  StyledRuleCategory,
 } from 'src/features/Modals/ModalPay/styles'
 import { useModalPay } from 'src/features/Modals/ModalPay/useModalPay'
 import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
@@ -31,10 +30,15 @@ const ModalPay = ({ isOpen, closeModal }: ModalDialogProps): JSX.Element => {
         <Cloud2 width="150" src="/assets/cloud_2.png" />
         <Cloud3 width="130" src="/assets/cloud_3.png" />
 
-        <Container>
+        <Container className="hidden_scroll-y">
           <CloseButton width="30" src="assets/close.svg" onClick={onClose} />
 
-          <InfoCategory category={category} rules={rules} />
+          <StyledRuleCategory
+            category={category}
+            rules={rules}
+            categoryNum={1}
+            style={{ paddingLeft: 30 }}
+          />
 
           <Info>
             <h1>Про оплату</h1>

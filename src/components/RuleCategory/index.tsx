@@ -12,24 +12,22 @@ const RuleCategory = ({
   category,
   rules,
   categoryNum,
+  ...props
 }: RuleCategoryProps): JSX.Element => {
-  const { ruleRef, selected, cutomHeight, handleClick } = useRuleCategory()
+  const { selected, setSelected, rulesOverflowRef, rulesRef } = useRuleCategory()
 
   return (
-    <Container height={cutomHeight}>
-      <CategoryTitle
-        onClick={() => {
-          handleClick()
-        }}
-      >
+    <Container {...props}>
+      <CategoryTitle onClick={() => setSelected(!selected)}>
         <Arrow className={selected ? 'rotate-90' : ''}>{'> '}</Arrow>
         {category}
       </CategoryTitle>
-      <RulesOverflow>
+      <RulesOverflow ref={rulesOverflowRef}>
         <Rules
-          ref={ruleRef}
-          height={cutomHeight}
-          className={selected ? 'active' : ''}
+          ref={rulesRef}
+          style={{
+            transform: selected ? 'translate(0%, 0%)' : 'translate(0%, -100%)',
+          }}
         >
           {rules.map((item, i) => (
             <li key={i}>

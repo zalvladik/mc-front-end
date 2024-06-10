@@ -7,7 +7,9 @@ export const Container = styled.div`
 
   height: 50px;
 
-  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition:
+    transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    opacity 0.2s ease;
 
   &:hover {
     cursor: pointer;

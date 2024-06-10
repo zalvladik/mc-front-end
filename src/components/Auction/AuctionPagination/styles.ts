@@ -2,8 +2,12 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   position: relative;
-  border-top: 1px solid gray;
+  display: flex;
 
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+
+  border-top: 1px solid gray;
   padding: 12px 0px;
 
   background: linear-gradient(
@@ -40,7 +44,7 @@ export const Right = styled.div`
 
     transition:
       transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
-      opacity 150ms ease;
+      opacity 200ms ease;
 
     &:hover {
       cursor: pointer;
@@ -130,6 +134,10 @@ export const Pages = styled.ul`
     font-family: 'Minecraft', sans-serif;
     font-size: 20px;
     font-weight: 500;
+
+    text-shadow:
+      0px 0px 25px #000000,
+      0px 0px 25px #000000;
 
     opacity: 0.8;
 

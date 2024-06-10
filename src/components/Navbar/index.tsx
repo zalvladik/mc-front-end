@@ -9,22 +9,23 @@ import {
 import { useNavBar } from 'src/components/Navbar/useNavbar'
 
 const Navbar = (): JSX.Element => {
-  const { navigate, isScrollingUp, currentPath, isProfilePage } = useNavBar()
+  const { navigate, isScrollingUp, currentPath, isProfilePage, isSuccess } =
+    useNavBar()
 
   return (
     <Header className={isScrollingUp ? '' : 'header hidden'}>
       <HeaderContainer>
-        {currentPath === '/' ? (
+        <ButtonBack
+          onClick={() => {
+            if (currentPath !== '/') navigate('/')
+          }}
+        >
           <img src="/assets/logo.svg" alt="header logo" />
-        ) : (
-          <ButtonBack onClick={() => navigate('/')}>
-            <img src="/assets/logo.svg" alt="header logo" />
-          </ButtonBack>
-        )}
+        </ButtonBack>
 
         <div>
           <NavList>
-            <p
+            <button
               style={{
                 opacity: isProfilePage ? 1 : 0.5,
               }}
@@ -34,19 +35,21 @@ const Navbar = (): JSX.Element => {
               }
             >
               Кабінет
-            </p>
-            <p
-              style={{ opacity: currentPath === RoutesPath.AUCTION ? 1 : 0.5 }}
-              aria-disabled
-              onClick={() =>
-                currentPath === RoutesPath.AUCTION
-                  ? undefined
-                  : navigate(RoutesPath.AUCTION)
-              }
-            >
-              Аукціон
-            </p>
-            <p
+            </button>
+            {isSuccess && (
+              <button
+                style={{ opacity: currentPath === RoutesPath.AUCTION ? 1 : 0.5 }}
+                aria-disabled
+                onClick={() =>
+                  currentPath === RoutesPath.AUCTION
+                    ? undefined
+                    : navigate(RoutesPath.AUCTION)
+                }
+              >
+                Аукціон
+              </button>
+            )}
+            <button
               style={{ opacity: currentPath === RoutesPath.RULES ? 1 : 0.5 }}
               aria-disabled
               onClick={() =>
@@ -56,17 +59,19 @@ const Navbar = (): JSX.Element => {
               }
             >
               Правила
-            </p>
-            <p
-              style={{ opacity: currentPath === RoutesPath.WIKI ? 1 : 0.5 }}
-              onClick={() =>
-                currentPath === RoutesPath.WIKI
-                  ? undefined
-                  : navigate(RoutesPath.WIKI)
-              }
-            >
-              Wiki
-            </p>
+            </button>
+            {isSuccess && (
+              <button
+                style={{ opacity: currentPath === RoutesPath.WIKI ? 1 : 0.5 }}
+                onClick={() =>
+                  currentPath === RoutesPath.WIKI
+                    ? undefined
+                    : navigate(RoutesPath.WIKI)
+                }
+              >
+                Wiki
+              </button>
+            )}
           </NavList>
         </div>
       </HeaderContainer>

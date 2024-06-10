@@ -20,13 +20,15 @@ export const Router = createBrowserRouter([
     children: [
       { path: RoutesPath.HOME, element: <HomePage /> },
       { path: RoutesPath.RULES, element: <RulePage /> },
-      { path: RoutesPath.WIKI, element: <WikiPage /> },
       { path: RoutesPath.SIGN_IN, element: <SignInPage /> },
-      { path: RoutesPath.AUCTION, element: <AuctionPage /> },
       {
-        path: RoutesPath.PROFILE,
+        path: RoutesPath.USER,
         element: <AuthLayout />,
-        children: [{ path: RoutesPath.PROFILE, element: <ProfilePage /> }],
+        children: [
+          { path: RoutesPath.PROFILE, element: <ProfilePage /> },
+          { path: RoutesPath.AUCTION, element: <AuctionPage /> },
+          { path: RoutesPath.WIKI, element: <WikiPage /> },
+        ],
       },
     ],
   },

@@ -1,3 +1,5 @@
+import type { UserT } from 'src/contexts/UserProvider/types'
+
 export const FETCH_URL = 'http://localhost:8080'
 
 export const FETCH_URL_IMG = 'http://localhost:8080/public'
@@ -15,6 +17,7 @@ export enum Role {
   HELPER = 'helper',
   POLICE = 'police',
   USER = 'user',
+  NOT_AUTH = '',
 }
 
 export enum RoleUA {
@@ -47,6 +50,12 @@ export enum CacheKeys {
   USER_ADVANCEMENTS = 'user_advancements',
 }
 
+export enum AuctionFragment {
+  BUY_LOT = 'buy_lot',
+  CREATE_LOT = 'create_lot',
+  USER_LOTS = 'user_lots',
+}
+
 export enum FetchEndpoint {
   USER = 'user',
   USER_INVENTORY_ITEMS = 'user_inventory/items',
@@ -68,8 +77,11 @@ export enum LocalStorageKey {
 
 export const STALE_TIME = 60 * 1000 * 24
 
-export const defaultUser = {
+export const defaultUser: UserT = {
   id: 0,
   realname: '',
   lastlogin: '',
+  userInventory: 0,
+  advancements: 0,
+  role: [Role.NOT_AUTH],
 }

@@ -1,5 +1,16 @@
 import styled from 'styled-components'
 
+import RuleCategory from 'src/components/RuleCategory'
+
+export const StyledRuleCategory = styled(RuleCategory)`
+  & > div {
+    & > ul {
+      border: 1px solid white;
+      border-radius: 12px;
+    }
+  }
+`
+
 export const CloseButton = styled.img`
   float: right;
 
@@ -22,7 +33,7 @@ export const ContainerWrapper = styled.div`
 export const Container = styled.div`
   height: 470px;
   overflow-y: auto;
-  scrollbar-width: thin;
+
   position: relative;
   background-color: rgba(0, 0, 0, 0.35);
   border-radius: 10px;
@@ -82,8 +93,8 @@ export const ButtonContainer = styled.div`
 export const Breeze = styled.img`
   position: absolute;
   z-index: 9;
-  top: 0px;
-  left: 0px;
+  top: -20px;
+  left: -20px;
   translate: -50% -50%;
 
   @media screen and (max-width: 390px) {
@@ -162,6 +173,7 @@ export const Cloud3 = styled.img`
   bottom: 0px;
   transform: rotate(25deg);
   translate: -40% 40%;
+
   @media screen and (max-width: 390px) {
     display: none;
   }
@@ -186,6 +198,7 @@ export const Info = styled.div`
   gap: 10px;
   flex-direction: column;
   margin-top: 40px;
+
   h1 {
     font-family: 'Minecraft', sans-serif;
     font-size: 25px;
@@ -198,13 +211,16 @@ export const Info = styled.div`
       }
     }
   }
+
   p + h1 {
     margin-top: 30px;
   }
+
   p {
     color: white;
     font-size: 18px;
     opacity: 0.9;
+
     & {
       @media screen and (max-width: 390px) {
         font-size: 14px;

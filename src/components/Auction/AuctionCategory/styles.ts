@@ -12,6 +12,8 @@ export const Container = styled.div`
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 
+  transition: opacity 0.3s ease-in-out;
+
   -webkit-box-shadow: inset 0px 0px 16px 12px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: inset 0px 0px 16px 12px rgba(0, 0, 0, 0.6);
   box-shadow: inset 0px 0px 16px 12px rgba(0, 0, 0, 0.6);
@@ -19,27 +21,6 @@ export const Container = styled.div`
 
 export const CategoryContainer = styled.div`
   width: 320px;
-`
-
-export const CategoryTitleContainer = styled.div`
-  background-color: rgba(25, 35, 45, 1);
-
-  border: 1px solid gray;
-  text-align: center;
-
-  width: 80%;
-
-  padding: 5px 10px;
-  margin: 0px auto;
-  margin-bottom: 8px;
-
-  border-radius: 4px;
-
-  & > p {
-    font-family: 'Minecraft', sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-  }
 `
 
 export const DescriptionCategory = styled.div`
@@ -91,7 +72,9 @@ export const ButtonCategory = styled.button<ButtonCategoryProps>`
                     )`
       : ''};
 
-  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition:
+    transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    background-color 0.3s ease-in-out;
 
   &:hover {
     cursor: pointer;

@@ -1,8 +1,6 @@
-import { TfiReload } from 'react-icons/tfi'
-
-import HoverDescription from 'src/components/HoverDescription'
-import { Container, TfiReloadWrapper } from 'src/components/InventoryHeader/styles'
+import { Container } from 'src/components/InventoryHeader/styles'
 import type { InventoryHeaderProps } from 'src/components/InventoryHeader/types'
+import ReloadButtton from 'src/components/ReloadButton'
 import SimpleButton from 'src/components/SimpleButton'
 
 const InventoryHeader = ({
@@ -20,19 +18,7 @@ const InventoryHeader = ({
     <Container>
       <h1>
         {title}
-        {refetch && (
-          <TfiReloadWrapper
-            disabled={isLoading}
-            style={{ opacity: isLoading ? 0.7 : 1 }}
-            onClick={() => refetch()}
-          >
-            <TfiReload size={25} />
-            <HoverDescription
-              style={{ translate: '-50% -215%', fontSize: 15 }}
-              description={['Обновити інвентар']}
-            />
-          </TfiReloadWrapper>
-        )}
+        {refetch && <ReloadButtton {...{ refetch, isLoading: isCanPress }} />}
       </h1>
       {children}
       <SimpleButton

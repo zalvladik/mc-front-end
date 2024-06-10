@@ -1,33 +1,25 @@
-import debounce from 'lodash.debounce'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export const useRuleCategory = () => {
   const [selected, setSelected] = useState<boolean>(false)
-  const [cutomHeight, setCutomHeight] = useState<number>(0)
 
-  const ruleRef = useRef<HTMLUListElement>(null)
-
-  const debouncedResizeHandler = useCallback(
-    debounce(() => {
-      if (ruleRef.current) setCutomHeight(ruleRef.current.offsetHeight)
-    }, 200),
-    [],
-  )
+  const rulesOverflowRef = useRef<HTMLDivElement>(null)
+  const rulesRef = useRef<HTMLUListElement>(null)
 
   useEffect(() => {
-    if (ruleRef.current) setCutomHeight(ruleRef.current.offsetHeight)
+    if (rulesOverflowRef && rulesRef) {
+      if (rulesOverflowRef.current && rulesRef.current) {
+        if (selected) {
+          const { height } = rulesRef.current.getBoundingClientRect()
+          rulesOverflowRef.current.style.height = `${height}px`
+        }
 
-    window.addEventListener('resize', debouncedResizeHandler)
-
-    return () => {
-      window.removeEventListener('resize', debouncedResizeHandler)
-      debouncedResizeHandler.cancel()
+        if (!selected) {
+          rulesOverflowRef.current.style.height = '0px'
+        }
+      }
     }
-  }, [debouncedResizeHandler])
+  }, [selected])
 
-  const handleClick = () => {
-    setSelected(!selected)
-  }
-
-  return { ruleRef, selected, cutomHeight, handleClick }
+  return { selected, setSelected, rulesOverflowRef, rulesRef }
 }
