@@ -7,6 +7,7 @@ import type { ReloadButonProps } from 'src/components/ReloadButton/types'
 const ReloadButtton = ({
   refetch,
   isLoading,
+  message,
   ...props
 }: ReloadButonProps): JSX.Element => {
   return (
@@ -19,7 +20,7 @@ const ReloadButtton = ({
       <TfiReload size={24} />
       <HoverDescription
         style={{ translate: '-50% -215%', fontSize: 15 }}
-        description={['Обновити інвентар']}
+        description={[message]}
       />
     </Container>
   )

@@ -3,7 +3,11 @@ import { SelectAreaColors } from 'src/constants'
 
 import type { CoordsProps, UseItemListProps } from 'src/components/ItemList/types'
 
-export const UseItemList = ({ selectToogle, selectAreaColor }: UseItemListProps) => {
+export const UseItemList = ({
+  selectToogle,
+  selectAreaColor,
+  isNeedAreaSelect,
+}: UseItemListProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const areaSelectRef = useRef<HTMLDivElement>(null)
   const itemMiddlewareRef = useRef<HTMLDivElement>(null)
@@ -50,6 +54,8 @@ export const UseItemList = ({ selectToogle, selectAreaColor }: UseItemListProps)
   }
 
   useEffect(() => {
+    if (!isNeedAreaSelect) return () => {}
+
     if (!isMouseInside && areaSelectRef.current && itemMiddlewareRef.current) {
       areaSelectRef.current.style.width = `0px`
       areaSelectRef.current.style.height = `0px`
@@ -108,7 +114,7 @@ export const UseItemList = ({ selectToogle, selectAreaColor }: UseItemListProps)
           for (let i = 0; i < children.length; i += 1) {
             const child = children[i]
 
-            if (child.nodeName !== 'BUTTON') continue
+            if (child.nodeName !== 'DIV') continue
 
             if (!child.id) continue
 

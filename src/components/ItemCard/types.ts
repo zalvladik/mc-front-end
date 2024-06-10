@@ -1,5 +1,5 @@
 export type ItemCardProps = {
-  description?: string[]
+  description: string[] | null
   title: string
 }
 

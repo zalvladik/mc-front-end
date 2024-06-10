@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import type { StyledPageProps } from 'src/components/Auction/AuctionPagination/types'
+
 export const Container = styled.div`
   position: relative;
   display: flex;
@@ -128,28 +130,28 @@ export const DoubleButttonLeft = styled.div`
 export const Pages = styled.ul`
   display: flex;
 
-  gap: 30px;
+  gap: 40px;
+`
 
-  & > li {
-    font-family: 'Minecraft', sans-serif;
-    font-size: 20px;
-    font-weight: 500;
+export const Page = styled.li<StyledPageProps>`
+  font-family: 'Minecraft', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
 
-    text-shadow:
-      0px 0px 25px #000000,
-      0px 0px 25px #000000;
+  text-shadow:
+    0px 0px 25px ${props => (props.isCurrentPage ? '#FFF' : '#000000')},
+    0px 0px 25px ${props => (props.isCurrentPage ? '#FFF' : '#000000')};
 
-    opacity: 0.8;
+  opacity: ${props => (props.isCurrentPage ? 1 : 0.7)};
 
-    transition:
-      transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
-      opacity 150ms ease;
+  transition:
+    transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    opacity 150ms ease;
 
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.1);
-      opacity: 1;
-    }
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    opacity: 1;
   }
 `
 

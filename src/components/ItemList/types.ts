@@ -1,13 +1,14 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, HTMLProps } from 'react'
 import type { SelectAreaColors } from 'src/constants'
 import type { ItemT } from 'src/services/api/UserInventory/types'
 
 export type ItemListProps = {
   items: ItemT[]
-  selectToogle: (id: number | number[]) => void
+  selectToogle: (id: number[]) => void
   styleForItemBorder: (id: number) => CSSProperties
-  selectAreaColor: SelectAreaColors
-}
+  selectAreaColor?: SelectAreaColors
+  isNeedAreaSelect?: boolean
+} & HTMLProps<HTMLDivElement>
 
 export type CoordsProps = {
   x: number
@@ -16,5 +17,5 @@ export type CoordsProps = {
 
 export type UseItemListProps = Pick<
   ItemListProps,
-  'selectToogle' | 'selectAreaColor'
+  'selectToogle' | 'selectAreaColor' | 'isNeedAreaSelect'
 >

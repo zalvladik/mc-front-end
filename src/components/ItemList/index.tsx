@@ -4,6 +4,7 @@ import ItemCard from 'src/components/ItemCard'
 import {
   AreaSelect,
   Container,
+  CustomElement,
   EmptySlot,
   ItemAmount,
   ItemButtom,
@@ -18,6 +19,8 @@ const ItemList = ({
   selectToogle,
   styleForItemBorder,
   selectAreaColor,
+  isNeedAreaSelect = true,
+  ...props
 }: ItemListProps): JSX.Element => {
   const {
     areaSelectRef,
@@ -25,13 +28,14 @@ const ItemList = ({
     itemMiddlewareRef,
     setIsMouseInside,
     areaSelectStyle,
-  } = UseItemList({ selectToogle, selectAreaColor })
+  } = UseItemList({ selectToogle, selectAreaColor, isNeedAreaSelect })
 
   return (
     <Container
       ref={containerRef}
       onMouseEnter={() => setIsMouseInside(true)}
       onMouseLeave={() => setIsMouseInside(false)}
+      {...props}
     >
       <AreaSelect ref={areaSelectRef} style={areaSelectStyle} />
       <ItemMiddleware ref={itemMiddlewareRef} />
@@ -39,7 +43,7 @@ const ItemList = ({
         <ItemButtom
           id={`${id}`}
           key={id}
-          onClick={() => selectToogle(id)}
+          onClick={() => selectToogle([id])}
           style={styleForItemBorder(id)}
         >
           <ItemIcon
@@ -53,7 +57,7 @@ const ItemList = ({
       ))}
 
       {Array.from({ length: 27 - items.length }).map((item, i) => (
-        <EmptySlot key={`EmptySlot${i}`} />
+        <EmptySlot key={i} />
       ))}
     </Container>
   )

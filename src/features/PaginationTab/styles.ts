@@ -1,9 +1,11 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const PaginationContainer = styled.div`
   position: absolute;
   bottom: 0px;
   right: 45px;
+
+  transition: opacity 0.2s ease;
 
   display: flex;
   justify-content: space-between;

@@ -27,51 +27,29 @@ export const useUserInventory = () => {
     setSelectedItems([])
   }
 
-  const filterFilterByCaterogies = (categories: string[]): void => {
+  const filterByCaterogies = (categories: string[]): void => {
     setSelectedCaterogies(categories)
     setSelectedItems([])
   }
 
-  const selectToogleArrayFilter = (value: number[]): number[] => {
-    if (!selectedItems.length) return [...value]
-
-    const oldIds = selectedItems.filter(itemId => value.includes(itemId))
-
-    if (!oldIds.length) return [...selectedItems, ...value]
-
-    const newIdsArray = Array.from(new Set([...value, ...selectedItems]))
-
-    return newIdsArray.filter(itemId => !oldIds.includes(itemId))
-  }
-
   const selectToogle = useCallback(
-    (value: number | number[]) => {
+    (value: number[]) => {
+      const selectToogleArrayFilter = (value: number[]): number[] => {
+        if (!selectedItems.length) return [...value]
+
+        const oldIds = selectedItems.filter(itemId => value.includes(itemId))
+
+        if (!oldIds.length) return [...selectedItems, ...value]
+
+        const newIdsArray = Array.from(new Set([...value, ...selectedItems]))
+
+        return newIdsArray.filter(itemId => !oldIds.includes(itemId))
+      }
+
       if (Array.isArray(value)) {
         const itemsIds27count = selectToogleArrayFilter(value).slice(0, 27)
 
         setSelectedItems(itemsIds27count)
-      }
-
-      if (typeof value === 'number') {
-        if (selectedItems.length >= 27) {
-          const isSelected = selectedItems.find(item => item === value)
-
-          if (isSelected) {
-            setSelectedItems(selectedItems.filter(item => item !== value))
-          }
-
-          return
-        }
-
-        const isSelected = selectedItems.find(item => item === value)
-
-        if (!isSelected) {
-          setSelectedItems([...selectedItems, value])
-
-          return
-        }
-
-        setSelectedItems(selectedItems.filter(item => item !== value))
       }
     },
     [selectedItems],
@@ -117,7 +95,7 @@ export const useUserInventory = () => {
   }
 
   const itemCategoryFilterProps = {
-    filterFilterByCaterogies,
+    setSelectedCaterogies: filterByCaterogies,
     selectedCaterogies,
   }
 

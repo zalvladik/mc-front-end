@@ -3,7 +3,7 @@ import type { HTMLProps } from 'react'
 export type InventoryHeaderProps = {
   isLoading?: boolean
   refetch?: () => void
-  submitButton: () => void
+  submitButton?: () => void
   buttonText: string
   title: string
   itemsLength: number

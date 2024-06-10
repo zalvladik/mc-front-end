@@ -4,12 +4,17 @@ import {
   DoubleButttonLeft,
   DoubleButttonRight,
   Left,
+  Page,
   Pages,
   PaginationController,
   Right,
 } from 'src/components/Auction/AuctionPagination/styles'
 
 const AuctionPagination = (): JSX.Element => {
+  const ids = [31, 32, 33, 34, 35, 36, 37, 38, 39]
+
+  const currentPage = 35
+
   return (
     <Container>
       <PaginationController>
@@ -22,8 +27,10 @@ const AuctionPagination = (): JSX.Element => {
         </Left>
 
         <Pages>
-          {[31, 32, 33, 34, 35, 36, 37, 38, 39].map(item => (
-            <li key={item}>{item}</li>
+          {ids.map(item => (
+            <Page isCurrentPage={item === currentPage} key={item}>
+              {item}
+            </Page>
           ))}
         </Pages>
 
@@ -36,7 +43,7 @@ const AuctionPagination = (): JSX.Element => {
         </Right>
       </PaginationController>
 
-      <CountItems>6/157</CountItems>
+      <CountItems>35/157</CountItems>
     </Container>
   )
 }

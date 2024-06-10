@@ -1,19 +1,19 @@
-import type { ItemCategoryFilterProps } from './types'
+import type { UseItemCategoryFilterProps } from './types'
 
 export const useItemCategoryFilter = ({
-  filterFilterByCaterogies,
+  setSelectedCaterogies,
   selectedCaterogies,
-}: ItemCategoryFilterProps) => {
+}: UseItemCategoryFilterProps) => {
   const selectToogle = (category: string) => {
     const isSelected = selectedCaterogies.find(item => item === category)
 
     if (!isSelected) {
-      filterFilterByCaterogies([...selectedCaterogies, category])
+      setSelectedCaterogies([...selectedCaterogies, category])
 
       return
     }
 
-    filterFilterByCaterogies(selectedCaterogies.filter(item => item !== category))
+    setSelectedCaterogies(selectedCaterogies.filter(item => item !== category))
   }
 
   const styleForItemBorder = (category: string) => {

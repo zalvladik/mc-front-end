@@ -15,6 +15,7 @@ import {
   AuctionCreateLot,
   AuctionItemList,
   AuctionPagination,
+  AuctionUserLots,
 } from 'src/components/Auction'
 
 const AuctionPage = (): JSX.Element => {
@@ -24,7 +25,7 @@ const AuctionPage = (): JSX.Element => {
     const components: Record<AuctionFragment, JSX.Element> = {
       [AuctionFragment.BUY_LOT]: <AuctionItemList />,
       [AuctionFragment.CREATE_LOT]: <AuctionCreateLot />,
-      [AuctionFragment.USER_LOTS]: <div>3</div>,
+      [AuctionFragment.USER_LOTS]: <AuctionUserLots />,
     }
 
     return components[currentFragment]
@@ -52,7 +53,15 @@ const AuctionPage = (): JSX.Element => {
           <AuctionController {...auctionControllerProps} />
         </BodyContainer>
         <AuctionPagination />
-        <StyledReloadButtton refetch={() => {}} isLoading={false} />
+        <StyledReloadButtton
+          message="Обновити список лотів"
+          refetch={() => {}}
+          isLoading={false}
+          style={{
+            opacity: isBuyFragment ? 1 : 0.4,
+            pointerEvents: isBuyFragment ? 'auto' : 'none',
+          }}
+        />
       </div>
     </Container>
   )

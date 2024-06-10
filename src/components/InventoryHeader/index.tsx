@@ -1,4 +1,7 @@
-import { Container } from 'src/components/InventoryHeader/styles'
+import {
+  Container,
+  InventoryHeaderTitle,
+} from 'src/components/InventoryHeader/styles'
 import type { InventoryHeaderProps } from 'src/components/InventoryHeader/types'
 import ReloadButtton from 'src/components/ReloadButton'
 import SimpleButton from 'src/components/SimpleButton'
@@ -11,25 +14,32 @@ const InventoryHeader = ({
   children,
   title,
   itemsLength,
+  ...props
 }: InventoryHeaderProps): JSX.Element => {
   const isCanPress = isLoading || !itemsLength
 
   return (
-    <Container>
-      <h1>
-        {title}
-        {refetch && <ReloadButtton {...{ refetch, isLoading: isCanPress }} />}
-      </h1>
+    <Container {...props}>
+      <InventoryHeaderTitle>
+        <p>{title}</p>
+        {refetch && (
+          <ReloadButtton
+            {...{ refetch, isLoading: isCanPress, message: 'Обновити інвентар' }}
+          />
+        )}
+      </InventoryHeaderTitle>
       {children}
-      <SimpleButton
-        type="button"
-        style={{ width: 200, opacity: isCanPress ? 0.7 : 1 }}
-        onClick={() => {
-          submitButton()
-        }}
-      >
-        {buttonText}
-      </SimpleButton>
+      {submitButton && (
+        <SimpleButton
+          type="button"
+          style={{ width: 200, opacity: isCanPress ? 0.7 : 1 }}
+          onClick={() => {
+            submitButton()
+          }}
+        >
+          {buttonText}
+        </SimpleButton>
+      )}
     </Container>
   )
 }

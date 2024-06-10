@@ -22,7 +22,7 @@ export const Container = styled.div`
 `
 
 export const BodyCenterContainer = styled.div`
-  width: 700px;
+  width: 850px;
 
   & > div {
     width: 100%;
@@ -37,8 +37,11 @@ export const BodyCenterContainer = styled.div`
 
 export const StyledReloadButtton = styled(ReloadButtton)`
   position: absolute;
+  z-index: 999;
   left: 10px;
   bottom: 6px;
+
+  transition: opacity 0.3s ease-in-out;
 `
 
 export const BodyContainer = styled.div`
@@ -59,6 +62,10 @@ export const AuctionCategoryDisabled = styled.div`
 
   width: 120px;
   height: 120px;
+
+  -webkit-box-shadow: 0px 0px 50px 5px rgba(120, 120, 120, 1);
+  -moz-box-shadow: 0px 0px 50px 5px rgba(120, 120, 120, 1);
+  box-shadow: 0px 0px 50px 5px rgba(120, 120, 120, 1);
 
   background-repeat: no-repeat;
   background-size: contain;

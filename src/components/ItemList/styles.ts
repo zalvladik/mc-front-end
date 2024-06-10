@@ -7,6 +7,9 @@ export const Container = styled.div`
   border-radius: 5px;
   padding: 20px;
 
+  display: flex;
+  flex-wrap: wrap;
+
   transition: height 0.5s ease;
 
   width: 1056px;
@@ -27,20 +30,9 @@ export const Container = styled.div`
   box-shadow:
     inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
     0px 0px 12px -5px rgba(255, 255, 255, 1);
-
-  & > button {
-    background-color: inherit;
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    border: none;
-
-    padding: 20px;
-    margin: 4px;
-    position: relative;
-    z-index: 0;
-  }
 `
+
+export const CustomElement = styled.div``
 
 export const AreaSelect = styled.div`
   display: none;
@@ -59,7 +51,17 @@ export const ItemMiddleware = styled.div`
   z-index: 998;
 `
 
-export const EmptySlot = styled.button`
+export const EmptySlot = styled.div`
+  background-color: inherit;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  border: none;
+
+  margin: 4px;
+  position: relative;
+  z-index: 0;
+
   width: 104px;
   height: 104px;
   margin: 4px;
@@ -73,7 +75,21 @@ export const EmptySlot = styled.button`
   opacity: 0.4;
 `
 
-export const ItemButtom = styled.button`
+export const ItemButtom = styled.div`
+  position: relative;
+
+  background-color: inherit;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  border: none;
+  height: 104px;
+  width: 104px;
+
+  margin: 4px;
+  position: relative;
+  z-index: 0;
+
   transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   background-size: contain;
@@ -91,6 +107,12 @@ export const ItemButtom = styled.button`
 `
 
 export const ItemIcon = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  translate: -50% -50%;
+
   width: 64px;
   height: 64px;
   background-size: contain;

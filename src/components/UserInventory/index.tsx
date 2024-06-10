@@ -43,7 +43,13 @@ const UserInventory = (): JSX.Element => {
         <ItemList {...itemListProps} />
       </Container>
       <ItemTicket ticketId={itemTicketData?.id} />
-      {paginationTabProps.maxPage > 1 && <PaginationTab {...paginationTabProps} />}
+      <PaginationTab
+        style={{
+          opacity: paginationTabProps.maxPage > 1 ? 1 : 0,
+          pointerEvents: paginationTabProps.maxPage > 1 ? 'auto' : 'none',
+        }}
+        {...paginationTabProps}
+      />
     </InventoryWrapper>
   )
 }

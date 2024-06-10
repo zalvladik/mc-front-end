@@ -3,15 +3,19 @@ import styled from 'styled-components'
 export const Container = styled.div`
   padding-top: 10px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+`
 
-  & > h1 {
-    display: flex;
+export const InventoryHeaderTitle = styled.div`
+  display: flex;
 
-    gap: 12px;
+  gap: 12px;
 
+  & > p {
     font-family: 'Minecraft', sans-serif;
     padding-left: 20px;
     font-weight: 500;
+    font-size: 30px;
   }
 `

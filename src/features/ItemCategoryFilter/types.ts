@@ -1,4 +1,10 @@
 export type ItemCategoryFilterProps = {
-  filterFilterByCaterogies: (value: string[]) => void
+  setSelectedCaterogies: (value: string[]) => void
+  selectedCaterogies: string[]
+  sizeItem?: number
+}
+
+export type UseItemCategoryFilterProps = {
+  setSelectedCaterogies: (value: string[]) => void
   selectedCaterogies: string[]
 }

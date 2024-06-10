@@ -3,7 +3,7 @@ export type ItemT = {
   amount: number
   type: string
   display_name: string
-  description?: string[]
+  description: string[] | null
   categories: string[]
 }
 
