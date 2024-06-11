@@ -27,10 +27,7 @@ const AuctionController = ({
             <SimpleButton
               onClick={() => setCurrentFragment(fragment)}
               key={fragment}
-              style={{
-                opacity: isCurrentFragment ? 0.5 : 1,
-                pointerEvents: isCurrentFragment ? 'none' : 'auto',
-              }}
+              disabled={isCurrentFragment}
             >
               {text}
             </SimpleButton>

@@ -52,6 +52,8 @@ export const useAuctionCreateLot = () => {
 
   const itemsOnPage = getItemsForPage()
 
+  if (!setPage.length) setPage(page - 1)
+
   const searchFilter = (value: string) => {
     setSearchValue(value)
 
@@ -81,6 +83,7 @@ export const useAuctionCreateLot = () => {
     styleForItemBorder,
     selectAreaColor: SelectAreaColors.Green,
     sizeItem: 32,
+    isNeedAreaSelect: false,
   }
 
   const paginationTabProps = {
@@ -88,6 +91,8 @@ export const useAuctionCreateLot = () => {
     setPage,
     maxPage,
   }
+
+  const currentItem = items.find(item => item.id === selectedItems[0])
 
   return {
     searchFilter,
@@ -97,5 +102,6 @@ export const useAuctionCreateLot = () => {
     itemListProps,
     searchValue,
     selectedItemsLength: selectedItems.length,
+    currentItem,
   }
 }

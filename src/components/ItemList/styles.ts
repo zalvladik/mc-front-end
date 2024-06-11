@@ -32,8 +32,6 @@ export const Container = styled.div`
     0px 0px 12px -5px rgba(255, 255, 255, 1);
 `
 
-export const CustomElement = styled.div``
-
 export const AreaSelect = styled.div`
   display: none;
   border-radius: 4px;

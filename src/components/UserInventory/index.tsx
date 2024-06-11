@@ -1,10 +1,10 @@
-import SearchInput from 'src/components/inputs/SearchInput'
+import DefaultInput from 'src/components/inputs/DefaultInput'
 import InventoryHeader from 'src/components/InventoryHeader'
 import ItemList from 'src/components/ItemList'
 import {
   Container,
+  DefaultInputWrapper,
   InventoryWrapper,
-  SearchInputWrapper,
 } from 'src/components/UserInventory/styles'
 import { useUserInventory } from 'src/components/UserInventory/useUserInventory'
 
@@ -27,15 +27,15 @@ const UserInventory = (): JSX.Element => {
 
   return (
     <InventoryWrapper>
-      <SearchInputWrapper>
-        <SearchInput
+      <DefaultInputWrapper>
+        <DefaultInput
           style={{ zIndex: 2, position: 'absolute', right: 0, bottom: 0 }}
           placeholder="Пошук"
           value={searchValue}
           onChange={e => searchFilter(e.target.value)}
         />
         <ShulkerIndicator value={selectedItemsLength} />
-      </SearchInputWrapper>
+      </DefaultInputWrapper>
       <Container>
         <InventoryHeader {...inventoryHeaderProps}>
           <ItemCategoryFilter {...itemCategoryFilterProps} />

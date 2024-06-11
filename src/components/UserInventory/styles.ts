@@ -41,7 +41,7 @@ export const InventoryWrapper = styled.div`
   gap: 25px;
 `
 
-export const SearchInputWrapper = styled.div`
+export const DefaultInputWrapper = styled.div`
   right: 0px;
   top: -20px;
   position: absolute;

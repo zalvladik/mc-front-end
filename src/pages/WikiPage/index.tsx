@@ -10,7 +10,7 @@ import {
 } from 'src/pages/WikiPage/styles'
 import useWikiPage from 'src/pages/WikiPage/useWikiPage'
 
-import SearchInput from 'src/components/inputs/SearchInput'
+import DefaultInput from 'src/components/inputs/DefaultInput'
 
 const WikiPage = (): JSX.Element => {
   const {
@@ -25,7 +25,7 @@ const WikiPage = (): JSX.Element => {
   return (
     <WikiPageContainer>
       <FormContainer>
-        <SearchInput
+        <DefaultInput
           placeholder="Введіть нік гравця"
           value={value}
           onChange={e => {

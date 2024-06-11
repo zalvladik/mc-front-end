@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import SearchInput from 'src/components/inputs/SearchInput'
+import DefaultInput from 'src/components/inputs/DefaultInput'
 import InventoryHeader from 'src/components/InventoryHeader'
 import { InventoryHeaderTitle } from 'src/components/InventoryHeader/styles'
 import ItemList from 'src/components/ItemList'
@@ -99,9 +99,66 @@ export const StyledPaginationTab = styled(PaginationTab)`
   border: none;
 `
 
-export const StyledSearchInput = styled(SearchInput)`
+export const StyledDefaultInput = styled(DefaultInput)`
   padding: 5px 10px;
   font-size: 25px;
   border: 1px solid gray;
   width: 355px;
+`
+
+export const CreateLotContainer = styled.div`
+  margin-top: auto;
+
+  height: 40%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+`
+
+export const ShowItemContainer = styled.div`
+  position: relative;
+
+  width: 293px;
+  height: 130px;
+
+  /* margin-top: 120px; */
+  margin-left: 20px;
+
+  align-items: end;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url('/assets/items_for_ui/create_lot.png');
+
+  translate: 0% 15%;
+
+  & > div {
+    position: absolute;
+
+    top: 0px;
+    left: 50%;
+
+    translate: -50% -110%;
+
+    width: 120px;
+    height: 120px;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    animation: ShowItemContainer_Item 4s infinite ease-in-out;
+
+    @keyframes ShowItemContainer_Item {
+      0% {
+        transform: rotate(-2deg) translateY(5px);
+      }
+      50% {
+        transform: rotate(4deg) translateY(20px);
+      }
+      100% {
+        transform: rotate(-2deg) translateY(5px);
+      }
+    }
+  }
 `

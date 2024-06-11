@@ -15,11 +15,16 @@ export const useModalItemsInTicket = (itemTicketId: number) => {
 
   const { isLoading, data = [] } = useGetItemsFromTicket(itemTicketId)
 
-  const { mutate } = useRemoveItemsFromTicket(itemTicketId, selectedItems)
-  const { mutate: deleteTicket } = useDeleteItemTicket(
+  const { mutate, isLoading: isLoadingItemTicket } = useRemoveItemsFromTicket(
     itemTicketId,
-    selectedItems.length ? selectedItems : data.map(item => item.id),
+    selectedItems,
   )
+
+  const { mutate: deleteTicket, isLoading: isLoadingDeleteItemTicket } =
+    useDeleteItemTicket(
+      itemTicketId,
+      selectedItems.length ? selectedItems : data.map(item => item.id),
+    )
 
   const deleteItemTicket = () => {
     deleteTicket()
@@ -72,6 +77,7 @@ export const useModalItemsInTicket = (itemTicketId: number) => {
   }
 
   const inventoryHeaderProps = {
+    isLoading: isLoading || isLoadingItemTicket || isLoadingDeleteItemTicket,
     itemLength: data.length,
     buttonText: 'Видалити',
     title: `Квиток ${itemTicketId}`,

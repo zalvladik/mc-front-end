@@ -63,6 +63,7 @@ export enum FetchEndpoint {
   USER_SKIN = 'user/skin',
   USER_ADVANCEMENTS = 'user/advancements',
   USER_ITEM_TICKETS = 'item_ticket/user_tickets',
+  LOT = 'lot',
   ITEM_TICKET = 'item_ticket',
   SIGN_IN = 'auth/sign_in',
   LOG_OUT = 'auth/log_out',

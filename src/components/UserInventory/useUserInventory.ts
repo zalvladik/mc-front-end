@@ -18,7 +18,11 @@ export const useUserInventory = () => {
     isRefetching,
   } = useGetItemsFromUserInventory()
 
-  const { data: itemTicketData, mutate } = useCreateItemTicket()
+  const {
+    data: itemTicketData,
+    mutate,
+    isLoading: isLoadingItemTicket,
+  } = useCreateItemTicket()
 
   const submitButton = () => {
     if (!selectedItems.length || selectedItems.length > 27) return
@@ -76,6 +80,8 @@ export const useUserInventory = () => {
 
   const itemsOnPage = getItemsForPage()
 
+  if (!setPage.length) setPage(page - 1)
+
   const searchFilter = (value: string) => {
     setSearchValue(value)
 
@@ -85,7 +91,7 @@ export const useUserInventory = () => {
   }
 
   const inventoryHeaderProps = {
-    isLoading: isLoading || isRefetching,
+    isLoading: isLoading || isRefetching || isLoadingItemTicket,
     itemLength: data.length,
     refetch,
     submitButton,

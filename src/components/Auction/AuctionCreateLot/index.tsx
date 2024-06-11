@@ -1,11 +1,16 @@
+import { FETCH_URL_IMG } from 'src/constants'
+
+import AuctionCreateLotForm from 'src/components/Auction/AuctionCreateLot/AuctionCreateLotForm'
 import {
   Container,
+  CreateLotContainer,
   InventoryFooterWrapper,
   InventoryWrapper,
+  ShowItemContainer,
+  StyledDefaultInput,
   StyledInventoryHeader,
   StyledItemList,
   StyledPaginationTab,
-  StyledSearchInput,
 } from 'src/components/Auction/AuctionCreateLot/styles'
 import { useAuctionCreateLot } from 'src/components/Auction/AuctionCreateLot/useAuctionCreateLot'
 
@@ -19,6 +24,7 @@ const AuctionCreateLot = (): JSX.Element => {
     inventoryHeaderProps,
     paginationTabProps,
     itemListProps,
+    currentItem,
   } = useAuctionCreateLot()
 
   return (
@@ -26,7 +32,7 @@ const AuctionCreateLot = (): JSX.Element => {
       <InventoryWrapper>
         <Container>
           <StyledInventoryHeader {...inventoryHeaderProps}>
-            <StyledSearchInput
+            <StyledDefaultInput
               placeholder="Пошук"
               value={searchValue}
               onChange={e => searchFilter(e.target.value)}
@@ -46,6 +52,17 @@ const AuctionCreateLot = (): JSX.Element => {
           />
         </InventoryFooterWrapper>
       </InventoryWrapper>
+      <CreateLotContainer>
+        <ShowItemContainer>
+          <div
+            style={{
+              backgroundImage: `url(${FETCH_URL_IMG}/${currentItem ? currentItem.type.slice(0, 2) : 'be'}/${currentItem ? currentItem.type : 'bedrock'}.png)`,
+            }}
+          />
+        </ShowItemContainer>
+
+        <AuctionCreateLotForm currentItemId={currentItem?.id} />
+      </CreateLotContainer>
     </Container>
   )
 }

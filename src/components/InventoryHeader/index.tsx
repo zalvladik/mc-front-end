@@ -16,7 +16,7 @@ const InventoryHeader = ({
   itemsLength,
   ...props
 }: InventoryHeaderProps): JSX.Element => {
-  const isCanPress = isLoading || !itemsLength
+  const isCanPress = isLoading ?? false
 
   return (
     <Container {...props}>
@@ -31,8 +31,8 @@ const InventoryHeader = ({
       {children}
       {submitButton && (
         <SimpleButton
-          type="button"
-          style={{ width: 200, opacity: isCanPress ? 0.7 : 1 }}
+          style={{ width: 200 }}
+          disabled={isCanPress}
           onClick={() => {
             submitButton()
           }}

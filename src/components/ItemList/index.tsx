@@ -4,7 +4,6 @@ import ItemCard from 'src/components/ItemCard'
 import {
   AreaSelect,
   Container,
-  CustomElement,
   EmptySlot,
   ItemAmount,
   ItemButtom,
