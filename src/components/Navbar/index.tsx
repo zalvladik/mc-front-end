@@ -38,6 +38,19 @@ const Navbar = (): JSX.Element => {
             </button>
             {isSuccess && (
               <button
+                style={{ opacity: currentPath === RoutesPath.INVENTORY ? 1 : 0.5 }}
+                aria-disabled
+                onClick={() =>
+                  currentPath === RoutesPath.INVENTORY
+                    ? undefined
+                    : navigate(RoutesPath.INVENTORY)
+                }
+              >
+                Інвентар
+              </button>
+            )}
+            {isSuccess && (
+              <button
                 style={{ opacity: currentPath === RoutesPath.AUCTION ? 1 : 0.5 }}
                 aria-disabled
                 onClick={() =>

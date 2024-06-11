@@ -35,5 +35,11 @@ export const useNavBar = () => {
     }
   }, [prevScrollPos])
 
-  return { navigate, isScrollingUp, currentPath, isProfilePage, isSuccess }
+  return {
+    navigate,
+    isScrollingUp,
+    currentPath,
+    isProfilePage,
+    isSuccess,
+  }
 }

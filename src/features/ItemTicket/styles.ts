@@ -4,26 +4,31 @@ export const Container = styled.div`
   position: absolute;
   user-select: none;
 
-  right: 0px;
-  top: 100px;
+  left: 350px;
+  top: 0px;
 
-  width: 120px;
-  height: 167px;
+  width: 167px;
+  height: 120px;
 
-  transform: translate(100%, 0%);
+  transform: translate(0%, -100%);
 
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url('/assets/item_ticket_crop.png');
 
-  transform-origin: left center;
+  transform-origin: bottom center;
   transition:
     transform 0.3s ease,
     opacity 1s ease-in-out;
 
   &:hover {
     cursor: pointer;
-    transform: translate(100%, 0%) scale(1.05);
+    transform: translate(0%, -100%) scale(1.05);
+
+    & > .HoverDescription {
+      display: flex;
+      translate: -50% -150%;
+    }
   }
 `
 
@@ -31,19 +36,4 @@ export const ItemTicketIdWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-
-  & > div {
-    color: #4e4400;
-
-    position: absolute;
-
-    font-size: 35px;
-    font-family: 'Minecraft', sans-serif;
-    font-weight: 500;
-
-    top: 45%;
-    left: 35%;
-
-    transform: translate(-50%, -50%) rotate(-34deg);
-  }
 `

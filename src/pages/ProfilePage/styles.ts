@@ -8,13 +8,6 @@ export const Container = styled.div`
   gap: 100px;
 `
 
-export const UserInventoryWrapper = styled.div`
-  display: flex;
-  width: max-content;
-  flex-direction: column;
-  gap: 25px;
-`
-
 export const NickName = styled.h1`
   text-align: center;
   font-size: 40px;

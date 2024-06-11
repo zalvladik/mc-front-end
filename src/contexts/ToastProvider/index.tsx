@@ -24,8 +24,8 @@ export const ToastProvider: FC<{ children: ReactNode }> = ({ children }) => {
         fontSize: props.fontSize ?? INITIAL_PARAMS.fontSize,
         width: props.width + 430,
         height: props.height + 110,
+        isOpen: props.isOpen ?? true,
         message: props.message,
-        isOpen: true,
         autoHideDuration: props.autoHideDuration
           ? props.autoHideDuration * 1000
           : INITIAL_PARAMS.autoHideDuration * 1000,

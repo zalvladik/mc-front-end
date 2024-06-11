@@ -63,7 +63,7 @@ export const Container = styled.div`
     0px 0px 12px -5px rgba(255, 255, 255, 1);
 
   height: 500px;
-  width: 670px;
+  width: 630px;
 
   border-radius: 10px;
 
@@ -94,7 +94,9 @@ export const Container = styled.div`
 
     transform-origin: bottom center;
 
-    transition: transform 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      rotate 0.3s ease-in-out;
     translate: 50% -70%;
 
     &:hover {

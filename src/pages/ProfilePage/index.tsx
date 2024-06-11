@@ -6,15 +6,11 @@ import {
   NickName,
   PlayerInfo,
   UserContainer,
-  UserInventoryWrapper,
 } from 'src/pages/ProfilePage/styles'
 import useProfilePage from 'src/pages/ProfilePage/useProfilePage'
 
-import MoneyTable from 'src/components/MoneyTable'
 import SimpleButton from 'src/components/SimpleButton'
 import SkinComponent from 'src/components/SkinComponent'
-import UserInventory from 'src/components/UserInventory'
-import UserItemTicket from 'src/components/UserItemTicket'
 
 const ProfilePage = (): JSX.Element => {
   const {
@@ -28,34 +24,6 @@ const ProfilePage = (): JSX.Element => {
     setItemTicketState,
   } = useProfilePage()
 
-  const renderComponents = (): JSX.Element => {
-    if (inventoryState.count > itemTicketState.count) {
-      return (
-        <>
-          {inventoryState.isVisible && (
-            <UserInventoryWrapper>
-              <MoneyTable />
-              <UserInventory />
-            </UserInventoryWrapper>
-          )}
-          {itemTicketState.isVisible && <UserItemTicket />}
-        </>
-      )
-    }
-
-    return (
-      <>
-        {itemTicketState.isVisible && <UserItemTicket />}
-        {inventoryState.isVisible && (
-          <UserInventoryWrapper>
-            <MoneyTable />
-            <UserInventory />
-          </UserInventoryWrapper>
-        )}
-      </>
-    )
-  }
-
   return (
     <Container>
       <UserContainer>
@@ -64,30 +32,6 @@ const ProfilePage = (): JSX.Element => {
           <NickName>{user.realname}</NickName>
           <ButtonList>
             <SimpleButton onClick={openAdvancementsModal}>Досягнення</SimpleButton>
-
-            <SimpleButton
-              style={{ opacity: inventoryState.isVisible ? 0.6 : 1 }}
-              onClick={() => {
-                setInventoryState({
-                  isVisible: !inventoryState.isVisible,
-                  count: itemTicketState.count + 1,
-                })
-              }}
-            >
-              Інвентар
-            </SimpleButton>
-
-            <SimpleButton
-              style={{ opacity: itemTicketState.isVisible ? 0.6 : 1 }}
-              onClick={() => {
-                setItemTicketState({
-                  isVisible: !itemTicketState.isVisible,
-                  count: inventoryState.count + 1,
-                })
-              }}
-            >
-              Квитки
-            </SimpleButton>
 
             <SimpleButton disabled={isLoading} onClick={logout}>
               Вийти
@@ -101,8 +45,6 @@ const ProfilePage = (): JSX.Element => {
           </LasLogin>
         </PlayerInfo>
       </UserContainer>
-
-      {renderComponents()}
     </Container>
   )
 }

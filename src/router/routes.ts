@@ -5,5 +5,6 @@ export enum RoutesPath {
   USER = '/user',
   WIKI = '/user/wiki',
   PROFILE = '/user/profile',
+  INVENTORY = '/user/inventory',
   AUCTION = '/user/auction',
 }

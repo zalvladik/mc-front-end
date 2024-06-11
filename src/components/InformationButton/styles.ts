@@ -13,7 +13,7 @@ export const Container = styled.div`
   border: 0.5px solid white;
   border-radius: 5px;
 
-  opacity: 0.5;
+  opacity: 0.3;
 
   translate: 20% -20%;
   padding: 4px;

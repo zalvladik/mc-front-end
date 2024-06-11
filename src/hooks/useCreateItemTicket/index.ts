@@ -27,7 +27,7 @@ export const useCreateItemTicket = () => {
       if (error.message.startsWith('{') && error.message.endsWith('}')) {
         const data: ErrorResponse = JSON.parse(error.message)
 
-        toast.error({ message: data.messages, height: 20 })
+        toast.error({ message: data.messages, height: 20, width: -50 })
 
         return
       }

@@ -1,4 +1,5 @@
 import ButtonModalClose from 'src/components/ButtonModalClose'
+import HoverDescription from 'src/components/HoverDescription'
 import InventoryHeader from 'src/components/InventoryHeader'
 import ItemList from 'src/components/ItemList'
 
@@ -37,7 +38,11 @@ const ModalItemsInTicket = ({
           <ItemCategoryFilter {...itemCategoryFilterProps} />
         </InventoryHeader>
         <ItemList {...itemListProps} />
-        <DeleteItemTicket onClick={() => deleteItemTicket()} />
+        <DeleteItemTicket onClick={() => deleteItemTicket()}>
+          <HoverDescription
+            description={['Видалити квиток', 'і повернути всі премети']}
+          />
+        </DeleteItemTicket>
       </Container>
     </SettingsModalsLayout>
   )

@@ -8,7 +8,7 @@ import {
 import { useUserItemTicket } from 'src/components/UserItemTicket/useUserItemTicket'
 
 const UserItemTicket = (): JSX.Element => {
-  const { data, openItemsInTicketModal } = useUserItemTicket()
+  const { data, openItemsInTicketModal, showInfo } = useUserItemTicket()
 
   return (
     <ContainerWrapper>
@@ -34,7 +34,12 @@ const UserItemTicket = (): JSX.Element => {
           </Empty>
         )}
 
-        <InformationButton style={{ left: 0, bottom: 0 }} />
+        <InformationButton
+          onClick={() => {
+            showInfo()
+          }}
+          style={{ left: 0, bottom: 0 }}
+        />
       </Container>
     </ContainerWrapper>
   )

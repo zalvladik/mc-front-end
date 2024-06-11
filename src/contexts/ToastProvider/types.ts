@@ -20,6 +20,7 @@ export type ToastHandlersParamsT = {
   status?: ToastType
   autoHideDuration?: number
   message: string[]
+  isOpen?: boolean
   width?: number
   height?: number
   fontSize?: number

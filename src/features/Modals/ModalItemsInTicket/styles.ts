@@ -62,5 +62,12 @@ export const DeleteItemTicket = styled.button`
     cursor: pointer;
     transform: scale(1.1);
     rotate: 0deg;
+
+    & > .HoverDescription {
+      display: flex;
+      translate: -50% -160%;
+
+      font-size: 18px;
+    }
   }
 `
