@@ -80,7 +80,7 @@ export const useUserInventory = () => {
 
   const itemsOnPage = getItemsForPage()
 
-  if (!itemsOnPage.length) setPage(page - 1)
+  if (!itemsOnPage.length && items.length) setPage(page - 1)
 
   const searchFilter = (value: string) => {
     setSearchValue(value)
