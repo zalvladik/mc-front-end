@@ -19,7 +19,7 @@ import {
 } from 'src/components/Auction'
 
 const AuctionPage = (): JSX.Element => {
-  const { currentFragment, isBuyFragment, auctionControllerProps } = useAuctionPage()
+  const { currentFragment, isFragment, auctionControllerProps } = useAuctionPage()
 
   const getFragment = (): JSX.Element => {
     const components: Record<AuctionFragment, JSX.Element> = {
@@ -38,18 +38,20 @@ const AuctionPage = (): JSX.Element => {
           <AuctionCategoryWrapper>
             <AuctionCategory
               style={{
-                opacity: isBuyFragment ? 1 : 0.3,
-                pointerEvents: isBuyFragment ? 'auto' : 'none',
+                opacity: isFragment.isBuyFragment ? 1 : 0.3,
+                pointerEvents: isFragment.isBuyFragment ? 'auto' : 'none',
               }}
             />
             <AuctionCategoryDisabled
               style={{
-                opacity: isBuyFragment ? 0 : 1,
-                transform: isBuyFragment ? 'scale(0)' : 'scale(1)',
+                opacity: isFragment.isBuyFragment ? 0 : 1,
+                transform: isFragment.isBuyFragment ? 'scale(0)' : 'scale(1)',
               }}
             />
           </AuctionCategoryWrapper>
-          <BodyCenterContainer>{getFragment()}</BodyCenterContainer>
+          <BodyCenterContainer isBuyFragment={isFragment.isCreateLotFragment}>
+            {getFragment()}
+          </BodyCenterContainer>
           <AuctionController {...auctionControllerProps} />
         </BodyContainer>
         <AuctionPagination />
@@ -58,8 +60,8 @@ const AuctionPage = (): JSX.Element => {
           refetch={() => {}}
           isLoading={false}
           style={{
-            opacity: isBuyFragment ? 1 : 0.4,
-            pointerEvents: isBuyFragment ? 'auto' : 'none',
+            opacity: isFragment.isBuyFragment ? 1 : 0.4,
+            pointerEvents: isFragment.isBuyFragment ? 'auto' : 'none',
           }}
         />
       </div>

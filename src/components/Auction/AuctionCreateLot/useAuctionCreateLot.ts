@@ -52,7 +52,7 @@ export const useAuctionCreateLot = () => {
 
   const itemsOnPage = getItemsForPage()
 
-  if (!setPage.length) setPage(page - 1)
+  if (!itemsOnPage.length) setPage(page - 1)
 
   const searchFilter = (value: string) => {
     setSearchValue(value)

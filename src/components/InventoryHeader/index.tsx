@@ -32,7 +32,7 @@ const InventoryHeader = ({
       {submitButton && (
         <SimpleButton
           style={{ width: 200 }}
-          disabled={isCanPress}
+          disabled={isCanPress || Boolean(!itemsLength)}
           onClick={() => {
             submitButton()
           }}

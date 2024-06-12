@@ -1,3 +1,4 @@
+import type { BodyCenterContainerProps } from 'src/pages/AuctionPage/types'
 import styled from 'styled-components'
 
 import ReloadButtton from 'src/components/ReloadButton'
@@ -21,8 +22,18 @@ export const Container = styled.div`
   }
 `
 
-export const BodyCenterContainer = styled.div`
+export const BodyCenterContainer = styled.div<BodyCenterContainerProps>`
   width: 850px;
+
+  background: ${props =>
+    props.isBuyFragment
+      ? `linear-gradient(
+    0deg,
+    rgba(15, 50, 70, 1) 0%,
+    rgba(15, 15, 15, 1) 40%,
+    rgba(15, 15, 15, 1) 100%
+  )`
+      : 'rgba(0,0,0,0)'};
 
   & > div {
     width: 100%;

@@ -6,14 +6,17 @@ export const useAuctionPage = () => {
     AuctionFragment.BUY_LOT,
   )
 
-  const isBuyFragment = AuctionFragment.BUY_LOT === currentFragment
+  const isFragment = {
+    isBuyFragment: AuctionFragment.BUY_LOT === currentFragment,
+    isCreateLotFragment: AuctionFragment.CREATE_LOT === currentFragment,
+  }
 
   const auctionControllerProps = { currentFragment, setCurrentFragment }
 
   return {
     currentFragment,
     setCurrentFragment,
-    isBuyFragment,
+    isFragment,
     auctionControllerProps,
   }
 }
