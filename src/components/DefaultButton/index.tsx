@@ -1,13 +1,13 @@
-import { ButtonText, Container } from 'src/components/SimpleButton/styles'
-import type { SimpleButtonProps } from 'src/components/SimpleButton/types'
+import { ButtonText, Container } from 'src/components/DefaultButton/styles'
+import type { DefaultButtonProps } from 'src/components/DefaultButton/types'
 
-const SimpleButton = ({
+const DefaultButton = ({
   children,
   disabled,
   isVisible = true,
   style,
   ...props
-}: SimpleButtonProps): JSX.Element => {
+}: DefaultButtonProps): JSX.Element => {
   return (
     <Container
       style={{
@@ -25,4 +25,4 @@ const SimpleButton = ({
   )
 }
 
-export default SimpleButton
+export default DefaultButton

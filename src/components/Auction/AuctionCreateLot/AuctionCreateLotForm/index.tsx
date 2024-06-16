@@ -1,8 +1,8 @@
 import { AuctionCreateLotFormContainer } from 'src/components/Auction/AuctionCreateLot/AuctionCreateLotForm/styles'
 import type { AuctionCreateLotFormT } from 'src/components/Auction/AuctionCreateLot/AuctionCreateLotForm/types'
 import { useAuctionCreateLotForm } from 'src/components/Auction/AuctionCreateLot/AuctionCreateLotForm/useAuctionCreateLotForm'
+import DefaultButton from 'src/components/DefaultButton'
 import DefaultInput from 'src/components/inputs/DefaultInput'
-import SimpleButton from 'src/components/SimpleButton'
 
 const AuctionCreateLotForm = ({
   currentItemId,
@@ -24,13 +24,13 @@ const AuctionCreateLotForm = ({
           setItemPrice(e.target.value)
         }}
       />
-      <SimpleButton
+      <DefaultButton
         style={{ width: 300, marginBottom: 60 }}
         disabled={isLoading || !Number(itemPrice)}
         onClick={() => createLotHanlder(currentItemId)}
       >
         Створити Лот
-      </SimpleButton>
+      </DefaultButton>
     </AuctionCreateLotFormContainer>
   )
 }

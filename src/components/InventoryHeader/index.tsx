@@ -1,10 +1,10 @@
+import DefaultButton from 'src/components/DefaultButton'
 import {
   Container,
   InventoryHeaderTitle,
 } from 'src/components/InventoryHeader/styles'
 import type { InventoryHeaderProps } from 'src/components/InventoryHeader/types'
 import ReloadButtton from 'src/components/ReloadButton'
-import SimpleButton from 'src/components/SimpleButton'
 
 const InventoryHeader = ({
   isLoading,
@@ -30,7 +30,7 @@ const InventoryHeader = ({
       </InventoryHeaderTitle>
       {children}
       {submitButton && (
-        <SimpleButton
+        <DefaultButton
           style={{ width: 200 }}
           disabled={isCanPress || Boolean(!itemsLength)}
           onClick={() => {
@@ -38,7 +38,7 @@ const InventoryHeader = ({
           }}
         >
           {buttonText}
-        </SimpleButton>
+        </DefaultButton>
       )}
     </Container>
   )

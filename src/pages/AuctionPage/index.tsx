@@ -17,8 +17,8 @@ import {
   AuctionItemList,
   AuctionUserLots,
 } from 'src/components/Auction'
+import DefaultButton from 'src/components/DefaultButton'
 import DefaultInput from 'src/components/inputs/DefaultInput'
-import SimpleButton from 'src/components/SimpleButton'
 
 const AuctionPage = (): JSX.Element => {
   const {
@@ -54,13 +54,13 @@ const AuctionPage = (): JSX.Element => {
             placeholder="Пошук..."
           />
 
-          <SimpleButton
+          <DefaultButton
             onClick={findLotByName}
             style={{ width: 200 }}
             isVisible={!isFragment.isUserLotsFragment}
           >
             Пошук
-          </SimpleButton>
+          </DefaultButton>
         </DefaultInputWrapper>
         <BodyContainer>
           <AuctionCategoryWrapper>

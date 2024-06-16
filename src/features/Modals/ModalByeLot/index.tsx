@@ -1,8 +1,8 @@
 import { FETCH_URL_IMG } from 'src/constants'
 
 import ButtonModalClose from 'src/components/ButtonModalClose'
+import DefaultButton from 'src/components/DefaultButton'
 import MoneyTable from 'src/components/MoneyTable'
-import SimpleButton from 'src/components/SimpleButton'
 
 import {
   Container,
@@ -60,9 +60,9 @@ const ModalByeLot = ({
           </div>
         </MoneyOperationInfo>
 
-        <SimpleButton disabled={data.price > userMoney} style={{ width: 300 }}>
+        <DefaultButton disabled={data.price > userMoney} style={{ width: 300 }}>
           Купити
-        </SimpleButton>
+        </DefaultButton>
       </Container>
     </SettingsModalsLayout>
   )

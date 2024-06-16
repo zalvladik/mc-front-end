@@ -5,7 +5,7 @@ import {
 import type { AuctionControllerProps } from 'src/components/Auction/AuctionController/types'
 import { useAuctionController } from 'src/components/Auction/AuctionController/useAuctionController'
 import { TitleContainer } from 'src/components/Auction/styles'
-import SimpleButton from 'src/components/SimpleButton'
+import DefaultButton from 'src/components/DefaultButton'
 
 const AuctionController = ({
   currentFragment,
@@ -24,13 +24,13 @@ const AuctionController = ({
           const isCurrentFragment = fragment === currentFragment
 
           return (
-            <SimpleButton
+            <DefaultButton
               onClick={() => setCurrentFragment(fragment)}
               key={fragment}
               disabled={isCurrentFragment}
             >
               {text}
-            </SimpleButton>
+            </DefaultButton>
           )
         })}
       </ButtonsContainer>

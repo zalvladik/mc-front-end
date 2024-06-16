@@ -9,7 +9,7 @@ import {
 } from 'src/pages/ProfilePage/styles'
 import useProfilePage from 'src/pages/ProfilePage/useProfilePage'
 
-import SimpleButton from 'src/components/SimpleButton'
+import DefaultButton from 'src/components/DefaultButton'
 import SkinComponent from 'src/components/SkinComponent'
 
 const ProfilePage = (): JSX.Element => {
@@ -22,11 +22,11 @@ const ProfilePage = (): JSX.Element => {
         <PlayerInfo>
           <NickName>{user.realname}</NickName>
           <ButtonList>
-            <SimpleButton onClick={openAdvancementsModal}>Досягнення</SimpleButton>
+            <DefaultButton onClick={openAdvancementsModal}>Досягнення</DefaultButton>
 
-            <SimpleButton disabled={isLoading} onClick={logout}>
+            <DefaultButton disabled={isLoading} onClick={logout}>
               Вийти
-            </SimpleButton>
+            </DefaultButton>
           </ButtonList>
 
           <LasLogin>
