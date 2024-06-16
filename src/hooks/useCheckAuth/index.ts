@@ -19,7 +19,7 @@ export const useCheckAuth = () => {
       localStorage.setItem(LocalStorageKey.ACCESS_TOKEN, data.accessToken)
     },
     onError: () => {
-      navigate(RoutesPath.SIGN_IN)
+      navigate(RoutesPath.HOME)
     },
   })
 

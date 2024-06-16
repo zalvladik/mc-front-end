@@ -31,7 +31,11 @@ const Navbar = (): JSX.Element => {
               }}
               aria-disabled
               onClick={() =>
-                isProfilePage ? undefined : navigate(RoutesPath.PROFILE)
+                !isSuccess
+                  ? navigate(RoutesPath.SIGN_IN)
+                  : isProfilePage
+                    ? undefined
+                    : navigate(RoutesPath.PROFILE)
               }
             >
               Кабінет
