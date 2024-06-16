@@ -1,8 +1,8 @@
 import type { UserT } from 'src/contexts/UserProvider/types'
 
-export const FETCH_URL = 'https://mc-back-end.onrender.com'
+export const FETCH_URL = import.meta.env.VITE_URL_BY_BACKEND
 
-export const FETCH_URL_IMG = 'https://mc-back-end.onrender.com/public'
+export const FETCH_URL_IMG = `${FETCH_URL}/public`
 
 export enum ComponentIds {
   STORE = 'store',
