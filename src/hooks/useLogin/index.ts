@@ -25,7 +25,7 @@ export const useLogin = () => {
       navigate(RoutesPath.PROFILE)
     },
     onError: (error: Error) => {
-      toast.error({ message: [error.message] })
+      toast.error({ message: [error.message], width: 50 })
     },
   })
 
