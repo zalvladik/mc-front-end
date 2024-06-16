@@ -5,10 +5,10 @@ import ModalItemsInTicket from 'src/features/Modals/ModalItemsInTicket'
 import ModalPay from 'src/features/Modals/ModalPay'
 
 const modalsList = [
-  { name: Modals.PAY, component: ModalPay },
   { name: Modals.ADVANCEMENTS, component: ModalAdvancements },
-  { name: Modals.ITEM_TICKETS, component: ModalItemsInTicket },
   { name: Modals.BYE_LOT, component: ModalByeLot },
+  { name: Modals.ITEM_TICKETS, component: ModalItemsInTicket },
+  { name: Modals.PAY, component: ModalPay },
 ]
 
 export default modalsList
