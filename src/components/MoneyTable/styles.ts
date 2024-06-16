@@ -20,7 +20,7 @@ export const MoneyAmountContainer = styled.ul`
       position: absolute;
       width: 48px;
       height: 48px;
-      background-image: url('http://localhost:8080/public/de/deepslate_diamond_ore.png');
+      background-image: url('/assets/items_for_ui/deepslate_diamond_ore.png');
       background-size: contain;
       background-repeat: no-repeat;
       right: -52px;
@@ -29,7 +29,7 @@ export const MoneyAmountContainer = styled.ul`
 
     &:nth-child(3) {
       & > div {
-        background-image: url('http://localhost:8080/public/sh/shulker_box.png');
+        background-image: url('/assets/items_for_ui/shulker_box.png');
       }
     }
   }

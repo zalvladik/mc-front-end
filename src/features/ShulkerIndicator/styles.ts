@@ -33,7 +33,7 @@ export const ShulkerIndicatorWrapper = styled.div`
 
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url('http://localhost:8080/public/sh/shulker_box.png');
+    background-image: url('/assets/items_for_ui/shulker_box.png');
   }
 `
 

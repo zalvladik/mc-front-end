@@ -219,7 +219,7 @@ export const ItemPriceContainer = styled.div`
     width: 40px;
     height: 40px;
 
-    background-image: url('http://localhost:8080/public/de/deepslate_diamond_ore.png');
+    background-image: url('/assets/items_for_ui/deepslate_diamond_ore.png');
     background-size: contain;
     background-repeat: no-repeat;
   }
