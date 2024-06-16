@@ -8,7 +8,6 @@ const useWikiPage = () => {
   const { onOpen } = useModals()
   const [value, setValue] = useState<string>('')
   const [option, setOption] = useState<string>('optionToDown')
-
   const { data, isLoading } = useGetAllUsers()
 
   const toAdvancements = (realname: string) => {
