@@ -18,7 +18,7 @@ export const useSignInPage = () => {
     resolver: yupResolver(validationSchema),
     mode: 'onSubmit',
     reValidateMode: 'onChange',
-    defaultValues: { realname: 'France', password: '13245France' },
+    defaultValues: { realname: '', password: '' },
   })
 
   const { isError, isLoading, mutate } = useLogin()
