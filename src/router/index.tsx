@@ -27,7 +27,6 @@ export const Router = createBrowserRouter([
         element: <AuthLayout />,
         children: [
           { path: RoutesPath.PROFILE, element: <ProfilePage /> },
-          { path: RoutesPath.PROFILE, element: <ProfilePage /> },
           { path: RoutesPath.INVENTORY, element: <InventoryPage /> },
           { path: RoutesPath.AUCTION, element: <AuctionPage /> },
           { path: RoutesPath.WIKI, element: <WikiPage /> },
