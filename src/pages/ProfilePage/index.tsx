@@ -13,16 +13,7 @@ import SimpleButton from 'src/components/SimpleButton'
 import SkinComponent from 'src/components/SkinComponent'
 
 const ProfilePage = (): JSX.Element => {
-  const {
-    user,
-    isLoading,
-    inventoryState,
-    itemTicketState,
-    logout,
-    openAdvancementsModal,
-    setInventoryState,
-    setItemTicketState,
-  } = useProfilePage()
+  const { user, isLoading, logout, openAdvancementsModal } = useProfilePage()
 
   return (
     <Container>

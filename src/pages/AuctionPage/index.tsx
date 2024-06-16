@@ -5,7 +5,8 @@ import {
   BodyCenterContainer,
   BodyContainer,
   Container,
-  StyledReloadButtton,
+  DefaultInputWrapper,
+  StyledAuctionPagination,
 } from 'src/pages/AuctionPage/styles'
 import { useAuctionPage } from 'src/pages/AuctionPage/useAuctionPage'
 
@@ -14,18 +15,30 @@ import {
   AuctionController,
   AuctionCreateLot,
   AuctionItemList,
-  AuctionPagination,
   AuctionUserLots,
 } from 'src/components/Auction'
+import DefaultInput from 'src/components/inputs/DefaultInput'
+import SimpleButton from 'src/components/SimpleButton'
 
 const AuctionPage = (): JSX.Element => {
-  const { currentFragment, isFragment, auctionControllerProps } = useAuctionPage()
+  const {
+    currentFragment,
+    isFragment,
+    auctionControllerProps,
+    auctionUserLotsProps,
+    auctionPaginationProps,
+    auctionByeLotsProps,
+    auctionCategoryProps,
+    auctionSearchInputProps,
+    findLotByName,
+    totalPages,
+  } = useAuctionPage()
 
   const getFragment = (): JSX.Element => {
     const components: Record<AuctionFragment, JSX.Element> = {
-      [AuctionFragment.BUY_LOT]: <AuctionItemList />,
+      [AuctionFragment.BUY_LOT]: <AuctionItemList {...auctionByeLotsProps} />,
       [AuctionFragment.CREATE_LOT]: <AuctionCreateLot />,
-      [AuctionFragment.USER_LOTS]: <AuctionUserLots />,
+      [AuctionFragment.USER_LOTS]: <AuctionUserLots {...auctionUserLotsProps} />,
     }
 
     return components[currentFragment]
@@ -34,35 +47,42 @@ const AuctionPage = (): JSX.Element => {
   return (
     <Container>
       <div>
+        <DefaultInputWrapper>
+          <DefaultInput
+            value={auctionSearchInputProps.searchValue}
+            onChange={e => auctionSearchInputProps.setSearchValue(e.target.value)}
+            placeholder="Пошук..."
+          />
+
+          <SimpleButton
+            onClick={findLotByName}
+            style={{ width: 200 }}
+            isVisible={!isFragment.isUserLotsFragment}
+          >
+            Пошук
+          </SimpleButton>
+        </DefaultInputWrapper>
         <BodyContainer>
           <AuctionCategoryWrapper>
             <AuctionCategory
+              {...auctionCategoryProps}
               style={{
                 opacity: isFragment.isBuyFragment ? 1 : 0.3,
                 pointerEvents: isFragment.isBuyFragment ? 'auto' : 'none',
               }}
             />
-            <AuctionCategoryDisabled
-              style={{
-                opacity: isFragment.isBuyFragment ? 0 : 1,
-                transform: isFragment.isBuyFragment ? 'scale(0)' : 'scale(1)',
-              }}
-            />
+            <AuctionCategoryDisabled isBuyFragment={isFragment.isBuyFragment} />
           </AuctionCategoryWrapper>
           <BodyCenterContainer isBuyFragment={isFragment.isCreateLotFragment}>
             {getFragment()}
           </BodyCenterContainer>
           <AuctionController {...auctionControllerProps} />
         </BodyContainer>
-        <AuctionPagination />
-        <StyledReloadButtton
-          message="Обновити список лотів"
-          refetch={() => {}}
-          isLoading={false}
-          style={{
-            opacity: isFragment.isBuyFragment ? 1 : 0.4,
-            pointerEvents: isFragment.isBuyFragment ? 'auto' : 'none',
-          }}
+
+        <StyledAuctionPagination
+          totalPageIsNull={Boolean(totalPages)}
+          isCreateLotFragment={isFragment.isCreateLotFragment}
+          {...auctionPaginationProps}
         />
       </div>
     </Container>

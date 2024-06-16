@@ -16,21 +16,23 @@ export const ToastProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const handleClose = (): void => setToast({ ...toast, isOpen: false })
 
+  /* eslint-disable react/prop-types */
   const handleToast = useCallback(
-    (status: ToastType) => (props: ToastHandlersParamsT) => {
-      setToast({
-        ...INITIAL_PARAMS,
-        status,
-        fontSize: props.fontSize ?? INITIAL_PARAMS.fontSize,
-        width: props.width + 430,
-        height: props.height + 110,
-        isOpen: props.isOpen ?? true,
-        message: props.message,
-        autoHideDuration: props.autoHideDuration
-          ? props.autoHideDuration * 1000
-          : INITIAL_PARAMS.autoHideDuration * 1000,
-      })
-    },
+    (status: ToastType) =>
+      ({ width = 0, height = 0, ...rest }: ToastHandlersParamsT) => {
+        setToast({
+          ...INITIAL_PARAMS,
+          status,
+          fontSize: rest.fontSize ?? INITIAL_PARAMS.fontSize,
+          width: width + 430,
+          height: height + 110,
+          isOpen: rest.isOpen ?? true,
+          message: rest.message,
+          autoHideDuration: rest.autoHideDuration
+            ? rest.autoHideDuration * 1000
+            : INITIAL_PARAMS.autoHideDuration * 1000,
+        })
+      },
     [],
   )
 

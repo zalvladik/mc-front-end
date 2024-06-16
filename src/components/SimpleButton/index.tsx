@@ -4,13 +4,14 @@ import type { SimpleButtonProps } from 'src/components/SimpleButton/types'
 const SimpleButton = ({
   children,
   disabled,
+  isVisible = true,
   style,
   ...props
 }: SimpleButtonProps): JSX.Element => {
   return (
     <Container
       style={{
-        opacity: disabled ? 0.5 : 1,
+        opacity: disabled ? 0.5 : isVisible ? 1 : 0,
         pointerEvents: disabled ? 'none' : 'auto',
         ...style,
       }}

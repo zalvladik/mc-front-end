@@ -146,6 +146,10 @@ export const ItemDesriptionContainer = styled.div`
   margin: 0px auto;
 
   & > div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
     & > div {
       text-align: center;
 
@@ -162,11 +166,11 @@ export const ItemDesriptionContainer = styled.div`
 
 export const ItemPriceContainer = styled.div`
   display: flex;
-  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
 
   & > div {
-    margin: 0px auto;
-
     font-family: 'Minecraft', sans-serif;
     font-size: 25px;
     font-weight: 500;
@@ -174,6 +178,15 @@ export const ItemPriceContainer = styled.div`
     text-shadow:
       0px 0px 25px #000000,
       0px 0px 25px #000000;
+  }
+
+  & > div:last-child {
+    width: 40px;
+    height: 40px;
+
+    background-image: url('http://localhost:8080/public/de/deepslate_diamond_ore.png');
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 `
 

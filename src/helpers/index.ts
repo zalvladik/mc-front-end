@@ -55,18 +55,44 @@ export const millisecondsToTime = (milliseconds: number | string): string => {
   return formattedDateTime
 }
 
-export const moneyCalculator = (count: number): string => {
-  if (count <= 64) {
-    return `У вас &b${count}⟡ шт. алмазної руди`
-  }
-
+export const moneyCalculator = (
+  count: number,
+): { stack: number; restMoney: number } => {
   const remainder: number = count % 64
 
-  return `[ ${Math.floor((count - remainder) / 64)}ст. ${remainder}шт. ]`
+  return { stack: Math.floor((count - remainder) / 64), restMoney: remainder }
 }
 
 export const moneyCalculatorShulker = (count: number): string => {
   const shulkers: number = count / 1728.0
 
   return `[ ${shulkers.toFixed(2)} ]`
+}
+
+export const generatePageNumbers = (
+  currentPage: number,
+  totalPages: number,
+  maxVisiblePages: number = 9,
+): number[] => {
+  const half = Math.floor(maxVisiblePages / 2)
+  let start = currentPage - half
+  let end = currentPage + half
+
+  if (start < 1) {
+    start = 1
+    end = Math.min(totalPages, start + maxVisiblePages - 1)
+  }
+
+  if (end > totalPages) {
+    end = totalPages
+    start = Math.max(1, end - maxVisiblePages + 1)
+  }
+
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i)
+}
+
+export const sliceText = (text: string, maxLength: number): string => {
+  if (text.length > maxLength) return `${text.slice(0, maxLength)}...`
+
+  return text
 }

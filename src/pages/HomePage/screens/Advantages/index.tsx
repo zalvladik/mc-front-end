@@ -14,6 +14,7 @@ import MainTitle from 'src/components/MainTitle'
 const Advantages = (): JSX.Element => {
   const { images } = useAdvantage()
 
+  /* eslint-disable react-hooks/rules-of-hooks */
   return (
     <AdvantagesSection id="advantages">
       <MainTitle text="Наші переваги" icon="assets/beeGif.gif" alt="bee" />

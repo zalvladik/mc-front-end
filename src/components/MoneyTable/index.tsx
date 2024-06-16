@@ -1,28 +1,38 @@
 import { moneyCalculator, moneyCalculatorShulker } from 'src/helpers'
 
 import { MoneyAmountContainer } from 'src/components/MoneyTable/styles'
+import type { MoneyTableProps } from 'src/components/MoneyTable/types'
 import { useMoneyTable } from 'src/components/MoneyTable/useMoneyTable'
 
-const MoneyTable = (): JSX.Element => {
+const MoneyTable = ({ anotherMoney, moneyTitle }: MoneyTableProps): JSX.Element => {
   const { money, isRefetching, isLoading } = useMoneyTable()
+
+  const currentMoney = anotherMoney ?? money
+
+  const { stack, restMoney } = moneyCalculator(currentMoney)
 
   return (
     <MoneyAmountContainer>
       {!isLoading && !isRefetching && (
         <>
+          {moneyTitle && (
+            <li>
+              <h1 style={{ opacity: 0.5 }}>{moneyTitle}</h1>
+            </li>
+          )}
           <li>
-            <h1>Валюта: {money}</h1>
+            <h1>{currentMoney}</h1>
             <div />
           </li>
-          {money > 64 && (
+          {currentMoney > 64 && (
             <li>
-              <h1>{moneyCalculator(money)}</h1>
+              <h1>{`[${stack}ст.${restMoney}шт.]`}</h1>
               <div />
             </li>
           )}
-          {money > 256 && (
+          {currentMoney > 256 && (
             <li>
-              <h1>{moneyCalculatorShulker(money)}</h1>
+              <h1>{moneyCalculatorShulker(currentMoney)}</h1>
               <div />
             </li>
           )}

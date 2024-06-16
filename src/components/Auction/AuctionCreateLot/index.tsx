@@ -33,7 +33,7 @@ const AuctionCreateLot = (): JSX.Element => {
         <Container>
           <StyledInventoryHeader {...inventoryHeaderProps}>
             <StyledDefaultInput
-              placeholder="Пошук"
+              placeholder="Пошук..."
               value={searchValue}
               onChange={e => searchFilter(e.target.value)}
             />

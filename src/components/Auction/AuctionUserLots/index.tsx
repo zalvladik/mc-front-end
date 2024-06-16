@@ -1,7 +1,9 @@
 import { FETCH_URL_IMG } from 'src/constants'
+import { moneyCalculator } from 'src/helpers'
 
 import {
   Container,
+  DeleteLotButton,
   ItemAmount,
   ItemDesriptionContainer,
   ItemPriceContainer,
@@ -9,8 +11,13 @@ import {
   TbodyContainer,
   TheadContainer,
 } from 'src/components/Auction/AuctionUserLots/styles'
+import type { AuctionUserLotsProps } from 'src/components/Auction/AuctionUserLots/types'
+import { useAuctionUserLots } from 'src/components/Auction/AuctionUserLots/useAuctionUserLots'
+import HoverDescription from 'src/components/HoverDescription'
 
-const AuctionUserLots = (): JSX.Element => {
+const AuctionUserLots = ({ lots }: AuctionUserLotsProps): JSX.Element => {
+  const { deleteUserLot } = useAuctionUserLots()
+
   return (
     <Container>
       <TheadContainer>
@@ -25,32 +32,45 @@ const AuctionUserLots = (): JSX.Element => {
         </div>
       </TheadContainer>
       <TbodyContainer>
-        {Array.from({ length: 8 }, (item, i) => (
-          <div key={i}>
-            <div>
-              <ItemSlotIcon>
-                <div
-                  style={{
-                    backgroundImage: `url(${FETCH_URL_IMG}/oa/oak_log.png)`,
-                  }}
-                />
-                {12 > 1 && <ItemAmount>{12}</ItemAmount>}
-              </ItemSlotIcon>
+        {lots.map(({ id, price, item }) => {
+          const { stack, restMoney } = moneyCalculator(price)
 
-              <ItemDesriptionContainer>
-                <div>
-                  <div>Дуб хуют</div>
-                </div>
-              </ItemDesriptionContainer>
+          return (
+            <div key={id}>
+              <div>
+                <ItemSlotIcon>
+                  <div
+                    style={{
+                      backgroundImage: `url(${FETCH_URL_IMG}/${item.type.slice(0, 2)}/${item.type}.png)`,
+                    }}
+                  />
+                  {item.amount > 1 && <ItemAmount>{item.amount}</ItemAmount>}
+                </ItemSlotIcon>
+
+                <ItemDesriptionContainer>
+                  <div>
+                    <div>{item.display_name}</div>
+                  </div>
+                </ItemDesriptionContainer>
+              </div>
+
+              <div />
+
+              <ItemPriceContainer>
+                {price > 64 ? (
+                  <div>{`${stack} ст. ${restMoney} шт.`}</div>
+                ) : (
+                  <div>{price}</div>
+                )}
+                <div />
+              </ItemPriceContainer>
+
+              <DeleteLotButton onClick={() => deleteUserLot(id)}>
+                <HoverDescription description={['Видалити лот']} />
+              </DeleteLotButton>
             </div>
-
-            <div />
-
-            <ItemPriceContainer>
-              <div>32</div>
-            </ItemPriceContainer>
-          </div>
-        ))}
+          )
+        })}
       </TbodyContainer>
     </Container>
   )

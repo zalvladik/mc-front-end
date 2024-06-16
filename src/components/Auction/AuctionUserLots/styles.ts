@@ -67,6 +67,39 @@ export const TheadContainer = styled.div`
   }
 `
 
+export const DeleteLotButton = styled.div`
+  position: absolute;
+  opacity: 0;
+
+  right: 0%;
+  top: 0%;
+
+  translate: 50% -50%;
+
+  width: 40px;
+  height: 40px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('/assets/items_for_ui/barrier.png');
+
+  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+
+    & > .HoverDescription {
+      display: flex;
+      top: 50%;
+      left: 50%;
+      translate: -115% -50%;
+
+      font-size: 15px;
+    }
+  }
+`
+
 export const TbodyContainer = styled.div`
   width: 100%;
   height: calc(90% - 3px);
@@ -97,6 +130,8 @@ export const TbodyContainer = styled.div`
     0px 0px 12px -5px rgba(255, 255, 255, 1);
 
   & > div {
+    position: relative;
+
     display: flex;
     justify-content: space-around;
 
@@ -115,6 +150,10 @@ export const TbodyContainer = styled.div`
       cursor: pointer;
       background-color: rgba(200, 200, 200, 0.2);
       transform: scale(1.01);
+
+      div:last-child {
+        opacity: 1;
+      }
     }
 
     & > div {
@@ -162,11 +201,11 @@ export const ItemDesriptionContainer = styled.div`
 
 export const ItemPriceContainer = styled.div`
   display: flex;
-  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
 
   & > div {
-    margin: 0px auto;
-
     font-family: 'Minecraft', sans-serif;
     font-size: 25px;
     font-weight: 500;
@@ -174,6 +213,15 @@ export const ItemPriceContainer = styled.div`
     text-shadow:
       0px 0px 25px #000000,
       0px 0px 25px #000000;
+  }
+
+  & > div:last-child {
+    width: 40px;
+    height: 40px;
+
+    background-image: url('http://localhost:8080/public/de/deepslate_diamond_ore.png');
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 `
 

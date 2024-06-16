@@ -1,3 +1,5 @@
+import { generatePageNumbers } from 'src/helpers'
+
 import {
   Container,
   CountItems,
@@ -8,42 +10,66 @@ import {
   Pages,
   PaginationController,
   Right,
+  SingleButttonLeft,
+  SingleButttonRight,
 } from 'src/components/Auction/AuctionPagination/styles'
+import type { AuctionPaginationProps } from 'src/components/Auction/AuctionPagination/types'
 
-const AuctionPagination = (): JSX.Element => {
-  const ids = [31, 32, 33, 34, 35, 36, 37, 38, 39]
-
-  const currentPage = 35
+const AuctionPagination = ({
+  currentPage,
+  setCurrentPage,
+  totalPages,
+  ...props
+}: AuctionPaginationProps): JSX.Element => {
+  const pageNumbers = generatePageNumbers(currentPage, totalPages)
 
   return (
-    <Container>
+    <Container {...props}>
       <PaginationController>
         <Left>
-          <DoubleButttonLeft>
+          <DoubleButttonLeft
+            onClick={() => setCurrentPage(Math.max(currentPage - 10, 1))}
+            disabled={currentPage <= 10}
+          >
             <div />
             <div />
           </DoubleButttonLeft>
-          <div />
+          <SingleButttonLeft
+            onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
+            disabled={currentPage === 1}
+          />
         </Left>
 
         <Pages>
-          {ids.map(item => (
-            <Page isCurrentPage={item === currentPage} key={item}>
-              {item}
+          {pageNumbers.map(pageNumber => (
+            <Page
+              isCurrentPage={pageNumber === currentPage}
+              key={pageNumber}
+              onClick={() => setCurrentPage(pageNumber)}
+            >
+              {pageNumber}
             </Page>
           ))}
         </Pages>
 
         <Right>
-          <div />
-          <DoubleButttonRight>
+          <SingleButttonRight
+            onClick={() => setCurrentPage(Math.min(currentPage + 1, totalPages))}
+            disabled={currentPage === totalPages}
+          />
+          <DoubleButttonRight
+            onClick={() => setCurrentPage(Math.min(currentPage + 10, totalPages))}
+            disabled={currentPage > totalPages - 10}
+          >
             <div />
             <div />
           </DoubleButttonRight>
         </Right>
       </PaginationController>
 
-      <CountItems>35/157</CountItems>
+      <CountItems>
+        {currentPage}/{totalPages}
+      </CountItems>
     </Container>
   )
 }

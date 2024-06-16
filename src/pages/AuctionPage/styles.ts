@@ -1,7 +1,27 @@
-import type { BodyCenterContainerProps } from 'src/pages/AuctionPage/types'
+import type {
+  IsBuyFragmentProps,
+  StyledAuctionPaginationProps,
+} from 'src/pages/AuctionPage/types'
 import styled from 'styled-components'
 
-import ReloadButtton from 'src/components/ReloadButton'
+import { AuctionPagination } from 'src/components/Auction'
+
+export const DefaultInputWrapper = styled.div`
+  position: absolute;
+
+  display: flex;
+  gap: 20px;
+
+  top: 0px;
+  left: 0px;
+
+  translate: 0% -120%;
+
+  & > input {
+    font-size: 20px;
+    width: 340px;
+  }
+`
 
 export const Container = styled.div`
   position: absolute;
@@ -22,7 +42,7 @@ export const Container = styled.div`
   }
 `
 
-export const BodyCenterContainer = styled.div<BodyCenterContainerProps>`
+export const BodyCenterContainer = styled.div<IsBuyFragmentProps>`
   width: 850px;
 
   background: ${props =>
@@ -46,15 +66,6 @@ export const BodyCenterContainer = styled.div<BodyCenterContainerProps>`
   }
 `
 
-export const StyledReloadButtton = styled(ReloadButtton)`
-  position: absolute;
-  z-index: 999;
-  left: 10px;
-  bottom: 6px;
-
-  transition: opacity 0.3s ease-in-out;
-`
-
 export const BodyContainer = styled.div`
   display: flex;
 `
@@ -63,7 +74,7 @@ export const AuctionCategoryWrapper = styled.div`
   position: relative;
 `
 
-export const AuctionCategoryDisabled = styled.div`
+export const AuctionCategoryDisabled = styled.div<IsBuyFragmentProps>`
   position: absolute;
 
   top: 50%;
@@ -85,4 +96,20 @@ export const AuctionCategoryDisabled = styled.div`
   transition:
     opacity 0.3s ease-in-out,
     transform 0.3s ease-in-out;
+
+  opacity: ${props => (props.isBuyFragment ? 0 : 1)};
+  transform: ${props => (props.isBuyFragment ? 'scale(0)' : 'scale(1)')};
+`
+
+export const StyledAuctionPagination = styled(
+  AuctionPagination,
+)<StyledAuctionPaginationProps>`
+  & > div {
+    transition: opacity 200ms ease;
+
+    pointer-events: ${props =>
+      props.isCreateLotFragment || !props.totalPageIsNull ? 'none' : 'auto'};
+    opacity: ${props =>
+      props.isCreateLotFragment || !props.totalPageIsNull ? 0 : 1};
+  }
 `

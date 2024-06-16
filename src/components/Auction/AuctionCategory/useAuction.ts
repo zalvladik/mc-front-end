@@ -1,8 +1,4 @@
-import { useState } from 'react'
-
 export const useAuction = () => {
-  const [selectedCaterogy, setSelectedCaterogy] = useState<string>('')
-
   const baseUrl = '/assets/items_for_ui'
   const categories = [
     {
@@ -63,5 +59,5 @@ export const useAuction = () => {
     },
   ]
 
-  return { categories, setSelectedCaterogy, selectedCaterogy }
+  return { categories }
 }

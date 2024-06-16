@@ -1,4 +1,5 @@
 import { FETCH_URL_IMG } from 'src/constants'
+import { moneyCalculator, sliceText } from 'src/helpers'
 
 import {
   Container,
@@ -9,8 +10,12 @@ import {
   TbodyContainer,
   TheadContainer,
 } from 'src/components/Auction/AuctionItemList/styles'
+import type { AuctionItemListProps } from 'src/components/Auction/AuctionItemList/types'
+import { useAuctionItemList } from 'src/components/Auction/AuctionItemList/useAuctionItemList'
 
-const AuctionItemList = (): JSX.Element => {
+const AuctionItemList = ({ lots }: AuctionItemListProps): JSX.Element => {
+  const { openModal } = useAuctionItemList()
+
   return (
     <Container>
       <TheadContainer>
@@ -25,33 +30,41 @@ const AuctionItemList = (): JSX.Element => {
         </div>
       </TheadContainer>
       <TbodyContainer>
-        {Array.from({ length: 8 }, (item, i) => (
-          <div key={i}>
-            <div>
-              <ItemSlotIcon>
-                <div
-                  style={{
-                    backgroundImage: `url(${FETCH_URL_IMG}/oa/oak_log.png)`,
-                  }}
-                />
-                {12 > 1 && <ItemAmount>{12}</ItemAmount>}
-              </ItemSlotIcon>
+        {lots.map(({ item, id, price, realname }) => {
+          const { stack, restMoney } = moneyCalculator(price)
 
-              <ItemDesriptionContainer>
-                <div>
-                  <div>Дуб хуют</div>
-                  <div>France</div>
-                </div>
-              </ItemDesriptionContainer>
+          return (
+            <div key={id} onClick={() => openModal({ item, id, price, realname })}>
+              <div>
+                <ItemSlotIcon>
+                  <div
+                    style={{
+                      backgroundImage: `url(${FETCH_URL_IMG}/${item.type.slice(0, 2)}/${item.type}.png)`,
+                    }}
+                  />
+                  {item.amount > 1 && <ItemAmount>{item.amount}</ItemAmount>}
+                </ItemSlotIcon>
+
+                <ItemDesriptionContainer>
+                  <div>
+                    <div>{sliceText(item.display_name, 28)}</div>
+                  </div>
+                </ItemDesriptionContainer>
+              </div>
+
+              <div />
+
+              <ItemPriceContainer>
+                {price > 64 ? (
+                  <div>{`${stack} ст. ${restMoney} шт.`}</div>
+                ) : (
+                  <div>{price}</div>
+                )}
+                <div />
+              </ItemPriceContainer>
             </div>
-
-            <div />
-
-            <ItemPriceContainer>
-              <div>32</div>
-            </ItemPriceContainer>
-          </div>
-        ))}
+          )
+        })}
       </TbodyContainer>
     </Container>
   )

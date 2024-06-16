@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
-import type { StyledPageProps } from 'src/components/Auction/AuctionPagination/types'
+import type {
+  IsDisabledButtonProps,
+  StyledPageProps,
+} from 'src/components/Auction/AuctionPagination/types'
 
 export const Container = styled.div`
   position: relative;
@@ -10,7 +13,7 @@ export const Container = styled.div`
   border-bottom-left-radius: 8px;
 
   border-top: 1px solid gray;
-  padding: 12px 0px;
+  height: 62px;
 
   background: linear-gradient(
     90deg,
@@ -24,21 +27,29 @@ export const Container = styled.div`
 
 export const PaginationController = styled.div`
   display: flex;
+  width: 820px;
   gap: 20px;
+
+  justify-content: space-between;
 
   align-items: center;
 
   margin: 0px auto;
+
+  transition: opacity 200ms ease;
+`
+
+export const SingleButttonRight = styled.div<IsDisabledButtonProps>`
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url('/assets/items_for_ui/page_forward_highlighted.png');
+
+  opacity: ${props => (props.disabled ? 0.2 : 1)};
+  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
 `
 
 export const Right = styled.div`
   display: flex;
-
-  & > div:first-child {
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: url('/assets/items_for_ui/page_forward_highlighted.png');
-  }
 
   & > div {
     width: 40px;
@@ -56,8 +67,11 @@ export const Right = styled.div`
   }
 `
 
-export const DoubleButttonRight = styled.div`
+export const DoubleButttonRight = styled.div<IsDisabledButtonProps>`
   position: relative;
+
+  opacity: ${props => (props.disabled ? 0.2 : 1)};
+  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
 
   & > div {
     width: 40px;
@@ -82,12 +96,6 @@ export const DoubleButttonRight = styled.div`
 export const Left = styled.div`
   display: flex;
 
-  & > div:last-child {
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: url('/assets/items_for_ui/page_backward.png');
-  }
-
   & > div {
     width: 40px;
     height: 40px;
@@ -104,8 +112,20 @@ export const Left = styled.div`
   }
 `
 
-export const DoubleButttonLeft = styled.div`
+export const SingleButttonLeft = styled.div<IsDisabledButtonProps>`
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url('/assets/items_for_ui/page_backward.png');
+
+  opacity: ${props => (props.disabled ? 0.2 : 1)};
+  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
+`
+
+export const DoubleButttonLeft = styled.div<IsDisabledButtonProps>`
   position: relative;
+
+  opacity: ${props => (props.disabled ? 0.2 : 1)};
+  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
 
   & > div {
     width: 40px;
@@ -128,15 +148,19 @@ export const DoubleButttonLeft = styled.div`
 `
 
 export const Pages = styled.ul`
+  width: 100%;
   display: flex;
+  gap: 30px;
 
-  gap: 40px;
+  justify-content: center;
 `
 
 export const Page = styled.li<StyledPageProps>`
   font-family: 'Minecraft', sans-serif;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
+
+  width: 40px;
 
   text-shadow:
     0px 0px 25px ${props => (props.isCurrentPage ? '#FFF' : '#000000')},
@@ -164,6 +188,6 @@ export const CountItems = styled.div`
   translate: 0% -50%;
 
   font-family: 'Minecraft', sans-serif;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
 `

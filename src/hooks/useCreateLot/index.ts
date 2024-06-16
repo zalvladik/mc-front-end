@@ -12,6 +12,11 @@ export const useCreateLot = () => {
   const { data, mutate, isLoading } = useMutation({
     mutationFn: Lot.post,
     onSuccess: (data: LotT) => {
+      queryClient.setQueryData<LotT[]>(CacheKeys.USER_LOTS, lots => [
+        ...(lots ?? []),
+        data,
+      ])
+
       queryClient.setQueryData<ItemT[]>(CacheKeys.USER_INVENTORY_ITEMS, items =>
         items!.filter(item => data.item.id !== item.id),
       )

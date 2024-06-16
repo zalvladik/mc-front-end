@@ -50,7 +50,7 @@ export const DeleteItemTicket = styled.button`
   width: 64px;
   height: 64px;
 
-  background-image: url(${'/assets/items_for_ui/barrier.png'});
+  background-image: url('/assets/items_for_ui/barrier.png');
   background-size: contain;
   background-repeat: no-repeat;
 
