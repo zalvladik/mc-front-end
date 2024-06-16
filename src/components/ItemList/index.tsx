@@ -55,7 +55,7 @@ const ItemList = ({
         </ItemButtom>
       ))}
 
-      {Array.from({ length: 27 - items.length }).map((item, i) => (
+      {Array.from({ length: 27 - items.length }).map((_, i) => (
         <EmptySlot key={i} />
       ))}
     </Container>
