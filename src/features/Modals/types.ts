@@ -14,5 +14,5 @@ export type ModalDialogProps = {
   name: ValueOf<Modals>
   closeModal?: () => void
   onConfirm?: () => void
-  data?: unknown
+  data?: any
 }
