@@ -8,10 +8,10 @@ import {
   Container,
   ItemAmount,
   ItemContainer,
+  ItemDescription,
   ItemIcon,
   ItemIconContainer,
   ItemOwner,
-  MoneyOperationInfo,
 } from 'src/features/Modals/ModalByeLot/styles'
 import type { ModalByeLotProps } from 'src/features/Modals/ModalByeLot/types'
 import { useModalByeLot } from 'src/features/Modals/ModalByeLot/useModalByeLot'
@@ -41,24 +41,12 @@ const ModalByeLot = ({
             />
             {data.item.amount > 1 && <ItemAmount>{data.item.amount}</ItemAmount>}
           </ItemIconContainer>
+          <ItemDescription />
         </ItemContainer>
 
         <ItemOwner>Власник лоту: {data.realname}</ItemOwner>
 
-        <MoneyOperationInfo>
-          <div>
-            <MoneyTable moneyTitle="Кількість валюти" />
-          </div>
-          <div>
-            <MoneyTable moneyTitle="Ціна товару" anotherMoney={data.price} />
-          </div>
-          <div>
-            <MoneyTable
-              moneyTitle="Після покупки"
-              anotherMoney={userMoney - data.price}
-            />
-          </div>
-        </MoneyOperationInfo>
+        <MoneyTable moneyTitle="Ціна товару" anotherMoney={data.price} />
 
         <DefaultButton disabled={data.price > userMoney} style={{ width: 300 }}>
           Купити

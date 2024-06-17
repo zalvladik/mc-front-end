@@ -49,69 +49,6 @@ export const ItemContainer = styled.div`
   background-image: url('/assets/items_for_ui/slot.png');
 `
 
-export const MoneyOperationInfo = styled.div`
-  display: flex;
-  position: relative;
-
-  & > div {
-    min-height: 230px;
-  }
-
-  & > div:first-child {
-    position: absolute;
-    left: -150%;
-    top: 0px;
-
-    background: radial-gradient(
-      circle,
-      rgba(100, 110, 120, 1) 0%,
-      rgba(50, 55, 60, 1) 100%
-    );
-
-    border: 1px solid gray;
-    border-radius: 10px;
-
-    padding: 20px;
-
-    -webkit-box-shadow:
-      inset 0px 0px 50px 15px rgba(0, 0, 0, 0.75),
-      0px 0px 18px -5px rgba(255, 255, 255, 1);
-    -moz-box-shadow:
-      inset 0px 0px 50px 15px rgba(0, 0, 0, 0.75),
-      0px 0px 18px -5px rgba(255, 255, 255, 1);
-    box-shadow:
-      inset 0px 0px 50px 15px rgba(0, 0, 0, 0.75),
-      0px 0px 18px -5px rgba(255, 255, 255, 1);
-  }
-
-  & > div:last-child {
-    position: absolute;
-    right: -130%;
-    top: 0px;
-
-    border: 1px solid gray;
-    border-radius: 10px;
-
-    padding: 20px;
-
-    background: radial-gradient(
-      circle,
-      rgba(100, 110, 120, 1) 0%,
-      rgba(50, 55, 60, 1) 100%
-    );
-
-    -webkit-box-shadow:
-      inset 0px 0px 50px 15px rgba(0, 0, 0, 0.75),
-      0px 0px 18px -5px rgba(255, 255, 255, 1);
-    -moz-box-shadow:
-      inset 0px 0px 50px 15px rgba(0, 0, 0, 0.75),
-      0px 0px 18px -5px rgba(255, 255, 255, 1);
-    box-shadow:
-      inset 0px 0px 50px 15px rgba(0, 0, 0, 0.75),
-      0px 0px 18px -5px rgba(255, 255, 255, 1);
-  }
-`
-
 export const ItemIconContainer = styled.div`
   position: absolute;
   top: 50%;
@@ -122,6 +59,8 @@ export const ItemIconContainer = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
 `
+
+export const ItemDescription = styled.div``
 
 export const ItemIcon = styled.div`
   width: 128px;

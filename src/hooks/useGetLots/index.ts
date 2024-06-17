@@ -15,7 +15,7 @@ export const useGetLots = () => {
 
   return {
     byeLots: data?.lots ?? [],
-    totalPageByeLots: data?.totalPages ?? 1,
+    totalPageByeLots: data?.totalPages,
     mutateGetByeLots: mutate,
     isLoadingByeLots: isLoading,
   }

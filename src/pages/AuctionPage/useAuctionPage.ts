@@ -16,6 +16,8 @@ export const useAuctionPage = () => {
 
   const [selectedCaterogy, setSelectedCaterogy] = useState<string>('')
 
+  const [storageTotalPages, setSorageTotalPages] = useState<number>(1)
+
   const { userLots, isLoadingUserLots } = useGetUserLots()
   const { byeLots, totalPageByeLots, mutateGetByeLots, isLoadingByeLots } =
     useGetLots()
@@ -39,8 +41,15 @@ export const useAuctionPage = () => {
       category: selectedCaterogy,
     })
 
+    setSorageTotalPages(1)
     setSearchValueByeLots('')
   }, [selectedCaterogy, mutateGetByeLots])
+
+  useEffect(() => {
+    if (totalPageByeLots && totalPageByeLots !== storageTotalPages) {
+      setSorageTotalPages(totalPageByeLots)
+    }
+  }, [totalPageByeLots])
 
   const findLotByName = () => {
     mutateGetByeLots({
@@ -84,7 +93,7 @@ export const useAuctionPage = () => {
   }
 
   const getTotalPages = () => {
-    if (currentFragment === AuctionFragment.BUY_LOT) return totalPageByeLots
+    if (currentFragment === AuctionFragment.BUY_LOT) return storageTotalPages
 
     return tolalPageUserLots
   }

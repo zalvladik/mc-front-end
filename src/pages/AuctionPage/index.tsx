@@ -80,7 +80,7 @@ const AuctionPage = (): JSX.Element => {
         </BodyContainer>
 
         <StyledAuctionPagination
-          totalPageIsNull={Boolean(totalPages)}
+          totalPageIsNull={Boolean(totalPages > 1)}
           isCreateLotFragment={isFragment.isCreateLotFragment}
           {...auctionPaginationProps}
         />
