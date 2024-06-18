@@ -21,5 +21,11 @@ export const useAdvancementsMap = (realname: string) => {
 
   const initialPositionX = screenWidth / 2 - 500
 
-  return { userAdvancements, isLoading, screenWidth, initialPositionX }
+  return {
+    userAdvancements,
+    isLoading,
+    screenWidth,
+    initialPositionX,
+    data: data?.advancements,
+  }
 }

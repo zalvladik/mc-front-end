@@ -10,6 +10,7 @@ import {
   Description,
   IconContainer,
   RoadContainer,
+  StyledSkeleton,
   Title,
 } from 'src/components/AdvancementsMap/styles'
 import type { AdvancementsMapProps } from 'src/components/AdvancementsMap/types'
@@ -21,18 +22,24 @@ const AdvancementsMap = ({ realname }: AdvancementsMapProps): JSX.Element => {
     isLoading,
     screenWidth,
     initialPositionX,
+    data,
   } = useAdvancementsMap(realname)
 
   return (
-    <TransformWrapper
-      centerZoomedOut={false}
-      centerOnInit={false}
-      initialPositionX={initialPositionX}
-      maxPositionX={screenWidth}
+    <StyledSkeleton
+      isLoading={isLoading}
+      isDataExist={data}
+      emptyText="Досягнення відсутні :("
+      size={150}
     >
-      <TransformComponent wrapperStyle={{ width: '100%' }}>
-        <AdvancementsRoad />
-        {!isLoading && (
+      <TransformWrapper
+        centerZoomedOut={false}
+        centerOnInit={false}
+        initialPositionX={initialPositionX}
+        maxPositionX={screenWidth}
+      >
+        <TransformComponent wrapperStyle={{ width: '100%' }}>
+          <AdvancementsRoad />
           <RoadContainer>
             {userAdvancements.map(
               ({ top, left, figure, itemIcon, isDone, title, description }) => {
@@ -69,9 +76,9 @@ const AdvancementsMap = ({ realname }: AdvancementsMapProps): JSX.Element => {
               },
             )}
           </RoadContainer>
-        )}
-      </TransformComponent>
-    </TransformWrapper>
+        </TransformComponent>
+      </TransformWrapper>
+    </StyledSkeleton>
   )
 }
 

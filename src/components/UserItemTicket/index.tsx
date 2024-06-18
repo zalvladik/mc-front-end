@@ -1,45 +1,40 @@
 import InformationButton from 'src/components/InformationButton'
+import Skeleton from 'src/components/Skeleton'
 import {
   Container,
   ContainerWrapper,
-  Empty,
   TicketIdWrapper,
 } from 'src/components/UserItemTicket/styles'
 import { useUserItemTicket } from 'src/components/UserItemTicket/useUserItemTicket'
 
 const UserItemTicket = (): JSX.Element => {
-  const { data, openItemsInTicketModal, showInfo } = useUserItemTicket()
+  const { data, openItemsInTicketModal, showInfo, isLoading } = useUserItemTicket()
 
   return (
     <ContainerWrapper>
-      <Container
-        style={{ height: data.length ? 500 : 170 }}
-        className={`itemTicket${data.length}`}
-      >
-        {data.map(({ id }) => (
-          <button key={id} onClick={() => openItemsInTicketModal(id)}>
-            <TicketIdWrapper>
-              <div>{id}</div>
-            </TicketIdWrapper>
-          </button>
-        ))}
+      <Container className={`itemTicket${data.length}`}>
+        <Skeleton
+          isDataExist={data.length}
+          isLoading={isLoading}
+          emptyText="Квитки відсутні"
+        >
+          {data.map(({ id }) => (
+            <button key={id} onClick={() => openItemsInTicketModal(id)}>
+              <TicketIdWrapper>
+                <div>{id}</div>
+              </TicketIdWrapper>
+            </button>
+          ))}
 
-        {data.length ? (
           <h1>Квитки {data.length}/5</h1>
-        ) : (
-          <Empty>
-            <h1>У вас наразі</h1>
-            <h1>відсутні квитки</h1>
-            <h1>0/5</h1>
-          </Empty>
-        )}
 
-        <InformationButton
-          onClick={() => {
-            showInfo()
-          }}
-          style={{ left: 0, bottom: 0 }}
-        />
+          <InformationButton
+            onClick={() => {
+              showInfo()
+            }}
+            style={{ left: 0, bottom: 0 }}
+          />
+        </Skeleton>
       </Container>
     </ContainerWrapper>
   )

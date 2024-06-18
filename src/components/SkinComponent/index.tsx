@@ -7,7 +7,6 @@ import {
   PlayerRoleImage,
   PlayerRoleImageWrapper,
   SkinContainer,
-  SkinIcon,
 } from 'src/components/SkinComponent/styles'
 import { useSkinComponent } from 'src/components/SkinComponent/useSkinComponent'
 
@@ -24,7 +23,7 @@ const SkinComponent = (): JSX.Element => {
         size={80}
       >
         <SkinContainer>
-          <SkinIcon ref={canvasRef} id="canvas" />
+          <canvas ref={canvasRef} id="canvas" />
           {role !== Role.USER && (
             <PlayerRoleImageWrapper>
               <div>

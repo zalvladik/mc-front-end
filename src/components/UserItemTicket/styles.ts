@@ -1,21 +1,5 @@
 import styled from 'styled-components'
 
-export const Empty = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-
-  translate: 0% -50%;
-
-  & > h1 {
-    text-align: center;
-    font-weight: 500;
-    font-family: 'Minecraft', sans-serif;
-    font-size: 30px;
-    translate: -50% 0%;
-  }
-`
-
 export const ContainerWrapper = styled.div`
   background: radial-gradient(
     circle,
@@ -40,6 +24,8 @@ export const ContainerWrapper = styled.div`
 
 export const Container = styled.div`
   position: relative;
+
+  height: 500px;
 
   overflow: hidden;
 

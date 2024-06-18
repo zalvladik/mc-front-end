@@ -1,11 +1,18 @@
 import styled from 'styled-components'
 
+import Skeleton from 'src/components/Skeleton'
+
 export const RoadContainer = styled.div`
   z-index: 1;
   position: absolute;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
+`
+
+export const StyledSkeleton = styled(Skeleton)`
+  width: 90%;
+  height: 90%;
 `
 
 export const IconContainer = styled.div`

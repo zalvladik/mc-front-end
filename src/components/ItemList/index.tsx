@@ -12,8 +12,7 @@ import {
 } from 'src/components/ItemList/styles'
 import type { ItemListProps } from 'src/components/ItemList/types'
 import { UseItemList } from 'src/components/ItemList/useItemList'
-
-import Skeleton from '../Skeleton'
+import Skeleton from 'src/components/Skeleton'
 
 const ItemList = ({
   items,

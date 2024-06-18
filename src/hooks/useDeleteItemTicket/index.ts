@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from 'react-query'
 import { CacheKeys } from 'src/constants'
+import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { useToast } from 'src/contexts/ToastProvider/useToast'
 import ItemTicket from 'src/services/api/ItemTicket'
 import type { ItemTicketT } from 'src/services/api/ItemTicket/types'
@@ -8,6 +9,7 @@ import type { ItemT } from 'src/services/api/UserInventory/types'
 export const useDeleteItemTicket = (itemTicketId: number, itemIds: number[]) => {
   const toast = useToast()
   const queryClient = useQueryClient()
+  const { onClose } = useModals()
 
   const { data, mutate, isLoading } = useMutation({
     mutationFn: () => ItemTicket.deleteItemTicket(itemIds, itemTicketId),
@@ -24,6 +26,7 @@ export const useDeleteItemTicket = (itemTicketId: number, itemIds: number[]) => 
       })
 
       toast.success({ message: ['Квиток видалено'] })
+      onClose()
     },
     onError: (error: Error) => {
       toast.error({ message: [error.message] })

@@ -28,7 +28,6 @@ export const useModalItemsInTicket = (itemTicketId: number) => {
 
   const deleteItemTicket = () => {
     deleteTicket()
-    onClose()
   }
 
   const submitButton = () => {
@@ -36,7 +35,6 @@ export const useModalItemsInTicket = (itemTicketId: number) => {
 
     if (selectedItems.length === data.length) {
       deleteTicket()
-      onClose()
 
       return
     }
