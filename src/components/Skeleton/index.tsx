@@ -15,7 +15,7 @@ const Skeleton = ({
 }: SkeletonProps): ReactNode | JSX.Element => {
   if (isLoading) {
     return (
-      <Container className="skeleton" {...props}>
+      <Container {...props}>
         {Array.from({ length: skeletonLength }).map((_, i) => (
           <div
             className="loadingContainer"
