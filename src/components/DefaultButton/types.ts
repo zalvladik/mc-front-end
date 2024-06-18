@@ -1,3 +1,6 @@
 import type { HTMLProps } from 'react'
 
-export type DefaultButtonProps = { isVisible?: boolean } & HTMLProps<HTMLDivElement>
+export type DefaultButtonProps = {
+  isVisible?: boolean
+  isLoading: boolean
+} & HTMLProps<HTMLDivElement>

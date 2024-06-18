@@ -8,6 +8,7 @@ export type ItemListProps = {
   styleForItemBorder: (id: number) => CSSProperties
   selectAreaColor?: SelectAreaColors
   isNeedAreaSelect?: boolean
+  isLoading: boolean
 } & HTMLProps<HTMLDivElement>
 
 export type CoordsProps = {

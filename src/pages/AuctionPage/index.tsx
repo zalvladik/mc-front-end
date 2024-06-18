@@ -55,6 +55,10 @@ const AuctionPage = (): JSX.Element => {
           />
 
           <DefaultButton
+            isLoading={auctionByeLotsProps.isLoading}
+            disabled={
+              auctionByeLotsProps.isLoading || !auctionSearchInputProps.searchValue
+            }
             onClick={findLotByName}
             style={{ width: 200 }}
             isVisible={!isFragment.isUserLotsFragment}

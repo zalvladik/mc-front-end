@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import Skeleton from 'src/components/Skeleton'
+
 export const Container = styled.div``
 
 export const TheadContainer = styled.div`
@@ -136,6 +138,38 @@ export const TbodyContainer = styled.div`
         width: 38%;
       }
     }
+  }
+`
+
+export const StyledSkeleton = styled(Skeleton)`
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+
+  padding: 10px;
+  height: 90%;
+
+  border-radius: 5px;
+
+  background: radial-gradient(
+    circle,
+    rgba(100, 110, 120, 1) 0%,
+    rgba(30, 35, 40, 1) 100%
+  );
+
+  -webkit-box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
+  -moz-box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
+  box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
+
+  & > .loadingContainer {
+    height: 66px;
   }
 `
 

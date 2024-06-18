@@ -80,5 +80,6 @@ export const useSkinComponent = () => {
     canvasRef,
     role: role(),
     roleUa: roleToUa(),
+    data: data?.textures.SKIN.url,
   }
 }

@@ -1,7 +1,9 @@
 import { Role } from 'src/constants'
 
 import HoverDescription from 'src/components/HoverDescription'
+import Skeleton from 'src/components/Skeleton'
 import {
+  Container,
   PlayerRoleImage,
   PlayerRoleImageWrapper,
   SkinContainer,
@@ -10,13 +12,17 @@ import {
 import { useSkinComponent } from 'src/components/SkinComponent/useSkinComponent'
 
 const SkinComponent = (): JSX.Element => {
-  const { isLoading, showRoleInfo, canvasRef, role, roleUa } = useSkinComponent()
+  const { isLoading, showRoleInfo, canvasRef, role, roleUa, data } =
+    useSkinComponent()
 
   return (
-    <div>
-      {isLoading ? (
-        <SkinIcon style={{ width: 350, height: 500 }} />
-      ) : (
+    <Container style={{ width: 350, height: 500 }}>
+      <Skeleton
+        isLoading={isLoading}
+        isDataExist={data}
+        emptyText="Скін не знайдено"
+        size={80}
+      >
         <SkinContainer>
           <SkinIcon ref={canvasRef} id="canvas" />
           {role !== Role.USER && (
@@ -41,8 +47,8 @@ const SkinComponent = (): JSX.Element => {
             </PlayerRoleImageWrapper>
           )}
         </SkinContainer>
-      )}
-    </div>
+      </Skeleton>
+    </Container>
   )
 }
 

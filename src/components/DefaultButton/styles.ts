@@ -63,6 +63,9 @@ export const Container = styled.div`
 `
 
 export const ButtonText = styled.div`
+  display: flex;
+  gap: 10px;
+
   position: absolute;
   z-index: 3;
 
@@ -76,4 +79,19 @@ export const ButtonText = styled.div`
   font-family: 'Minecraft', sans-serif;
   font-weight: 500;
   font-size: 25px;
+
+  & > svg {
+    animation: rotateAnimation 2s linear infinite;
+    @keyframes rotateAnimation {
+      0% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(240deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
 `

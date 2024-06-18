@@ -78,6 +78,7 @@ export const useAuctionCreateLot = () => {
   }
 
   const itemListProps = {
+    isLoading: isLoading || isRefetching,
     items: itemsOnPage,
     selectToogle,
     styleForItemBorder,

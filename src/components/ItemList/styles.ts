@@ -122,6 +122,7 @@ export const ItemAmount = styled.p`
   right: 0px;
   bottom: 0px;
   padding: 5px;
+
   font-size: 25px;
   font-family: 'Minecraft', sans-serif;
   text-shadow:

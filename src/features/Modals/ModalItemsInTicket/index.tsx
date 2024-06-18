@@ -24,6 +24,7 @@ const ModalItemsInTicket = ({
     inventoryHeaderProps,
     itemCategoryFilterProps,
     itemListProps,
+    isLoadingDeleteItemTicket,
   } = useModalItemsInTicket(itemTicketId)
 
   return (
@@ -38,7 +39,10 @@ const ModalItemsInTicket = ({
           <ItemCategoryFilter {...itemCategoryFilterProps} />
         </InventoryHeader>
         <ItemList {...itemListProps} />
-        <DeleteItemTicket onClick={() => deleteItemTicket()}>
+        <DeleteItemTicket
+          isLoading={isLoadingDeleteItemTicket}
+          onClick={() => deleteItemTicket()}
+        >
           <HoverDescription
             description={['Видалити квиток', 'і повернути всі премети']}
           />

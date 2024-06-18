@@ -91,6 +91,7 @@ export const useModalItemsInTicket = (itemTicketId: number) => {
   }
 
   const itemListProps = {
+    isLoading,
     items: filterItems({ items: data, searchValue: search, selectedCaterogies }),
     selectToogle,
     styleForItemBorder,
@@ -99,12 +100,13 @@ export const useModalItemsInTicket = (itemTicketId: number) => {
 
   return {
     onClose,
-    isLoading,
     data,
     inventoryHeaderProps,
     itemCategoryFilterProps,
     itemListProps,
     setSearch,
     deleteItemTicket,
+    isLoadingDeleteItemTicket:
+      isLoading || isLoadingItemTicket || isLoadingDeleteItemTicket,
   }
 }

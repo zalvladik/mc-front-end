@@ -1,9 +1,12 @@
+import { VscLoading } from 'react-icons/vsc'
+
 import { ButtonText, Container } from 'src/components/DefaultButton/styles'
 import type { DefaultButtonProps } from 'src/components/DefaultButton/types'
 
 const DefaultButton = ({
   children,
   disabled,
+  isLoading,
   isVisible = true,
   style,
   ...props
@@ -20,7 +23,8 @@ const DefaultButton = ({
       <div className="button_left" />
       <div className="button_center" />
       <div className="button_right" />
-      <ButtonText>{children}</ButtonText>
+
+      <ButtonText>{isLoading ? <VscLoading size={30} /> : children}</ButtonText>
     </Container>
   )
 }

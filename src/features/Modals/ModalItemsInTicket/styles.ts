@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import type { StyledDeleteItemTicketProps } from 'src/features/Modals/ModalItemsInTicket/types'
+
 export const Container = styled.div`
   background: radial-gradient(
     circle,
@@ -33,7 +35,7 @@ export const Container = styled.div`
   }
 `
 
-export const DeleteItemTicket = styled.button`
+export const DeleteItemTicket = styled.button<StyledDeleteItemTicketProps>`
   position: absolute;
   border: none;
   padding: 0px;
@@ -57,6 +59,9 @@ export const DeleteItemTicket = styled.button`
   transition:
     transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
     rotate 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  opacity: ${props => (props.isLoading ? 0.2 : 1)};
+  pointer-events: ${props => (props.isLoading ? 'none' : 'auto')};
 
   &:hover {
     cursor: pointer;

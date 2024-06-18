@@ -10,7 +10,7 @@ export const DefaultInputWrapper = styled.div`
   position: absolute;
 
   display: flex;
-  gap: 20px;
+  gap: 30px;
 
   top: 0px;
   left: 0px;

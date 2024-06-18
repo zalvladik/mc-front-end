@@ -31,6 +31,7 @@ const InventoryHeader = ({
       {children}
       {submitButton && (
         <DefaultButton
+          isLoading={isLoading!}
           style={{ width: 200 }}
           disabled={isCanPress || Boolean(!itemsLength)}
           onClick={() => {

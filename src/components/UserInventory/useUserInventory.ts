@@ -1,10 +1,16 @@
 import { useCallback, useState } from 'react'
-import { SelectAreaColors } from 'src/constants'
+import { useQueryClient } from 'react-query'
+import { CacheKeys, SelectAreaColors } from 'src/constants'
+import { useToast } from 'src/contexts/ToastProvider/useToast'
 import { filterItems } from 'src/helpers/filterItems'
 import { useCreateItemTicket } from 'src/hooks/useCreateItemTicket'
 import { useGetItemsFromUserInventory } from 'src/hooks/useGetItemsFromUserInventory'
+import type { ItemTicketT } from 'src/services/api/UserInventory/types'
 
 export const useUserInventory = () => {
+  const queryClient = useQueryClient()
+  const toast = useToast()
+
   const [selectedItems, setSelectedItems] = useState<number[]>([])
   const [selectedCaterogies, setSelectedCaterogies] = useState<string[]>([])
   const [searchValue, setSearchValue] = useState('')
@@ -26,6 +32,19 @@ export const useUserInventory = () => {
 
   const submitButton = () => {
     if (!selectedItems.length || selectedItems.length > 27) return
+
+    const data: ItemTicketT[] =
+      queryClient.getQueryData(CacheKeys.USER_INVENTORY_ITEM_TICKETS) ?? []
+
+    if (data.length >= 5) {
+      toast.error({
+        message: ['У вас може бути', 'тільки 5 квитків'],
+        height: 20,
+        width: -50,
+      })
+
+      return
+    }
 
     mutate(selectedItems)
     setSelectedItems([])
@@ -106,6 +125,7 @@ export const useUserInventory = () => {
   }
 
   const itemListProps = {
+    isLoading: isLoading || isRefetching,
     items: itemsOnPage,
     selectToogle,
     styleForItemBorder,
