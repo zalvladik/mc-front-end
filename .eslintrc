@@ -55,6 +55,7 @@
     "react/button-has-type": "off",
     "react/no-unknown-property": "off",
     "react/no-unescaped-entities": "off",
+    "react/jsx-no-useless-fragment": "off",
     "react/jsx-no-duplicate-props": "off",
     "react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",

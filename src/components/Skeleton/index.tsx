@@ -39,7 +39,7 @@ const Skeleton = ({
       </NoDataInfo>
     )
 
-  return children
+  return <>{children}</>
 }
 
 export default Skeleton
