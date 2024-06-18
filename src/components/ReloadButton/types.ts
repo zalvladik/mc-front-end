@@ -5,3 +5,7 @@ export type ReloadButonProps = {
   isLoading: boolean
   message: string
 } & HTMLProps<HTMLDivElement>
+
+export type StyledContainerProps = {
+  isLoading: boolean
+}

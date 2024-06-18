@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { useForm } from 'react-hook-form'
+import { useForm, useWatch } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { useLogin } from 'src/hooks/useLogin'
 import type { SignInFormT } from 'src/pages/SignInPage/types'
@@ -12,7 +12,7 @@ export const useSignInPage = () => {
   const {
     handleSubmit,
     trigger,
-    formState: { errors },
+    formState: { errors, isValid },
     control,
   } = useForm<SignInFormT>({
     resolver: yupResolver(validationSchema),
@@ -27,6 +27,12 @@ export const useSignInPage = () => {
     mutate({ realname, password })
   }
 
+  const formValues = useWatch({
+    control,
+  })
+
+  const isFormFilled = formValues.realname && formValues.password
+
   return {
     navigate,
     errors,
@@ -34,6 +40,7 @@ export const useSignInPage = () => {
     trigger,
     isError,
     isLoading,
+    isFormFilled: !isFormFilled || !isValid,
     handleSubmit: handleSubmit(signIn),
   }
 }

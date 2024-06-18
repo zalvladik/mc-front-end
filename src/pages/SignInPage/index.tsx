@@ -2,7 +2,6 @@ import type { ChangeEvent } from 'react'
 import { Controller } from 'react-hook-form'
 import {
   ButtonClose,
-  ButtonSubmit,
   Container,
   CrossWrapper,
   Description,
@@ -10,14 +9,22 @@ import {
   FormContainer,
   FormImage,
   InputWrapper,
+  StyledDefaultButton,
 } from 'src/pages/SignInPage/styles'
 import { useSignInPage } from 'src/pages/SignInPage/useSignInPage'
 
 import InputSignIn from 'src/features/InputSignIn'
 
 const SignInPage = (): JSX.Element => {
-  const { navigate, errors, control, trigger, isLoading, handleSubmit } =
-    useSignInPage()
+  const {
+    navigate,
+    errors,
+    control,
+    trigger,
+    isFormFilled,
+    isLoading,
+    handleSubmit,
+  } = useSignInPage()
 
   return (
     <Container>
@@ -69,9 +76,14 @@ const SignInPage = (): JSX.Element => {
             )}
           />
 
-          <ButtonSubmit disabled={isLoading} onClick={handleSubmit}>
+          <StyledDefaultButton
+            disabled={isLoading || isFormFilled}
+            isLoading={isLoading}
+            onClick={handleSubmit}
+          >
             Підтвердити
-          </ButtonSubmit>
+          </StyledDefaultButton>
+
           <Description>Реєстрація проходить тільки через заявку</Description>
           <Description>Пароль і логін такий же як у вас на сервері</Description>
         </FormContainer>

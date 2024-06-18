@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import DefaultButton from 'src/components/DefaultButton'
+
 export const Container = styled.div`
   padding: 150px 50px 50px 50px;
   display: flex;
@@ -38,22 +40,9 @@ export const InputWrapper = styled.div`
   }
 `
 
-export const ButtonSubmit = styled.button`
+export const StyledDefaultButton = styled(DefaultButton)`
   margin: auto auto 0px auto;
-  color: white;
-  background-image: url(${'/assets/buttons/button_280.png'});
-  background-repeat: no-repeat;
   width: 280px;
-  height: 50px;
-  border: none;
-  font-size: 25px;
-  font-family: 'Minecraft', sans-serif;
-  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-  }
 `
 
 export const ButtonClose = styled.button`

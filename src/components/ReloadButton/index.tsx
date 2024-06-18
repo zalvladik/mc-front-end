@@ -11,12 +11,7 @@ const ReloadButtton = ({
   ...props
 }: ReloadButonProps): JSX.Element => {
   return (
-    <Container
-      disabled={isLoading}
-      style={{ opacity: isLoading ? 0.7 : 1 }}
-      onClick={() => refetch()}
-      {...props}
-    >
+    <Container isLoading={isLoading} onClick={() => refetch()} {...props}>
       <TfiReload size={24} />
       <HoverDescription
         style={{ translate: '-50% -215%', fontSize: 15 }}
