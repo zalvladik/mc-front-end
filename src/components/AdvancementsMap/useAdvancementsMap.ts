@@ -26,6 +26,5 @@ export const useAdvancementsMap = (realname: string) => {
     isLoading,
     screenWidth,
     initialPositionX,
-    data: data?.advancements,
   }
 }

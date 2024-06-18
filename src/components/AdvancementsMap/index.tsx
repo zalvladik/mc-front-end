@@ -22,13 +22,12 @@ const AdvancementsMap = ({ realname }: AdvancementsMapProps): JSX.Element => {
     isLoading,
     screenWidth,
     initialPositionX,
-    data,
   } = useAdvancementsMap(realname)
 
   return (
     <StyledSkeleton
       isLoading={isLoading}
-      isDataExist={data}
+      isDataExist={1}
       emptyText="Досягнення відсутні :("
       size={150}
     >

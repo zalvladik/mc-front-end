@@ -11,14 +11,13 @@ import {
 import { useSkinComponent } from 'src/components/SkinComponent/useSkinComponent'
 
 const SkinComponent = (): JSX.Element => {
-  const { isLoading, showRoleInfo, canvasRef, role, roleUa, data } =
-    useSkinComponent()
+  const { isLoading, showRoleInfo, canvasRef, role, roleUa } = useSkinComponent()
 
   return (
     <Container style={{ width: 350, height: 500 }}>
       <Skeleton
         isLoading={isLoading}
-        isDataExist={data}
+        isDataExist={1}
         emptyText="Скін не знайдено"
         size={80}
       >
