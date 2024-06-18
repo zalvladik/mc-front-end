@@ -4,26 +4,29 @@ export const ItemCardContainer = styled.div`
   z-index: 120;
   position: absolute;
   display: none;
+
+  padding: 14px;
+  gap: 16px;
+
   flex-direction: column;
-  border: 2px solid #555555;
-  border-radius: 5px;
-  overflow: hidden;
-  background-color: #212121;
-  pointer-events: none;
+  border: 3px solid #1e0245;
+
+  border-radius: 6px;
+
+  background-color: #120312;
+
+  translate: 20% 20%;
 `
 
 export const Title = styled.div`
-  padding: 4px 10px;
-
   p {
     white-space: nowrap;
-    font-size: 20px;
+    font-size: 24px;
     font-family: 'Minecraft', sans-serif;
   }
 `
 
 export const Description = styled.ul`
-  padding: 3px 10px;
   display: flex;
   flex-direction: column;
 
@@ -34,8 +37,10 @@ export const Description = styled.ul`
   & > li {
     & > p {
       white-space: nowrap;
-      font-size: 20px;
+
+      font-size: 24px;
       font-family: 'Minecraft', sans-serif;
+      text-shadow: '3px 3px #292929';
     }
   }
 `

@@ -99,7 +99,7 @@ export const ItemButtom = styled.div`
     transform: scale(1.05);
   }
 
-  &:hover > div.ItemCard {
+  &:hover > div.itemCard {
     display: flex;
   }
 `

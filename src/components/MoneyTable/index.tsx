@@ -4,7 +4,11 @@ import { MoneyAmountContainer } from 'src/components/MoneyTable/styles'
 import type { MoneyTableProps } from 'src/components/MoneyTable/types'
 import { useMoneyTable } from 'src/components/MoneyTable/useMoneyTable'
 
-const MoneyTable = ({ anotherMoney, moneyTitle }: MoneyTableProps): JSX.Element => {
+const MoneyTable = ({
+  anotherMoney,
+  moneyTitle,
+  ...props
+}: MoneyTableProps): JSX.Element => {
   const { money, isRefetching, isLoading } = useMoneyTable()
 
   const currentMoney = anotherMoney ?? money
@@ -12,7 +16,7 @@ const MoneyTable = ({ anotherMoney, moneyTitle }: MoneyTableProps): JSX.Element 
   const { stack, restMoney } = moneyCalculator(currentMoney)
 
   return (
-    <MoneyAmountContainer>
+    <MoneyAmountContainer {...props}>
       {!isLoading && !isRefetching && (
         <>
           {moneyTitle && (

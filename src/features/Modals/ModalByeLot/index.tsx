@@ -2,15 +2,14 @@ import { FETCH_URL_IMG } from 'src/constants'
 
 import ButtonModalClose from 'src/components/ButtonModalClose'
 import DefaultButton from 'src/components/DefaultButton'
+import ItemCard from 'src/components/ItemCard'
 import MoneyTable from 'src/components/MoneyTable'
 
 import {
   Container,
+  IconSlot,
   ItemAmount,
-  ItemContainer,
-  ItemDescription,
   ItemIcon,
-  ItemIconContainer,
   ItemOwner,
 } from 'src/features/Modals/ModalByeLot/styles'
 import type { ModalByeLotProps } from 'src/features/Modals/ModalByeLot/types'
@@ -32,25 +31,32 @@ const ModalByeLot = ({
     >
       <ButtonModalClose onClose={onClose} />
       <Container>
-        <ItemContainer>
-          <ItemIconContainer>
+        <div>
+          <IconSlot>
             <ItemIcon
               style={{
                 backgroundImage: `url(${FETCH_URL_IMG}/${data.item.type.slice(0, 2)}/${data.item.type}.png)`,
               }}
             />
             {data.item.amount > 1 && <ItemAmount>{data.item.amount}</ItemAmount>}
-          </ItemIconContainer>
-          <ItemDescription />
-        </ItemContainer>
+          </IconSlot>
+
+          <MoneyTable style={{ paddingRight: 50 }} anotherMoney={data.price} />
+        </div>
+        <ItemCard
+          description={data.item.description ?? []}
+          title={data.item.display_name}
+          style={{ alignContent: 'center' }}
+        />
+
+        <DefaultButton
+          disabled={data.price > userMoney}
+          style={{ width: '100%', margin: '0px auto' }}
+        >
+          {userMoney > data.price ? 'Купити' : 'Недостатньо коштів'}
+        </DefaultButton>
 
         <ItemOwner>Власник лоту: {data.realname}</ItemOwner>
-
-        <MoneyTable moneyTitle="Ціна товару" anotherMoney={data.price} />
-
-        <DefaultButton disabled={data.price > userMoney} style={{ width: 300 }}>
-          Купити
-        </DefaultButton>
       </Container>
     </SettingsModalsLayout>
   )

@@ -2,69 +2,68 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   position: relative;
-
-  padding: 30px;
   display: flex;
   flex-direction: column;
+  gap: 20px;
 
-  gap: 40px;
+  padding: 20px;
 
-  background: radial-gradient(
-    circle,
-    rgba(30, 67, 89, 1) 0%,
-    rgba(20, 47, 61, 1) 100%
-  );
+  border: 4px solid #1e0245;
+  background-color: #120312;
 
-  border: 1px solid gray;
-  border-radius: 10px;
+  border-radius: 12px;
 
   -webkit-box-shadow:
-    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
-    0px 0px 18px -5px rgba(255, 255, 255, 1);
+    inset 0px 0px 60px 18px rgba(0, 0, 0, 0.75),
+    0px 0px 16px -5px rgba(255, 255, 255, 1);
   -moz-box-shadow:
-    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
-    0px 0px 18px -5px rgba(255, 255, 255, 1);
+    inset 0px 0px 60px 18px rgba(0, 0, 0, 0.75),
+    0px 0px 16px -5px rgba(255, 255, 255, 1);
   box-shadow:
-    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
-    0px 0px 18px -5px rgba(255, 255, 255, 1);
+    inset 0px 0px 60px 18px rgba(0, 0, 0, 0.75),
+    0px 0px 16px -5px rgba(255, 255, 255, 1);
 
-  & > div:last-child {
-    margin: 0px auto;
+  & > .itemCard {
+    position: static;
+    display: flex;
+
+    border: none;
+    border-radius: 0px;
+
+    background-color: rgba(0, 0, 0, 0);
+
+    translate: 0% 0%;
+  }
+
+  & > div:first-child {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
   }
 `
 
-export const ItemContainer = styled.div`
-  position: absolute;
+export const IconSlot = styled.div`
+  position: relative;
 
   width: 200px;
   height: 200px;
-
-  top: 0px;
-  left: 50%;
-
-  translate: -50% -110%;
 
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url('/assets/items_for_ui/slot.png');
 `
 
-export const ItemIconContainer = styled.div`
+export const ItemIcon = styled.div`
   position: absolute;
+
+  width: 128px;
+  height: 128px;
+
   top: 50%;
   left: 50%;
 
   translate: -50% -50%;
-
-  background-size: contain;
-  background-repeat: no-repeat;
-`
-
-export const ItemDescription = styled.div``
-
-export const ItemIcon = styled.div`
-  width: 128px;
-  height: 128px;
 
   background-size: contain;
   background-repeat: no-repeat;
@@ -86,15 +85,16 @@ export const ItemAmount = styled.p`
 export const ItemOwner = styled.div`
   position: absolute;
 
-  position: absolute;
-  bottom: 0px;
+  top: 0px;
   left: 50%;
 
-  translate: -50% 150%;
+  translate: -50% -160%;
 
   white-space: nowrap;
 
-  font-size: 30px;
+  color: lightgray;
+
+  font-size: 25px;
   font-family: 'Minecraft', sans-serif;
   text-shadow:
     0px 0px 15px #000000,
