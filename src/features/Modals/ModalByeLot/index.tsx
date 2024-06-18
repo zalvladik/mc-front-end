@@ -48,7 +48,11 @@ const ModalByeLot = ({
 
         <MoneyTable moneyTitle="Ціна товару" anotherMoney={data.price} />
 
-        <DefaultButton disabled={data.price > userMoney} style={{ width: 300 }}>
+        <DefaultButton
+          isLoading={false}
+          disabled={data.price > userMoney}
+          style={{ width: 300 }}
+        >
           Купити
         </DefaultButton>
       </Container>

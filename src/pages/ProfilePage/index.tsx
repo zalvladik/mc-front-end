@@ -22,9 +22,11 @@ const ProfilePage = (): JSX.Element => {
         <PlayerInfo>
           <NickName>{user.realname}</NickName>
           <ButtonList>
-            <DefaultButton onClick={openAdvancementsModal}>Досягнення</DefaultButton>
+            <DefaultButton isLoading={false} onClick={openAdvancementsModal}>
+              Досягнення
+            </DefaultButton>
 
-            <DefaultButton disabled={isLoading} onClick={logout}>
+            <DefaultButton isLoading={false} disabled={isLoading} onClick={logout}>
               Вийти
             </DefaultButton>
           </ButtonList>
