@@ -25,7 +25,6 @@ const AuctionController = ({
 
           return (
             <DefaultButton
-              isLoading={false}
               onClick={() => setCurrentFragment(fragment)}
               key={fragment}
               disabled={isCurrentFragment}
