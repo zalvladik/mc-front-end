@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react'
 import { VscLoading } from 'react-icons/vsc'
 
 import { Container, NoDataInfo } from 'src/components/Skeleton/styles'
@@ -12,7 +11,7 @@ const Skeleton = ({
   children,
   emptyText,
   ...props
-}: SkeletonProps): ReactNode | JSX.Element => {
+}: SkeletonProps): JSX.Element => {
   if (isLoading) {
     return (
       <Container {...props}>
