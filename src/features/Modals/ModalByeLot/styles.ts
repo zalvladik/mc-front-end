@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const Container = styled.div`
   position: relative;
@@ -54,6 +54,27 @@ export const IconSlot = styled.div`
   background-image: url('/assets/items_for_ui/slot.png');
 `
 
+const pulseAnimation = keyframes`
+  0% {
+    background-color: rgba(128, 0, 128, 0.1);
+  }
+  50% {
+    background-color: rgba(200, 50, 200, 0.4);
+  }
+  100% {
+    background-color: rgba(128, 0, 128, 0.1);
+  }
+`
+
+const rotateAnimation = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+  `
+
 export const ItemIcon = styled.div`
   position: absolute;
 
@@ -64,9 +85,63 @@ export const ItemIcon = styled.div`
   left: 50%;
 
   translate: -50% -50%;
-
   background-size: contain;
   background-repeat: no-repeat;
+`
+
+export const GlowContainer = styled.div`
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+`
+
+export const ItemGlowBorder = styled.div`
+  width: 216px;
+  height: 216px;
+
+  position: absolute;
+  translate: -50% -50%;
+
+  top: 50%;
+  left: 50%;
+
+  mask-image: url('/assets/items_for_ui/glow_border.png');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-image: url('/assets/items_for_ui/glow_border.png');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(116, 9, 121, 1) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  animation: ${rotateAnimation} 3s infinite linear;
+`
+
+export const ItemGlow = styled.div`
+  width: 128px;
+  height: 128px;
+
+  position: absolute;
+  translate: -50% -50%;
+
+  top: 50%;
+  left: 50%;
+
+  mask-image: url(${props => props.maskImage});
+  mask-size: contain;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-image: url(${props => props.maskImage});
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+
+  animation: ${pulseAnimation} 3s infinite;
 `
 
 export const ItemAmount = styled.p`

@@ -7,8 +7,11 @@ import MoneyTable from 'src/components/MoneyTable'
 
 import {
   Container,
+  GlowContainer,
   IconSlot,
   ItemAmount,
+  ItemGlow,
+  ItemGlowBorder,
   ItemIcon,
   ItemOwner,
 } from 'src/features/Modals/ModalByeLot/styles'
@@ -23,6 +26,8 @@ const ModalByeLot = ({
 }: ModalByeLotProps): JSX.Element => {
   const { onClose, userMoney } = useModalByeLot()
 
+  const imageUrl = `${FETCH_URL_IMG}/${data.item.type.slice(0, 2)}/${data.item.type}.png`
+
   return (
     <SettingsModalsLayout
       isOpen={isOpen}
@@ -35,9 +40,14 @@ const ModalByeLot = ({
           <IconSlot>
             <ItemIcon
               style={{
-                backgroundImage: `url(${FETCH_URL_IMG}/${data.item.type.slice(0, 2)}/${data.item.type}.png)`,
+                backgroundImage: `url(${imageUrl})`,
               }}
-            />
+            >
+              <GlowContainer>
+                <ItemGlow maskImage={imageUrl} />
+                <ItemGlowBorder />
+              </GlowContainer>
+            </ItemIcon>
             {data.item.amount > 1 && <ItemAmount>{data.item.amount}</ItemAmount>}
           </IconSlot>
 
