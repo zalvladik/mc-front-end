@@ -4,12 +4,12 @@ import DefaultInput from 'src/components/inputs/DefaultInput'
 import InventoryHeader from 'src/components/InventoryHeader'
 import { InventoryHeaderTitle } from 'src/components/InventoryHeader/styles'
 import ItemList from 'src/components/ItemList'
+import { EmptySlot } from 'src/components/ItemList/styles'
 import {
-  EmptySlot,
   ItemAmount,
-  ItemButtom,
   ItemIcon,
-} from 'src/components/ItemList/styles'
+  ItemSlotIconContainer,
+} from 'src/components/ItemSlotIcon/styles'
 
 import PaginationTab from 'src/features/PaginationTab'
 
@@ -53,7 +53,7 @@ export const StyledItemList = styled(ItemList)`
 
   padding: 5px 5px;
 
-  & > ${ItemButtom} {
+  & > ${ItemSlotIconContainer} {
     width: 78.2px;
     height: 78.2px;
 

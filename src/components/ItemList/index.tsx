@@ -1,17 +1,12 @@
-import { FETCH_URL_IMG } from 'src/constants'
-
-import ItemCard from 'src/components/ItemCard'
 import {
   AreaSelect,
   Container,
   EmptySlot,
-  ItemAmount,
-  ItemButtom,
-  ItemIcon,
   ItemMiddleware,
 } from 'src/components/ItemList/styles'
 import type { ItemListProps } from 'src/components/ItemList/types'
 import { UseItemList } from 'src/components/ItemList/useItemList'
+import ItemSlotIcon from 'src/components/ItemSlotIcon'
 import Skeleton from 'src/components/Skeleton'
 
 const ItemList = ({
@@ -21,6 +16,7 @@ const ItemList = ({
   selectAreaColor,
   isNeedAreaSelect = true,
   isLoading,
+  itemGlowSizes,
   ...props
 }: ItemListProps): JSX.Element => {
   const {
@@ -46,21 +42,14 @@ const ItemList = ({
       >
         <AreaSelect ref={areaSelectRef} style={areaSelectStyle} />
         <ItemMiddleware ref={itemMiddlewareRef} />
-        {items.map(({ amount, id, display_name, type, description }) => (
-          <ItemButtom
-            id={`${id}`}
-            key={id}
-            onClick={() => selectToogle([id])}
-            style={styleForItemBorder(id)}
-          >
-            <ItemIcon
-              style={{
-                backgroundImage: `url(${FETCH_URL_IMG}/${type.slice(0, 2)}/${type}.png)`,
-              }}
-            />
-            {amount > 1 && <ItemAmount>{amount}</ItemAmount>}
-            <ItemCard description={description} title={display_name} />
-          </ItemButtom>
+        {items.map(item => (
+          <ItemSlotIcon
+            key={item.id}
+            onClick={() => selectToogle([item.id])}
+            style={{ ...styleForItemBorder(item.id), margin: 4 }}
+            itemGlowSizes={itemGlowSizes}
+            {...item}
+          />
         ))}
 
         {Array.from({ length: 27 - items.length }).map((_, i) => (

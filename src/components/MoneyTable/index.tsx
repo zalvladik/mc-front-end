@@ -15,6 +15,12 @@ const MoneyTable = ({
 
   const { stack, restMoney } = moneyCalculator(currentMoney)
 
+  const stylesForDiv = {
+    right: currentMoney <= 64 ? -64 : -50,
+    width: currentMoney <= 64 ? 60 : 48,
+    height: currentMoney <= 64 ? 60 : 48,
+  }
+
   return (
     <MoneyAmountContainer {...props}>
       {!isLoading && !isRefetching && (
@@ -25,19 +31,21 @@ const MoneyTable = ({
             </li>
           )}
           <li>
-            <h1>{currentMoney}</h1>
-            <div />
+            <h1 style={{ fontSize: currentMoney <= 64 ? 50 : 32 }}>
+              {currentMoney}
+            </h1>
+            <div style={stylesForDiv} />
           </li>
           {currentMoney > 64 && (
             <li>
               <h1>{`[${stack}ст.${restMoney}шт.]`}</h1>
-              <div />
+              <div style={stylesForDiv} />
             </li>
           )}
           {currentMoney > 256 && (
             <li>
               <h1>{moneyCalculatorShulker(currentMoney)}</h1>
-              <div />
+              <div style={stylesForDiv} />
             </li>
           )}
         </>

@@ -13,6 +13,7 @@ import {
   StyledPaginationTab,
 } from 'src/components/Auction/AuctionCreateLot/styles'
 import { useAuctionCreateLot } from 'src/components/Auction/AuctionCreateLot/useAuctionCreateLot'
+import { ItemGlower } from 'src/components/ItemGlow/styles'
 
 import ItemCategoryFilter from 'src/features/ItemCategoryFilter'
 
@@ -25,6 +26,7 @@ const AuctionCreateLot = (): JSX.Element => {
     paginationTabProps,
     itemListProps,
     currentItem,
+    itemSlotIconProps,
   } = useAuctionCreateLot()
 
   return (
@@ -38,7 +40,7 @@ const AuctionCreateLot = (): JSX.Element => {
               onChange={e => searchFilter(e.target.value)}
             />
           </StyledInventoryHeader>
-          <StyledItemList {...itemListProps} />
+          <StyledItemList {...itemSlotIconProps} {...itemListProps} />
         </Container>
         <InventoryFooterWrapper>
           <ItemCategoryFilter {...itemCategoryFilterProps} />
@@ -58,7 +60,14 @@ const AuctionCreateLot = (): JSX.Element => {
             style={{
               backgroundImage: `url(${FETCH_URL_IMG}/${currentItem ? currentItem.type.slice(0, 2) : 'be'}/${currentItem ? currentItem.type : 'bedrock'}.png)`,
             }}
-          />
+          >
+            {currentItem?.enchants && (
+              <ItemGlower
+                maskImageUrl={`${FETCH_URL_IMG}/${currentItem.type.slice(0, 2)}/${currentItem.type}.png`}
+                style={{ width: 120, height: 120 }}
+              />
+            )}
+          </div>
         </ShowItemContainer>
 
         <AuctionCreateLotForm currentItemId={currentItem?.id} />

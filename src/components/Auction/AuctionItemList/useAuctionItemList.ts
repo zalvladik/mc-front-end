@@ -10,5 +10,7 @@ export const useAuctionItemList = () => {
     onOpen({ name: Modals.BYE_LOT, data })
   }
 
-  return { openModal }
+  const itemSlotIconProps = { itemGlowSizes: { containerSize: 58, itemSize: 38 } }
+
+  return { openModal, itemSlotIconProps }
 }

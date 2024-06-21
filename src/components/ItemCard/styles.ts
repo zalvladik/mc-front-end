@@ -12,6 +12,7 @@ export const ItemCardContainer = styled.div`
   border: 3px solid #1e0245;
 
   border-radius: 6px;
+  pointer-events: none;
 
   background-color: #120312;
 

@@ -173,6 +173,18 @@ export const StyledSkeleton = styled(Skeleton)`
   }
 `
 
+// const pulseAnimation = keyframes`
+//   0% {
+//     color: rgb(255, 255, 255);
+//   }
+//   50% {
+//     color: rgb(255, 160, 255);
+//   }
+//   100% {
+//     color: rgb(255, 255, 255);
+//   }
+// `
+
 export const ItemDesriptionContainer = styled.div`
   display: flex;
   align-items: center;
@@ -222,40 +234,4 @@ export const ItemPriceContainer = styled.div`
     background-size: contain;
     background-repeat: no-repeat;
   }
-`
-
-export const ItemSlotIcon = styled.div`
-  position: relative;
-
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-image: url('/assets/items_for_ui/slot.png');
-
-  width: 58px;
-  height: 58px;
-
-  display: flex;
-
-  align-items: center;
-
-  & > div {
-    margin: 0px auto;
-
-    width: 38px;
-    height: 38px;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-`
-
-export const ItemAmount = styled.p`
-  position: absolute;
-  right: -8px;
-  bottom: -8px;
-  padding: 5px;
-  font-size: 16px;
-  font-family: 'Minecraft', sans-serif;
-  text-shadow:
-    0px 0px 15px #000000,
-    0px 0px 15px #000000;
 `

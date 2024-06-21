@@ -1,22 +1,20 @@
-import { FETCH_URL_IMG } from 'src/constants'
 import { moneyCalculator } from 'src/helpers'
 
 import {
   Container,
   DeleteLotButton,
-  ItemAmount,
   ItemDesriptionContainer,
   ItemPriceContainer,
-  ItemSlotIcon,
   TbodyContainer,
   TheadContainer,
 } from 'src/components/Auction/AuctionUserLots/styles'
 import type { AuctionUserLotsProps } from 'src/components/Auction/AuctionUserLots/types'
 import { useAuctionUserLots } from 'src/components/Auction/AuctionUserLots/useAuctionUserLots'
 import HoverDescription from 'src/components/HoverDescription'
+import ItemSlotIcon from 'src/components/ItemSlotIcon'
 
 const AuctionUserLots = ({ lots }: AuctionUserLotsProps): JSX.Element => {
-  const { deleteUserLot } = useAuctionUserLots()
+  const { deleteUserLot, openModal, itemSlotIconProps } = useAuctionUserLots()
 
   return (
     <Container>
@@ -32,20 +30,13 @@ const AuctionUserLots = ({ lots }: AuctionUserLotsProps): JSX.Element => {
         </div>
       </TheadContainer>
       <TbodyContainer>
-        {lots.map(({ id, price, item }) => {
+        {lots.map(({ id, price, item, realname }) => {
           const { stack, restMoney } = moneyCalculator(price)
 
           return (
-            <div key={id}>
+            <div key={id} onClick={() => openModal({ item, id, price, realname })}>
               <div>
-                <ItemSlotIcon>
-                  <div
-                    style={{
-                      backgroundImage: `url(${FETCH_URL_IMG}/${item.type.slice(0, 2)}/${item.type}.png)`,
-                    }}
-                  />
-                  {item.amount > 1 && <ItemAmount>{item.amount}</ItemAmount>}
-                </ItemSlotIcon>
+                <ItemSlotIcon key={id} {...itemSlotIconProps} {...item} />
 
                 <ItemDesriptionContainer>
                   <div>

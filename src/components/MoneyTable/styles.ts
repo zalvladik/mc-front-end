@@ -5,6 +5,8 @@ export const MoneyAmountContainer = styled.ul`
   flex-direction: column;
   gap: 20px;
 
+  margin: 0px auto;
+
   & > li {
     position: relative;
     width: max-content;
@@ -18,8 +20,6 @@ export const MoneyAmountContainer = styled.ul`
 
     & > div {
       position: absolute;
-      width: 48px;
-      height: 48px;
       background-image: url('/assets/items_for_ui/deepslate_diamond_ore.png');
       background-size: contain;
       background-repeat: no-repeat;

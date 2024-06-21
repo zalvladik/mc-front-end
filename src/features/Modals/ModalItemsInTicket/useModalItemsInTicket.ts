@@ -94,6 +94,7 @@ export const useModalItemsInTicket = (itemTicketId: number) => {
     selectToogle,
     styleForItemBorder,
     selectAreaColor: SelectAreaColors.Red,
+    itemGlowSizes: { containerSize: 104, itemSize: 64 },
   }
 
   return {

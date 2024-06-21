@@ -3,15 +3,13 @@ import { FETCH_URL_IMG } from 'src/constants'
 import ButtonModalClose from 'src/components/ButtonModalClose'
 import DefaultButton from 'src/components/DefaultButton'
 import ItemCard from 'src/components/ItemCard'
+import ItemGlow from 'src/components/ItemGlow'
 import MoneyTable from 'src/components/MoneyTable'
 
 import {
   Container,
-  GlowContainer,
   IconSlot,
   ItemAmount,
-  ItemGlow,
-  ItemGlowBorder,
   ItemIcon,
   ItemOwner,
 } from 'src/features/Modals/ModalByeLot/styles'
@@ -26,7 +24,9 @@ const ModalByeLot = ({
 }: ModalByeLotProps): JSX.Element => {
   const { onClose, userMoney } = useModalByeLot()
 
-  const imageUrl = `${FETCH_URL_IMG}/${data.item.type.slice(0, 2)}/${data.item.type}.png`
+  const { item, realname, price, isByeFragment = true } = data
+
+  const imageUrl = `${FETCH_URL_IMG}/${item.type.slice(0, 2)}/${item.type}.png`
 
   return (
     <SettingsModalsLayout
@@ -42,31 +42,33 @@ const ModalByeLot = ({
               style={{
                 backgroundImage: `url(${imageUrl})`,
               }}
-            >
-              <GlowContainer>
-                <ItemGlow maskImage={imageUrl} />
-                <ItemGlowBorder />
-              </GlowContainer>
-            </ItemIcon>
-            {data.item.amount > 1 && <ItemAmount>{data.item.amount}</ItemAmount>}
+            />
+            {item.amount > 1 && <ItemAmount>{item.amount}</ItemAmount>}
+            {item.enchants && (
+              <ItemGlow containerSize={200} itemSize={128} imageUrl={imageUrl} />
+            )}
           </IconSlot>
 
-          <MoneyTable style={{ paddingRight: 50 }} anotherMoney={data.price} />
+          <MoneyTable style={{ paddingRight: 50 }} anotherMoney={price} />
         </div>
         <ItemCard
-          description={data.item.description ?? []}
-          title={data.item.display_name}
+          description={item.description || item.enchants}
+          title={item.display_name}
           style={{ alignContent: 'center' }}
         />
 
-        <DefaultButton
-          disabled={data.price > userMoney}
-          style={{ width: '100%', margin: '0px auto' }}
-        >
-          {userMoney > data.price ? 'Купити' : 'Недостатньо коштів'}
-        </DefaultButton>
+        {isByeFragment && (
+          <>
+            <DefaultButton
+              disabled={price > userMoney}
+              style={{ width: '100%', margin: '0px auto' }}
+            >
+              {userMoney > price ? 'Купити' : 'Недостатньо коштів'}
+            </DefaultButton>
 
-        <ItemOwner>Власник лоту: {data.realname}</ItemOwner>
+            <ItemOwner>Власник лоту: {realname}</ItemOwner>
+          </>
+        )}
       </Container>
     </SettingsModalsLayout>
   )
