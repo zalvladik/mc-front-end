@@ -95,7 +95,11 @@ export const useAuctionCreateLot = () => {
 
   const currentItem = items.find(item => item.id === selectedItems[0])
 
-  const itemSlotIconProps = { itemGlowSizes: { containerSize: 78, itemSize: 50 } }
+  const itemSlotIconProps = {
+    containerSize: 78,
+    itemSize: 50,
+    fontSize: 18,
+  }
 
   return {
     searchFilter,

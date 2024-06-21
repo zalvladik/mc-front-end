@@ -16,7 +16,7 @@ const ItemList = ({
   selectAreaColor,
   isNeedAreaSelect = true,
   isLoading,
-  itemGlowSizes,
+  itemSlotIconProps,
   ...props
 }: ItemListProps): JSX.Element => {
   const {
@@ -47,7 +47,7 @@ const ItemList = ({
             key={item.id}
             onClick={() => selectToogle([item.id])}
             style={{ ...styleForItemBorder(item.id), margin: 4 }}
-            itemGlowSizes={itemGlowSizes}
+            {...itemSlotIconProps}
             {...item}
           />
         ))}

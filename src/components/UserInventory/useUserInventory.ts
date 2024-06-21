@@ -130,7 +130,7 @@ export const useUserInventory = () => {
     selectToogle,
     styleForItemBorder,
     selectAreaColor: SelectAreaColors.Green,
-    itemGlowSizes: { containerSize: 104, itemSize: 64 },
+    itemSlotIconProps: { containerSize: 104, itemSize: 64 },
   }
 
   const paginationTabProps = {

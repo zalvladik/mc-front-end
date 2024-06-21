@@ -40,7 +40,7 @@ const AuctionCreateLot = (): JSX.Element => {
               onChange={e => searchFilter(e.target.value)}
             />
           </StyledInventoryHeader>
-          <StyledItemList {...itemSlotIconProps} {...itemListProps} />
+          <StyledItemList itemSlotIconProps={itemSlotIconProps} {...itemListProps} />
         </Container>
         <InventoryFooterWrapper>
           <ItemCategoryFilter {...itemCategoryFilterProps} />

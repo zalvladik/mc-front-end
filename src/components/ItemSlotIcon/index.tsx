@@ -17,11 +17,12 @@ const ItemSlotIcon = ({
   description,
   enchants,
   style,
-  itemGlowSizes,
+  containerSize,
+  itemSize,
+  fontSize = 25,
   onClick,
 }: ItemSlotIconProps): JSX.Element => {
   const imgUrl = `${FETCH_URL_IMG}/${type.slice(0, 2)}/${type}.png`
-  const { containerSize, itemSize } = itemGlowSizes
 
   return (
     <ItemSlotIconContainer
@@ -43,9 +44,15 @@ const ItemSlotIcon = ({
           height: itemSize,
         }}
       />
-      {amount > 1 && <ItemAmount>{amount}</ItemAmount>}
+      {amount > 1 && <ItemAmount style={{ fontSize }}>{amount}</ItemAmount>}
 
-      {enchants && <ItemGlow {...itemGlowSizes} imageUrl={imgUrl} />}
+      {enchants && (
+        <ItemGlow
+          containerSize={containerSize}
+          itemSize={itemSize}
+          imageUrl={imgUrl}
+        />
+      )}
 
       {(description || enchants) && (
         <ItemCard description={description ?? enchants} title={display_name} />

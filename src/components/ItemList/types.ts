@@ -9,7 +9,7 @@ export type ItemListProps = {
   selectAreaColor?: SelectAreaColors
   isNeedAreaSelect?: boolean
   isLoading: boolean
-  itemGlowSizes: { containerSize: number; itemSize: number }
+  itemSlotIconProps: { containerSize: number; itemSize: number; fontSize?: number }
 } & HTMLProps<HTMLDivElement>
 
 export type CoordsProps = {

@@ -40,7 +40,7 @@ const AuctionItemList = ({ lots, isLoading }: AuctionItemListProps): JSX.Element
             return (
               <div key={id} onClick={() => openModal({ item, id, price, realname })}>
                 <div>
-                  <ItemSlotIcon {...itemSlotIconProps} {...item} />
+                  <ItemSlotIcon {...itemSlotIconProps} {...item} fontSize={18} />
 
                   <ItemDesriptionContainer>
                     <div>

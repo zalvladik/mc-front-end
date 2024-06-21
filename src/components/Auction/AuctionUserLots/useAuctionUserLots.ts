@@ -16,7 +16,7 @@ export const useAuctionUserLots = () => {
     onOpen({ name: Modals.BYE_LOT, data: { ...data, isByeFragment: false } })
   }
 
-  const itemSlotIconProps = { itemGlowSizes: { containerSize: 58, itemSize: 38 } }
+  const itemSlotIconProps = { containerSize: 58, itemSize: 38 }
 
   return { deleteUserLot, openModal, itemSlotIconProps }
 }
