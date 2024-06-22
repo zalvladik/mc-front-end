@@ -5,5 +5,5 @@ export type SkeletonProps = {
   skeletonLength?: number
   isDataExist: number
   isLoading: boolean | number
-  emptyText: string
+  emptyText?: string
 } & HTMLProps<HTMLDivElement>

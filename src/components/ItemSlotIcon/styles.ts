@@ -21,7 +21,6 @@ export const ItemSlotIconContainer = styled.div`
 
   &:hover {
     z-index: 20;
-    cursor: cell;
     transform: scale(1.05);
   }
 
@@ -39,6 +38,7 @@ export const ItemIcon = styled.div`
 
   width: 64px;
   height: 64px;
+
   background-size: contain;
   background-repeat: no-repeat;
 `

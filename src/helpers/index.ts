@@ -1,4 +1,5 @@
 import type { LocalStorageKey } from 'src/constants'
+import { RoutesPath } from 'src/router/routes'
 import type { ValueOf } from 'src/types'
 
 export const copyText = (text: string): Promise<void> => {
@@ -95,4 +96,26 @@ export const sliceText = (text: string, maxLength: number): string => {
   if (text.length > maxLength) return `${text.slice(0, maxLength)}...`
 
   return text
+}
+
+export const auctionUrlQueryParams = (
+  category?: string,
+  page?: number,
+  display_nameOrType?: string,
+): string => {
+  const params = new URLSearchParams()
+
+  if (category) {
+    params.set('category', category)
+  }
+
+  if (page) {
+    params.set('page', page.toString())
+  }
+
+  if (display_nameOrType) {
+    params.set('display_nameOrType', display_nameOrType)
+  }
+
+  return `${RoutesPath.AUCTION}/?${params.toString()}`
 }

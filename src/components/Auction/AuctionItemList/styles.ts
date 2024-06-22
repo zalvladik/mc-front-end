@@ -173,18 +173,6 @@ export const StyledSkeleton = styled(Skeleton)`
   }
 `
 
-// const pulseAnimation = keyframes`
-//   0% {
-//     color: rgb(255, 255, 255);
-//   }
-//   50% {
-//     color: rgb(255, 160, 255);
-//   }
-//   100% {
-//     color: rgb(255, 255, 255);
-//   }
-// `
-
 export const ItemDesriptionContainer = styled.div`
   display: flex;
   align-items: center;

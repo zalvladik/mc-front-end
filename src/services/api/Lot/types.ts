@@ -22,6 +22,10 @@ export type CreateLotProps = {
   price: number
 }
 
+export type ByeLotProps = {
+  lotId: number
+}
+
 export type GetLotsProps = {
   page?: number
   category?: string

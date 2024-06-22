@@ -8,7 +8,9 @@ const InventoryPage = (): JSX.Element => {
   return (
     <Container>
       <UserInventoryWrapper>
-        <MoneyTable />
+        <div>
+          <MoneyTable />
+        </div>
         <UserInventory />
       </UserInventoryWrapper>
       <UserItemTicket />

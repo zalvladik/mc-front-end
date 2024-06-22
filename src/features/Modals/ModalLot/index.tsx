@@ -12,19 +12,15 @@ import {
   ItemAmount,
   ItemIcon,
   ItemOwner,
-} from 'src/features/Modals/ModalByeLot/styles'
-import type { ModalByeLotProps } from 'src/features/Modals/ModalByeLot/types'
-import { useModalByeLot } from 'src/features/Modals/ModalByeLot/useModalByeLot'
+} from 'src/features/Modals/ModalLot/styles'
+import type { ModalLotProps } from 'src/features/Modals/ModalLot/types'
+import { useModalLot } from 'src/features/Modals/ModalLot/useModalLot'
 import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
 
-const ModalByeLot = ({
-  isOpen,
-  closeModal,
-  data,
-}: ModalByeLotProps): JSX.Element => {
-  const { onClose, userMoney } = useModalByeLot()
+const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
+  const { onClose, userMoney, deleteUserLot, byeLot } = useModalLot()
 
-  const { item, realname, price, isByeFragment = true } = data
+  const { item, realname, price, isDeleteLot = true, id } = data
 
   const imageUrl = `${FETCH_URL_IMG}/${item.type.slice(0, 2)}/${item.type}.png`
 
@@ -57,21 +53,24 @@ const ModalByeLot = ({
           style={{ alignContent: 'center' }}
         />
 
-        {isByeFragment && (
-          <>
-            <DefaultButton
-              disabled={price > userMoney}
-              style={{ width: '100%', margin: '0px auto' }}
-            >
-              {userMoney > price ? 'Купити' : 'Недостатньо коштів'}
-            </DefaultButton>
+        <DefaultButton
+          disabled={price > userMoney}
+          style={{ width: '100%', margin: '0px auto' }}
+          onClick={() => (isDeleteLot ? deleteUserLot(id) : byeLot(id))}
+        >
+          {isDeleteLot
+            ? 'Видалити'
+            : userMoney > price
+              ? 'Купити'
+              : 'Недостатньо коштів'}
+        </DefaultButton>
 
-            <ItemOwner>Власник лоту: {realname}</ItemOwner>
-          </>
-        )}
+        <ItemOwner>
+          Власник лоту: <span>{realname}</span>
+        </ItemOwner>
       </Container>
     </SettingsModalsLayout>
   )
 }
 
-export default ModalByeLot
+export default ModalLot

@@ -8,18 +8,24 @@ import { AuctionPagination } from 'src/components/Auction'
 
 export const DefaultInputWrapper = styled.div`
   position: absolute;
+  width: 100%;
 
   display: flex;
-  gap: 30px;
-
+  justify-content: space-between;
+  padding-right: 50px;
   top: 0px;
   left: 0px;
 
   translate: 0% -120%;
 
-  & > input {
-    font-size: 20px;
-    width: 340px;
+  & > div {
+    display: flex;
+    gap: 30px;
+
+    & > input {
+      font-size: 20px;
+      width: 340px;
+    }
   }
 `
 

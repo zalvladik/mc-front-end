@@ -5,6 +5,7 @@ import { useToast } from 'src/contexts/ToastProvider/useToast'
 import { filterItems } from 'src/helpers/filterItems'
 import { useCreateItemTicket } from 'src/hooks/useCreateItemTicket'
 import { useGetItemsFromUserInventory } from 'src/hooks/useGetItemsFromUserInventory'
+import { useGetMoneyFromUserInventory } from 'src/hooks/useGetMoneyFromUserInventory'
 import type { ItemTicketT } from 'src/services/api/UserInventory/types'
 
 export const useUserInventory = () => {
@@ -29,6 +30,8 @@ export const useUserInventory = () => {
     mutate,
     isLoading: isLoadingItemTicket,
   } = useCreateItemTicket()
+
+  const { refetch: refetchMoney } = useGetMoneyFromUserInventory()
 
   const submitButton = () => {
     if (!selectedItems.length || selectedItems.length > 27) return
@@ -112,7 +115,10 @@ export const useUserInventory = () => {
   const inventoryHeaderProps = {
     isLoading: isLoading || isRefetching || isLoadingItemTicket,
     itemLength: data.length,
-    refetch,
+    refetch: () => {
+      refetch()
+      refetchMoney()
+    },
     submitButton,
     title: 'Інвентар',
     buttonText: 'Забрати',

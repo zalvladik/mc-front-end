@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { AuctionFragment } from 'src/constants'
+import { auctionUrlQueryParams } from 'src/helpers'
 import { useGetLots } from 'src/hooks/useGetLots'
 import { useGetUserLots } from 'src/hooks/useGetUserLots'
 
@@ -8,19 +10,31 @@ export const useAuctionPage = () => {
     AuctionFragment.BUY_LOT,
   )
 
-  const [currentPageUserLots, setCurrentPageUserLots] = useState<number>(1)
-  const [currentPageByeLots, setCurrentPageByeLots] = useState<number>(1)
+  const [searchParams] = useSearchParams()
 
-  const [searchValueByeLots, setSearchValueByeLots] = useState<string>('')
-  const [searchValueUserLots, setSearchValueUserLots] = useState<string>('')
+  const category = searchParams.get('category') || ''
+  const page = Number(searchParams.get('page') || 1)
+  const display_nameOrType = searchParams.get('display_nameOrType') || ''
 
-  const [selectedCaterogy, setSelectedCaterogy] = useState<string>('')
+  const navigate = useNavigate()
 
-  const [storageTotalPages, setSorageTotalPages] = useState<number>(1)
+  const [currentPageUserLots, setCurrentPageUserLots] = useState(1)
+  const [currentPageByeLots, setCurrentPageByeLots] = useState(page)
+
+  const [searchValueUserLots, setSearchValueUserLots] = useState('')
+  const [searchValueByeLots, setSearchValueByeLots] = useState(display_nameOrType)
+
+  const [selectedCaterogy, setSelectedCaterogy] = useState(category)
+
+  const [storageTotalPages, setStorageTotalPages] = useState(1)
 
   const { userLots, isLoadingUserLots } = useGetUserLots()
-  const { byeLots, totalPageByeLots, mutateGetByeLots, isLoadingByeLots } =
-    useGetLots()
+  const { refetch, byeLots, totalPageByeLots, isLoadingByeLots, isRefetching } =
+    useGetLots({
+      category: selectedCaterogy,
+      page: currentPageByeLots,
+      display_nameOrType: searchValueByeLots,
+    })
 
   const isFragment = {
     isBuyFragment: AuctionFragment.BUY_LOT === currentFragment,
@@ -29,33 +43,35 @@ export const useAuctionPage = () => {
   }
 
   useEffect(() => {
-    mutateGetByeLots({
-      category: selectedCaterogy,
-      page: currentPageByeLots,
-      display_nameOrType: searchValueByeLots || undefined,
-    })
+    refetch()
+
+    navigate(
+      auctionUrlQueryParams(
+        selectedCaterogy,
+        currentPageByeLots,
+        searchValueByeLots,
+      ),
+    )
   }, [currentPageByeLots])
 
   useEffect(() => {
-    mutateGetByeLots({
-      category: selectedCaterogy,
-    })
+    refetch()
 
-    setSorageTotalPages(1)
+    setCurrentPageByeLots(1)
     setSearchValueByeLots('')
-  }, [selectedCaterogy, mutateGetByeLots])
+
+    navigate(auctionUrlQueryParams(selectedCaterogy, 1))
+  }, [selectedCaterogy])
 
   useEffect(() => {
     if (totalPageByeLots && totalPageByeLots !== storageTotalPages) {
-      setSorageTotalPages(totalPageByeLots)
+      setStorageTotalPages(totalPageByeLots)
     }
   }, [totalPageByeLots])
 
   const findLotByName = () => {
-    mutateGetByeLots({
-      category: selectedCaterogy || undefined,
-      display_nameOrType: searchValueByeLots,
-    })
+    refetch()
+    navigate(auctionUrlQueryParams(selectedCaterogy, 1, searchValueByeLots))
   }
 
   const filteredUserLots = userLots.filter(
@@ -123,7 +139,7 @@ export const useAuctionPage = () => {
 
   const auctionByeLotsProps = {
     lots: byeLots,
-    isLoading: isLoadingByeLots,
+    isLoading: isLoadingByeLots || isRefetching,
   }
 
   const auctionUserLotsProps = {

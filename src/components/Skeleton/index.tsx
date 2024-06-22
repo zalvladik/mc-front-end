@@ -32,11 +32,7 @@ const Skeleton = ({
   }
 
   if (!isDataExist)
-    return (
-      <NoDataInfo {...props}>
-        <div>{emptyText}</div>
-      </NoDataInfo>
-    )
+    return <NoDataInfo {...props}>{emptyText && <div>{emptyText}</div>}</NoDataInfo>
 
   return <>{children}</>
 }

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import Skeleton from 'src/components/Skeleton'
+
 export const Container = styled.div``
 
 export const TheadContainer = styled.div`
@@ -63,39 +65,6 @@ export const TheadContainer = styled.div`
       & > div {
         background-image: url('/assets/items_for_auction_ui/diamond.png');
       }
-    }
-  }
-`
-
-export const DeleteLotButton = styled.div`
-  position: absolute;
-  opacity: 0;
-
-  right: 0%;
-  top: 0%;
-
-  translate: 50% -50%;
-
-  width: 40px;
-  height: 40px;
-
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-image: url('/assets/items_for_ui/barrier.png');
-
-  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.5);
-
-    & > .HoverDescription {
-      display: flex;
-      top: 50%;
-      left: 50%;
-      translate: -115% -50%;
-
-      font-size: 15px;
     }
   }
 `
@@ -222,5 +191,37 @@ export const ItemPriceContainer = styled.div`
     background-image: url('/assets/items_for_ui/deepslate_diamond_ore.png');
     background-size: contain;
     background-repeat: no-repeat;
+  }
+`
+
+export const StyledSkeleton = styled(Skeleton)`
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+
+  padding: 10px;
+  height: 90%;
+
+  border-radius: 5px;
+
+  background: radial-gradient(
+    circle,
+    rgba(100, 110, 120, 1) 0%,
+    rgba(30, 35, 40, 1) 100%
+  );
+
+  -webkit-box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
+  -moz-box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
+  box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
+
+  & > .loadingContainer {
+    height: 66px;
   }
 `

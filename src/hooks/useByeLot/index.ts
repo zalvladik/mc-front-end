@@ -3,29 +3,25 @@ import { CacheKeys } from 'src/constants'
 import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { useToast } from 'src/contexts/ToastProvider/useToast'
 import Lot from 'src/services/api/Lot'
-import type { LotT } from 'src/services/api/Lot/types'
 import type { ItemT } from 'src/services/api/UserInventory/types'
 
-export const useDeleteUserLot = () => {
-  const toast = useToast()
-  const queryClient = useQueryClient()
+export const useByeLot = () => {
   const { onClose } = useModals()
 
-  const { data, mutate, isLoading } = useMutation({
-    mutationFn: (id: number) => Lot.deleteUserLot(id),
-    onSuccess: data => {
-      queryClient.setQueryData<LotT[]>(
-        CacheKeys.USER_LOTS,
-        lots => lots?.filter(lot => lot.id !== data.lotId) ?? [],
-      )
+  const toast = useToast()
+  const queryClient = useQueryClient()
 
-      queryClient.setQueryData<ItemT[]>(CacheKeys.USER_INVENTORY_ITEMS, items => {
-        return [...(items ?? []), data.item]
-      })
+  const { data, mutate, isLoading } = useMutation({
+    mutationFn: Lot.byeLot,
+    onSuccess: (data: ItemT) => {
+      queryClient.setQueryData<ItemT[]>(CacheKeys.USER_INVENTORY_ITEMS, items => [
+        ...(items ?? []),
+        data,
+      ])
 
       queryClient.invalidateQueries(CacheKeys.LOTS)
 
-      toast.success({ message: ['Лот видалено'] })
+      toast.success({ message: ['Лот куплено'], width: -40 })
       onClose()
     },
     onError: (error: Error) => {
@@ -33,5 +29,5 @@ export const useDeleteUserLot = () => {
     },
   })
 
-  return { data, mutate, isLoading }
+  return { mutate, data, isLoading }
 }

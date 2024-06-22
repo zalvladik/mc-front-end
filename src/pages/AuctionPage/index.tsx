@@ -19,6 +19,7 @@ import {
 } from 'src/components/Auction'
 import DefaultButton from 'src/components/DefaultButton'
 import DefaultInput from 'src/components/inputs/DefaultInput'
+import MoneyTable from 'src/components/MoneyTable'
 
 const AuctionPage = (): JSX.Element => {
   const {
@@ -48,23 +49,26 @@ const AuctionPage = (): JSX.Element => {
     <Container>
       <div>
         <DefaultInputWrapper>
-          <DefaultInput
-            value={auctionSearchInputProps.searchValue}
-            onChange={e => auctionSearchInputProps.setSearchValue(e.target.value)}
-            placeholder="Пошук..."
-          />
+          <div>
+            <DefaultInput
+              value={auctionSearchInputProps.searchValue}
+              onChange={e => auctionSearchInputProps.setSearchValue(e.target.value)}
+              placeholder="Пошук..."
+            />
 
-          <DefaultButton
-            isLoading={auctionByeLotsProps.isLoading}
-            disabled={
-              auctionByeLotsProps.isLoading || !auctionSearchInputProps.searchValue
-            }
-            onClick={findLotByName}
-            style={{ width: 200 }}
-            isVisible={!isFragment.isUserLotsFragment}
-          >
-            Пошук
-          </DefaultButton>
+            <DefaultButton
+              isLoading={auctionByeLotsProps.isLoading}
+              disabled={
+                auctionByeLotsProps.isLoading || !auctionSearchInputProps.searchValue
+              }
+              onClick={findLotByName}
+              style={{ width: 200 }}
+              isVisible={!isFragment.isUserLotsFragment}
+            >
+              Пошук
+            </DefaultButton>
+          </div>
+          <MoneyTable style={{ flexDirection: 'row', gap: 80 }} />
         </DefaultInputWrapper>
         <BodyContainer>
           <AuctionCategoryWrapper>

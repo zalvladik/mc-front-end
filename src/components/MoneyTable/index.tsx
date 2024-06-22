@@ -4,6 +4,8 @@ import { MoneyAmountContainer } from 'src/components/MoneyTable/styles'
 import type { MoneyTableProps } from 'src/components/MoneyTable/types'
 import { useMoneyTable } from 'src/components/MoneyTable/useMoneyTable'
 
+import Skeleton from '../Skeleton'
+
 const MoneyTable = ({
   anotherMoney,
   moneyTitle,
@@ -22,35 +24,31 @@ const MoneyTable = ({
   }
 
   return (
-    <MoneyAmountContainer {...props}>
-      {!isLoading && !isRefetching && (
-        <>
-          {moneyTitle && (
-            <li>
-              <h1 style={{ opacity: 0.5 }}>{moneyTitle}</h1>
-            </li>
-          )}
+    <Skeleton isLoading={isLoading || isRefetching} isDataExist={1}>
+      <MoneyAmountContainer {...props}>
+        {moneyTitle && (
           <li>
-            <h1 style={{ fontSize: currentMoney <= 64 ? 50 : 32 }}>
-              {currentMoney}
-            </h1>
+            <h1 style={{ opacity: 0.5 }}>{moneyTitle}</h1>
+          </li>
+        )}
+        <li>
+          <h1 style={{ fontSize: currentMoney <= 64 ? 50 : 32 }}>{currentMoney}</h1>
+          <div style={stylesForDiv} />
+        </li>
+        {currentMoney > 64 && (
+          <li>
+            <h1>{`[${stack}ст.${restMoney}шт.]`}</h1>
             <div style={stylesForDiv} />
           </li>
-          {currentMoney > 64 && (
-            <li>
-              <h1>{`[${stack}ст.${restMoney}шт.]`}</h1>
-              <div style={stylesForDiv} />
-            </li>
-          )}
-          {currentMoney > 256 && (
-            <li>
-              <h1>{moneyCalculatorShulker(currentMoney)}</h1>
-              <div style={stylesForDiv} />
-            </li>
-          )}
-        </>
-      )}
-    </MoneyAmountContainer>
+        )}
+        {currentMoney > 256 && (
+          <li>
+            <h1>{moneyCalculatorShulker(currentMoney)}</h1>
+            <div style={stylesForDiv} />
+          </li>
+        )}
+      </MoneyAmountContainer>
+    </Skeleton>
   )
 }
 

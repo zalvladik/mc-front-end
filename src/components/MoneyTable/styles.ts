@@ -6,6 +6,7 @@ export const MoneyAmountContainer = styled.ul`
   gap: 20px;
 
   margin: 0px auto;
+  width: max-content;
 
   & > li {
     position: relative;

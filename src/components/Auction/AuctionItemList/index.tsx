@@ -13,7 +13,7 @@ import { useAuctionItemList } from 'src/components/Auction/AuctionItemList/useAu
 import ItemSlotIcon from 'src/components/ItemSlotIcon'
 
 const AuctionItemList = ({ lots, isLoading }: AuctionItemListProps): JSX.Element => {
-  const { openModal, itemSlotIconProps } = useAuctionItemList()
+  const { openModal, itemSlotIconProps, user } = useAuctionItemList()
 
   return (
     <Container>
@@ -38,7 +38,11 @@ const AuctionItemList = ({ lots, isLoading }: AuctionItemListProps): JSX.Element
             const { stack, restMoney } = moneyCalculator(price)
 
             return (
-              <div key={id} onClick={() => openModal({ item, id, price, realname })}>
+              <div
+                key={id}
+                onClick={() => openModal({ item, id, price, realname })}
+                style={{ opacity: user.realname === realname ? 0.3 : 1 }}
+              >
                 <div>
                   <ItemSlotIcon {...itemSlotIconProps} {...item} fontSize={18} />
 

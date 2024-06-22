@@ -1,12 +1,15 @@
 import { api } from 'src/configs/ky'
 import { FetchEndpoint } from 'src/constants'
 import type {
+  ByeLotProps,
   CreateLotProps,
   DeleteLotResponseT,
   GetLotsProps,
   GetLotsResponse,
   LotT,
 } from 'src/services/api/Lot/types'
+
+import type { ItemT } from '../UserInventory/types'
 
 class Lot {
   async getLots({
@@ -26,6 +29,14 @@ class Lot {
   async post(body: CreateLotProps): Promise<LotT> {
     return api
       .post(FetchEndpoint.LOT, {
+        json: body,
+      })
+      .json()
+  }
+
+  async byeLot(body: ByeLotProps): Promise<ItemT> {
+    return api
+      .put(FetchEndpoint.LOT, {
         json: body,
       })
       .json()
