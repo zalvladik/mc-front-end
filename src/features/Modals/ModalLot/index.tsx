@@ -18,9 +18,9 @@ import { useModalLot } from 'src/features/Modals/ModalLot/useModalLot'
 import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
 
 const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
-  const { onClose, userMoney, deleteUserLot, byeLot } = useModalLot()
+  const { item, username, price, isDeleteLot = true, id, userMoney } = data
 
-  const { item, realname, price, isDeleteLot = true, id } = data
+  const { onClose, toogleLot, isLoading } = useModalLot(isDeleteLot)
 
   const imageUrl = `${FETCH_URL_IMG}/${item.type.slice(0, 2)}/${item.type}.png`
 
@@ -45,7 +45,7 @@ const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
             )}
           </IconSlot>
 
-          <MoneyTable style={{ paddingRight: 50 }} anotherMoney={price} />
+          <MoneyTable style={{ paddingRight: 50 }} money={price} />
         </div>
         <ItemCard
           description={item.description || item.enchants}
@@ -54,9 +54,9 @@ const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
         />
 
         <DefaultButton
-          disabled={price > userMoney}
+          disabled={price > userMoney || isLoading}
           style={{ width: '100%', margin: '0px auto' }}
-          onClick={() => (isDeleteLot ? deleteUserLot(id) : byeLot(id))}
+          onClick={() => toogleLot(id)}
         >
           {isDeleteLot
             ? 'Видалити'
@@ -66,7 +66,7 @@ const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
         </DefaultButton>
 
         <ItemOwner>
-          Власник лоту: <span>{realname}</span>
+          Власник лоту: <span>{username}</span>
         </ItemOwner>
       </Container>
     </SettingsModalsLayout>

@@ -1,8 +1,6 @@
-import { millisecondsToDate, millisecondsToTime } from 'src/helpers'
 import {
   ButtonList,
   Container,
-  LasLogin,
   NickName,
   PlayerInfo,
   UserContainer,
@@ -20,7 +18,7 @@ const ProfilePage = (): JSX.Element => {
       <UserContainer>
         <SkinComponent />
         <PlayerInfo>
-          <NickName>{user.realname}</NickName>
+          <NickName>{user.username}</NickName>
           <ButtonList>
             <DefaultButton onClick={openAdvancementsModal}>Досягнення</DefaultButton>
 
@@ -28,12 +26,6 @@ const ProfilePage = (): JSX.Element => {
               Вийти
             </DefaultButton>
           </ButtonList>
-
-          <LasLogin>
-            <div>Останній вхід </div>
-            <div>{millisecondsToDate(user.lastlogin)}</div>
-            <div>{millisecondsToTime(user.lastlogin)}</div>
-          </LasLogin>
         </PlayerInfo>
       </UserContainer>
     </Container>

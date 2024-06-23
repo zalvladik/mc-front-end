@@ -1,4 +1,4 @@
 export type SignInFormT = {
-  realname: string
+  username: string
   password: string
 }

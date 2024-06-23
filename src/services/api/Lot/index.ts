@@ -1,5 +1,6 @@
 import { api } from 'src/configs/ky'
 import { FetchEndpoint } from 'src/constants'
+import type { ItemT } from 'src/services/api/Items/types'
 import type {
   ByeLotProps,
   CreateLotProps,
@@ -8,8 +9,6 @@ import type {
   GetLotsResponse,
   LotT,
 } from 'src/services/api/Lot/types'
-
-import type { ItemT } from '../UserInventory/types'
 
 class Lot {
   async getLots({

@@ -12,20 +12,28 @@ export const MoneyAmountContainer = styled.ul`
     position: relative;
     width: max-content;
 
+    align-items: center;
+
     & > h1 {
       font-family: 'Minecraft', sans-serif;
       padding-left: 10px;
+      font-size: 36px;
       font-weight: 500;
       color: #e2e2e2;
     }
 
     & > div {
+      height: 42px;
+      width: 42px;
+
       position: absolute;
       background-image: url('/assets/items_for_ui/deepslate_diamond_ore.png');
       background-size: contain;
       background-repeat: no-repeat;
-      right: -52px;
-      top: 0px;
+      right: -50px;
+      top: 50%;
+
+      translate: 0% -45%;
     }
 
     &:nth-child(3) {

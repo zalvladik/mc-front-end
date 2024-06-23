@@ -19,7 +19,7 @@ const ModalAdvancements = ({
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.92)' }}
     >
       <ButtonModalClose onClose={onClose} />
-      <AdvancementsMap realname={data.realname} />
+      <AdvancementsMap username={data.username} />
     </SettingsModalsLayout>
   )
 }

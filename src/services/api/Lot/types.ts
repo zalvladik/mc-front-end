@@ -1,4 +1,4 @@
-import type { ItemT } from 'src/services/api/UserInventory/types'
+import type { ItemT } from 'src/services/api/Items/types'
 
 export type DeleteLotResponseT = {
   lotId: number
@@ -8,7 +8,7 @@ export type DeleteLotResponseT = {
 export type LotT = {
   id: number
   price: number
-  realname: string
+  username: string
   item: ItemT
 }
 

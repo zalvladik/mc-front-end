@@ -1,6 +1,6 @@
 import type { CSSProperties, HTMLProps } from 'react'
 import type { SelectAreaColors } from 'src/constants'
-import type { ItemT } from 'src/services/api/UserInventory/types'
+import type { ItemT } from 'src/services/api/Items/types'
 
 export type ItemListProps = {
   items: ItemT[]

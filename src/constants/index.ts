@@ -41,9 +41,8 @@ export enum SelectAreaColors {
 
 export enum CacheKeys {
   USER = 'user',
-  USER_INVENTORY_ITEMS = 'user_inventory_items',
-  USER_INVENTORY_MONEY = 'user_inventory_money',
-  USER_INVENTORY_ITEM_TICKETS = 'user_inventory_item_tickets',
+  USER_ITEMS = 'user_items',
+  USER_ITEM_TICKETS = 'user_item_tickets',
   USER_LOTS = 'user_lots',
   LOTS = 'lots',
   ITEM_TICKET = 'item_ticket',
@@ -60,8 +59,7 @@ export enum AuctionFragment {
 
 export enum FetchEndpoint {
   USER = 'user',
-  USER_INVENTORY_ITEMS = 'user_inventory/items',
-  USER_INVENTORY_MONEY = 'user_inventory/money',
+  USER_ITEMS = 'user/items',
   USER_SKIN = 'user/skin',
   USER_ADVANCEMENTS = 'user/advancements',
   USER_ITEM_TICKETS = 'item_ticket/user_tickets',
@@ -83,9 +81,7 @@ export const STALE_TIME = 60 * 1000 * 24
 
 export const defaultUser: UserT = {
   id: 0,
-  realname: '',
-  lastlogin: '',
-  userInventory: 0,
-  advancements: 0,
+  username: '',
+  money: 0,
   role: [Role.NOT_AUTH],
 }

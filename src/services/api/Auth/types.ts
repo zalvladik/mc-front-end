@@ -7,6 +7,6 @@ export type AuthResponseT = {
 }
 
 export type CredentialsT = {
-  realname: string
+  username: string
   password: string
 }

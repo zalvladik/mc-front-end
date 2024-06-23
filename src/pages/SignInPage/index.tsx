@@ -37,7 +37,7 @@ const SignInPage = (): JSX.Element => {
         </ButtonClose>
         <FormContainer>
           <Controller
-            name="realname"
+            name="username"
             control={control}
             render={({ field: { onChange, value } }) => (
               <InputWrapper>
@@ -45,12 +45,12 @@ const SignInPage = (): JSX.Element => {
                   placeholder="Нік"
                   value={value}
                   onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                    trigger('realname')
+                    trigger('username')
                     onChange(event.target.value)
                   }}
                 />
-                {errors.realname ? (
-                  <ErrorMessage>{errors.realname.message}</ErrorMessage>
+                {errors.username ? (
+                  <ErrorMessage>{errors.username.message}</ErrorMessage>
                 ) : null}
               </InputWrapper>
             )}

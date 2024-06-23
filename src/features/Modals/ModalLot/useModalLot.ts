@@ -1,29 +1,27 @@
 import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { useByeLot } from 'src/hooks/useByeLot'
 import { useDeleteUserLot } from 'src/hooks/useDeleteUserLot'
-import { useGetMoneyFromUserInventory } from 'src/hooks/useGetMoneyFromUserInventory'
 
-export const useModalLot = () => {
+export const useModalLot = (isDeleteLot: boolean) => {
   const { onClose } = useModals()
 
-  const { mutate, isLoading: isLoadingDelete } = useDeleteUserLot()
-  const { mutate: mutateByeLot } = useByeLot()
+  const { mutate: mutateDelete, isLoading: isLoadingDelete } = useDeleteUserLot()
+  const { mutate: mutateBye, isLoading: isLoadingBye } = useByeLot()
 
-  const deleteUserLot = (id: number) => {
-    mutate(id)
+  const toogleLot = (id: number): void => {
+    if (isDeleteLot) {
+      mutateDelete(id)
+
+      return
+    }
+
+    mutateBye({ lotId: id })
   }
-
-  const byeLot = (id: number) => {
-    mutateByeLot({ lotId: id })
-  }
-
-  const { data } = useGetMoneyFromUserInventory()
 
   return {
-    deleteUserLot,
+    toogleLot,
     onClose,
-    byeLot,
-    userMoney: data?.money ?? 0,
-    isLoadingDelete,
+
+    isLoading: isLoadingBye || isLoadingDelete,
   }
 }

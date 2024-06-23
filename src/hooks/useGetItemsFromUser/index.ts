@@ -1,11 +1,11 @@
 import { useQuery } from 'react-query'
 import { CacheKeys } from 'src/constants'
-import UserInventory from 'src/services/api/UserInventory'
+import User from 'src/services/api/Items'
 
-export const useGetMoneyFromUserInventory = () => {
+export const useGetItemsFromUser = () => {
   const { data, isLoading, refetch, isRefetching } = useQuery({
-    queryKey: CacheKeys.USER_INVENTORY_MONEY,
-    queryFn: UserInventory.getMoney,
+    queryKey: CacheKeys.USER_ITEMS,
+    queryFn: User.getItems,
   })
 
   return { data, isLoading, refetch, isRefetching }

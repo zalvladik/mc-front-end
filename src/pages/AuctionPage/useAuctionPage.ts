@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { AuctionFragment } from 'src/constants'
+import { useUser } from 'src/contexts/UserProvider/useUser'
 import { auctionUrlQueryParams } from 'src/helpers'
 import { useGetLots } from 'src/hooks/useGetLots'
 import { useGetUserLots } from 'src/hooks/useGetUserLots'
 
 export const useAuctionPage = () => {
+  const { user } = useUser()
   const [currentFragment, setCurrentFragment] = useState<AuctionFragment>(
     AuctionFragment.BUY_LOT,
   )
@@ -159,5 +161,6 @@ export const useAuctionPage = () => {
     auctionSearchInputProps,
     findLotByName,
     totalPages: getTotalPages(),
+    money: user.money,
   }
 }

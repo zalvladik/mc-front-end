@@ -15,7 +15,7 @@ export const useItemTicket = (newTicketId?: number) => {
   const queryClient = useQueryClient()
 
   const cachedData: ItemTicketT[] =
-    queryClient.getQueryData(CacheKeys.USER_INVENTORY_ITEM_TICKETS) ?? []
+    queryClient.getQueryData(CacheKeys.USER_ITEM_TICKETS) ?? []
 
   useEffect(() => {
     if (isVisible === true) {

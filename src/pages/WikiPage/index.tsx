@@ -4,8 +4,8 @@ import {
   OptionFilter,
   PasportLi,
   PasportUl,
-  RealNameContainer,
   SelectContainer,
+  UserNameContainer,
   WikiPageContainer,
 } from 'src/pages/WikiPage/styles'
 import useWikiPage from 'src/pages/WikiPage/useWikiPage'
@@ -47,12 +47,12 @@ const WikiPage = (): JSX.Element => {
 
       {!isLoading && (
         <PasportUl>
-          {data.map(({ realname, rating }) => (
-            <PasportLi key={realname} onClick={() => toAdvancements(realname)}>
-              <RealNameContainer>
-                <p>{realname}</p>
+          {data.map(({ username, rating }) => (
+            <PasportLi key={username} onClick={() => toAdvancements(username)}>
+              <UserNameContainer>
+                <p>{username}</p>
                 <div>{rating}</div>
-              </RealNameContainer>
+              </UserNameContainer>
             </PasportLi>
           ))}
         </PasportUl>

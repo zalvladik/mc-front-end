@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from 'react-query'
 import { CacheKeys } from 'src/constants'
 import { useToast } from 'src/contexts/ToastProvider/useToast'
+import type { ItemT } from 'src/services/api/Items/types'
 import Lot from 'src/services/api/Lot'
 import type { LotT } from 'src/services/api/Lot/types'
-import type { ItemT } from 'src/services/api/UserInventory/types'
 
 export const useCreateLot = () => {
   const toast = useToast()
@@ -17,7 +17,7 @@ export const useCreateLot = () => {
         data,
       ])
 
-      queryClient.setQueryData<ItemT[]>(CacheKeys.USER_INVENTORY_ITEMS, items =>
+      queryClient.setQueryData<ItemT[]>(CacheKeys.USER_ITEMS, items =>
         items!.filter(item => data.item.id !== item.id),
       )
 

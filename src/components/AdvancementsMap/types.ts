@@ -1,5 +1,5 @@
 export type AdvancementsMapProps = {
-  realname: string
+  username: string
 }
 
 export type Advancement = {

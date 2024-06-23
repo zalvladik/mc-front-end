@@ -34,14 +34,14 @@ const AuctionItemList = ({ lots, isLoading }: AuctionItemListProps): JSX.Element
         size={40}
       >
         <TbodyContainer>
-          {lots.map(({ item, id, price, realname }) => {
+          {lots.map(({ item, id, price, username }) => {
             const { stack, restMoney } = moneyCalculator(price)
 
             return (
               <div
                 key={id}
-                onClick={() => openModal({ item, id, price, realname })}
-                style={{ opacity: user.realname === realname ? 0.3 : 1 }}
+                onClick={() => openModal({ item, id, price, username })}
+                style={{ opacity: user.username === username ? 0.3 : 1 }}
               >
                 <div>
                   <ItemSlotIcon {...itemSlotIconProps} {...item} fontSize={18} />

@@ -33,6 +33,7 @@ const AuctionPage = (): JSX.Element => {
     auctionSearchInputProps,
     findLotByName,
     totalPages,
+    money,
   } = useAuctionPage()
 
   const getFragment = (): JSX.Element => {
@@ -68,7 +69,7 @@ const AuctionPage = (): JSX.Element => {
               Пошук
             </DefaultButton>
           </div>
-          <MoneyTable style={{ flexDirection: 'row', gap: 80 }} />
+          <MoneyTable money={money} style={{ flexDirection: 'row', gap: 80 }} />
         </DefaultInputWrapper>
         <BodyContainer>
           <AuctionCategoryWrapper>

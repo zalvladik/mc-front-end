@@ -10,8 +10,8 @@ const useWikiPage = () => {
   const [option, setOption] = useState<string>('optionToDown')
   const { data, isLoading } = useGetAllUsers()
 
-  const toAdvancements = (realname: string) => {
-    onOpen({ name: Modals.ADVANCEMENTS, data: { realname } })
+  const toAdvancements = (username: string) => {
+    onOpen({ name: Modals.ADVANCEMENTS, data: { username } })
   }
 
   const sorteredData = useMemo(() => {
@@ -27,7 +27,7 @@ const useWikiPage = () => {
 
         const result = copyData
           ?.filter(item => {
-            if (!Number.isNaN(+item.realname[0]) || item.realname[0] === '_') {
+            if (!Number.isNaN(+item.username[0]) || item.username[0] === '_') {
               otherNames.push(item)
 
               return false
@@ -35,20 +35,20 @@ const useWikiPage = () => {
 
             return true
           })
-          .sort((a, b) => a.realname.localeCompare(b.realname))
+          .sort((a, b) => a.username.localeCompare(b.username))
           .concat(otherNames)
 
         return result
       }
       case 'optionCba':
-        return copyData?.sort((a, b) => b.realname.localeCompare(a.realname))
+        return copyData?.sort((a, b) => b.username.localeCompare(a.username))
       default:
         return copyData
     }
   }, [option, data])
 
   const filteredData = sorteredData?.filter((item: any) =>
-    item.realname.toLowerCase().includes(value.toLowerCase()),
+    item.username.toLowerCase().includes(value.toLowerCase()),
   )
 
   return {

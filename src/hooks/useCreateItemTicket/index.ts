@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from 'react-query'
 import { CacheKeys } from 'src/constants'
 import { useToast } from 'src/contexts/ToastProvider/useToast'
+import type { ItemT, ItemTicketT } from 'src/services/api/Items/types'
 import ItemTicket from 'src/services/api/ItemTicket'
-import type { ItemT, ItemTicketT } from 'src/services/api/UserInventory/types'
 import type { ErrorResponse } from 'src/types'
 
 export const useCreateItemTicket = () => {
@@ -12,12 +12,12 @@ export const useCreateItemTicket = () => {
   const { data, mutate, isLoading } = useMutation({
     mutationFn: ItemTicket.post,
     onSuccess: data => {
-      queryClient.setQueryData<ItemT[]>(CacheKeys.USER_INVENTORY_ITEMS, items =>
+      queryClient.setQueryData<ItemT[]>(CacheKeys.USER_ITEMS, items =>
         items!.filter(item => !data.items.includes(item.id)),
       )
 
       queryClient.setQueryData<ItemTicketT[]>(
-        CacheKeys.USER_INVENTORY_ITEM_TICKETS,
+        CacheKeys.USER_ITEM_TICKETS,
         tickets => [...(tickets ?? []), data],
       )
 

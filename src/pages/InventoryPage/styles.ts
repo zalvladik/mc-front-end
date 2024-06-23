@@ -17,6 +17,6 @@ export const UserInventoryWrapper = styled.div`
 
   & > div:first-child {
     width: 270px;
-    height: 160px;
+    max-height: 160px;
   }
 `

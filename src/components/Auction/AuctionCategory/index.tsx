@@ -30,7 +30,15 @@ const AuctionCategory = ({
             return (
               <ButtonCategory
                 type="button"
-                onClick={() => setSelectedCaterogy(category)}
+                onClick={() => {
+                  if (isSelected) {
+                    setSelectedCaterogy('')
+
+                    return
+                  }
+
+                  setSelectedCaterogy(category)
+                }}
                 aria-label={`Select category ${category}`}
                 key={category}
                 isSelected={isSelected}

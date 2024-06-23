@@ -1,7 +1,7 @@
 import { api } from 'src/configs/ky'
 import { FetchEndpoint } from 'src/constants'
+import type { ItemT } from 'src/services/api/Items/types'
 import type { ItemTicketT } from 'src/services/api/ItemTicket/types'
-import type { ItemT } from 'src/services/api/UserInventory/types'
 
 class ItemTicket {
   async post(itemIds: number[]): Promise<ItemTicketT> {

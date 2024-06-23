@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 import { SelectAreaColors } from 'src/constants'
 import { filterItems } from 'src/helpers/filterItems'
-import { useGetItemsFromUserInventory } from 'src/hooks/useGetItemsFromUserInventory'
+import { useGetItemsFromUser } from 'src/hooks/useGetItemsFromUser'
 
 export const useAuctionCreateLot = () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([])
@@ -10,12 +10,7 @@ export const useAuctionCreateLot = () => {
 
   const [page, setPage] = useState(1)
 
-  const {
-    data = [],
-    isLoading,
-    refetch,
-    isRefetching,
-  } = useGetItemsFromUserInventory()
+  const { data = [], isLoading, refetch, isRefetching } = useGetItemsFromUser()
 
   const filterByCaterogies = (categories: string[]): void => {
     setSelectedCaterogies(categories)

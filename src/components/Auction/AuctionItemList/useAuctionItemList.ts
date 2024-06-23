@@ -11,7 +11,11 @@ export const useAuctionItemList = () => {
   const openModal = (data: LotT) => {
     onOpen({
       name: Modals.LOT,
-      data: { ...data, isDeleteLot: user.realname === data.realname },
+      data: {
+        ...data,
+        isDeleteLot: user.username === data.username,
+        userMoney: user.money,
+      },
     })
   }
 

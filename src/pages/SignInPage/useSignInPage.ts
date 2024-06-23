@@ -18,20 +18,20 @@ export const useSignInPage = () => {
     resolver: yupResolver(validationSchema),
     mode: 'onSubmit',
     reValidateMode: 'onChange',
-    defaultValues: { realname: '', password: '' },
+    defaultValues: { username: '', password: '' },
   })
 
   const { isError, isLoading, mutate } = useLogin()
 
-  const signIn = ({ realname, password }: SignInFormT): void => {
-    mutate({ realname, password })
+  const signIn = ({ username, password }: SignInFormT): void => {
+    mutate({ username, password })
   }
 
   const formValues = useWatch({
     control,
   })
 
-  const isFormFilled = formValues.realname && formValues.password
+  const isFormFilled = formValues.username && formValues.password
 
   return {
     navigate,

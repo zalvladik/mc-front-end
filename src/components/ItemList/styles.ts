@@ -7,6 +7,8 @@ export const Container = styled.div`
   border-radius: 5px;
   padding: 20px;
 
+  cursor: cell;
+
   display: flex;
   flex-wrap: wrap;
 

@@ -4,7 +4,7 @@ import ItemTicket from 'src/services/api/ItemTicket'
 
 export const useGetUserItemTickets = () => {
   const { data, isLoading, refetch, isRefetching } = useQuery({
-    queryKey: CacheKeys.USER_INVENTORY_ITEM_TICKETS,
+    queryKey: CacheKeys.USER_ITEM_TICKETS,
     queryFn: ItemTicket.getItemTickets,
   })
 

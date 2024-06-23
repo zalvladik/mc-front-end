@@ -2,5 +2,5 @@ import type { HTMLProps } from 'react'
 
 export type MoneyTableProps = {
   moneyTitle?: string
-  anotherMoney?: number
+  money: number
 } & HTMLProps<HTMLUListElement>

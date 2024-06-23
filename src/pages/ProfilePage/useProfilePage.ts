@@ -11,7 +11,7 @@ const useProfilePage = () => {
   const { mutate, isLoading } = useLogout()
 
   const openAdvancementsModal = (): void => {
-    onOpen({ name: Modals.ADVANCEMENTS, data: { realname: user.realname } })
+    onOpen({ name: Modals.ADVANCEMENTS, data: { username: user.username } })
   }
 
   const logout = (): void => mutate()

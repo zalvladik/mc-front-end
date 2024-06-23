@@ -80,7 +80,7 @@ export const FormContainer = styled.div`
   }
 `
 
-export const RealNameContainer = styled.div`
+export const UserNameContainer = styled.div`
   position: relative;
   padding: 10px 40px 10px 10px;
 

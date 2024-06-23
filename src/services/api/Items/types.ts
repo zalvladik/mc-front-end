@@ -13,14 +13,6 @@ export type ItemTicketT = {
   items: number[]
 }
 
-export type UserInventoryT = {
-  id: number
-  realname: string
-  money: number
-  items: ItemT[]
-  itemTickets: ItemTicketT[]
-}
-
 export type UserMoneyT = {
   money: number
 }

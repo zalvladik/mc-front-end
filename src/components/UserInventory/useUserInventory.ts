@@ -4,9 +4,8 @@ import { CacheKeys, SelectAreaColors } from 'src/constants'
 import { useToast } from 'src/contexts/ToastProvider/useToast'
 import { filterItems } from 'src/helpers/filterItems'
 import { useCreateItemTicket } from 'src/hooks/useCreateItemTicket'
-import { useGetItemsFromUserInventory } from 'src/hooks/useGetItemsFromUserInventory'
-import { useGetMoneyFromUserInventory } from 'src/hooks/useGetMoneyFromUserInventory'
-import type { ItemTicketT } from 'src/services/api/UserInventory/types'
+import { useGetItemsFromUser } from 'src/hooks/useGetItemsFromUser'
+import type { ItemTicketT } from 'src/services/api/Items/types'
 
 export const useUserInventory = () => {
   const queryClient = useQueryClient()
@@ -18,12 +17,7 @@ export const useUserInventory = () => {
 
   const [page, setPage] = useState(1)
 
-  const {
-    data = [],
-    isLoading,
-    refetch,
-    isRefetching,
-  } = useGetItemsFromUserInventory()
+  const { data = [], isLoading, refetch, isRefetching } = useGetItemsFromUser()
 
   const {
     data: itemTicketData,
@@ -31,13 +25,11 @@ export const useUserInventory = () => {
     isLoading: isLoadingItemTicket,
   } = useCreateItemTicket()
 
-  const { refetch: refetchMoney } = useGetMoneyFromUserInventory()
-
   const submitButton = () => {
     if (!selectedItems.length || selectedItems.length > 27) return
 
     const data: ItemTicketT[] =
-      queryClient.getQueryData(CacheKeys.USER_INVENTORY_ITEM_TICKETS) ?? []
+      queryClient.getQueryData(CacheKeys.USER_ITEM_TICKETS) ?? []
 
     if (data.length >= 5) {
       toast.error({
@@ -115,10 +107,7 @@ export const useUserInventory = () => {
   const inventoryHeaderProps = {
     isLoading: isLoading || isRefetching || isLoadingItemTicket,
     itemLength: data.length,
-    refetch: () => {
-      refetch()
-      refetchMoney()
-    },
+    refetch,
     submitButton,
     title: 'Інвентар',
     buttonText: 'Забрати',

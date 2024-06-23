@@ -36,11 +36,11 @@ const AuctionUserLots = ({ lots, isLoading }: AuctionUserLotsProps): JSX.Element
         size={40}
       >
         <TbodyContainer>
-          {lots.map(({ id, price, item, realname }) => {
+          {lots.map(({ id, price, item, username }) => {
             const { stack, restMoney } = moneyCalculator(price)
 
             return (
-              <div key={id} onClick={() => openModal({ item, id, price, realname })}>
+              <div key={id} onClick={() => openModal({ item, id, price, username })}>
                 <div>
                   <ItemSlotIcon
                     key={id}
