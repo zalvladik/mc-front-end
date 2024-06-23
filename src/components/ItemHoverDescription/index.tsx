@@ -8,17 +8,29 @@ import type {
   ItemHoverDescriptionProps,
 } from 'src/components/ItemHoverDescription/types'
 
+import { useItemHoverDescription } from './useItemHoverDescription'
+
 const ItemHoverDescription = ({
   description = [],
   title,
   isVisible,
+  topSlotIcon,
+  leftSlotIcon,
+  heightSlotIcon,
   ...props
 }: ItemHoverDescriptionProps): JSX.Element => {
+  const { itemHoverDescriptionRef } = useItemHoverDescription({
+    isVisible,
+    topSlotIcon,
+    leftSlotIcon,
+    heightSlotIcon,
+  })
+
   return (
     <ItemHoverDescriptionContainer
       {...props}
-      className="ItemHoverDescription"
-      style={{ opacity: isVisible ? 1 : 0, padding: isVisible ? 12 : 0 }}
+      ref={itemHoverDescriptionRef}
+      style={{ position: 'fixed' }}
     >
       <Title>
         <p>{title}</p>

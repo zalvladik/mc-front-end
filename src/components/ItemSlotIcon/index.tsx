@@ -8,6 +8,8 @@ import {
 } from 'src/components/ItemSlotIcon/styles'
 import type { ItemSlotIconProps } from 'src/components/ItemSlotIcon/types'
 
+import { useItemSlotIcon } from './useItemSlotIcon'
+
 const ItemSlotIcon = ({
   id,
   amount,
@@ -20,12 +22,18 @@ const ItemSlotIcon = ({
   itemSize,
   fontSize = 25,
   onClick,
-  setHoverDescriptionProps,
 }: ItemSlotIconProps): JSX.Element => {
+  const { itemSlotIconRef } = useItemSlotIcon({
+    description: description || enchants,
+    display_name,
+    containerSize,
+  })
+
   const imgUrl = `${FETCH_URL_IMG}/${type.slice(0, 2)}/${type}.png`
 
   return (
     <ItemSlotIconContainer
+      ref={itemSlotIconRef}
       id={`${id}`}
       style={{
         ...style,
@@ -36,20 +44,6 @@ const ItemSlotIcon = ({
           : 'url(/assets/items_for_ui/slot.png)',
       }}
       onClick={() => onClick && onClick()}
-      onMouseEnter={() => {
-        setHoverDescriptionProps({
-          description,
-          title: display_name,
-          isVisible: true,
-        })
-      }}
-      onMouseLeave={() => {
-        setHoverDescriptionProps({
-          description: [],
-          title: '',
-          isVisible: false,
-        })
-      }}
     >
       <ItemIcon
         style={{

@@ -1,23 +1,25 @@
 import styled from 'styled-components'
 
 export const ItemHoverDescriptionContainer = styled.div`
-  z-index: 999;
-  position: absolute;
+  z-index: 1200;
 
-  transition: opacity 400ms ease;
+  transition: opacity 200ms ease-in-out;
 
-  padding: 12px;
+  padding: 0px;
   gap: 16px;
 
   flex-direction: column;
   border: 3px solid #1e0245;
 
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
   border-radius: 6px;
   pointer-events: none;
 
   background-color: #120312;
-
-  translate: 0% 120%;
 `
 
 export const Title = styled.div`
