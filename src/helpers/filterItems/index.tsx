@@ -1,5 +1,5 @@
 import type { FilteredItemsProps } from 'src/helpers/filterItems/types'
-import type { ItemT } from 'src/services/api/UserInventory/types'
+import type { ItemT } from 'src/services/api/Items/types'
 
 export const filterItems = ({
   items,

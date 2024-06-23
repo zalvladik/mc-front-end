@@ -1,4 +1,4 @@
-import type { ItemT } from 'src/services/api/UserInventory/types'
+import type { ItemT } from 'src/services/api/Items/types'
 
 export type FilteredItemsProps = {
   items: ItemT[]
