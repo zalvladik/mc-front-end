@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
-export const ItemCardContainer = styled.div`
-  z-index: 120;
+export const ItemHoverDescriptionContainer = styled.div`
+  z-index: 999;
   position: absolute;
-  display: none;
 
-  padding: 14px;
+  transition: opacity 400ms ease;
+
+  padding: 12px;
   gap: 16px;
 
   flex-direction: column;
@@ -16,7 +17,7 @@ export const ItemCardContainer = styled.div`
 
   background-color: #120312;
 
-  translate: 20% 20%;
+  translate: 0% 120%;
 `
 
 export const Title = styled.div`

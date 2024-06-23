@@ -11,9 +11,6 @@ export const ItemSlotIconContainer = styled.div`
   height: 104px;
   width: 104px;
 
-  position: relative;
-  z-index: 0;
-
   transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   background-size: contain;

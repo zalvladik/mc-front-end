@@ -2,7 +2,6 @@ import { FETCH_URL_IMG } from 'src/constants'
 
 import ButtonModalClose from 'src/components/ButtonModalClose'
 import DefaultButton from 'src/components/DefaultButton'
-import ItemCard from 'src/components/ItemCard'
 import ItemGlow from 'src/components/ItemGlow'
 import MoneyTable from 'src/components/MoneyTable'
 
@@ -47,14 +46,15 @@ const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
 
           <MoneyTable style={{ paddingRight: 50 }} money={price} />
         </div>
-        <ItemCard
+        {/* <ItemCard
           description={item.description || item.enchants}
           title={item.display_name}
           style={{ alignContent: 'center' }}
-        />
+        /> */}
 
         <DefaultButton
           disabled={price > userMoney || isLoading}
+          isLoading={isLoading}
           style={{ width: '100%', margin: '0px auto' }}
           onClick={() => toogleLot(id)}
         >

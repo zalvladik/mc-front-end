@@ -1,3 +1,7 @@
+import { useState } from 'react'
+
+import ItemHoverDescription from 'src/components/ItemHoverDescription'
+import type { ItemHoverDescriptionProps } from 'src/components/ItemHoverDescription/types'
 import {
   AreaSelect,
   Container,
@@ -27,6 +31,13 @@ const ItemList = ({
     areaSelectStyle,
   } = UseItemList({ selectToogle, selectAreaColor, isNeedAreaSelect })
 
+  const [HoverDescriptionProps, setHoverDescriptionProps] =
+    useState<ItemHoverDescriptionProps>({
+      description: [],
+      title: '',
+      isVisible: false,
+    })
+
   return (
     <Container
       ref={containerRef}
@@ -47,6 +58,7 @@ const ItemList = ({
             key={item.id}
             onClick={() => selectToogle([item.id])}
             style={{ ...styleForItemBorder(item.id), margin: 4 }}
+            setHoverDescriptionProps={setHoverDescriptionProps}
             {...itemSlotIconProps}
             {...item}
           />
@@ -56,6 +68,8 @@ const ItemList = ({
           <EmptySlot key={i} />
         ))}
       </Skeleton>
+
+      <ItemHoverDescription {...HoverDescriptionProps} />
     </Container>
   )
 }

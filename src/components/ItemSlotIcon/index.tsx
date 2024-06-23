@@ -1,6 +1,5 @@
 import { FETCH_URL_IMG } from 'src/constants'
 
-import ItemCard from 'src/components/ItemCard'
 import ItemGlow from 'src/components/ItemGlow'
 import {
   ItemAmount,
@@ -13,14 +12,15 @@ const ItemSlotIcon = ({
   id,
   amount,
   type,
-  display_name,
-  description,
   enchants,
+  description,
+  display_name,
   style,
   containerSize,
   itemSize,
   fontSize = 25,
   onClick,
+  setHoverDescriptionProps,
 }: ItemSlotIconProps): JSX.Element => {
   const imgUrl = `${FETCH_URL_IMG}/${type.slice(0, 2)}/${type}.png`
 
@@ -36,6 +36,20 @@ const ItemSlotIcon = ({
           : 'url(/assets/items_for_ui/slot.png)',
       }}
       onClick={() => onClick && onClick()}
+      onMouseEnter={() => {
+        setHoverDescriptionProps({
+          description,
+          title: display_name,
+          isVisible: true,
+        })
+      }}
+      onMouseLeave={() => {
+        setHoverDescriptionProps({
+          description: [],
+          title: '',
+          isVisible: false,
+        })
+      }}
     >
       <ItemIcon
         style={{
@@ -52,10 +66,6 @@ const ItemSlotIcon = ({
           itemSize={itemSize}
           imageUrl={imgUrl}
         />
-      )}
-
-      {(description || enchants) && (
-        <ItemCard description={description ?? enchants} title={display_name} />
       )}
     </ItemSlotIconContainer>
   )

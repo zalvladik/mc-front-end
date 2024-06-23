@@ -1,17 +1,25 @@
 import {
   Description,
-  ItemCardContainer,
+  ItemHoverDescriptionContainer,
   Title,
-} from 'src/components/ItemCard/styles'
-import type { IsJsonItemT, ItemCardProps } from 'src/components/ItemCard/types'
+} from 'src/components/ItemHoverDescription/styles'
+import type {
+  IsJsonItemT,
+  ItemHoverDescriptionProps,
+} from 'src/components/ItemHoverDescription/types'
 
-const ItemCard = ({
+const ItemHoverDescription = ({
   description = [],
   title,
+  isVisible,
   ...props
-}: ItemCardProps): JSX.Element => {
+}: ItemHoverDescriptionProps): JSX.Element => {
   return (
-    <ItemCardContainer {...props} className="itemCard">
+    <ItemHoverDescriptionContainer
+      {...props}
+      className="ItemHoverDescription"
+      style={{ opacity: isVisible ? 1 : 0, padding: isVisible ? 12 : 0 }}
+    >
       <Title>
         <p>{title}</p>
       </Title>
@@ -52,8 +60,8 @@ const ItemCard = ({
           })}
         </Description>
       )}
-    </ItemCardContainer>
+    </ItemHoverDescriptionContainer>
   )
 }
 
-export default ItemCard
+export default ItemHoverDescription
