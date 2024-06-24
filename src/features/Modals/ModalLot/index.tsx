@@ -55,7 +55,7 @@ const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
         />
 
         <DefaultButton
-          disabled={price > userMoney || isLoading}
+          disabled={isDeleteLot ? isLoading : price > userMoney || isLoading}
           isLoading={isLoading}
           style={{ width: '100%', margin: '0px auto' }}
           onClick={() => toogleLot(id)}
