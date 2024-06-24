@@ -30,15 +30,16 @@ export const Wrapper = styled.div`
 export const ContentWrapper = styled.div`
   display: flex;
 
-  height: 100%;
-  width: 100%;
+  min-width: 430px;
+  min-height: 110px;
+
+  padding: 20px 20px 20px 0px;
 
   background-color: #212121;
 `
 
 export const ToastImageContainer = styled.div`
   padding-left: 20px;
-  height: 100%;
 
   display: flex;
   justify-content: center;
@@ -55,21 +56,14 @@ export const ToastImageContainer = styled.div`
 
 export const ToastText = styled.div`
   position: relative;
-  padding: 10px 15px;
+  padding-left: 15px;
 
-  width: 100%;
-  height: 100%;
+  align-self: center;
 
   & > div {
-    position: absolute;
     display: flex;
     flex-direction: column;
     gap: 8px;
-
-    top: 50%;
-    left: 50%;
-
-    translate: -50% -50%;
 
     & > div {
       text-align: center;

@@ -11,8 +11,7 @@ export type ToastStateT = {
   autoHideDuration: number
   message: string[]
   isOpen: boolean
-  width: number
-  height: number
+
   fontSize: number
 }
 
@@ -21,7 +20,6 @@ export type ToastHandlersParamsT = {
   autoHideDuration?: number
   message: string[]
   isOpen?: boolean
-  width?: number
-  height?: number
+
   fontSize?: number
 }

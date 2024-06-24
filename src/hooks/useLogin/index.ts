@@ -21,11 +21,11 @@ export const useLogin = () => {
     mutationFn: Auth.login,
     onSuccess: data => {
       localStorage.setItem(LocalStorageKey.ACCESS_TOKEN, data.accessToken)
-      toast.success({ message: ['Успішна авторизація'], width: 30 })
+      toast.success({ message: ['Успішна авторизація'] })
       navigate(RoutesPath.PROFILE)
     },
     onError: (error: Error) => {
-      toast.error({ message: [error.message], width: 50 })
+      toast.error({ message: [error.message] })
     },
   })
 

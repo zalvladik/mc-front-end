@@ -21,7 +21,7 @@ export const useByeLot = () => {
 
       queryClient.invalidateQueries(CacheKeys.LOTS)
 
-      toast.success({ message: ['Лот куплено'], width: -40 })
+      toast.success({ message: ['Лот куплено'] })
       onClose()
     },
     onError: (error: Error) => {

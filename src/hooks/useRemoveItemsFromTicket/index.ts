@@ -28,8 +28,6 @@ export const useRemoveItemsFromTicket = (
       })
       toast.success({
         message: ['Предмети перенесені', 'в інвентар'],
-        height: 20,
-        width: 40,
       })
     },
     onError: (error: Error) => {

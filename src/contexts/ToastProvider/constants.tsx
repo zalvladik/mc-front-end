@@ -7,7 +7,5 @@ export const INITIAL_PARAMS: ToastStateT = {
   autoHideDuration: HIDE_DURATION,
   message: [''],
   isOpen: false,
-  width: 430,
-  height: 110,
   fontSize: 25,
 }

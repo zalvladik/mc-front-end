@@ -34,8 +34,6 @@ export const useUserInventory = () => {
     if (data.length >= 5) {
       toast.error({
         message: ['У вас може бути', 'тільки 5 квитків'],
-        height: 20,
-        width: -50,
       })
 
       return

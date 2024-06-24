@@ -17,7 +17,6 @@ export const useSkinComponent = () => {
     toast.info({
       message: ['Ролі вказують на статус гравця'],
       fontSize: 20,
-      width: 90,
       autoHideDuration: 3,
     })
   }

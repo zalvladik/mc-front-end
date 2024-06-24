@@ -19,13 +19,11 @@ export const ToastProvider: FC<{ children: ReactNode }> = ({ children }) => {
   /* eslint-disable react/prop-types */
   const handleToast = useCallback(
     (status: ToastType) =>
-      ({ width = 0, height = 0, ...rest }: ToastHandlersParamsT) => {
+      ({ ...rest }: ToastHandlersParamsT) => {
         setToast({
           ...INITIAL_PARAMS,
           status,
           fontSize: rest.fontSize ?? INITIAL_PARAMS.fontSize,
-          width: width + 430,
-          height: height + 110,
           isOpen: rest.isOpen ?? true,
           message: rest.message,
           autoHideDuration: rest.autoHideDuration

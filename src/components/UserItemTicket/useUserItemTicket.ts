@@ -22,8 +22,6 @@ export const useUserItemTicket = () => {
         'Пропишіть цю команду в чаті серверу:',
         '/trade предмети(забрати) id ',
       ],
-      height: 80,
-      width: 200,
       autoHideDuration: 8,
       fontSize: 20,
     })

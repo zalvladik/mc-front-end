@@ -10,8 +10,6 @@ import {
 import type { ToastProps } from 'src/features/Toast/types'
 
 const Toast = ({
-  width,
-  height,
   fontSize,
   message,
   isOpen,
@@ -36,7 +34,7 @@ const Toast = ({
       className={`${isOpen ? 'visible' : 'vanish'}`}
       onClick={() => onClose()}
     >
-      <Border style={{ width, height }}>
+      <Border>
         <div className="angle angle_left_top" />
         <div className="angle angle_left_bottom" />
         <div className="angle angle_right_top" />
