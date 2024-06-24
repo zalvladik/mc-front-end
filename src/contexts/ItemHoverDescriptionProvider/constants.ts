@@ -6,5 +6,6 @@ export const initialItemHoverDescriptionData: ItemHoverDescriptionProps = {
   isVisible: false,
   topSlotIcon: 0,
   leftSlotIcon: 0,
+  widthSlotIcon: 0,
   heightSlotIcon: 0,
 }

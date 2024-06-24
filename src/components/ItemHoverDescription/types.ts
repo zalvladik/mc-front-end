@@ -4,14 +4,15 @@ export type ItemHoverDescriptionProps = {
   description: string[] | null
   title: string
   isVisible: boolean
-  topSlotIcon: number
-  leftSlotIcon: number
-  heightSlotIcon: number
+  topSlotIcon?: number
+  leftSlotIcon?: number
+  heightSlotIcon?: number
+  widthSlotIcon?: number
 } & HTMLProps<HTMLDivElement>
 
-export type useItemHoverDescriptionProps = Pick<
+export type useItemHoverDescriptionProps = Omit<
   ItemHoverDescriptionProps,
-  'isVisible' | 'topSlotIcon' | 'leftSlotIcon' | 'heightSlotIcon'
+  'description' | 'title'
 >
 
 export type IsJsonItemT = {

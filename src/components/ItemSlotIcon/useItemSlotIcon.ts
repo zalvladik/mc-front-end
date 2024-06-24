@@ -16,7 +16,7 @@ export const useItemSlotIcon = ({
 
       if (!element) return
 
-      const { top, left, height } = element.getBoundingClientRect()
+      const { top, left, width, height } = element.getBoundingClientRect()
 
       onVisible({
         description,
@@ -25,6 +25,7 @@ export const useItemSlotIcon = ({
         topSlotIcon: top,
         leftSlotIcon: left,
         heightSlotIcon: height,
+        widthSlotIcon: width,
       })
     }
 

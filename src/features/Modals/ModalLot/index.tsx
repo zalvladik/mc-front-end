@@ -11,6 +11,7 @@ import {
   ItemAmount,
   ItemIcon,
   ItemOwner,
+  StyledItemHoverDescription,
 } from 'src/features/Modals/ModalLot/styles'
 import type { ModalLotProps } from 'src/features/Modals/ModalLot/types'
 import { useModalLot } from 'src/features/Modals/ModalLot/useModalLot'
@@ -46,11 +47,12 @@ const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
 
           <MoneyTable style={{ paddingRight: 50 }} money={price} />
         </div>
-        {/* <ItemCard
+        <StyledItemHoverDescription
           description={item.description || item.enchants}
           title={item.display_name}
+          isVisible={false}
           style={{ alignContent: 'center' }}
-        /> */}
+        />
 
         <DefaultButton
           disabled={price > userMoney || isLoading}

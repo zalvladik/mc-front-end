@@ -1,5 +1,14 @@
 import styled from 'styled-components'
 
+import ItemHoverDescription from 'src/components/ItemHoverDescription'
+
+export const StyledItemHoverDescription = styled(ItemHoverDescription)`
+  position: static;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0px 20px;
+  border: none;
+`
+
 export const Container = styled.div`
   position: relative;
   display: flex;

@@ -17,6 +17,7 @@ const ItemHoverDescription = ({
   topSlotIcon,
   leftSlotIcon,
   heightSlotIcon,
+  widthSlotIcon,
   ...props
 }: ItemHoverDescriptionProps): JSX.Element => {
   const { itemHoverDescriptionRef } = useItemHoverDescription({
@@ -24,13 +25,14 @@ const ItemHoverDescription = ({
     topSlotIcon,
     leftSlotIcon,
     heightSlotIcon,
+    widthSlotIcon,
   })
 
   return (
     <ItemHoverDescriptionContainer
-      {...props}
       ref={itemHoverDescriptionRef}
       style={{ position: 'fixed' }}
+      {...props}
     >
       <Title>
         <p>{title}</p>
