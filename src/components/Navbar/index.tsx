@@ -70,7 +70,7 @@ const Navbar = (): JSX.Element => {
                       : navigate(RoutesPath.AUCTION)
                   }
                 >
-                  Аукціон
+                  Торгівля
                 </button>
               )}
               <button

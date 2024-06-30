@@ -39,6 +39,7 @@ export const useItemHoverDescription = ({
     return () => {
       itemHoverDescriptionRef!.current!.style.opacity = '0'
       itemHoverDescriptionRef!.current!.style.padding = '0px'
+      itemHoverDescriptionRef!.current!.style.border = 'none'
     }
   }, [isVisible, topSlotIcon, leftSlotIcon, heightSlotIcon, widthSlotIcon])
 
