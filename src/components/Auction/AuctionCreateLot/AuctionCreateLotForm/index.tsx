@@ -27,7 +27,12 @@ const AuctionCreateLotForm = ({
       <DefaultButton
         isLoading={isLoading}
         style={{ width: 300, marginBottom: 60 }}
-        disabled={isLoading || !Number(itemPrice) || !currentItemId}
+        disabled={
+          isLoading ||
+          !Number(itemPrice) ||
+          !currentItemId ||
+          Number(itemPrice) > 15552
+        }
         onClick={() => createLotHanlder(currentItemId)}
       >
         Створити Лот
