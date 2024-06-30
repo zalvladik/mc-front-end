@@ -2,10 +2,15 @@ import { useMutation, useQueryClient } from 'react-query'
 import { CacheKeys } from 'src/constants'
 import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { useToast } from 'src/contexts/ToastProvider/useToast'
+import type { UseByeLotProps } from 'src/hooks/useByeLot/types'
 import type { ItemT } from 'src/services/api/Items/types'
 import Lot from 'src/services/api/Lot'
 
-export const useByeLot = () => {
+export const useByeLot = ({
+  currentMoney,
+  price,
+  updateUserMoney,
+}: UseByeLotProps) => {
   const { onClose } = useModals()
 
   const toast = useToast()
@@ -22,6 +27,7 @@ export const useByeLot = () => {
       queryClient.invalidateQueries(CacheKeys.LOTS)
 
       toast.success({ message: ['Лот куплено'] })
+      updateUserMoney(currentMoney - price)
       onClose()
     },
     onError: (error: Error) => {

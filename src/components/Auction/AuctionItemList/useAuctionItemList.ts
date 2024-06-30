@@ -6,7 +6,7 @@ import { Modals } from 'src/features/Modals/constants'
 
 export const useAuctionItemList = () => {
   const { onOpen } = useModals()
-  const { user } = useUser()
+  const { user, updateUserMoney } = useUser()
 
   const openModal = (data: LotT) => {
     onOpen({
@@ -15,6 +15,7 @@ export const useAuctionItemList = () => {
         ...data,
         isDeleteLot: user.username === data.username,
         userMoney: user.money,
+        updateUserMoney,
       },
     })
   }

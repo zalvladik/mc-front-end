@@ -18,9 +18,22 @@ import { useModalLot } from 'src/features/Modals/ModalLot/useModalLot'
 import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
 
 const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
-  const { item, username, price, isDeleteLot = true, id, userMoney } = data
+  const {
+    item,
+    username,
+    price,
+    isDeleteLot = true,
+    id,
+    userMoney,
+    updateUserMoney,
+  } = data
 
-  const { onClose, toogleLot, isLoading } = useModalLot(isDeleteLot)
+  const { onClose, toogleLot, isLoading } = useModalLot({
+    isDeleteLot,
+    currentMoney: userMoney,
+    price,
+    updateUserMoney,
+  })
 
   const imageUrl = `${FETCH_URL_IMG}/${item.type.slice(0, 2)}/${item.type}.png`
 

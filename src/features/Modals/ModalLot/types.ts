@@ -10,5 +10,13 @@ export type ModalLotProps = {
     id: number
     isDeleteLot: boolean
     userMoney: number
+    updateUserMoney: (value: number) => void
   }
 } & ModalDialogProps
+
+export type UseModalLotProps = {
+  isDeleteLot: boolean
+  currentMoney: number
+  price: number
+  updateUserMoney: (value: number) => void
+}

@@ -2,11 +2,22 @@ import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { useByeLot } from 'src/hooks/useByeLot'
 import { useDeleteUserLot } from 'src/hooks/useDeleteUserLot'
 
-export const useModalLot = (isDeleteLot: boolean) => {
+import type { UseModalLotProps } from 'src/features/Modals/ModalLot/types'
+
+export const useModalLot = ({
+  isDeleteLot,
+  currentMoney,
+  price,
+  updateUserMoney,
+}: UseModalLotProps) => {
   const { onClose } = useModals()
 
   const { mutate: mutateDelete, isLoading: isLoadingDelete } = useDeleteUserLot()
-  const { mutate: mutateBye, isLoading: isLoadingBye } = useByeLot()
+  const { mutate: mutateBye, isLoading: isLoadingBye } = useByeLot({
+    currentMoney,
+    price,
+    updateUserMoney,
+  })
 
   const toogleLot = (id: number): void => {
     if (isDeleteLot) {
