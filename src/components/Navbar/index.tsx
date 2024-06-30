@@ -9,8 +9,14 @@ import {
 import { useNavBar } from 'src/components/Navbar/useNavbar'
 
 const Navbar = (): JSX.Element => {
-  const { navigate, isScrollingUp, currentPath, isProfilePage, isSuccess } =
-    useNavBar()
+  const {
+    navigate,
+    isScrollingUp,
+    currentPath,
+    isProfilePage,
+    isSuccess,
+    isLoading,
+  } = useNavBar()
 
   return (
     <Header className={isScrollingUp ? '' : 'header hidden'}>
@@ -23,74 +29,76 @@ const Navbar = (): JSX.Element => {
           <img src="/assets/logo.svg" alt="header logo" />
         </ButtonBack>
 
-        <div>
-          <NavList>
-            <button
-              style={{
-                opacity: isProfilePage ? 1 : 0.5,
-              }}
-              aria-disabled
-              onClick={() =>
-                !isSuccess
-                  ? navigate(RoutesPath.SIGN_IN)
-                  : isProfilePage
-                    ? undefined
-                    : navigate(RoutesPath.PROFILE)
-              }
-            >
-              Кабінет
-            </button>
-            {isSuccess && (
+        {!isLoading && (
+          <div>
+            <NavList>
               <button
-                style={{ opacity: currentPath === RoutesPath.INVENTORY ? 1 : 0.5 }}
+                style={{
+                  opacity: isProfilePage ? 1 : 0.5,
+                }}
                 aria-disabled
                 onClick={() =>
-                  currentPath === RoutesPath.INVENTORY
-                    ? undefined
-                    : navigate(RoutesPath.INVENTORY)
+                  !isSuccess
+                    ? navigate(RoutesPath.SIGN_IN)
+                    : isProfilePage
+                      ? undefined
+                      : navigate(RoutesPath.PROFILE)
                 }
               >
-                Інвентар
+                Кабінет
               </button>
-            )}
-            {isSuccess && (
+              {isSuccess && (
+                <button
+                  style={{ opacity: currentPath === RoutesPath.INVENTORY ? 1 : 0.5 }}
+                  aria-disabled
+                  onClick={() =>
+                    currentPath === RoutesPath.INVENTORY
+                      ? undefined
+                      : navigate(RoutesPath.INVENTORY)
+                  }
+                >
+                  Інвентар
+                </button>
+              )}
+              {isSuccess && (
+                <button
+                  style={{ opacity: currentPath === RoutesPath.AUCTION ? 1 : 0.5 }}
+                  aria-disabled
+                  onClick={() =>
+                    currentPath === RoutesPath.AUCTION
+                      ? undefined
+                      : navigate(RoutesPath.AUCTION)
+                  }
+                >
+                  Аукціон
+                </button>
+              )}
               <button
-                style={{ opacity: currentPath === RoutesPath.AUCTION ? 1 : 0.5 }}
+                style={{ opacity: currentPath === RoutesPath.RULES ? 1 : 0.5 }}
                 aria-disabled
                 onClick={() =>
-                  currentPath === RoutesPath.AUCTION
+                  currentPath === RoutesPath.RULES
                     ? undefined
-                    : navigate(RoutesPath.AUCTION)
+                    : navigate(RoutesPath.RULES)
                 }
               >
-                Аукціон
+                Правила
               </button>
-            )}
-            <button
-              style={{ opacity: currentPath === RoutesPath.RULES ? 1 : 0.5 }}
-              aria-disabled
-              onClick={() =>
-                currentPath === RoutesPath.RULES
-                  ? undefined
-                  : navigate(RoutesPath.RULES)
-              }
-            >
-              Правила
-            </button>
-            {isSuccess && (
-              <button
-                style={{ opacity: currentPath === RoutesPath.WIKI ? 1 : 0.5 }}
-                onClick={() =>
-                  currentPath === RoutesPath.WIKI
-                    ? undefined
-                    : navigate(RoutesPath.WIKI)
-                }
-              >
-                Wiki
-              </button>
-            )}
-          </NavList>
-        </div>
+              {isSuccess && (
+                <button
+                  style={{ opacity: currentPath === RoutesPath.WIKI ? 1 : 0.5 }}
+                  onClick={() =>
+                    currentPath === RoutesPath.WIKI
+                      ? undefined
+                      : navigate(RoutesPath.WIKI)
+                  }
+                >
+                  Wiki
+                </button>
+              )}
+            </NavList>
+          </div>
+        )}
       </HeaderContainer>
     </Header>
   )

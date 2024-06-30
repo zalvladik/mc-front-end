@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCheckAuth } from 'src/hooks/useCheckAuth'
+import { useGetUser } from 'src/hooks/useGetUser'
 import { RoutesPath } from 'src/router/routes'
 
 export const useNavBar = () => {
   const navigate = useNavigate()
-  const { isSuccess } = useCheckAuth()
+  const { isSuccess, isLoading } = useCheckAuth()
+  const { isUserLoading } = useGetUser(isSuccess)
 
   const [isScrollingUp, setIsScrollingUp] = useState(true)
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY)
@@ -41,5 +43,6 @@ export const useNavBar = () => {
     currentPath,
     isProfilePage,
     isSuccess,
+    isLoading: isLoading || isUserLoading,
   }
 }
