@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom'
+import SocketLayout from 'src//layouts/SocketLayout'
 import UserProvider from 'src/contexts/UserProvider'
 import { useCheckAuth } from 'src/hooks/useCheckAuth'
 import { useGetUser } from 'src/hooks/useGetUser'
@@ -13,7 +14,9 @@ const AuthLayout = (): JSX.Element | null => {
 
   return (
     <UserProvider user={user}>
-      <Outlet />
+      <SocketLayout>
+        <Outlet />
+      </SocketLayout>
     </UserProvider>
   )
 }

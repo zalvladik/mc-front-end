@@ -17,8 +17,12 @@ const UserProvider = ({
     setUser(prevUser => ({ ...prevUser, money }))
   }
 
+  const incrementUserMoney = (newMoney: number): void => {
+    setUser(prevUser => ({ ...prevUser, money: newMoney + prevUser.money }))
+  }
+
   const providerValue: UserContextDataT = useMemo(
-    () => ({ user, updateUserMoney }),
+    () => ({ user, updateUserMoney, incrementUserMoney }),
     [user],
   )
 

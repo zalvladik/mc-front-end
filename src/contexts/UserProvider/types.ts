@@ -9,5 +9,6 @@ export type UserT = {
 
 export type UserContextDataT = {
   user: UserT
-  updateUserMoney: (money: number) => void
+  updateUserMoney: (value: number) => void
+  incrementUserMoney: (value: number) => void
 }
