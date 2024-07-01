@@ -11,6 +11,13 @@ export enum ComponentIds {
   SOCIAL = 'social',
 }
 
+export enum SocketTypes {
+  INCREMENT_MONEY,
+  DECREMENT_MONEY,
+  ADD_ITEMS,
+  REMOVE_ITEMS,
+}
+
 export enum Role {
   ADMIN = 'admin',
   MODERATOR = 'moderator',
