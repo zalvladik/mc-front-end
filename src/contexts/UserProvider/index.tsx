@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useQueryClient } from 'react-query'
 import { UserContext } from 'src/contexts'
 import type { UserContextDataT, UserT } from 'src/contexts/UserProvider/types'
 import { SocketApi } from 'src/services/api/Socket'
@@ -13,6 +14,7 @@ const UserProvider = ({
   user: initialUser,
 }: UserProviderT): JSX.Element => {
   const [user, setUser] = useState<UserT>(initialUser)
+  const queryClient = useQueryClient()
 
   const updateUserMoney = (money: number): void => {
     setUser(prevUser => ({ ...prevUser, money }))
@@ -38,6 +40,7 @@ const UserProvider = ({
       username: user.username,
       incrementUserMoney,
       decrementUserMoney,
+      queryClient,
     })
   }, [user.username])
 
