@@ -1,10 +1,11 @@
 import { io, type Socket } from 'socket.io-client'
+import { FETCH_URL } from 'src/constants'
 
 export class SocketApi {
   static socket: null | Socket = null
 
   static createConnection(updateMoney: (value: number) => void): void {
-    this.socket = io('http://localhost:8080', {
+    this.socket = io(FETCH_URL, {
       query: { username: 'France' },
     })
 
