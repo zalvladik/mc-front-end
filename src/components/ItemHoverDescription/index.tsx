@@ -75,13 +75,20 @@ const ItemHoverDescription = ({
           })}
         </Description>
       )}
-      {durability && (
-        <Description>
-          <li key="durability">
-            <p style={{ color: '#fbfbfd' }}>Міцність: {durability}</p>
-          </li>
-        </Description>
-      )}
+      {durability &&
+        (() => {
+          const [current, max] = durability.split(' / ')
+
+          if (current === max) return
+
+          return (
+            <Description>
+              <li key="durability">
+                <p style={{ color: '#fcfcfc' }}>Міцність: {durability}</p>
+              </li>
+            </Description>
+          )
+        })()}
     </ItemHoverDescriptionContainer>
   )
 }

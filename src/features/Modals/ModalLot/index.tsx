@@ -61,6 +61,7 @@ const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
           <MoneyTable style={{ paddingRight: 50 }} money={price} />
         </div>
         <StyledItemHoverDescription
+          durability={item.durability}
           description={item.description || item.enchants}
           title={item.display_name}
           isVisible={false}

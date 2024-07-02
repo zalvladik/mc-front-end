@@ -2,7 +2,6 @@ import { FETCH_URL_IMG } from 'src/constants'
 
 import ItemGlow from 'src/components/ItemGlow'
 import {
-  Durability,
   ItemAmount,
   ItemIcon,
   ItemSlotIconContainer,
@@ -10,6 +9,8 @@ import {
 import type { ItemSlotIconProps } from 'src/components/ItemSlotIcon/types'
 
 import { useItemSlotIcon } from './useItemSlotIcon'
+
+import Durability from 'src/components/Durability'
 
 const ItemSlotIcon = ({
   id,
@@ -31,7 +32,7 @@ const ItemSlotIcon = ({
     durability,
   })
 
-  const imgUrl = `${FETCH_URL_IMG}/${type.slice(0, 2)}/${type}.png`
+  const imageUrl = `${FETCH_URL_IMG}/${type.slice(0, 2)}/${type}.png`
 
   return (
     <ItemSlotIconContainer
@@ -49,7 +50,7 @@ const ItemSlotIcon = ({
     >
       <ItemIcon
         style={{
-          backgroundImage: `url(${imgUrl}`,
+          backgroundImage: `url(${imageUrl}`,
           width: itemSize,
           height: itemSize,
         }}
@@ -60,23 +61,13 @@ const ItemSlotIcon = ({
         <ItemGlow
           containerSize={containerSize}
           itemSize={itemSize}
-          imageUrl={imgUrl}
+          imageUrl={imageUrl}
         />
       )}
 
-      {durability &&
-        (() => {
-          const [current, max] = durability.split(' / ')
-
-          const currentInterest = ((Number(current) / Number(max)) * 100).toFixed(0)
-
-          const width = (
-            (Number(currentInterest) / 100) *
-            (containerSize * 0.72)
-          ).toFixed(1)
-
-          return <Durability style={{ width: Number(width) }} />
-        })()}
+      {durability && (
+        <Durability durability={durability} containerSize={containerSize} />
+      )}
     </ItemSlotIconContainer>
   )
 }

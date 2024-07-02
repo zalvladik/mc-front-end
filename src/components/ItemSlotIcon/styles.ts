@@ -51,14 +51,3 @@ export const ItemAmount = styled.p`
     0px 0px 15px #000000,
     0px 0px 15px #000000;
 `
-
-export const Durability = styled.div`
-  position: absolute;
-  left: 17%;
-
-  height: 4px;
-
-  bottom: 18%;
-
-  background-color: #62dd44;
-`
