@@ -4,7 +4,14 @@ import { useUser } from 'src/contexts/UserProvider/useUser'
 import { useGetUserLots } from 'src/hooks/useGetUserLots'
 
 export const useAuctionPagination = () => {
-  const { currentPage, setCurrentPage, totalPages, auctionFragment } = useAuction()
+  const {
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    auctionFragment,
+    dataUserLots,
+    dataByeLots,
+  } = useAuction()
 
   const { user } = useUser()
 
@@ -14,6 +21,11 @@ export const useAuctionPagination = () => {
     auctionFragment === AuctionFragment.USER_LOTS ||
     auctionFragment === AuctionFragment.CREATE_LOT
 
+  const didShowPagesInfo = () => {
+    if (auctionFragment === AuctionFragment.USER_LOTS) return dataUserLots.length
+    if (auctionFragment === AuctionFragment.BUY_LOT) return dataByeLots.length
+  }
+
   return {
     currentUserLots: data.length,
     currentPage,
@@ -21,5 +33,6 @@ export const useAuctionPagination = () => {
     totalPages,
     maxLots: user.countLot,
     didShowUserLotsCount,
+    didShowPagesInfo: Boolean(didShowPagesInfo()),
   }
 }

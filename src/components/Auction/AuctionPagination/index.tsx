@@ -24,57 +24,62 @@ const AuctionPagination = (): JSX.Element => {
     totalPages,
     maxLots,
     didShowUserLotsCount,
+    didShowPagesInfo,
   } = useAuctionPagination()
 
   const pageNumbers = generatePageNumbers(currentPage, totalPages)
 
   return (
     <Container>
-      <PaginationController>
-        <Left>
-          <DoubleButttonLeft
-            onClick={() => setCurrentPage(Math.max(currentPage - 10, 1))}
-            disabled={currentPage <= 10}
-          >
-            <div />
-            <div />
-          </DoubleButttonLeft>
-          <SingleButttonLeft
-            onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
-            disabled={currentPage === 1}
-          />
-        </Left>
-
-        <Pages>
-          {pageNumbers.map(pageNumber => (
-            <Page
-              isCurrentPage={pageNumber === currentPage}
-              key={pageNumber}
-              onClick={() => setCurrentPage(pageNumber)}
+      {didShowPagesInfo && (
+        <PaginationController>
+          <Left>
+            <DoubleButttonLeft
+              onClick={() => setCurrentPage(Math.max(currentPage - 10, 1))}
+              disabled={currentPage <= 10}
             >
-              {pageNumber}
-            </Page>
-          ))}
-        </Pages>
+              <div />
+              <div />
+            </DoubleButttonLeft>
+            <SingleButttonLeft
+              onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
+              disabled={currentPage === 1}
+            />
+          </Left>
 
-        <Right>
-          <SingleButttonRight
-            onClick={() => setCurrentPage(Math.min(currentPage + 1, totalPages))}
-            disabled={currentPage === totalPages}
-          />
-          <DoubleButttonRight
-            onClick={() => setCurrentPage(Math.min(currentPage + 10, totalPages))}
-            disabled={currentPage > totalPages - 10}
-          >
-            <div />
-            <div />
-          </DoubleButttonRight>
-        </Right>
-      </PaginationController>
+          <Pages>
+            {pageNumbers.map(pageNumber => (
+              <Page
+                isCurrentPage={pageNumber === currentPage}
+                key={pageNumber}
+                onClick={() => setCurrentPage(pageNumber)}
+              >
+                {pageNumber}
+              </Page>
+            ))}
+          </Pages>
 
-      <CountItems>
-        {currentPage}/{totalPages}
-      </CountItems>
+          <Right>
+            <SingleButttonRight
+              onClick={() => setCurrentPage(Math.min(currentPage + 1, totalPages))}
+              disabled={currentPage === totalPages}
+            />
+            <DoubleButttonRight
+              onClick={() => setCurrentPage(Math.min(currentPage + 10, totalPages))}
+              disabled={currentPage > totalPages - 10}
+            >
+              <div />
+              <div />
+            </DoubleButttonRight>
+          </Right>
+        </PaginationController>
+      )}
+
+      {didShowPagesInfo && (
+        <CountItems>
+          {currentPage}/{totalPages}
+        </CountItems>
+      )}
 
       {didShowUserLotsCount && (
         <CountLots>
