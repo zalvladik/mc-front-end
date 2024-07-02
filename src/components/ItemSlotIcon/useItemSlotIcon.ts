@@ -6,6 +6,7 @@ import type { UseItemSlotIconProps } from 'src/components/ItemSlotIcon/types'
 export const useItemSlotIcon = ({
   description,
   display_name,
+  durability,
 }: UseItemSlotIconProps) => {
   const { onVisible, offVisible } = useItemHoverDescription()
   const itemSlotIconRef = useRef<HTMLDivElement>(null)
@@ -26,6 +27,7 @@ export const useItemSlotIcon = ({
         leftSlotIcon: left,
         heightSlotIcon: height,
         widthSlotIcon: width,
+        durability,
       })
     }
 

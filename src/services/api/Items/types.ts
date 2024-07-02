@@ -5,6 +5,7 @@ export type ItemT = {
   display_name: string
   description: string[] | null
   enchants: string[] | null
+  durability: string | null
   categories: string[]
 }
 

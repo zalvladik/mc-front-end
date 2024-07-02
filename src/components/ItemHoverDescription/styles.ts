@@ -9,7 +9,8 @@ export const ItemHoverDescriptionContainer = styled.div`
   gap: 16px;
 
   flex-direction: column;
-  border: 3px solid #1e0245;
+
+  border: 3px solid rgba(0, 0, 0, 0);
 
   display: flex;
   flex-direction: column;
@@ -33,10 +34,6 @@ export const Title = styled.div`
 export const Description = styled.ul`
   display: flex;
   flex-direction: column;
-
-  @media screen and (max-width: 390px) {
-    padding: 8px 3px 3px 3px;
-  }
 
   & > li {
     & > p {

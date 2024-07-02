@@ -11,6 +11,7 @@ import type {
 import { useItemHoverDescription } from './useItemHoverDescription'
 
 const ItemHoverDescription = ({
+  durability,
   description = [],
   title,
   isVisible,
@@ -72,6 +73,13 @@ const ItemHoverDescription = ({
               </li>
             )
           })}
+        </Description>
+      )}
+      {durability && (
+        <Description>
+          <li key="durability">
+            <p style={{ color: '#fbfbfd' }}>Міцність: {durability}</p>
+          </li>
         </Description>
       )}
     </ItemHoverDescriptionContainer>

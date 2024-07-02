@@ -31,15 +31,19 @@ export const useItemHoverDescription = ({
       tooltipLeft = window.innerWidth - tooltipWidth - 40
     }
 
-    itemHoverDescriptionRef.current.style.top = `${tooltipTop}px`
-    itemHoverDescriptionRef.current.style.left = `${tooltipLeft}px`
-    itemHoverDescriptionRef.current.style.opacity = '1'
-    itemHoverDescriptionRef.current.style.padding = '12px'
+    const { style } = itemHoverDescriptionRef.current
+
+    style.top = `${tooltipTop}px`
+    style.left = `${tooltipLeft}px`
+    style.opacity = '1'
+    style.padding = '12px'
+    style.border = '3px solid rgba(30, 2, 69, 1)'
 
     return () => {
-      itemHoverDescriptionRef!.current!.style.opacity = '0'
-      itemHoverDescriptionRef!.current!.style.padding = '0px'
-      itemHoverDescriptionRef!.current!.style.border = 'none'
+      const { style } = itemHoverDescriptionRef!.current!
+      style.opacity = '0'
+      style.padding = '0px'
+      style.border = 'none'
     }
   }, [isVisible, topSlotIcon, leftSlotIcon, heightSlotIcon, widthSlotIcon])
 

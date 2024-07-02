@@ -2,6 +2,7 @@ import { FETCH_URL_IMG } from 'src/constants'
 
 import ItemGlow from 'src/components/ItemGlow'
 import {
+  Durability,
   ItemAmount,
   ItemIcon,
   ItemSlotIconContainer,
@@ -15,6 +16,7 @@ const ItemSlotIcon = ({
   amount,
   type,
   enchants,
+  durability,
   description,
   display_name,
   style,
@@ -26,7 +28,7 @@ const ItemSlotIcon = ({
   const { itemSlotIconRef } = useItemSlotIcon({
     description: description || enchants,
     display_name,
-    containerSize,
+    durability,
   })
 
   const imgUrl = `${FETCH_URL_IMG}/${type.slice(0, 2)}/${type}.png`
@@ -61,6 +63,20 @@ const ItemSlotIcon = ({
           imageUrl={imgUrl}
         />
       )}
+
+      {durability &&
+        (() => {
+          const [current, max] = durability.split(' / ')
+
+          const currentInterest = ((Number(current) / Number(max)) * 100).toFixed(0)
+
+          const width = (
+            (Number(currentInterest) / 100) *
+            (containerSize * 0.72)
+          ).toFixed(1)
+
+          return <Durability style={{ width: Number(width) }} />
+        })()}
     </ItemSlotIconContainer>
   )
 }

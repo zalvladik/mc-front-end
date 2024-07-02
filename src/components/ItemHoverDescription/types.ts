@@ -1,6 +1,7 @@
 import type { HTMLProps } from 'react'
 
 export type ItemHoverDescriptionProps = {
+  durability: string | null
   description: string[] | null
   title: string
   isVisible: boolean
@@ -12,7 +13,7 @@ export type ItemHoverDescriptionProps = {
 
 export type useItemHoverDescriptionProps = Omit<
   ItemHoverDescriptionProps,
-  'description' | 'title'
+  'description' | 'title' | 'durability'
 >
 
 export type IsJsonItemT = {

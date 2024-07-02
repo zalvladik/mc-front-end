@@ -11,5 +11,5 @@ export type ItemSlotIconProps = {
 export type UseItemSlotIconProps = {
   description: string[] | null
   display_name: string
-  containerSize: number
+  durability: string | null
 }
