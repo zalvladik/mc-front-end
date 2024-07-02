@@ -83,7 +83,7 @@ const AuctionPagination = (): JSX.Element => {
 
       {didShowUserLotsCount && (
         <CountLots>
-          {currentUserLots}/{maxLots}
+          {currentUserLots}/{maxLots} ваші лоти
         </CountLots>
       )}
     </Container>
