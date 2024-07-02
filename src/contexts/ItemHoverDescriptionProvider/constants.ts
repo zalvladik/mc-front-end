@@ -2,6 +2,7 @@ import type { ItemHoverDescriptionProps } from 'src/components/ItemHoverDescript
 
 export const initialItemHoverDescriptionData: ItemHoverDescriptionProps = {
   title: '',
+  durability: null,
   description: [],
   isVisible: false,
   topSlotIcon: 0,
