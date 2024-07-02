@@ -6,16 +6,12 @@ import {
   Container,
   DescriptionCategory,
 } from 'src/components/Auction/AuctionCategory/styles'
-import type { AuctionCategoryProps } from 'src/components/Auction/AuctionCategory/types'
-import { useAuction } from 'src/components/Auction/AuctionCategory/useAuction'
+import { useAuctionCategory } from 'src/components/Auction/AuctionCategory/useAuctionCategory'
 import { TitleContainer } from 'src/components/Auction/styles'
+import { AuctionCategoryProps } from 'src/components/Auction/AuctionCategory/types'
 
-const AuctionCategory = ({
-  setSelectedCaterogy,
-  selectedCaterogy,
-  ...props
-}: AuctionCategoryProps): JSX.Element => {
-  const { categories } = useAuction()
+const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
+  const { categories, selectedCategory, setSelectedCategory } = useAuctionCategory()
 
   return (
     <Container {...props}>
@@ -25,19 +21,19 @@ const AuctionCategory = ({
         </TitleContainer>
         <CategoryList>
           {categories.map(({ style, category, description }) => {
-            const isSelected = selectedCaterogy === category
+            const isSelected = selectedCategory === category
 
             return (
               <ButtonCategory
                 type="button"
                 onClick={() => {
                   if (isSelected) {
-                    setSelectedCaterogy('')
+                    setSelectedCategory('')
 
                     return
                   }
 
-                  setSelectedCaterogy(category)
+                  setSelectedCategory(category)
                 }}
                 aria-label={`Select category ${category}`}
                 key={category}

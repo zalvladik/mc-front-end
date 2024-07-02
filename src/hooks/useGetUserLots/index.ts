@@ -9,7 +9,7 @@ export const useGetUserLots = () => {
   })
 
   return {
-    userLots: data ?? [],
-    isLoadingUserLots: isLoading,
+    data: data ?? [],
+    isLoading,
   }
 }

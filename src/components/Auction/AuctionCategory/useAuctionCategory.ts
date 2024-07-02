@@ -1,4 +1,7 @@
-export const useAuction = () => {
+import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
+
+export const useAuctionCategory = () => {
+  const { selectedCategory, setSelectedCategory } = useAuction()
   const baseUrl = '/assets/items_for_ui'
   const categories = [
     {
@@ -59,5 +62,5 @@ export const useAuction = () => {
     },
   ]
 
-  return { categories }
+  return { categories, selectedCategory, setSelectedCategory }
 }

@@ -8,12 +8,12 @@ import {
   TbodyContainer,
   TheadContainer,
 } from 'src/components/Auction/AuctionItemList/styles'
-import type { AuctionItemListProps } from 'src/components/Auction/AuctionItemList/types'
 import { useAuctionItemList } from 'src/components/Auction/AuctionItemList/useAuctionItemList'
 import ItemSlotIcon from 'src/components/ItemSlotIcon'
 
-const AuctionItemList = ({ lots, isLoading }: AuctionItemListProps): JSX.Element => {
-  const { openModal, itemSlotIconProps, user } = useAuctionItemList()
+const AuctionItemList = (): JSX.Element => {
+  const { openModal, itemSlotIconProps, user, isLoading, data } =
+    useAuctionItemList()
 
   return (
     <Container>
@@ -28,13 +28,13 @@ const AuctionItemList = ({ lots, isLoading }: AuctionItemListProps): JSX.Element
 
       <StyledSkeleton
         isLoading={isLoading}
-        isDataExist={lots.length}
+        isDataExist={data.length}
         skeletonLength={8}
         emptyText="Предмет не знайдено"
         size={40}
       >
         <TbodyContainer>
-          {lots.map(({ item, id, price, username }) => {
+          {data.map(({ item, id, price, username }) => {
             const { stack, restMoney } = moneyCalculator(price)
 
             return (

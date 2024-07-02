@@ -3,6 +3,7 @@ import { generatePageNumbers } from 'src/helpers'
 import {
   Container,
   CountItems,
+  CountLots,
   DoubleButttonLeft,
   DoubleButttonRight,
   Left,
@@ -13,18 +14,16 @@ import {
   SingleButttonLeft,
   SingleButttonRight,
 } from 'src/components/Auction/AuctionPagination/styles'
-import type { AuctionPaginationProps } from 'src/components/Auction/AuctionPagination/types'
+import { useAuctionPagination } from 'src/components/Auction/AuctionPagination/useAuctionPagination'
 
-const AuctionPagination = ({
-  currentPage,
-  setCurrentPage,
-  totalPages,
-  ...props
-}: AuctionPaginationProps): JSX.Element => {
+const AuctionPagination = (): JSX.Element => {
+  const { currentUserLots, currentPage, setCurrentPage, totalPages, maxLots } =
+    useAuctionPagination()
+
   const pageNumbers = generatePageNumbers(currentPage, totalPages)
 
   return (
-    <Container {...props}>
+    <Container>
       <PaginationController>
         <Left>
           <DoubleButttonLeft
@@ -70,6 +69,10 @@ const AuctionPagination = ({
       <CountItems>
         {currentPage}/{totalPages}
       </CountItems>
+
+      <CountLots>
+        {currentUserLots}/{maxLots}
+      </CountLots>
     </Container>
   )
 }

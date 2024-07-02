@@ -23,27 +23,24 @@ import MoneyTable from 'src/components/MoneyTable'
 
 const AuctionPage = (): JSX.Element => {
   const {
-    currentFragment,
+    searchValue,
+    setSearchValue,
+    auctionFragment,
     isFragment,
-    auctionControllerProps,
-    auctionUserLotsProps,
-    auctionPaginationProps,
-    auctionByeLotsProps,
-    auctionCategoryProps,
-    auctionSearchInputProps,
     findLotByName,
-    totalPages,
     money,
+    totalPages,
+    isLoadingByeLots,
   } = useAuctionPage()
 
   const getFragment = (): JSX.Element => {
     const components: Record<AuctionFragment, JSX.Element> = {
-      [AuctionFragment.BUY_LOT]: <AuctionItemList {...auctionByeLotsProps} />,
+      [AuctionFragment.BUY_LOT]: <AuctionItemList />,
       [AuctionFragment.CREATE_LOT]: <AuctionCreateLot />,
-      [AuctionFragment.USER_LOTS]: <AuctionUserLots {...auctionUserLotsProps} />,
+      [AuctionFragment.USER_LOTS]: <AuctionUserLots />,
     }
 
-    return components[currentFragment]
+    return components[auctionFragment]
   }
 
   return (
@@ -52,16 +49,14 @@ const AuctionPage = (): JSX.Element => {
         <DefaultInputWrapper>
           <div>
             <DefaultInput
-              value={auctionSearchInputProps.searchValue}
-              onChange={e => auctionSearchInputProps.setSearchValue(e.target.value)}
+              value={searchValue}
+              onChange={e => setSearchValue(e.target.value)}
               placeholder="Пошук..."
             />
 
             <DefaultButton
-              isLoading={auctionByeLotsProps.isLoading}
-              disabled={
-                auctionByeLotsProps.isLoading || !auctionSearchInputProps.searchValue
-              }
+              isLoading={isLoadingByeLots}
+              disabled={isLoadingByeLots || !searchValue}
               onClick={findLotByName}
               style={{ width: 200 }}
               isVisible={!isFragment.isUserLotsFragment}
@@ -74,7 +69,6 @@ const AuctionPage = (): JSX.Element => {
         <BodyContainer>
           <AuctionCategoryWrapper>
             <AuctionCategory
-              {...auctionCategoryProps}
               style={{
                 opacity: isFragment.isBuyFragment ? 1 : 0.3,
                 pointerEvents: isFragment.isBuyFragment ? 'auto' : 'none',
@@ -85,13 +79,12 @@ const AuctionPage = (): JSX.Element => {
           <BodyCenterContainer isBuyFragment={isFragment.isCreateLotFragment}>
             {getFragment()}
           </BodyCenterContainer>
-          <AuctionController {...auctionControllerProps} />
+          <AuctionController />
         </BodyContainer>
 
         <StyledAuctionPagination
           totalPageIsNull={Boolean(totalPages > 1)}
           isCreateLotFragment={isFragment.isCreateLotFragment}
-          {...auctionPaginationProps}
         />
       </div>
     </Container>

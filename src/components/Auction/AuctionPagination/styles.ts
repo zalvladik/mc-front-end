@@ -191,3 +191,16 @@ export const CountItems = styled.div`
   font-size: 24px;
   font-weight: 500;
 `
+
+export const CountLots = styled.div`
+  position: absolute;
+
+  left: 15px;
+  top: 50%;
+
+  translate: 0% -50%;
+
+  font-family: 'Minecraft', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+`
