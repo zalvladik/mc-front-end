@@ -17,8 +17,14 @@ import {
 import { useAuctionPagination } from 'src/components/Auction/AuctionPagination/useAuctionPagination'
 
 const AuctionPagination = (): JSX.Element => {
-  const { currentUserLots, currentPage, setCurrentPage, totalPages, maxLots } =
-    useAuctionPagination()
+  const {
+    currentUserLots,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    maxLots,
+    didShowUserLotsCount,
+  } = useAuctionPagination()
 
   const pageNumbers = generatePageNumbers(currentPage, totalPages)
 
@@ -70,9 +76,11 @@ const AuctionPagination = (): JSX.Element => {
         {currentPage}/{totalPages}
       </CountItems>
 
-      <CountLots>
-        {currentUserLots}/{maxLots}
-      </CountLots>
+      {didShowUserLotsCount && (
+        <CountLots>
+          {currentUserLots}/{maxLots}
+        </CountLots>
+      )}
     </Container>
   )
 }
