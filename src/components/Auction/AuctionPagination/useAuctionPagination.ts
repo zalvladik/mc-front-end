@@ -26,8 +26,6 @@ export const useAuctionPagination = () => {
     if (auctionFragment === AuctionFragment.BUY_LOT) return !dataByeLots.length
   }
 
-  console.log(didShowPagesInfo())
-
   return {
     currentUserLots: data.length,
     currentPage,
