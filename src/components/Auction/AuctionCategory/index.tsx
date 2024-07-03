@@ -22,6 +22,7 @@ const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
         <CategoryList>
           {categories.map(({ style, category, description }) => {
             const isSelected = selectedCategory === category
+            const isShulkerCategory = category === 'shulkers'
 
             return (
               <ButtonCategory
@@ -38,6 +39,10 @@ const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
                 aria-label={`Select category ${category}`}
                 key={category}
                 isSelected={isSelected}
+                style={{
+                  pointerEvents: isShulkerCategory ? 'none' : 'auto',
+                  opacity: isShulkerCategory ? 0.3 : 1,
+                }}
               >
                 <ButtonItems isSelected={isSelected}>
                   <div style={style} />
