@@ -11,7 +11,6 @@ export const useAuctionPage = () => {
     findLotByName,
     searchValue,
     setSearchValue,
-    totalPages,
     isLoadingByeLots,
   } = useAuction()
 
@@ -29,7 +28,6 @@ export const useAuctionPage = () => {
     money: user.money,
     searchValue,
     setSearchValue,
-    totalPages,
     isLoadingByeLots,
   }
 }

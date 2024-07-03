@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import type {
-  IsDisabledButtonProps,
+  IsDisabledProps,
   StyledPageProps,
 } from 'src/components/Auction/AuctionPagination/types'
 
@@ -25,7 +25,7 @@ export const Container = styled.div`
   );
 `
 
-export const PaginationController = styled.div`
+export const PaginationController = styled.div<IsDisabledProps>`
   display: flex;
   width: 820px;
   gap: 20px;
@@ -37,14 +37,17 @@ export const PaginationController = styled.div`
   margin: 0px auto;
 
   transition: opacity 200ms ease;
+
+  opacity: ${props => (props.disabled ? 0 : 1)};
+  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
 `
 
-export const SingleButttonRight = styled.div<IsDisabledButtonProps>`
+export const SingleButttonRight = styled.div<IsDisabledProps>`
   background-repeat: no-repeat;
   background-size: contain;
   background-image: url('/assets/items_for_ui/page_forward_highlighted.png');
 
-  opacity: ${props => (props.disabled ? 0.2 : 1)};
+  opacity: ${props => (props.disabled ? 0 : 1)};
   pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
 `
 
@@ -67,7 +70,7 @@ export const Right = styled.div`
   }
 `
 
-export const DoubleButttonRight = styled.div<IsDisabledButtonProps>`
+export const DoubleButttonRight = styled.div<IsDisabledProps>`
   position: relative;
 
   opacity: ${props => (props.disabled ? 0.2 : 1)};
@@ -112,7 +115,7 @@ export const Left = styled.div`
   }
 `
 
-export const SingleButttonLeft = styled.div<IsDisabledButtonProps>`
+export const SingleButttonLeft = styled.div<IsDisabledProps>`
   background-repeat: no-repeat;
   background-size: contain;
   background-image: url('/assets/items_for_ui/page_backward.png');
@@ -121,7 +124,7 @@ export const SingleButttonLeft = styled.div<IsDisabledButtonProps>`
   pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
 `
 
-export const DoubleButttonLeft = styled.div<IsDisabledButtonProps>`
+export const DoubleButttonLeft = styled.div<IsDisabledProps>`
   position: relative;
 
   opacity: ${props => (props.disabled ? 0.2 : 1)};
@@ -179,7 +182,7 @@ export const Page = styled.li<StyledPageProps>`
   }
 `
 
-export const CountItems = styled.div`
+export const CountItems = styled.div<IsDisabledProps>`
   position: absolute;
 
   right: 15px;
@@ -190,9 +193,14 @@ export const CountItems = styled.div`
   font-family: 'Minecraft', sans-serif;
   font-size: 24px;
   font-weight: 500;
+
+  transition: opacity 200ms ease;
+
+  opacity: ${props => (props.disabled ? 0 : 1)};
+  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
 `
 
-export const CountLots = styled.div`
+export const CountLots = styled.div<IsDisabledProps>`
   position: absolute;
 
   left: 15px;
@@ -203,4 +211,9 @@ export const CountLots = styled.div`
   font-family: 'Minecraft', sans-serif;
   font-size: 20px;
   font-weight: 500;
+
+  transition: opacity 200ms ease;
+
+  opacity: ${props => (props.disabled ? 0.2 : 1)};
+  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
 `

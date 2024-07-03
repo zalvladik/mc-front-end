@@ -6,7 +6,6 @@ import {
   BodyContainer,
   Container,
   DefaultInputWrapper,
-  StyledAuctionPagination,
 } from 'src/pages/AuctionPage/styles'
 import { useAuctionPage } from 'src/pages/AuctionPage/useAuctionPage'
 
@@ -16,7 +15,9 @@ import {
   AuctionCreateLot,
   AuctionItemList,
   AuctionUserLots,
+  AuctionPagination,
 } from 'src/components/Auction'
+
 import DefaultButton from 'src/components/DefaultButton'
 import DefaultInput from 'src/components/inputs/DefaultInput'
 import MoneyTable from 'src/components/MoneyTable'
@@ -29,7 +30,6 @@ const AuctionPage = (): JSX.Element => {
     isFragment,
     findLotByName,
     money,
-    totalPages,
     isLoadingByeLots,
   } = useAuctionPage()
 
@@ -82,10 +82,7 @@ const AuctionPage = (): JSX.Element => {
           <AuctionController />
         </BodyContainer>
 
-        <StyledAuctionPagination
-          totalPageIsNull={Boolean(totalPages > 1)}
-          isCreateLotFragment={isFragment.isCreateLotFragment}
-        />
+        <AuctionPagination />
       </div>
     </Container>
   )

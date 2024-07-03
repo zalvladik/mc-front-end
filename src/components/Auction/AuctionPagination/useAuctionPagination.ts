@@ -22,9 +22,11 @@ export const useAuctionPagination = () => {
     auctionFragment === AuctionFragment.CREATE_LOT
 
   const didShowPagesInfo = () => {
-    if (auctionFragment === AuctionFragment.USER_LOTS) return dataUserLots.length
-    if (auctionFragment === AuctionFragment.BUY_LOT) return dataByeLots.length
+    if (auctionFragment !== AuctionFragment.BUY_LOT) return !dataUserLots.length
+    if (auctionFragment === AuctionFragment.BUY_LOT) return !dataByeLots.length
   }
+
+  console.log(didShowPagesInfo())
 
   return {
     currentUserLots: data.length,
@@ -34,5 +36,6 @@ export const useAuctionPagination = () => {
     maxLots: user.countLot,
     didShowUserLotsCount,
     didShowPagesInfo: Boolean(didShowPagesInfo()),
+    isByeFragment: auctionFragment === AuctionFragment.BUY_LOT,
   }
 }

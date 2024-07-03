@@ -1,10 +1,5 @@
-import type {
-  IsBuyFragmentProps,
-  StyledAuctionPaginationProps,
-} from 'src/pages/AuctionPage/types'
+import type { IsBuyFragmentProps } from 'src/pages/AuctionPage/types'
 import styled from 'styled-components'
-
-import { AuctionPagination } from 'src/components/Auction'
 
 export const DefaultInputWrapper = styled.div`
   position: absolute;
@@ -105,17 +100,4 @@ export const AuctionCategoryDisabled = styled.div<IsBuyFragmentProps>`
 
   opacity: ${props => (props.isBuyFragment ? 0 : 1)};
   transform: ${props => (props.isBuyFragment ? 'scale(0)' : 'scale(1)')};
-`
-
-export const StyledAuctionPagination = styled(
-  AuctionPagination,
-)<StyledAuctionPaginationProps>`
-  & > div {
-    transition: opacity 200ms ease;
-
-    pointer-events: ${props =>
-      props.isCreateLotFragment || !props.totalPageIsNull ? 'none' : 'auto'};
-    opacity: ${props =>
-      props.isCreateLotFragment || !props.totalPageIsNull ? 0 : 1};
-  }
 `

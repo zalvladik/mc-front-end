@@ -2,6 +2,6 @@ export type StyledPageProps = {
   isCurrentPage: boolean
 }
 
-export type IsDisabledButtonProps = {
+export type IsDisabledProps = {
   disabled: boolean
 }
