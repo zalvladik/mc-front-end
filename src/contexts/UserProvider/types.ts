@@ -5,8 +5,9 @@ export type UserT = {
   username: string
   money: number
   role: Role[]
-  countShulker: number
-  countLot: number
+  shulkerCount: number
+  itemCount: number
+  lotCount: number
 }
 
 export type UserContextDataT = {
