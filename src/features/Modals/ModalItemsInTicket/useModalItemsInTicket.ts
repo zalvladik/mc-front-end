@@ -21,10 +21,7 @@ export const useModalItemsInTicket = (itemTicketId: number) => {
   )
 
   const { mutate: deleteTicket, isLoading: isLoadingDeleteItemTicket } =
-    useDeleteItemTicket(
-      itemTicketId,
-      selectedItems.length ? selectedItems : data.map(item => item.id),
-    )
+    useDeleteItemTicket(itemTicketId)
 
   const deleteItemTicket = () => {
     deleteTicket()
