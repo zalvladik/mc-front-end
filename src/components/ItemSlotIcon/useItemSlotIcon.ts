@@ -7,11 +7,13 @@ export const useItemSlotIcon = ({
   description,
   display_name,
   durability,
+  didShowDescription,
 }: UseItemSlotIconProps) => {
   const { onVisible, offVisible } = useItemHoverDescription()
   const itemSlotIconRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (!didShowDescription) return
     const handleMouseEnter = () => {
       const element = itemSlotIconRef.current
 

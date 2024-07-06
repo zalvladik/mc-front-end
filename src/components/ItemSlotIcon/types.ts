@@ -6,10 +6,12 @@ export type ItemSlotIconProps = {
   fontSize?: number
   containerSize: number
   itemSize: number
+  didShowDescription?: boolean
 } & ItemT
 
 export type UseItemSlotIconProps = {
   description: string[] | null
   display_name: string
   durability: string | null
+  didShowDescription?: boolean
 }

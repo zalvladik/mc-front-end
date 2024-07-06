@@ -2,20 +2,17 @@ import { FETCH_URL_IMG } from 'src/constants'
 
 import ButtonModalClose from 'src/components/ButtonModalClose'
 import DefaultButton from 'src/components/DefaultButton'
-import ItemGlow from 'src/components/ItemGlow'
 import MoneyTable from 'src/components/MoneyTable'
 
 import {
   Container,
-  IconSlot,
-  ItemAmount,
-  ItemIcon,
   ItemOwner,
   StyledItemHoverDescription,
 } from 'src/features/Modals/ModalLot/styles'
 import type { ModalLotProps } from 'src/features/Modals/ModalLot/types'
 import { useModalLot } from 'src/features/Modals/ModalLot/useModalLot'
 import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
+import ItemSlotIcon from 'src/components/ItemSlotIcon'
 
 const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
   const {
@@ -35,8 +32,6 @@ const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
     updateUserMoney,
   })
 
-  const imageUrl = `${FETCH_URL_IMG}/${item.type.slice(0, 2)}/${item.type}.png`
-
   return (
     <SettingsModalsLayout
       isOpen={isOpen}
@@ -46,17 +41,12 @@ const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
       <ButtonModalClose onClose={onClose} />
       <Container>
         <div>
-          <IconSlot>
-            <ItemIcon
-              style={{
-                backgroundImage: `url(${imageUrl})`,
-              }}
-            />
-            {item.amount > 1 && <ItemAmount>{item.amount}</ItemAmount>}
-            {item.enchants && (
-              <ItemGlow containerSize={200} itemSize={128} imageUrl={imageUrl} />
-            )}
-          </IconSlot>
+          <ItemSlotIcon
+            didShowDescription={false}
+            containerSize={200}
+            itemSize={128}
+            {...item}
+          />
 
           <MoneyTable style={{ paddingRight: 50 }} money={price} />
         </div>

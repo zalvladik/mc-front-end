@@ -53,44 +53,6 @@ export const Container = styled.div`
   }
 `
 
-export const IconSlot = styled.div`
-  position: relative;
-
-  width: 200px;
-  height: 200px;
-
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-image: url('/assets/items_for_ui/slot.png');
-`
-
-export const ItemIcon = styled.div`
-  position: absolute;
-
-  width: 128px;
-  height: 128px;
-
-  top: 50%;
-  left: 50%;
-
-  translate: -50% -50%;
-  background-size: contain;
-  background-repeat: no-repeat;
-`
-
-export const ItemAmount = styled.p`
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-
-  padding: 5px;
-  font-size: 35px;
-  font-family: 'Minecraft', sans-serif;
-  text-shadow:
-    0px 0px 15px #000000,
-    0px 0px 15px #000000;
-`
-
 export const ItemOwner = styled.div`
   position: absolute;
 

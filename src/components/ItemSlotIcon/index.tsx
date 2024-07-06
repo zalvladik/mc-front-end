@@ -22,6 +22,7 @@ const ItemSlotIcon = ({
   display_name,
   style,
   containerSize,
+  didShowDescription = true,
   itemSize,
   fontSize = 25,
   onClick,
@@ -30,6 +31,7 @@ const ItemSlotIcon = ({
     description: description || enchants,
     display_name,
     durability,
+    didShowDescription,
   })
 
   const imageUrl = `${FETCH_URL_IMG}/${type.slice(0, 2)}/${type}.png`
