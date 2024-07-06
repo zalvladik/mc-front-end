@@ -1,11 +1,13 @@
 import type { CSSProperties, HTMLProps } from 'react'
 import type { SelectAreaColors } from 'src/constants'
 import type { ItemT } from 'src/services/api/Items/types'
+import type { ShulkerItemT } from 'src/services/api/Shulker/types'
 
 export type ItemListProps = {
-  items: ItemT[]
-  selectToogle: (id: number[]) => void
-  styleForItemBorder: (id: number) => CSSProperties
+  emptyText?: string
+  items: ItemT[] | ShulkerItemT[]
+  selectToogle?: (id: number[]) => void
+  styleForItemBorder?: (id: number) => CSSProperties
   selectAreaColor?: SelectAreaColors
   isNeedAreaSelect?: boolean
   isLoading: boolean

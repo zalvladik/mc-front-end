@@ -28,10 +28,10 @@ class ItemTicket {
       .json()
   }
 
-  async deleteItemTicket(itemIds: number[], itemTicketId: number): Promise<ItemT[]> {
+  async deleteItemTicket(itemTicketId: number): Promise<void> {
     return api
       .delete(`${FetchEndpoint.ITEM_TICKET}`, {
-        json: { itemIds, itemTicketId },
+        json: { itemTicketId },
       })
       .json()
   }

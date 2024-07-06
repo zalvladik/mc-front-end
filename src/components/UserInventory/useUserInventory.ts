@@ -124,6 +124,7 @@ export const useUserInventory = () => {
     styleForItemBorder,
     selectAreaColor: SelectAreaColors.Green,
     itemSlotIconProps: { containerSize: 104, itemSize: 64 },
+    emptyText: 'Інвентар пустий',
   }
 
   const paginationTabProps = {

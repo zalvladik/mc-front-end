@@ -55,6 +55,7 @@ export const NoDataInfo = styled.div`
 
     translate: -50% -50%;
 
+    white-space: nowrap;
     font-size: 30px;
     font-family: 'Minecraft', sans-serif;
     text-shadow:

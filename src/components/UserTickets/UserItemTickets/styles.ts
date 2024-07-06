@@ -1,27 +1,22 @@
 import styled from 'styled-components'
 
-export const ContainerWrapper = styled.div`
-  background: radial-gradient(
-    circle,
-    rgba(30, 67, 89, 1) 0%,
-    rgba(20, 47, 61, 1) 100%
-  );
+export const TicketIdWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
 
-  height: 493px;
+  & > div {
+    position: absolute;
 
-  -webkit-box-shadow:
-    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
-    0px 0px 18px -5px rgba(255, 255, 255, 1);
-  -moz-box-shadow:
-    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
-    0px 0px 18px -5px rgba(255, 255, 255, 1);
-  box-shadow:
-    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
-    0px 0px 18px -5px rgba(255, 255, 255, 1);
+    color: #4e4400;
+    font-family: 'Minecraft', sans-serif;
+    font-size: 40px;
 
-  border-radius: 10px;
+    top: 20%;
+    right: 50%;
 
-  padding: 20px;
+    translate: 50% 0%;
+  }
 `
 
 export const Container = styled.div`
@@ -55,11 +50,11 @@ export const Container = styled.div`
 
   & > h1 {
     position: absolute;
-    bottom: 40px;
+    bottom: 10px;
     left: 50%;
     font-weight: 500;
     font-family: 'Minecraft', sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     translate: -50% 0%;
   }
 
@@ -76,14 +71,13 @@ export const Container = styled.div`
 
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url('/assets/item_ticket_vertical.png');
 
     transform-origin: bottom center;
 
     transition:
       transform 0.3s ease,
       rotate 0.3s ease-in-out;
-    translate: 50% -70%;
+    translate: 50% -60%;
 
     &:hover {
       cursor: pointer;
@@ -211,24 +205,5 @@ export const Container = styled.div`
         right: 47%;
       }
     }
-  }
-`
-
-export const TicketIdWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-
-  & > div {
-    position: absolute;
-
-    color: #4e4400;
-    font-family: 'Minecraft', sans-serif;
-    font-size: 40px;
-
-    top: 20%;
-    right: 50%;
-
-    translate: 50% 0%;
   }
 `

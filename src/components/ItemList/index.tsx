@@ -16,6 +16,7 @@ const ItemList = ({
   selectAreaColor,
   isNeedAreaSelect = true,
   isLoading,
+  emptyText,
   itemSlotIconProps,
   ...props
 }: ItemListProps): JSX.Element => {
@@ -35,7 +36,7 @@ const ItemList = ({
       {...props}
     >
       <Skeleton
-        emptyText="Інвентар пустий"
+        emptyText={emptyText}
         isDataExist={items.length}
         isLoading={isLoading}
         size={80}
@@ -45,8 +46,11 @@ const ItemList = ({
         {items.map(item => (
           <ItemSlotIcon
             key={item.id}
-            onClick={() => selectToogle([item.id])}
-            style={{ ...styleForItemBorder(item.id), margin: 4 }}
+            onClick={() => selectToogle && selectToogle([item.id])}
+            style={{
+              ...(styleForItemBorder ? styleForItemBorder(item.id) : {}),
+              margin: 4,
+            }}
             {...itemSlotIconProps}
             {...item}
           />

@@ -56,6 +56,8 @@ export enum CacheKeys {
   USER_SKIN = 'user_skin',
   ALL_USERS = 'all_users',
   USER_ADVANCEMENTS = 'user_advancements',
+  USER_SHULKERS = 'user_shulkers',
+  USER_SHULKER_ITEMS = 'user_shulker_items',
 }
 
 export enum AuctionFragment {
@@ -76,6 +78,7 @@ export enum FetchEndpoint {
   SIGN_IN = 'auth/sign_in',
   LOG_OUT = 'auth/log_out',
   REFRESH_TOKEN = 'auth/refresh_token',
+  USER_SHULKERS = 'user/shulkers',
 }
 
 export enum LocalStorageKey {

@@ -3,7 +3,7 @@ import useInventoryPage from 'src/pages/InventoryPage/useInventoryPage'
 
 import MoneyTable from 'src/components/MoneyTable'
 import UserInventory from 'src/components/UserInventory'
-import UserItemTicket from 'src/components/UserItemTicket'
+import UserItemTicket from 'src/components/UserTickets'
 
 const InventoryPage = (): JSX.Element => {
   const { money } = useInventoryPage()

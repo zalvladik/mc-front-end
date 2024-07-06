@@ -80,6 +80,7 @@ export const useAuctionCreateLot = () => {
     selectAreaColor: SelectAreaColors.Green,
     sizeItem: 32,
     isNeedAreaSelect: false,
+    emptyText: 'Інвентар пустий',
   }
 
   const paginationTabProps = {

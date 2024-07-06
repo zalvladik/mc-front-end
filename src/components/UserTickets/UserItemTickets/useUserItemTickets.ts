@@ -4,13 +4,13 @@ import { useGetUserItemTickets } from 'src/hooks/useGetUserItemTickets'
 
 import { Modals } from 'src/features/Modals/constants'
 
-export const useUserItemTicket = () => {
+export const useUserItemTickets = () => {
   const { data = [], isLoading } = useGetUserItemTickets()
-  const { onOpen } = useModals()
-
   const toast = useToast()
 
-  const openItemsInTicketModal = (itemTicketId: number): void => {
+  const { onOpen } = useModals()
+
+  const openModal = (itemTicketId: number): void => {
     onOpen({ name: Modals.ITEM_TICKETS, data: { itemTicketId } })
   }
 
@@ -27,5 +27,5 @@ export const useUserItemTicket = () => {
     })
   }
 
-  return { data, isLoading, openItemsInTicketModal, showInfo }
+  return { data, isLoading, showInfo, openModal }
 }

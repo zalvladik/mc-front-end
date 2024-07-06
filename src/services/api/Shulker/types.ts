@@ -1,4 +1,4 @@
-export type ItemT = {
+export type ShulkerItemT = {
   id: number
   amount: number
   type: string
@@ -9,10 +9,9 @@ export type ItemT = {
   categories: string[]
 }
 
-export type ItemTicketT = {
+export type ShulkerT = {
   id: number
-}
-
-export type UserMoneyT = {
-  money: number
+  display_name: string
+  type: string
+  shulkerItems: ShulkerItemT[]
 }
