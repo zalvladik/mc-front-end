@@ -54,7 +54,7 @@ export const UseItemList = ({
   }
 
   useEffect(() => {
-    if (!isNeedAreaSelect) return () => {}
+    if (!isNeedAreaSelect || !selectToogle) return () => {}
 
     if (!isMouseInside && areaSelectRef.current && itemMiddlewareRef.current) {
       areaSelectRef.current.style.width = `0px`
