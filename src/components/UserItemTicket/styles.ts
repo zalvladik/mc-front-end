@@ -7,6 +7,8 @@ export const ContainerWrapper = styled.div`
     rgba(20, 47, 61, 1) 100%
   );
 
+  height: 493px;
+
   -webkit-box-shadow:
     inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
     0px 0px 18px -5px rgba(255, 255, 255, 1);
@@ -25,8 +27,7 @@ export const ContainerWrapper = styled.div`
 export const Container = styled.div`
   position: relative;
 
-  height: 500px;
-
+  height: 100%;
   overflow: hidden;
 
   transition: height 0.5s ease;
@@ -48,7 +49,6 @@ export const Container = styled.div`
     inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75),
     0px 0px 12px -5px rgba(255, 255, 255, 1);
 
-  height: 500px;
   width: 630px;
 
   border-radius: 10px;

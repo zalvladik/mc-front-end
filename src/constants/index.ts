@@ -91,6 +91,7 @@ export const defaultUser: UserT = {
   username: '',
   money: 0,
   role: [Role.NOT_AUTH],
-  countShulker: 0,
-  countLot: 0,
+  shulkerCount: 0,
+  itemCount: 0,
+  lotCount: 0,
 }

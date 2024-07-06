@@ -1,14 +1,16 @@
+import type { Dispatch, SetStateAction } from 'react'
 import { useEffect, useMemo, useState } from 'react'
-import {
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { AuctionFragment } from 'src/constants'
+import { AuctionContext } from 'src/contexts'
+import type {
   AuctionContextDataT,
   AuctionProviderT,
 } from 'src/contexts/AuctionProvider/types'
-import { AuctionFragment } from 'src/constants'
-import { AuctionContext } from 'src/contexts'
-import { useNavigate, useSearchParams } from 'react-router-dom'
-import { useGetUserLots } from 'src/hooks/useGetUserLots'
-import { useGetLots } from 'src/hooks/useGetLots'
 import { auctionUrlQueryParams } from 'src/helpers'
+import { useGetLots } from 'src/hooks/useGetLots'
+import { useGetUserLots } from 'src/hooks/useGetUserLots'
+import type { LotT } from 'src/services/api/Lot/types'
 
 const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   const navigate = useNavigate()
@@ -75,41 +77,6 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     }
   }, [totalPageByeLots])
 
-  const getCurrentPage = () => {
-    if (auctionFragment === AuctionFragment.BUY_LOT) return currentPageByeLots
-
-    return currentPageUserLots
-  }
-
-  const getAuctionFragment = () => {
-    if (auctionFragment === AuctionFragment.BUY_LOT) return setCurrentPageByeLots
-
-    return setCurrentPageUserLots
-  }
-
-  const getTotalPages = () => {
-    if (auctionFragment === AuctionFragment.BUY_LOT) return storageTotalPages
-
-    return tolalPageUserLots
-  }
-
-  const getSearchValue = () => {
-    if (auctionFragment === AuctionFragment.BUY_LOT) return searchValueByeLots
-
-    return searchValueUserLots
-  }
-
-  const getSetSearchValue = () => {
-    if (auctionFragment === AuctionFragment.BUY_LOT) return setSearchValueByeLots
-
-    return setSearchValueUserLots
-  }
-
-  const findLotByName = () => {
-    refetch()
-    navigate(auctionUrlQueryParams(selectedCategory, 1, searchValueByeLots))
-  }
-
   const filteredUserLots = dataUserLots.filter(
     ({ item }) =>
       item.display_name.toLowerCase().includes(searchValueUserLots.toLowerCase()) ||
@@ -118,11 +85,46 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
 
   const tolalPageUserLots = Math.ceil(filteredUserLots.length / 8)
 
-  const getUserLotsForPage = () => {
+  const getUserLotsForPage = (): LotT[] => {
     const firstLotInPage = 8 * (currentPageUserLots - 1)
     const lastLotInPage = firstLotInPage + 8
 
     return filteredUserLots.slice(firstLotInPage, lastLotInPage)
+  }
+
+  const getCurrentPage = (): number => {
+    if (auctionFragment === AuctionFragment.BUY_LOT) return currentPageByeLots
+
+    return currentPageUserLots
+  }
+
+  const getAuctionFragment = (): Dispatch<SetStateAction<number>> => {
+    if (auctionFragment === AuctionFragment.BUY_LOT) return setCurrentPageByeLots
+
+    return setCurrentPageUserLots
+  }
+
+  const getTotalPages = (): number => {
+    if (auctionFragment === AuctionFragment.BUY_LOT) return storageTotalPages
+
+    return tolalPageUserLots
+  }
+
+  const getSearchValue = (): string => {
+    if (auctionFragment === AuctionFragment.BUY_LOT) return searchValueByeLots
+
+    return searchValueUserLots
+  }
+
+  const getSetSearchValue = (): Dispatch<SetStateAction<string>> => {
+    if (auctionFragment === AuctionFragment.BUY_LOT) return setSearchValueByeLots
+
+    return setSearchValueUserLots
+  }
+
+  const findLotByName = (): void => {
+    refetch()
+    navigate(auctionUrlQueryParams(selectedCategory, 1, searchValueByeLots))
   }
 
   const providerValue: AuctionContextDataT = useMemo(

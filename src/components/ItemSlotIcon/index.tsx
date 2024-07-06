@@ -1,5 +1,6 @@
 import { FETCH_URL_IMG } from 'src/constants'
 
+import Durability from 'src/components/Durability'
 import ItemGlow from 'src/components/ItemGlow'
 import {
   ItemAmount,
@@ -9,8 +10,6 @@ import {
 import type { ItemSlotIconProps } from 'src/components/ItemSlotIcon/types'
 
 import { useItemSlotIcon } from './useItemSlotIcon'
-
-import Durability from 'src/components/Durability'
 
 const ItemSlotIcon = ({
   id,
