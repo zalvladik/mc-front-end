@@ -14,10 +14,9 @@ import {
   AuctionController,
   AuctionCreateLot,
   AuctionItemList,
-  AuctionUserLots,
   AuctionPagination,
+  AuctionUserLots,
 } from 'src/components/Auction'
-
 import DefaultButton from 'src/components/DefaultButton'
 import DefaultInput from 'src/components/inputs/DefaultInput'
 import MoneyTable from 'src/components/MoneyTable'

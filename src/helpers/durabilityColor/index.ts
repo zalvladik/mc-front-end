@@ -34,6 +34,8 @@ export const durabilityColor = (value: number): string => {
     '#53f600',
     '#3cfa00',
     '#09ff00',
+    '#09ff00',
+    '#09ff00',
   ]
 
   return colors[Math.floor(value / 3)]

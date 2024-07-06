@@ -1,7 +1,6 @@
-import { FETCH_URL_IMG } from 'src/constants'
-
 import ButtonModalClose from 'src/components/ButtonModalClose'
 import DefaultButton from 'src/components/DefaultButton'
+import ItemSlotIcon from 'src/components/ItemSlotIcon'
 import MoneyTable from 'src/components/MoneyTable'
 
 import {
@@ -12,7 +11,6 @@ import {
 import type { ModalLotProps } from 'src/features/Modals/ModalLot/types'
 import { useModalLot } from 'src/features/Modals/ModalLot/useModalLot'
 import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
-import ItemSlotIcon from 'src/components/ItemSlotIcon'
 
 const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
   const {

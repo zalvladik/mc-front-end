@@ -14,6 +14,7 @@ export const useItemSlotIcon = ({
 
   useEffect(() => {
     if (!didShowDescription) return
+
     const handleMouseEnter = () => {
       const element = itemSlotIconRef.current
 

@@ -1,14 +1,14 @@
-import { DurabilityProps } from 'src/components/Durability/types'
+import { durabilityColor } from 'src/helpers/durabilityColor'
 
 import { Container } from 'src/components/Durability/styles'
-import { durabilityColor } from 'src/helpers/durabilityColor'
+import type { DurabilityProps } from 'src/components/Durability/types'
 
 const Durability = ({ durability, containerSize }: DurabilityProps): JSX.Element => {
   const [current, max] = durability.split(' / ')
 
   if (current === max) return <></>
 
-  const currentInterest = ((Number(current) / Number(max)) * 100).toFixed(0)
+  const currentInterest = ((Number(current) / Number(max)) * 99).toFixed(0)
 
   const durabilityWidth = containerSize * 0.68
 
@@ -34,7 +34,7 @@ const Durability = ({ durability, containerSize }: DurabilityProps): JSX.Element
         <div
           style={{
             backgroundColor,
-            width: width,
+            width,
             height,
           }}
         />

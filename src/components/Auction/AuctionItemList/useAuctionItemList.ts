@@ -1,9 +1,9 @@
+import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { useUser } from 'src/contexts/UserProvider/useUser'
 import type { LotT } from 'src/services/api/Lot/types'
 
 import { Modals } from 'src/features/Modals/constants'
-import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 
 export const useAuctionItemList = () => {
   const { onOpen } = useModals()

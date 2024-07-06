@@ -6,9 +6,9 @@ import {
   Container,
   DescriptionCategory,
 } from 'src/components/Auction/AuctionCategory/styles'
+import type { AuctionCategoryProps } from 'src/components/Auction/AuctionCategory/types'
 import { useAuctionCategory } from 'src/components/Auction/AuctionCategory/useAuctionCategory'
 import { TitleContainer } from 'src/components/Auction/styles'
-import { AuctionCategoryProps } from 'src/components/Auction/AuctionCategory/types'
 
 const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
   const { categories, selectedCategory, setSelectedCategory } = useAuctionCategory()
