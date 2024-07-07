@@ -1,10 +1,9 @@
 import { io, type Socket } from 'socket.io-client'
 import { CacheKeys, FETCH_URL, SocketTypes } from 'src/constants'
+import type { ItemT } from 'src/services/api/Items/types'
+import type { ItemTicketT } from 'src/services/api/ItemTicket/types'
+import type { ShulkerT } from 'src/services/api/Shulker/types'
 import type { CreateConnectionProps } from 'src/services/api/Socket/types'
-
-import type { ItemT } from '../Items/types'
-import type { ItemTicketT } from '../ItemTicket/types'
-import type { ShulkerItemT, ShulkerT } from '../Shulker/types'
 
 export class SocketApi {
   static socket: null | Socket = null
@@ -44,7 +43,7 @@ export class SocketApi {
           queryClient.setQueryData<ShulkerT[]>(CacheKeys.USER_SHULKERS, shulkers => {
             return [...(shulkers ?? []), data.shulker]
           })
-          queryClient.setQueryData<ShulkerItemT[]>(
+          queryClient.setQueryData<ItemT[]>(
             [CacheKeys.USER_SHULKER_ITEMS, data.shulker.id],
             shulkerItems => {
               return [...(shulkerItems ?? []), ...data.shulkerItems]
