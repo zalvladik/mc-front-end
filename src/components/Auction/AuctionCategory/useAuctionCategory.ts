@@ -58,7 +58,7 @@ export const useAuctionCategory = () => {
       category: 'shulkers',
       style: { backgroundImage: `url(${baseUrl}/shulker_box.png)` },
 
-      description: 'Шалкера з предметами',
+      description: 'Шалкери',
     },
   ]
 

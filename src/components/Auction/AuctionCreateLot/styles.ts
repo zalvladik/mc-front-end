@@ -74,6 +74,7 @@ export const StyledItemList = styled(ItemList)`
 `
 
 export const StyledInventoryHeader = styled(InventoryHeader)`
+  padding-top: 10px;
   margin-bottom: 10px;
 
   & > ${InventoryHeaderTitle} {

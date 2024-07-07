@@ -4,11 +4,9 @@ import {
   InventoryHeaderTitle,
 } from 'src/components/InventoryHeader/styles'
 import type { InventoryHeaderProps } from 'src/components/InventoryHeader/types'
-import ReloadButtton from 'src/components/ReloadButton'
 
 const InventoryHeader = ({
   isLoading,
-  refetch,
   submitButton,
   buttonText,
   children,
@@ -22,11 +20,6 @@ const InventoryHeader = ({
     <Container {...props}>
       <InventoryHeaderTitle>
         <p>{title}</p>
-        {refetch && (
-          <ReloadButtton
-            {...{ refetch, isLoading: isCanPress, message: 'Обновити інвентар' }}
-          />
-        )}
       </InventoryHeaderTitle>
       {children}
       {submitButton && (

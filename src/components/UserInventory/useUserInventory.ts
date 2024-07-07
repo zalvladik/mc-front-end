@@ -17,13 +17,13 @@ export const useUserInventory = () => {
 
   const [page, setPage] = useState(1)
 
-  const { data = [], isLoading, refetch, isRefetching } = useGetItemsFromUser()
+  const { data = [], isLoading, isRefetching } = useGetItemsFromUser()
 
   const {
     data: itemTicketData,
     mutate,
     isLoading: isLoadingItemTicket,
-  } = useCreateItemTicket()
+  } = useCreateItemTicket(selectedItems)
 
   const submitButton = () => {
     if (!selectedItems.length || selectedItems.length > 27) return
@@ -105,7 +105,6 @@ export const useUserInventory = () => {
   const inventoryHeaderProps = {
     isLoading: isLoading || isRefetching || isLoadingItemTicket,
     itemLength: data.length,
-    refetch,
     submitButton,
     title: 'Інвентар',
     buttonText: 'Забрати',

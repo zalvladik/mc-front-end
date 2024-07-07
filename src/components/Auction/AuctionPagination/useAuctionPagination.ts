@@ -21,10 +21,14 @@ export const useAuctionPagination = () => {
     auctionFragment === AuctionFragment.USER_LOTS ||
     auctionFragment === AuctionFragment.CREATE_LOT
 
-  const didShowPagesInfo = () => {
-    if (auctionFragment !== AuctionFragment.BUY_LOT) return !dataUserLots.length
+  const didVanishPagesInfo = () => {
+    if (auctionFragment === AuctionFragment.CREATE_LOT) return true
 
-    if (auctionFragment === AuctionFragment.BUY_LOT) return !dataByeLots.length
+    if (auctionFragment !== AuctionFragment.BUY_LOT)
+      return !dataUserLots.length || totalPages <= 1
+
+    if (auctionFragment === AuctionFragment.BUY_LOT)
+      return !dataByeLots.length || totalPages <= 1
   }
 
   return {
@@ -34,7 +38,7 @@ export const useAuctionPagination = () => {
     totalPages,
     maxLots: user.lotCount,
     didShowUserLotsCount,
-    didShowPagesInfo: Boolean(didShowPagesInfo()),
+    didVanishPagesInfo: Boolean(didVanishPagesInfo()),
     isByeFragment: auctionFragment === AuctionFragment.BUY_LOT,
   }
 }

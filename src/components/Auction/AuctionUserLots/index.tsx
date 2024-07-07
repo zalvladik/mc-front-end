@@ -31,7 +31,7 @@ const AuctionUserLots = (): JSX.Element => {
         isLoading={isLoading}
         isDataExist={data.length}
         skeletonLength={8}
-        emptyText="Лоти не виставлені"
+        emptyText="Лоти відсутні"
         size={40}
       >
         <TbodyContainer>

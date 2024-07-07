@@ -19,7 +19,6 @@ export const ButtonsContainer = styled.div`
   gap: 15px;
 
   & > div {
-    width: 100%;
     margin: 0px auto;
 
     & > div {

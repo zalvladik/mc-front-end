@@ -20,14 +20,12 @@ const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
     isDeleteLot = true,
     id,
     userMoney,
-    updateUserMoney,
+    afterSubmit,
   } = data
 
   const { onClose, toogleLot, isLoading } = useModalLot({
     isDeleteLot,
-    currentMoney: userMoney,
-    price,
-    updateUserMoney,
+    afterSubmit,
   })
 
   return (
@@ -43,6 +41,7 @@ const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
             didShowDescription={false}
             containerSize={200}
             itemSize={128}
+            fontSize={40}
             {...item}
           />
 
@@ -59,7 +58,6 @@ const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
         <DefaultButton
           disabled={isDeleteLot ? isLoading : price > userMoney || isLoading}
           isLoading={isLoading}
-          style={{ width: '100%', margin: '0px auto' }}
           onClick={() => toogleLot(id)}
         >
           {isDeleteLot

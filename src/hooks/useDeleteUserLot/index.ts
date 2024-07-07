@@ -6,7 +6,7 @@ import type { ItemT } from 'src/services/api/Items/types'
 import Lot from 'src/services/api/Lot'
 import type { LotT } from 'src/services/api/Lot/types'
 
-export const useDeleteUserLot = () => {
+export const useDeleteUserLot = (afterSubmit: (value: void) => void) => {
   const toast = useToast()
   const queryClient = useQueryClient()
   const { onClose } = useModals()
@@ -23,8 +23,7 @@ export const useDeleteUserLot = () => {
         return [...(items ?? []), data.item]
       })
 
-      queryClient.invalidateQueries(CacheKeys.LOTS)
-
+      afterSubmit()
       toast.success({ message: ['Лот видалено'] })
       onClose()
     },

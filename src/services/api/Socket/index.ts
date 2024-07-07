@@ -41,15 +41,20 @@ export class SocketApi {
           )
           break
         case SocketTypes.ADD_SHULKER:
-          queryClient.setQueryData<ShulkerT[]>(CacheKeys.USER_SHULKERS, items => {
-            return [...(items ?? []), data.shulker]
+          queryClient.setQueryData<ShulkerT[]>(CacheKeys.USER_SHULKERS, shulkers => {
+            return [...(shulkers ?? []), data.shulker]
           })
           queryClient.setQueryData<ShulkerItemT[]>(
             [CacheKeys.USER_SHULKER_ITEMS, data.shulker.id],
-            items => {
-              return [...(items ?? []), ...data.shulkerItems]
+            shulkerItems => {
+              return [...(shulkerItems ?? []), ...data.shulkerItems]
             },
           )
+          break
+        case SocketTypes.REMOVE_SHULKER:
+          queryClient.setQueryData<ShulkerT[]>(CacheKeys.USER_SHULKERS, shulkers => {
+            return [...(shulkers?.filter(shulker => shulker.id !== data) ?? [])]
+          })
           break
         default:
           break

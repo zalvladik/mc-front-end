@@ -23,7 +23,7 @@ const AuctionPagination = (): JSX.Element => {
     setCurrentPage,
     totalPages,
     maxLots,
-    didShowPagesInfo,
+    didVanishPagesInfo,
     isByeFragment,
   } = useAuctionPagination()
 
@@ -31,7 +31,7 @@ const AuctionPagination = (): JSX.Element => {
 
   return (
     <Container>
-      <PaginationController disabled={didShowPagesInfo}>
+      <PaginationController disabled={didVanishPagesInfo}>
         <Left>
           <DoubleButttonLeft
             onClick={() => setCurrentPage(Math.max(currentPage - 10, 1))}
@@ -73,7 +73,7 @@ const AuctionPagination = (): JSX.Element => {
         </Right>
       </PaginationController>
 
-      <CountItems disabled={didShowPagesInfo}>
+      <CountItems disabled={didVanishPagesInfo}>
         {currentPage}/{totalPages}
       </CountItems>
 

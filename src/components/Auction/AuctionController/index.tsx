@@ -23,6 +23,7 @@ const AuctionController = (): JSX.Element => {
           return (
             <DefaultButton
               onClick={() => setAuctionFragment(fragment)}
+              style={{ width: '100%' }}
               key={fragment}
               disabled={isCurrentFragment}
             >

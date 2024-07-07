@@ -5,7 +5,7 @@ import type { ItemTicketT } from 'src/services/api/Items/types'
 import ItemTicket from 'src/services/api/ItemTicket'
 import type { ErrorResponse } from 'src/types'
 
-export const useCreateItemTicket = () => {
+export const useCreateItemTicket = (payload: number[]) => {
   const toast = useToast()
   const queryClient = useQueryClient()
 
@@ -16,6 +16,10 @@ export const useCreateItemTicket = () => {
         CacheKeys.USER_ITEM_TICKETS,
         tickets => [...(tickets ?? []), data],
       )
+
+      queryClient.setQueryData<ItemTicketT[]>(CacheKeys.USER_ITEMS, tickets => [
+        ...(tickets?.filter(item => !payload.includes(item.id)) ?? []),
+      ])
 
       toast.success({ message: ['Квиток створено'] })
     },

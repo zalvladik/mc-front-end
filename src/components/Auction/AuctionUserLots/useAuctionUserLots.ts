@@ -7,10 +7,22 @@ import { Modals } from 'src/features/Modals/constants'
 export const useAuctionUserLots = () => {
   const { onOpen } = useModals()
 
-  const { isLoadingUserLots, dataUserLots } = useAuction()
+  const {
+    isLoadingUserLots,
+    dataUserLots,
+    setCurrentPage,
+    currentPage,
+    totalPages,
+  } = useAuction()
+
+  const afterSubmit = () => {
+    if (totalPages === currentPage && dataUserLots.length % 8 === 1) {
+      setCurrentPage(totalPages - 1)
+    }
+  }
 
   const openModal = (data: LotT) => {
-    onOpen({ name: Modals.LOT, data: { ...data, isDeleteLot: true } })
+    onOpen({ name: Modals.LOT, data: { ...data, isDeleteLot: true, afterSubmit } })
   }
 
   const itemSlotIconProps = { containerSize: 58, itemSize: 38 }

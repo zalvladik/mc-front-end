@@ -4,20 +4,12 @@ import { useDeleteUserLot } from 'src/hooks/useDeleteUserLot'
 
 import type { UseModalLotProps } from 'src/features/Modals/ModalLot/types'
 
-export const useModalLot = ({
-  isDeleteLot,
-  currentMoney,
-  price,
-  updateUserMoney,
-}: UseModalLotProps) => {
+export const useModalLot = ({ isDeleteLot, afterSubmit }: UseModalLotProps) => {
   const { onClose } = useModals()
 
-  const { mutate: mutateDelete, isLoading: isLoadingDelete } = useDeleteUserLot()
-  const { mutate: mutateBye, isLoading: isLoadingBye } = useByeLot({
-    currentMoney,
-    price,
-    updateUserMoney,
-  })
+  const { mutate: mutateDelete, isLoading: isLoadingDelete } =
+    useDeleteUserLot(afterSubmit)
+  const { mutate: mutateBye, isLoading: isLoadingBye } = useByeLot(afterSubmit)
 
   const toogleLot = (id: number): void => {
     if (isDeleteLot) {

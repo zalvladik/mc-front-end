@@ -42,9 +42,10 @@ export const ItemIcon = styled.div`
 
 export const ItemAmount = styled.p`
   position: absolute;
-  right: 0px;
-  bottom: 0px;
-  padding: 5px;
+  right: 5%;
+  bottom: 5%;
+
+  width: max-content;
 
   font-family: 'Minecraft', sans-serif;
   text-shadow:
