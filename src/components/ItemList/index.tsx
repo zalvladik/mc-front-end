@@ -1,3 +1,5 @@
+import { CategoryEnum } from 'src/constants'
+
 import {
   AreaSelect,
   Container,
@@ -26,6 +28,7 @@ const ItemList = ({
     itemMiddlewareRef,
     setIsMouseInside,
     areaSelectStyle,
+    openShulkerModal,
   } = UseItemList({ selectToogle, selectAreaColor, isNeedAreaSelect })
 
   return (
@@ -46,7 +49,13 @@ const ItemList = ({
         {items.map(item => (
           <ItemSlotIcon
             key={item.id}
-            onClick={() => selectToogle && selectToogle([item.id])}
+            onClick={() => {
+              if (item.categories.find(item => item === CategoryEnum.SHULKERS)) {
+                openShulkerModal(item.id)
+              }
+
+              return selectToogle && selectToogle([item.id])
+            }}
             style={{
               ...(styleForItemBorder ? styleForItemBorder(item.id) : {}),
               margin: 4,

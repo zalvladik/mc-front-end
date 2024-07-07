@@ -1,17 +1,13 @@
-export type ShulkerItemT = {
-  id: number
-  amount: number
-  type: string
-  display_name: string
-  description: string[] | null
-  enchants: string[] | null
-  durability: string | null
-  categories: string[]
-}
+import type { ItemT } from '../Items/types'
 
 export type ShulkerT = {
   id: number
   display_name: string
   type: string
-  shulkerItems: ShulkerItemT[]
+  categories: string[]
+  items: ItemT[]
+  amount: number
+  description: string[] | null
+  enchants: string[] | null
+  durability: string | null
 }

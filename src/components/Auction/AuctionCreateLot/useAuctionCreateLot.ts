@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react'
 import { SelectAreaColors } from 'src/constants'
 import { filterItems } from 'src/helpers/filterItems'
 import { useGetItemsFromUser } from 'src/hooks/useGetItemsFromUser'
+import { useGetUserShulkers } from 'src/hooks/useGetUserShulkers'
 
 export const useAuctionCreateLot = () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([])
@@ -10,7 +11,9 @@ export const useAuctionCreateLot = () => {
 
   const [page, setPage] = useState(1)
 
-  const { data = [], isLoading, refetch, isRefetching } = useGetItemsFromUser()
+  const { data = [], isLoading } = useGetItemsFromUser()
+  const { data: dataUserShulkers = [], isLoading: isLoadingUserShulkers } =
+    useGetUserShulkers()
 
   const filterByCaterogies = (categories: string[]): void => {
     setSelectedCaterogies(categories)
@@ -34,7 +37,11 @@ export const useAuctionCreateLot = () => {
     }
   }
 
-  const items = filterItems({ items: data, searchValue, selectedCaterogies })
+  const items = filterItems({
+    items: [...data, ...dataUserShulkers],
+    searchValue,
+    selectedCaterogies,
+  })
 
   const maxPage = Math.ceil(items.length / 27)
 
@@ -58,9 +65,8 @@ export const useAuctionCreateLot = () => {
   }
 
   const inventoryHeaderProps = {
-    isLoading: isLoading || isRefetching,
+    isLoading: isLoading || isLoadingUserShulkers,
     itemLength: data.length,
-    refetch,
     title: 'Інвентар',
     buttonText: 'Забрати',
     itemsLength: selectedItems.length,
@@ -70,10 +76,11 @@ export const useAuctionCreateLot = () => {
     setSelectedCaterogies: filterByCaterogies,
     selectedCaterogies,
     sizeItem: 20,
+    isNeedShulkerCategory: true,
   }
 
   const itemListProps = {
-    isLoading: isLoading || isRefetching,
+    isLoading: isLoading || isLoadingUserShulkers,
     items: itemsOnPage,
     selectToogle,
     styleForItemBorder,

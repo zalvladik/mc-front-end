@@ -8,10 +8,12 @@ const ItemCategoryFilter = ({
   setSelectedCaterogies,
   selectedCaterogies,
   sizeItem = 30,
+  isNeedShulkerCategory = false,
 }: ItemCategoryFilterProps): JSX.Element => {
   const { categories, selectToogle } = useItemCategoryFilter({
     setSelectedCaterogies,
     selectedCaterogies,
+    isNeedShulkerCategory,
   })
 
   return (

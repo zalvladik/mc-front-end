@@ -1,8 +1,11 @@
+import { CategoryEnum } from 'src/constants'
+
 import type { UseItemCategoryFilterProps } from './types'
 
 export const useItemCategoryFilter = ({
   setSelectedCaterogies,
   selectedCaterogies,
+  isNeedShulkerCategory,
 }: UseItemCategoryFilterProps) => {
   const selectToogle = (category: string) => {
     const isSelected = selectedCaterogies.find(item => item === category)
@@ -27,59 +30,69 @@ export const useItemCategoryFilter = ({
   const baseUrl = '/assets/items_for_ui'
   const categories = [
     {
-      category: 'build_blocks',
+      category: CategoryEnum.BUILD_BLOCKS,
       style: { backgroundImage: `url(${baseUrl}/bricks.png)` },
-      styleSlot: styleForItemBorder('build_blocks'),
+      styleSlot: styleForItemBorder(CategoryEnum.BUILD_BLOCKS),
       description: 'Будівельні блоки',
     },
     {
-      category: 'color_blocks',
+      category: CategoryEnum.COLOR_BLOCKS,
       style: { backgroundImage: `url(${baseUrl}/cyan_wool.png)` },
-      styleSlot: styleForItemBorder('color_blocks'),
+      styleSlot: styleForItemBorder(CategoryEnum.COLOR_BLOCKS),
       description: 'Кольорові блоки',
     },
     {
-      category: 'nature_blocks',
+      category: CategoryEnum.NATURE_BLOCKS,
       style: { backgroundImage: `url(${baseUrl}/grass_block.png)` },
-      styleSlot: styleForItemBorder('nature_blocks'),
+      styleSlot: styleForItemBorder(CategoryEnum.NATURE_BLOCKS),
       description: 'Природні блоки',
     },
     {
-      category: 'functional_blocks',
+      category: CategoryEnum.FUNCTIONAL_BLOCKS,
       style: { backgroundImage: `url(${baseUrl}/oak_sign.png)` },
-      styleSlot: styleForItemBorder('functional_blocks'),
+      styleSlot: styleForItemBorder(CategoryEnum.FUNCTIONAL_BLOCKS),
       description: 'Функціональні блоки',
     },
     {
-      category: 'redstone_blocks',
+      category: CategoryEnum.REDSTONE_BLOCKS,
       style: { backgroundImage: `url(${baseUrl}/redstone.png)` },
-      styleSlot: styleForItemBorder('redstone_blocks'),
+      styleSlot: styleForItemBorder(CategoryEnum.REDSTONE_BLOCKS),
       description: 'Блоки редстоуну',
     },
     {
-      category: 'tools',
+      category: CategoryEnum.TOOLS,
       style: { backgroundImage: `url(${baseUrl}/diamond_pickaxe.png)` },
-      styleSlot: styleForItemBorder('tools'),
+      styleSlot: styleForItemBorder(CategoryEnum.TOOLS),
       description: 'Інструменти й прилади',
     },
     {
-      category: 'weapons',
+      category: CategoryEnum.WEAPONS,
       style: { backgroundImage: `url(${baseUrl}/netherite_sword.png)` },
-      styleSlot: styleForItemBorder('weapons'),
+      styleSlot: styleForItemBorder(CategoryEnum.WEAPONS),
       description: 'Бойове приладдя',
     },
     {
-      category: 'foods_and_potions',
+      category: CategoryEnum.FOODS_AND_POTIONS,
       style: { backgroundImage: `url(${baseUrl}/golden_apple.png)` },
-      styleSlot: styleForItemBorder('foods_and_potions'),
+      styleSlot: styleForItemBorder(CategoryEnum.FOODS_AND_POTIONS),
       description: 'Їжа та напої',
     },
     {
-      category: 'ingredients',
+      category: CategoryEnum.INGREDIENTS,
       style: { backgroundImage: `url(${baseUrl}/iron_ingot.png)` },
-      styleSlot: styleForItemBorder('ingredients'),
+      styleSlot: styleForItemBorder(CategoryEnum.INGREDIENTS),
       description: 'Інгредієнти',
     },
+    ...(isNeedShulkerCategory
+      ? [
+          {
+            category: CategoryEnum.SHULKERS,
+            style: { backgroundImage: `url(${baseUrl}/shulker_box.png)` },
+            styleSlot: styleForItemBorder(CategoryEnum.SHULKERS),
+            description: 'Шалкери',
+          },
+        ]
+      : []),
   ]
 
   return { categories, selectToogle }

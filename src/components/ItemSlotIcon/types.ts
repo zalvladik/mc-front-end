@@ -1,4 +1,5 @@
 import type { ItemT } from 'src/services/api/Items/types'
+import type { ShulkerT } from 'src/services/api/Shulker/types'
 
 export type ItemSlotIconProps = {
   onClick?: (value: void) => void
@@ -7,7 +8,7 @@ export type ItemSlotIconProps = {
   containerSize: number
   itemSize: number
   didShowDescription?: boolean
-} & ItemT
+} & (ItemT | ShulkerT)
 
 export type UseItemSlotIconProps = {
   description: string[] | null

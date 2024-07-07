@@ -1,22 +1,36 @@
 import { useEffect, useRef, useState } from 'react'
 import { SelectAreaColors } from 'src/constants'
+import { useModals } from 'src/contexts/ModalProvider/useModals'
 
 import type { CoordsProps, UseItemListProps } from 'src/components/ItemList/types'
+
+import { Modals } from 'src/features/Modals/constants'
 
 export const UseItemList = ({
   selectToogle,
   selectAreaColor,
   isNeedAreaSelect,
 }: UseItemListProps) => {
+  const { onOpen } = useModals()
   const containerRef = useRef<HTMLDivElement>(null)
   const areaSelectRef = useRef<HTMLDivElement>(null)
   const itemMiddlewareRef = useRef<HTMLDivElement>(null)
+
+  const [selectedItem, setSelectedItem] = useState<number>()
 
   const [containerRect, setContainerRect] = useState<DOMRect | null>(null)
   const [startCoords, setStartCoords] = useState<CoordsProps | null>(null)
   const [isMouseInside, setIsMouseInside] = useState(false)
 
   const [isDrawing, setIsDrawing] = useState(false)
+
+  const openShulkerModal = (shulkerId: number) => {
+    if (selectedItem !== shulkerId) {
+      return setSelectedItem(shulkerId)
+    }
+
+    onOpen({ name: Modals.SHULKER_ITEMS, data: { shulkerId } })
+  }
 
   const setDivSize = (cords: CoordsProps) => {
     if (!areaSelectRef.current || !startCoords) return
@@ -178,5 +192,6 @@ export const UseItemList = ({
     itemMiddlewareRef,
     setIsMouseInside,
     areaSelectStyle,
+    openShulkerModal,
   }
 }

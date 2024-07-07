@@ -1,11 +1,12 @@
 import type { FilteredItemsProps } from 'src/helpers/filterItems/types'
 import type { ItemT } from 'src/services/api/Items/types'
+import type { ShulkerT } from 'src/services/api/Shulker/types'
 
 export const filterItems = ({
   items,
   searchValue,
   selectedCaterogies,
-}: FilteredItemsProps): ItemT[] => {
+}: FilteredItemsProps): (ItemT | ShulkerT)[] => {
   const sortedById = items.sort((a, b) => {
     return a.id - b.id
   })
