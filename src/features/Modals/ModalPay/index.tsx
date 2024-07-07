@@ -16,7 +16,7 @@ import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
 import type { ModalDialogProps } from 'src/features/Modals/types'
 
 const ModalPay = ({ isOpen, closeModal }: ModalDialogProps): JSX.Element => {
-  const { onClose, category, rules } = useModalPay()
+  const { category, rules } = useModalPay()
 
   return (
     <SettingsModalsLayout
@@ -31,7 +31,7 @@ const ModalPay = ({ isOpen, closeModal }: ModalDialogProps): JSX.Element => {
         <Cloud3 width="130" src="/assets/cloud_3.png" />
 
         <Container className="hidden_scroll-y">
-          <CloseButton width="30" src="assets/close.svg" onClick={onClose} />
+          <CloseButton width="30" src="assets/close.svg" onClick={closeModal} />
 
           <StyledRuleCategory
             category={category}

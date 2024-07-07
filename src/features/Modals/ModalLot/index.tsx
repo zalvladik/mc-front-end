@@ -23,7 +23,7 @@ const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
     afterSubmit,
   } = data
 
-  const { onClose, toogleLot, isLoading } = useModalLot({
+  const { toogleLot, isLoading } = useModalLot({
     isDeleteLot,
     afterSubmit,
   })
@@ -34,7 +34,7 @@ const ModalLot = ({ isOpen, closeModal, data }: ModalLotProps): JSX.Element => {
       closeModal={closeModal}
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.92)' }}
     >
-      <ButtonModalClose onClose={onClose} />
+      <ButtonModalClose onClose={closeModal} />
       <Container>
         <div>
           <ItemSlotIcon

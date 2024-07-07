@@ -19,7 +19,6 @@ const ModalItemsInTicket = ({
   data: { itemTicketId },
 }: ModalItemsInTicketProps): JSX.Element => {
   const {
-    onClose,
     deleteItemTicket,
     inventoryHeaderProps,
     itemCategoryFilterProps,
@@ -33,7 +32,7 @@ const ModalItemsInTicket = ({
       closeModal={closeModal}
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.92)' }}
     >
-      <ButtonModalClose onClose={onClose} />
+      <ButtonModalClose onClose={closeModal} />
       <Container>
         <InventoryHeader {...inventoryHeaderProps}>
           <ItemCategoryFilter {...itemCategoryFilterProps} />

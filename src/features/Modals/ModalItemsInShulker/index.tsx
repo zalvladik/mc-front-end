@@ -12,7 +12,7 @@ const ModalItemsInShulker = ({
   closeModal,
   data: { shulkerId },
 }: ModalItemsInShulkerProps): JSX.Element => {
-  const { data, isLoading, onClose } = useModalItemsInShulker(shulkerId)
+  const { data, isLoading } = useModalItemsInShulker(shulkerId)
 
   return (
     <SettingsModalsLayout
@@ -20,7 +20,7 @@ const ModalItemsInShulker = ({
       closeModal={closeModal}
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.92)' }}
     >
-      <ButtonModalClose onClose={onClose} />
+      <ButtonModalClose onClose={closeModal} />
       <Container>
         <h1>Шалкер id: {shulkerId}</h1>
         <ItemList

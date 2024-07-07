@@ -22,6 +22,7 @@ const SettingsModalsLayout = ({
   const handleContainerClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ): void => {
+    closeModal()
     e.stopPropagation()
   }
 

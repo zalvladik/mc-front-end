@@ -12,7 +12,7 @@ export type ModalsPropsT = ExtractData<
 export type ModalDialogProps = {
   isOpen: boolean
   name: ValueOf<Modals>
-  closeModal?: () => void
+  closeModal: () => void
   onConfirm?: () => void
   data?: any
 }

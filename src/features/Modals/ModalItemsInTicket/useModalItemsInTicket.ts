@@ -1,14 +1,11 @@
 import { useCallback, useState } from 'react'
 import { SelectAreaColors } from 'src/constants'
-import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { filterItems } from 'src/helpers/filterItems'
 import { useDeleteItemTicket } from 'src/hooks/useDeleteItemTicket'
 import { useGetItemsFromTicket } from 'src/hooks/useGetItemsFromTicket'
 import { useRemoveItemsFromTicket } from 'src/hooks/useRemoveItemsFromTicket'
 
 export const useModalItemsInTicket = (itemTicketId: number) => {
-  const { onClose } = useModals()
-
   const [selectedItems, setSelectedItems] = useState<number[]>([])
   const [selectedCaterogies, setSelectedCaterogies] = useState<string[]>([])
   const [search, setSearch] = useState('')
@@ -95,7 +92,6 @@ export const useModalItemsInTicket = (itemTicketId: number) => {
   }
 
   return {
-    onClose,
     data,
     inventoryHeaderProps,
     itemCategoryFilterProps,
