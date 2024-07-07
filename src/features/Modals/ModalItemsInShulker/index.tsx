@@ -10,6 +10,7 @@ import type { ModalItemsInShulkerProps } from './types'
 const ModalItemsInShulker = ({
   isOpen,
   closeModal,
+  handleContainerClick,
   data: { shulkerId },
 }: ModalItemsInShulkerProps): JSX.Element => {
   const { data, isLoading } = useModalItemsInShulker(shulkerId)
@@ -21,7 +22,7 @@ const ModalItemsInShulker = ({
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.92)' }}
     >
       <ButtonModalClose onClose={closeModal} />
-      <Container>
+      <Container onClick={handleContainerClick}>
         <h1>Шалкер id: {shulkerId}</h1>
         <ItemList
           items={data}

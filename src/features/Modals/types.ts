@@ -11,6 +11,7 @@ export type ModalsPropsT = ExtractData<
 
 export type ModalDialogProps = {
   isOpen: boolean
+  handleContainerClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
   name: ValueOf<Modals>
   closeModal: () => void
   onConfirm?: () => void

@@ -15,7 +15,11 @@ import { useModalPay } from 'src/features/Modals/ModalPay/useModalPay'
 import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
 import type { ModalDialogProps } from 'src/features/Modals/types'
 
-const ModalPay = ({ isOpen, closeModal }: ModalDialogProps): JSX.Element => {
+const ModalPay = ({
+  isOpen,
+  closeModal,
+  handleContainerClick,
+}: ModalDialogProps): JSX.Element => {
   const { category, rules } = useModalPay()
 
   return (
@@ -24,7 +28,7 @@ const ModalPay = ({ isOpen, closeModal }: ModalDialogProps): JSX.Element => {
       closeModal={closeModal}
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.90)' }}
     >
-      <ContainerWrapper>
+      <ContainerWrapper onClick={handleContainerClick}>
         <Breeze width="220" src="/assets/the_breeze.png" />
         <Cloud1 width="120" src="/assets/cloud_1.png" />
         <Cloud2 width="150" src="/assets/cloud_2.png" />

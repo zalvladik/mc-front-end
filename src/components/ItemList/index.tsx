@@ -49,7 +49,7 @@ const ItemList = ({
         <ItemMiddleware ref={itemMiddlewareRef} />
         {items.map(item => (
           <ItemSlotIcon
-            key={item.id}
+            key={item.id + item.categories[0]}
             onClick={() => {
               if (item.categories.find(item => item === CategoryEnum.SHULKERS)) {
                 openShulkerModal(item.id)

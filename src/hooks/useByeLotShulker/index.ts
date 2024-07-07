@@ -5,7 +5,7 @@ import { useToast } from 'src/contexts/ToastProvider/useToast'
 import type { ItemT } from 'src/services/api/Items/types'
 import Lot from 'src/services/api/Lot'
 
-export const useByeLot = (afterSubmit: (value: void) => void) => {
+export const useByeLotShulker = (afterSubmit: (value: void) => void) => {
   const { onClose } = useModals()
 
   const toast = useToast()

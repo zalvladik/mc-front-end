@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from 'react-query'
-import { CacheKeys } from 'src/constants'
+import { CacheKeys, CategoryEnum } from 'src/constants'
 import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { useToast } from 'src/contexts/ToastProvider/useToast'
 import type { ItemT } from 'src/services/api/Items/types'
@@ -15,14 +15,22 @@ export const useDeleteUserLot = (afterSubmit: (value: void) => void) => {
   const { data, mutate, isLoading } = useMutation({
     mutationFn: (id: number) => Lot.deleteUserLot(id),
     onSuccess: data => {
-      let lotElement: ItemT | ShulkerT
-
       queryClient.setQueryData<LotT[]>(
         CacheKeys.USER_LOTS,
         lots =>
           lots?.filter(lot => {
             if (lot.id === data.id) {
-              lotElement = (lot?.shulker || lot?.item)!
+              const lotElement: ItemT | ShulkerT = (lot?.shulker || lot?.item)!
+
+              if (lotElement.categories.includes(CategoryEnum.SHULKERS)) {
+                queryClient.setQueryData<ItemT[]>(CacheKeys.USER_SHULKERS, items => {
+                  return [...(items ?? []), lotElement]
+                })
+              } else {
+                queryClient.setQueryData<ItemT[]>(CacheKeys.USER_ITEMS, items => {
+                  return [...(items ?? []), lotElement]
+                })
+              }
 
               return false
             }
@@ -30,10 +38,6 @@ export const useDeleteUserLot = (afterSubmit: (value: void) => void) => {
             return true
           }) ?? [],
       )
-
-      queryClient.setQueryData<ItemT[]>(CacheKeys.USER_ITEMS, items => {
-        return [...(items ?? []), lotElement]
-      })
 
       afterSubmit()
       toast.success({ message: ['Лот видалено'] })

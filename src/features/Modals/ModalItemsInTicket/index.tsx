@@ -16,6 +16,7 @@ import type { ModalItemsInTicketProps } from './types'
 const ModalItemsInTicket = ({
   isOpen,
   closeModal,
+  handleContainerClick,
   data: { itemTicketId },
 }: ModalItemsInTicketProps): JSX.Element => {
   const {
@@ -33,7 +34,7 @@ const ModalItemsInTicket = ({
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.92)' }}
     >
       <ButtonModalClose onClose={closeModal} />
-      <Container>
+      <Container onClick={handleContainerClick}>
         <InventoryHeader {...inventoryHeaderProps}>
           <ItemCategoryFilter {...itemCategoryFilterProps} />
         </InventoryHeader>

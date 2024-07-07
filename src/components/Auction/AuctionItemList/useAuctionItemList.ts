@@ -30,17 +30,15 @@ export const useAuctionItemList = () => {
       queryClient.invalidateQueries(CacheKeys.LOTS)
     }
 
-    if (lot?.item) {
-      onOpen({
-        name: Modals.LOT,
-        data: {
-          ...lot,
-          isDeleteLot: user.username === lot.username,
-          userMoney: user.money,
-          afterSubmit,
-        },
-      })
-    }
+    onOpen({
+      name: Modals.LOT,
+      data: {
+        ...lot,
+        isDeleteLot: user.username === lot.username,
+        userMoney: user.money,
+        afterSubmit,
+      },
+    })
   }
 
   const itemSlotIconProps = { containerSize: 58, itemSize: 38 }

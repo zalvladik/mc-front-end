@@ -43,14 +43,14 @@ export const Container = styled.div`
 
     translate: 0% 0%;
   }
+`
 
-  & > div:first-child {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+export const ItemSlotWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
-    gap: 20px;
-  }
+  gap: 20px;
 `
 
 export const ItemOwner = styled.div`

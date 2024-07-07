@@ -19,13 +19,6 @@ const SettingsModalsLayout = ({
   closeModal,
   style,
 }: SettingsModalsLayoutProps): JSX.Element => {
-  const handleContainerClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ): void => {
-    closeModal()
-    e.stopPropagation()
-  }
-
   useEffect(() => {
     document.body.style.overflow = 'hidden'
 
@@ -35,8 +28,8 @@ const SettingsModalsLayout = ({
   }, [])
 
   return (
-    <Modal onClick={closeModal} style={style}>
-      <Container onClick={handleContainerClick}>
+    <Modal style={style}>
+      <Container onClick={closeModal}>
         <ChildrenContainer>{children}</ChildrenContainer>
       </Container>
     </Modal>

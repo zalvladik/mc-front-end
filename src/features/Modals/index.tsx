@@ -11,9 +11,16 @@ const Modals = (): ReactPortal | null => {
 
   const Component = modalsList.find(({ name }) => name === modal.name)?.component
 
+  const handleContainerClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ): void => {
+    e.stopPropagation()
+  }
+
   return Component
     ? createPortal(
         <Component
+          handleContainerClick={handleContainerClick}
           name={modal.name}
           isOpen={!!Component}
           closeModal={onClose}
