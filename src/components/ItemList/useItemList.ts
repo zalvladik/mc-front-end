@@ -16,7 +16,7 @@ export const UseItemList = ({
   const areaSelectRef = useRef<HTMLDivElement>(null)
   const itemMiddlewareRef = useRef<HTMLDivElement>(null)
 
-  const [selectedItem, setSelectedItem] = useState<number>()
+  const [selectedItem, setSelectedItem] = useState<number | null>(null)
 
   const [containerRect, setContainerRect] = useState<DOMRect | null>(null)
   const [startCoords, setStartCoords] = useState<CoordsProps | null>(null)
@@ -193,5 +193,6 @@ export const UseItemList = ({
     setIsMouseInside,
     areaSelectStyle,
     openShulkerModal,
+    setSelectedItem,
   }
 }

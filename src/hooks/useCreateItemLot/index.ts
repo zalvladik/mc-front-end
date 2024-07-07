@@ -5,12 +5,12 @@ import type { ItemT } from 'src/services/api/Items/types'
 import Lot from 'src/services/api/Lot'
 import type { LotT } from 'src/services/api/Lot/types'
 
-export const useCreateLot = () => {
+export const useCreateItemLot = () => {
   const toast = useToast()
   const queryClient = useQueryClient()
 
   const { data, mutate, isLoading } = useMutation({
-    mutationFn: Lot.post,
+    mutationFn: Lot.postItemLot,
     onSuccess: (data: LotT) => {
       queryClient.setQueryData<LotT[]>(CacheKeys.USER_LOTS, lots => [
         ...(lots ?? []),
@@ -18,7 +18,7 @@ export const useCreateLot = () => {
       ])
 
       queryClient.setQueryData<ItemT[]>(CacheKeys.USER_ITEMS, items =>
-        items!.filter(item => data.item.id !== item.id),
+        items!.filter(item => data.item!.id !== item.id),
       )
 
       queryClient.invalidateQueries(CacheKeys.LOTS)

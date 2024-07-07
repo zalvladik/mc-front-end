@@ -1,10 +1,14 @@
 import { useState } from 'react'
-import { useCreateLot } from 'src/hooks/useCreateLot'
+import { useCreateItemLot } from 'src/hooks/useCreateItemLot'
+import { useCreateShulkerLot } from 'src/hooks/useCreateShulkerLot'
 
 export const useAuctionCreateLotForm = () => {
   const [itemPrice, setItemPrice] = useState('')
 
-  const { isLoading, mutate } = useCreateLot()
+  const { isLoading: isLoadingCreateItemLot, mutate: mutateCreateItemLot } =
+    useCreateItemLot()
+  const { isLoading: isLoadingCreateShulkerLot, mutate: mutateCreateShulkerLot } =
+    useCreateShulkerLot()
 
   const createLotHanlder = (itemId?: number) => {
     const price = Number(itemPrice)

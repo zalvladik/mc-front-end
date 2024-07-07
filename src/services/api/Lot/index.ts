@@ -25,9 +25,17 @@ class Lot {
     return api(`${FetchEndpoint.LOT_USER}`).json()
   }
 
-  async post(body: CreateLotProps): Promise<LotT> {
+  async postItemLot(body: CreateLotProps): Promise<LotT> {
     return api
-      .post(FetchEndpoint.LOT, {
+      .post(FetchEndpoint.LOT_ITEM, {
+        json: body,
+      })
+      .json()
+  }
+
+  async postShulkerLot(body: CreateLotProps): Promise<LotT> {
+    return api
+      .post(FetchEndpoint.LOT_SHULKER, {
         json: body,
       })
       .json()

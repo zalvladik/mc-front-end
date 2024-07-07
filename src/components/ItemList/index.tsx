@@ -29,6 +29,7 @@ const ItemList = ({
     setIsMouseInside,
     areaSelectStyle,
     openShulkerModal,
+    setSelectedItem,
   } = UseItemList({ selectToogle, selectAreaColor, isNeedAreaSelect })
 
   return (
@@ -52,6 +53,8 @@ const ItemList = ({
             onClick={() => {
               if (item.categories.find(item => item === CategoryEnum.SHULKERS)) {
                 openShulkerModal(item.id)
+              } else {
+                setSelectedItem(null)
               }
 
               return selectToogle && selectToogle([item.id])
