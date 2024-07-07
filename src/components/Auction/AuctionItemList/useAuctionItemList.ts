@@ -1,3 +1,5 @@
+import { useQueryClient } from 'react-query'
+import { CacheKeys } from 'src/constants'
 import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { useUser } from 'src/contexts/UserProvider/useUser'
@@ -11,26 +13,34 @@ export const useAuctionItemList = () => {
   const { totalPages, currentPage, isLoadingByeLots, dataByeLots, setCurrentPage } =
     useAuction()
 
-  const openModal = (data: LotT) => {
+  const queryClient = useQueryClient()
+
+  const openModal = (lot: LotT) => {
     const afterSubmit = () => {
-      if (user.username !== data.username) {
-        updateUserMoney(user.money - data.price)
+      if (user.username !== lot.username) {
+        updateUserMoney(user.money - lot.price)
       }
 
       if (totalPages === currentPage && dataByeLots.length === 1) {
         setCurrentPage(totalPages - 1)
+
+        return
       }
+
+      queryClient.invalidateQueries(CacheKeys.LOTS)
     }
 
-    onOpen({
-      name: Modals.LOT,
-      data: {
-        ...data,
-        isDeleteLot: user.username === data.username,
-        userMoney: user.money,
-        afterSubmit,
-      },
-    })
+    if (lot?.item) {
+      onOpen({
+        name: Modals.LOT,
+        data: {
+          ...lot,
+          isDeleteLot: user.username === lot.username,
+          userMoney: user.money,
+          afterSubmit,
+        },
+      })
+    }
   }
 
   const itemSlotIconProps = { containerSize: 58, itemSize: 38 }

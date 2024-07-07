@@ -3,8 +3,7 @@ import type { ItemT } from 'src/services/api/Items/types'
 import type { ShulkerT } from '../Shulker/types'
 
 export type DeleteLotResponseT = {
-  lotId: number
-  item: ItemT
+  id: number
 }
 
 export type LotT = {
@@ -20,8 +19,13 @@ export type GetLotsResponse = {
   lots: LotT[]
 }
 
-export type CreateLotProps = {
+export type CreateLotItemProps = {
   itemId: number
+  price: number
+}
+
+export type CreateLotShulkerProps = {
+  shulkerId: number
   price: number
 }
 

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { CategoryEnum } from 'src/constants'
 import { useCreateItemLot } from 'src/hooks/useCreateItemLot'
 import { useCreateShulkerLot } from 'src/hooks/useCreateShulkerLot'
 
@@ -10,15 +11,26 @@ export const useAuctionCreateLotForm = () => {
   const { isLoading: isLoadingCreateShulkerLot, mutate: mutateCreateShulkerLot } =
     useCreateShulkerLot()
 
-  const createLotHanlder = (itemId?: number) => {
+  const createLotHanlder = (itemCategories?: string[], id?: number) => {
     const price = Number(itemPrice)
 
     if (price <= 0) return
 
-    if (!itemId) return
+    if (!id) return
 
-    mutate({ itemId, price })
+    if (itemCategories?.includes(CategoryEnum.SHULKERS)) {
+      mutateCreateShulkerLot({ shulkerId: id, price })
+
+      return
+    }
+
+    mutateCreateItemLot({ itemId: id, price })
   }
 
-  return { itemPrice, setItemPrice, createLotHanlder, isLoading }
+  return {
+    itemPrice,
+    setItemPrice,
+    createLotHanlder,
+    isLoading: isLoadingCreateItemLot || isLoadingCreateShulkerLot,
+  }
 }

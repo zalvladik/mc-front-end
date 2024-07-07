@@ -5,6 +5,7 @@ import { useToast } from 'src/contexts/ToastProvider/useToast'
 import type { ItemT } from 'src/services/api/Items/types'
 import Lot from 'src/services/api/Lot'
 import type { LotT } from 'src/services/api/Lot/types'
+import type { ShulkerT } from 'src/services/api/Shulker/types'
 
 export const useDeleteUserLot = (afterSubmit: (value: void) => void) => {
   const toast = useToast()
@@ -14,13 +15,24 @@ export const useDeleteUserLot = (afterSubmit: (value: void) => void) => {
   const { data, mutate, isLoading } = useMutation({
     mutationFn: (id: number) => Lot.deleteUserLot(id),
     onSuccess: data => {
+      let lotElement: ItemT | ShulkerT
+
       queryClient.setQueryData<LotT[]>(
         CacheKeys.USER_LOTS,
-        lots => lots?.filter(lot => lot.id !== data.lotId) ?? [],
+        lots =>
+          lots?.filter(lot => {
+            if (lot.id === data.id) {
+              lotElement = (lot?.shulker || lot?.item)!
+
+              return false
+            }
+
+            return true
+          }) ?? [],
       )
 
       queryClient.setQueryData<ItemT[]>(CacheKeys.USER_ITEMS, items => {
-        return [...(items ?? []), data.item]
+        return [...(items ?? []), lotElement]
       })
 
       afterSubmit()

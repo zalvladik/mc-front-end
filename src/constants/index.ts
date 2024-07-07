@@ -88,6 +88,7 @@ export enum FetchEndpoint {
   USER_ADVANCEMENTS = 'user/advancements',
   USER_ITEM_TICKETS = 'item_ticket/user_tickets',
   LOT_SHULKER = 'lot/shulker',
+  LOT = 'lot',
   LOT_ITEM = 'lot/item',
   LOT_USER = 'lot/user',
   ITEM_TICKET = 'item_ticket',

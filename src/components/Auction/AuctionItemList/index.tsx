@@ -34,21 +34,29 @@ const AuctionItemList = (): JSX.Element => {
         size={40}
       >
         <TbodyContainer>
-          {data.map(({ item, id, price, username }) => {
+          {data.map(lot => {
+            const { id, price, username } = lot
+
             const { stack, restMoney } = moneyCalculator(price)
+
+            const lotElement = (lot?.shulker || lot?.item)!
 
             return (
               <div
                 key={id}
-                onClick={() => openModal({ item, id, price, username })}
+                onClick={() => openModal(lot)}
                 style={{ opacity: user.username === username ? 0.3 : 1 }}
               >
                 <div>
-                  <ItemSlotIcon {...itemSlotIconProps} {...item} fontSize={18} />
+                  <ItemSlotIcon
+                    {...itemSlotIconProps}
+                    {...lotElement}
+                    fontSize={18}
+                  />
 
                   <ItemDesriptionContainer>
                     <div>
-                      <div>{sliceText(item.display_name, 28)}</div>
+                      <div>{sliceText(lotElement.display_name, 28)}</div>
                     </div>
                   </ItemDesriptionContainer>
                 </div>

@@ -1,6 +1,7 @@
 import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 import { useModals } from 'src/contexts/ModalProvider/useModals'
 import type { LotT } from 'src/services/api/Lot/types'
+import type { ShulkerT } from 'src/services/api/Shulker/types'
 
 import { Modals } from 'src/features/Modals/constants'
 
@@ -21,7 +22,7 @@ export const useAuctionUserLots = () => {
     }
   }
 
-  const openModal = (data: LotT) => {
+  const openModal = (data: LotT | ShulkerT) => {
     onOpen({ name: Modals.LOT, data: { ...data, isDeleteLot: true, afterSubmit } })
   }
 

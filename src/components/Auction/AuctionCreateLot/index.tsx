@@ -70,7 +70,10 @@ const AuctionCreateLot = (): JSX.Element => {
           </div>
         </ShowItemContainer>
 
-        <AuctionCreateLotForm currentItemId={currentItem?.id} />
+        <AuctionCreateLotForm
+          currentItemId={currentItem?.id}
+          itemCategories={currentItem?.categories}
+        />
       </CreateLotContainer>
     </Container>
   )

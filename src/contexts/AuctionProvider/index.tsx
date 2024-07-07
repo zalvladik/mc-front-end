@@ -77,11 +77,16 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     }
   }, [totalPageByeLots])
 
-  const filteredUserLots = dataUserLots.filter(
-    ({ item }) =>
-      item.display_name.toLowerCase().includes(searchValueUserLots.toLowerCase()) ||
-      item.type.toLowerCase().includes(searchValueUserLots.toLowerCase()),
-  )
+  const filteredUserLots = dataUserLots.filter(lot => {
+    const lotElement = (lot?.shulker || lot?.item)!
+
+    return (
+      lotElement?.display_name
+        .toLowerCase()
+        .includes(searchValueUserLots.toLowerCase()) ||
+      lotElement?.type.toLowerCase().includes(searchValueUserLots.toLowerCase())
+    )
+  })
 
   const tolalPageUserLots = Math.ceil(filteredUserLots.length / 8)
 

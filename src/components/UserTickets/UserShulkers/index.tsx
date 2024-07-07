@@ -41,8 +41,6 @@ const UserShulker = (): JSX.Element => {
             </button>
           )
         })}
-
-        <h1>Шалкери {data.length}/5</h1>
       </Skeleton>
 
       <InformationButton

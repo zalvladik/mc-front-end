@@ -6,6 +6,7 @@ import DefaultInput from 'src/components/inputs/DefaultInput'
 
 const AuctionCreateLotForm = ({
   currentItemId,
+  itemCategories,
 }: AuctionCreateLotFormT): JSX.Element => {
   const { itemPrice, setItemPrice, createLotHanlder, isLoading } =
     useAuctionCreateLotForm()
@@ -33,7 +34,7 @@ const AuctionCreateLotForm = ({
           !currentItemId ||
           Number(itemPrice) > 15552
         }
-        onClick={() => createLotHanlder(currentItemId)}
+        onClick={() => createLotHanlder(itemCategories, currentItemId)}
       >
         Створити Лот
       </DefaultButton>

@@ -3,7 +3,8 @@ import { FetchEndpoint } from 'src/constants'
 import type { ItemT } from 'src/services/api/Items/types'
 import type {
   ByeLotProps,
-  CreateLotProps,
+  CreateLotItemProps,
+  CreateLotShulkerProps,
   DeleteLotResponseT,
   GetLotsProps,
   GetLotsResponse,
@@ -25,7 +26,7 @@ class Lot {
     return api(`${FetchEndpoint.LOT_USER}`).json()
   }
 
-  async postItemLot(body: CreateLotProps): Promise<LotT> {
+  async postItemLot(body: CreateLotItemProps): Promise<LotT> {
     return api
       .post(FetchEndpoint.LOT_ITEM, {
         json: body,
@@ -33,7 +34,7 @@ class Lot {
       .json()
   }
 
-  async postShulkerLot(body: CreateLotProps): Promise<LotT> {
+  async postShulkerLot(body: CreateLotShulkerProps): Promise<LotT> {
     return api
       .post(FetchEndpoint.LOT_SHULKER, {
         json: body,
