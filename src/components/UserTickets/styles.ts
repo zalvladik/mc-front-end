@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const ContainerWrapper = styled.div`
   position: relative;
 
-  margin-top: 60px;
+  margin-top: 100px;
 
   background: radial-gradient(
     circle,

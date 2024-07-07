@@ -4,6 +4,7 @@ import type { CreateConnectionProps } from 'src/services/api/Socket/types'
 
 import type { ItemT } from '../Items/types'
 import type { ItemTicketT } from '../ItemTicket/types'
+import type { ShulkerItemT, ShulkerT } from '../Shulker/types'
 
 export class SocketApi {
   static socket: null | Socket = null
@@ -37,6 +38,17 @@ export class SocketApi {
           queryClient.setQueryData<ItemTicketT[]>(
             CacheKeys.USER_ITEM_TICKETS,
             tickets => tickets?.filter(ticket => ticket.id !== data) ?? [],
+          )
+          break
+        case SocketTypes.ADD_SHULKER:
+          queryClient.setQueryData<ShulkerT[]>(CacheKeys.USER_SHULKERS, items => {
+            return [...(items ?? []), data.shulker]
+          })
+          queryClient.setQueryData<ShulkerItemT[]>(
+            [CacheKeys.USER_SHULKER_ITEMS, data.shulker.id],
+            items => {
+              return [...(items ?? []), ...data.shulkerItems]
+            },
           )
           break
         default:
