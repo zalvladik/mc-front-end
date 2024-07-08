@@ -1,8 +1,10 @@
 import { useMutation } from 'react-query'
+import { CacheKeys } from 'src/constants'
 import Lot from 'src/services/api/Lot'
 
 export const useGetLots = () => {
   const { mutate, data, isLoading } = useMutation({
+    mutationKey: CacheKeys.LOTS,
     mutationFn: Lot.getLots,
   })
 
