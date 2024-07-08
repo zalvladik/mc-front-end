@@ -31,7 +31,7 @@ export const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  margin-top: 50px;
+  margin-top: 80px;
 
   border-radius: 8px;
 
