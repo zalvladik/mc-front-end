@@ -8,10 +8,11 @@ export const DefaultInputWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding-right: 50px;
-  top: 0px;
+
+  top: -24px;
   left: 0px;
 
-  translate: 0% -120%;
+  translate: 0% -100%;
 
   & > div {
     display: flex;

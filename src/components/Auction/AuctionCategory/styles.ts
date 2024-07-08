@@ -10,7 +10,6 @@ export const Container = styled.div`
   padding: 15px 10px 10px 10px;
 
   border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
 
   transition: opacity 0.3s ease-in-out;
 
