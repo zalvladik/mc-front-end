@@ -15,6 +15,7 @@ export const useAuctionItemList = () => {
     dataByeLots,
     setCurrentPage,
     refetch,
+    setStorageTotalPages,
   } = useAuction()
 
   const openModal = (lot: LotT) => {
@@ -25,6 +26,7 @@ export const useAuctionItemList = () => {
 
       if (totalPages === currentPage && dataByeLots.length === 1) {
         setCurrentPage(totalPages - 1)
+        setStorageTotalPages(totalPages - 1)
       }
 
       refetch()

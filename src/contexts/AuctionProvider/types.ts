@@ -18,6 +18,7 @@ export type AuctionContextDataT = {
   setSearchValue: (value: string) => void
   selectedCategory: string
   setSelectedCategory: (value: string) => void
+  setStorageTotalPages: (value: number) => void
   isLoadingByeLots: boolean
   isLoadingUserLots: boolean
   dataUserLots: LotT[]

@@ -144,6 +144,7 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
       setCurrentPage: getAuctionFragment(),
       setSearchValue: getSetSearchValue(),
       setSelectedCategory,
+      setStorageTotalPages,
       searchValue: getSearchValue(),
       selectedCategory,
       dataUserLots: getUserLotsForPage(),

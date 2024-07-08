@@ -4,7 +4,7 @@ import Lot from 'src/services/api/Lot'
 import type { GetLotsProps } from 'src/services/api/Lot/types'
 
 export const useGetLots = (payload: GetLotsProps) => {
-  const { refetch, data, isLoading, isRefetching } = useQuery({
+  const { refetch, data, isLoading } = useQuery({
     queryKey: [CacheKeys.LOTS, { ...payload }],
     queryFn: () => Lot.getLots(payload),
     staleTime: 1 * 60 * 1000,
@@ -15,6 +15,6 @@ export const useGetLots = (payload: GetLotsProps) => {
     refetch,
     data: data?.lots ?? [],
     totalPageByeLots: data?.totalPages,
-    isLoading: isLoading || isRefetching,
+    isLoading,
   }
 }
