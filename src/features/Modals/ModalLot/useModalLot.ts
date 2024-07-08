@@ -1,4 +1,5 @@
 import { useSearchParams } from 'react-router-dom'
+import { CategoryEnum } from 'src/constants'
 import { useByeLotItem } from 'src/hooks/useByeLotItem'
 import { useByeLotShulker } from 'src/hooks/useByeLotShulker'
 import { useDeleteUserLot } from 'src/hooks/useDeleteUserLot'
@@ -33,16 +34,23 @@ export const useModalLot = ({
     type: string,
     categories: string[],
   ) => {
-    const isSuitableCategory = categories.includes(category)
-
-    const isSuitableDisplayName = display_name
-      .toLowerCase()
-      .includes(display_nameOrTypeSearch.toLowerCase())
-    const isSuitableType = type
-      .toLowerCase()
-      .includes(display_nameOrTypeSearch.toLowerCase())
+    const isSuitableCategory = category ? categories.includes(category) : false
+    const isSuitableDisplayName = display_nameOrTypeSearch
+      ? display_name.toLowerCase().includes(display_nameOrTypeSearch.toLowerCase())
+      : false
+    const isSuitableType = display_nameOrTypeSearch
+      ? type.toLowerCase().includes(display_nameOrTypeSearch.toLowerCase())
+      : false
 
     const isSuitableItemName = isSuitableDisplayName || isSuitableType
+
+    if (category === CategoryEnum.SHULKERS && isSuitableDisplayName) {
+      return { backgroundImage: 'url(/assets/items_for_ui/slot_green.png)' }
+    }
+
+    if (!isSuitableCategory) {
+      return { backgroundImage: 'url(/assets/items_for_ui/slot.png)' }
+    }
 
     if (display_nameOrTypeSearch && !isSuitableItemName && isSuitableCategory) {
       return { backgroundImage: 'url(/assets/items_for_ui/slot.png)' }
