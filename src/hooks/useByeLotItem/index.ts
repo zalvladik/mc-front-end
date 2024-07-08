@@ -19,8 +19,6 @@ export const useByeLotItem = (afterSubmit: (value: void) => void) => {
         data,
       ])
 
-      queryClient.invalidateQueries(CacheKeys.LOTS)
-
       afterSubmit()
 
       toast.success({ message: ['Лот куплено'] })

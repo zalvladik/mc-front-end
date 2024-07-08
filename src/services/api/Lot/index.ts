@@ -17,8 +17,6 @@ class Lot {
     category,
     display_nameOrType,
   }: GetLotsProps): Promise<GetLotsResponse> {
-    console.log('Lot.getLots')
-
     return api(
       `${FetchEndpoint.LOT}?page=${page}${category ? `&category=${category}` : ''}${display_nameOrType ? `&display_nameOrType=${display_nameOrType}` : ''}`,
     ).json()

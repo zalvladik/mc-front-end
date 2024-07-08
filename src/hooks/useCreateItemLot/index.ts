@@ -9,7 +9,7 @@ export const useCreateItemLot = () => {
   const toast = useToast()
   const queryClient = useQueryClient()
 
-  const { data, mutate, isLoading } = useMutation({
+  const { data, mutate, isLoading, isSuccess } = useMutation({
     mutationFn: Lot.postItemLot,
     onSuccess: (data: LotT) => {
       queryClient.setQueryData<LotT[]>(CacheKeys.USER_LOTS, lots => [
@@ -21,8 +21,6 @@ export const useCreateItemLot = () => {
         items!.filter(item => data.item!.id !== item.id),
       )
 
-      queryClient.invalidateQueries(CacheKeys.LOTS)
-
       toast.success({ message: ['Лот створено'] })
     },
     onError: (error: Error) => {
@@ -30,5 +28,5 @@ export const useCreateItemLot = () => {
     },
   })
 
-  return { mutate, data, isLoading }
+  return { mutate, data, isLoading, isSuccess }
 }

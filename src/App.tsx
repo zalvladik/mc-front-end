@@ -14,7 +14,11 @@ const App = (): JSX.Element => {
 
   const queryClient = new QueryClient({
     defaultOptions: {
-      queries: { retry: false, refetchOnWindowFocus: false, refetchOnMount: false },
+      queries: {
+        retry: false,
+        refetchOnWindowFocus: false,
+        refetchOnMount: false,
+      },
     },
   })
 

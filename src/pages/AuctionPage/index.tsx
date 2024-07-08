@@ -58,7 +58,7 @@ const AuctionPage = (): JSX.Element => {
               disabled={isLoadingByeLots}
               onClick={findLotByName}
               style={{ width: 200 }}
-              isVisible={!isFragment.isUserLotsFragment}
+              isVisible={isFragment.isBuyFragment}
             >
               Пошук
             </DefaultButton>

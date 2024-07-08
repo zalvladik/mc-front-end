@@ -1,5 +1,3 @@
-import { useQueryClient } from 'react-query'
-import { CacheKeys } from 'src/constants'
 import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { useUser } from 'src/contexts/UserProvider/useUser'
@@ -10,10 +8,14 @@ import { Modals } from 'src/features/Modals/constants'
 export const useAuctionItemList = () => {
   const { onOpen } = useModals()
   const { user, updateUserMoney } = useUser()
-  const { totalPages, currentPage, isLoadingByeLots, dataByeLots, setCurrentPage } =
-    useAuction()
-
-  const queryClient = useQueryClient()
+  const {
+    totalPages,
+    currentPage,
+    isLoadingByeLots,
+    dataByeLots,
+    setCurrentPage,
+    refetch,
+  } = useAuction()
 
   const openModal = (lot: LotT) => {
     const afterSubmit = () => {
@@ -23,11 +25,9 @@ export const useAuctionItemList = () => {
 
       if (totalPages === currentPage && dataByeLots.length === 1) {
         setCurrentPage(totalPages - 1)
-
-        return
       }
 
-      queryClient.invalidateQueries(CacheKeys.LOTS)
+      refetch()
     }
 
     onOpen({

@@ -18,7 +18,7 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   const [searchParams] = useSearchParams()
 
   const category = searchParams.get('category') || ''
-  const page = Number(searchParams.get('page') || 1)
+  const page = searchParams.get('page') ? Number(searchParams.get('page')) : 1
   const display_nameOrType = searchParams.get('display_nameOrType') || ''
 
   const [auctionFragment, setAuctionFragment] = useState<AuctionFragment>(
@@ -31,38 +31,38 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   const [searchValueUserLots, setSearchValueUserLots] = useState('')
   const [searchValueByeLots, setSearchValueByeLots] = useState(display_nameOrType)
 
+  const [finalSearchValueByeLots, setfinalSearchValueByeLots] =
+    useState(display_nameOrType)
+
   const [selectedCategory, setSelectedCategory] = useState(category)
 
   const [storageTotalPages, setStorageTotalPages] = useState(1)
 
   const { data: dataUserLots, isLoading: isLoadingUserLots } = useGetUserLots()
 
+  const isFragment = {
+    isBuyFragment: AuctionFragment.BUY_LOT === auctionFragment,
+    isCreateLotFragment: AuctionFragment.CREATE_LOT === auctionFragment,
+    isUserLotsFragment: AuctionFragment.USER_LOTS === auctionFragment,
+  }
+
   const {
-    mutate,
+    refetch,
     data: dataByeLots,
     totalPageByeLots,
     isLoading: isLoadingByeLots,
-  } = useGetLots()
+  } = useGetLots({
+    category: selectedCategory,
+    page: currentPageByeLots,
+    display_nameOrType: finalSearchValueByeLots,
+  })
 
   useEffect(() => {
-    mutate({
-      category: selectedCategory,
-      page: currentPageByeLots,
-      display_nameOrType: searchValueByeLots,
-    })
-
     setCurrentPageByeLots(1)
-
     navigate(auctionUrlQueryParams(selectedCategory, 1))
   }, [selectedCategory])
 
   useEffect(() => {
-    mutate({
-      category: selectedCategory,
-      page: currentPageByeLots,
-      display_nameOrType: searchValueByeLots,
-    })
-
     navigate(
       auctionUrlQueryParams(
         selectedCategory,
@@ -129,11 +129,8 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   }
 
   const findLotByName = (): void => {
-    mutate({
-      category: selectedCategory,
-      page: 1,
-      display_nameOrType: searchValueByeLots,
-    })
+    setfinalSearchValueByeLots(searchValueByeLots)
+    setCurrentPageByeLots(1)
     navigate(auctionUrlQueryParams(selectedCategory, 1, searchValueByeLots))
   }
 
@@ -150,9 +147,11 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
       searchValue: getSearchValue(),
       selectedCategory,
       dataUserLots: getUserLotsForPage(),
+      dataByeLots,
       isLoadingByeLots,
       isLoadingUserLots,
-      dataByeLots,
+      refetch,
+      isFragment,
     }),
     [
       auctionFragment,

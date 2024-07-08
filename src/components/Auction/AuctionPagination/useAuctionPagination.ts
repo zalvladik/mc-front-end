@@ -11,24 +11,28 @@ export const useAuctionPagination = () => {
     dataUserLots,
     dataByeLots,
     totalPages,
+    isLoadingByeLots,
+    isFragment,
   } = useAuction()
 
   const { user } = useUser()
 
   const { data } = useGetUserLots()
 
-  const didShowUserLotsCount =
-    auctionFragment === AuctionFragment.USER_LOTS ||
-    auctionFragment === AuctionFragment.CREATE_LOT
+  const { isUserLotsFragment, isCreateLotFragment, isBuyFragment } = isFragment
+
+  const didShowUserLotsCount = isUserLotsFragment || isCreateLotFragment
 
   const didVanishPagesInfo = () => {
-    if (auctionFragment === AuctionFragment.CREATE_LOT) return true
+    if (isCreateLotFragment) return true
 
-    if (auctionFragment !== AuctionFragment.BUY_LOT)
-      return !dataUserLots.length || totalPages <= 1
+    if (isBuyFragment) return !dataUserLots.length || totalPages <= 1
 
-    if (auctionFragment === AuctionFragment.BUY_LOT)
-      return !dataByeLots.length || totalPages <= 1
+    if (isBuyFragment) {
+      return !dataByeLots.length && isLoadingByeLots
+        ? true
+        : (!dataByeLots.length && !isLoadingByeLots) || totalPages <= 1
+    }
   }
 
   return {
