@@ -101,7 +101,7 @@ export const useAuctionCreateLot = () => {
   const itemSlotIconProps = {
     containerSize: 78,
     itemSize: 50,
-    fontSize: 18,
+    fontSize: 22,
   }
 
   return {

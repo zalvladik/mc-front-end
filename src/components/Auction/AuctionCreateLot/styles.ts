@@ -61,10 +61,6 @@ export const StyledItemList = styled(ItemList)`
       width: 50px;
       height: 50px;
     }
-
-    & > ${ItemAmount} {
-      font-size: 20px;
-    }
   }
 
   & > ${EmptySlot} {

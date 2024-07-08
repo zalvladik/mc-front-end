@@ -122,7 +122,7 @@ export const useUserInventory = () => {
     selectToogle,
     styleForItemBorder,
     selectAreaColor: SelectAreaColors.Green,
-    itemSlotIconProps: { containerSize: 104, itemSize: 64 },
+    itemSlotIconProps: { containerSize: 104, itemSize: 64, fontSize: 28 },
     emptyText: 'Інвентар пустий',
   }
 
