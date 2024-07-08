@@ -55,7 +55,7 @@ const AuctionPage = (): JSX.Element => {
 
             <DefaultButton
               isLoading={isLoadingByeLots}
-              disabled={isLoadingByeLots || !searchValue}
+              disabled={isLoadingByeLots}
               onClick={findLotByName}
               style={{ width: 200 }}
               isVisible={!isFragment.isUserLotsFragment}

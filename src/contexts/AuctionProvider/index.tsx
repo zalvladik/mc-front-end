@@ -38,29 +38,30 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   const { data: dataUserLots, isLoading: isLoadingUserLots } = useGetUserLots()
 
   const {
-    refetch,
+    mutate,
     data: dataByeLots,
     totalPageByeLots,
     isLoading: isLoadingByeLots,
-    isRefetching: isRefetchingByeLots,
-  } = useGetLots({
-    category: selectedCategory,
-    page: currentPageByeLots,
-    display_nameOrType: searchValueByeLots,
-    isCanFetch: display_nameOrType === searchValueByeLots,
-  })
+  } = useGetLots()
 
   useEffect(() => {
-    refetch()
+    mutate({
+      category: selectedCategory,
+      page: currentPageByeLots,
+      display_nameOrType: searchValueByeLots,
+    })
 
     setCurrentPageByeLots(1)
-    setSearchValueByeLots('')
 
     navigate(auctionUrlQueryParams(selectedCategory, 1))
   }, [selectedCategory])
 
   useEffect(() => {
-    refetch()
+    mutate({
+      category: selectedCategory,
+      page: currentPageByeLots,
+      display_nameOrType: searchValueByeLots,
+    })
 
     navigate(
       auctionUrlQueryParams(
@@ -128,7 +129,11 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   }
 
   const findLotByName = (): void => {
-    refetch()
+    mutate({
+      category: selectedCategory,
+      page: 1,
+      display_nameOrType: searchValueByeLots,
+    })
     navigate(auctionUrlQueryParams(selectedCategory, 1, searchValueByeLots))
   }
 
@@ -136,7 +141,6 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     () => ({
       auctionFragment,
       setAuctionFragment,
-      storageTotalPages,
       currentPage: getCurrentPage(),
       totalPages: getTotalPages(),
       findLotByName,
@@ -149,11 +153,9 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
       isLoadingByeLots,
       isLoadingUserLots,
       dataByeLots,
-      isRefetchingByeLots,
     }),
     [
       auctionFragment,
-      storageTotalPages,
       findLotByName,
       setSelectedCategory,
       setAuctionFragment,
@@ -162,7 +164,6 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
       isLoadingByeLots,
       isLoadingUserLots,
       dataByeLots,
-      isRefetchingByeLots,
     ],
   )
 

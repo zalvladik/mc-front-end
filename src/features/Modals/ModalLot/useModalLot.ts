@@ -1,3 +1,4 @@
+import { useSearchParams } from 'react-router-dom'
 import { useByeLotItem } from 'src/hooks/useByeLotItem'
 import { useByeLotShulker } from 'src/hooks/useByeLotShulker'
 import { useDeleteUserLot } from 'src/hooks/useDeleteUserLot'
@@ -9,8 +10,10 @@ export const useModalLot = ({
   isDeleteLot,
   afterSubmit,
   isShulker = false,
-  shulkerId,
+  shulker,
 }: UseModalLotProps) => {
+  const [searchParams] = useSearchParams()
+
   const { mutate: mutateDelete, isLoading: isLoadingDelete } =
     useDeleteUserLot(afterSubmit)
   const { mutate: mutateByeItem, isLoading: isLoadingByeItem } =
@@ -19,7 +22,34 @@ export const useModalLot = ({
     useByeLotShulker(afterSubmit)
 
   const { data: dataShulkerItems = [], isLoading: isLoadingShulkerItems } =
-    useGetShulkerItems(shulkerId, isShulker)
+    useGetShulkerItems(shulker.id, isShulker)
+
+  const category = searchParams.get('category') || ''
+  const display_nameOrTypeSearch = searchParams.get('display_nameOrType') || ''
+
+  const styleForItemBorder = (
+    _: number,
+    display_name: string,
+    type: string,
+    categories: string[],
+  ) => {
+    const isSuitableCategory = categories.includes(category)
+
+    const isSuitableDisplayName = display_name
+      .toLowerCase()
+      .includes(display_nameOrTypeSearch.toLowerCase())
+    const isSuitableType = type
+      .toLowerCase()
+      .includes(display_nameOrTypeSearch.toLowerCase())
+
+    const isSuitableItemName = isSuitableDisplayName || isSuitableType
+
+    if (display_nameOrTypeSearch && !isSuitableItemName && isSuitableCategory) {
+      return { backgroundImage: 'url(/assets/items_for_ui/slot.png)' }
+    }
+
+    return { backgroundImage: 'url(/assets/items_for_ui/slot_green.png)' }
+  }
 
   const toogleLot = (id: number): void => {
     if (isDeleteLot) {
@@ -42,5 +72,6 @@ export const useModalLot = ({
     isLoading: isLoadingByeItem || isLoadingDelete || isLoadingByeShulker,
     dataShulkerItems,
     isLoadingShulkerItems,
+    styleForItemBorder,
   }
 }

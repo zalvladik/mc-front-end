@@ -7,10 +7,10 @@ export const useAuctionPagination = () => {
   const {
     currentPage,
     setCurrentPage,
-    totalPages,
     auctionFragment,
     dataUserLots,
     dataByeLots,
+    totalPages,
   } = useAuction()
 
   const { user } = useUser()

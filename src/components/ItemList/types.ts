@@ -7,7 +7,12 @@ export type ItemListProps = {
   emptyText?: string
   items: (ShulkerT | ItemT)[]
   selectToogle?: (id: number[]) => void
-  styleForItemBorder?: (id: number) => CSSProperties
+  styleForItemBorder?: (
+    id: number,
+    display_name: string,
+    type: string,
+    categories: string[],
+  ) => CSSProperties
   selectAreaColor?: SelectAreaColors
   isNeedAreaSelect?: boolean
   isLoading: boolean

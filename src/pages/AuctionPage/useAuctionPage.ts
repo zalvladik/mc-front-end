@@ -12,7 +12,6 @@ export const useAuctionPage = () => {
     searchValue,
     setSearchValue,
     isLoadingByeLots,
-    isRefetchingByeLots,
   } = useAuction()
 
   const isFragment = {
@@ -29,6 +28,6 @@ export const useAuctionPage = () => {
     money: user.money,
     searchValue,
     setSearchValue,
-    isLoadingByeLots: isRefetchingByeLots || isLoadingByeLots,
+    isLoadingByeLots,
   }
 }

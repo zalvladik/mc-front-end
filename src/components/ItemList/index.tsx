@@ -60,7 +60,14 @@ const ItemList = ({
               return selectToogle && selectToogle([item.id])
             }}
             style={{
-              ...(styleForItemBorder ? styleForItemBorder(item.id) : {}),
+              ...(styleForItemBorder
+                ? styleForItemBorder(
+                    item.id,
+                    item.display_name,
+                    item.type,
+                    item.categories,
+                  )
+                : {}),
               margin: 4,
             }}
             {...itemSlotIconProps}

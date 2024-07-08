@@ -5,7 +5,6 @@ import type { ReactChildrenT } from 'src/types'
 export type AuctionContextDataT = {
   auctionFragment: AuctionFragment
   setAuctionFragment: (value: AuctionFragment) => void
-  storageTotalPages: number
   currentPage: number
   setCurrentPage: (value: number) => void
   totalPages: number
@@ -18,7 +17,6 @@ export type AuctionContextDataT = {
   isLoadingUserLots: boolean
   dataUserLots: LotT[]
   dataByeLots: LotT[]
-  isRefetchingByeLots: boolean
 }
 
 export type AuctionProviderT = ReactChildrenT

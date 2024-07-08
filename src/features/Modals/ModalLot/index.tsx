@@ -37,13 +37,18 @@ const ModalLot = ({
   const lotElement = (item || shulker)!
   const isShulker = lotElement.categories.includes(CategoryEnum.SHULKERS)
 
-  const { toogleLot, isLoading, dataShulkerItems, isLoadingShulkerItems } =
-    useModalLot({
-      isDeleteLot,
-      afterSubmit,
-      isShulker,
-      shulkerId: lotElement.id,
-    })
+  const {
+    toogleLot,
+    isLoading,
+    dataShulkerItems,
+    isLoadingShulkerItems,
+    styleForItemBorder,
+  } = useModalLot({
+    isDeleteLot,
+    afterSubmit,
+    isShulker,
+    shulker: lotElement,
+  })
 
   return (
     <SettingsModalsLayout
@@ -56,6 +61,7 @@ const ModalLot = ({
         {isShulker && <StyledMoneyTable money={price} />}
         {isShulker ? (
           <ItemList
+            styleForItemBorder={styleForItemBorder}
             items={dataShulkerItems}
             isLoading={isLoadingShulkerItems}
             isNeedAreaSelect={false}

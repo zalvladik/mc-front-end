@@ -20,5 +20,5 @@ export type UseModalLotProps = {
   isDeleteLot: boolean
   afterSubmit: (value: void) => void
   isShulker?: boolean
-  shulkerId: number
+  shulker: ShulkerT
 }
