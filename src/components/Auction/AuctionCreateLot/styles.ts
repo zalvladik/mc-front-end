@@ -5,11 +5,7 @@ import InventoryHeader from 'src/components/InventoryHeader'
 import { InventoryHeaderTitle } from 'src/components/InventoryHeader/styles'
 import ItemList from 'src/components/ItemList'
 import { EmptySlot } from 'src/components/ItemList/styles'
-import {
-  ItemAmount,
-  ItemIcon,
-  ItemSlotIconContainer,
-} from 'src/components/ItemSlotIcon/styles'
+import { ItemIcon, ItemSlotIconContainer } from 'src/components/ItemSlotIcon/styles'
 
 import PaginationTab from 'src/features/PaginationTab'
 

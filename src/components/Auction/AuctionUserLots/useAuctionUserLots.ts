@@ -1,3 +1,5 @@
+import { useQueryClient } from 'react-query'
+import { CacheKeys } from 'src/constants'
 import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 import { useModals } from 'src/contexts/ModalProvider/useModals'
 import type { LotT } from 'src/services/api/Lot/types'
@@ -16,10 +18,14 @@ export const useAuctionUserLots = () => {
     totalPages,
   } = useAuction()
 
+  const queryClient = useQueryClient()
+
   const afterSubmit = () => {
     if (totalPages === currentPage && dataUserLots.length % 8 === 1) {
       setCurrentPage(totalPages - 1)
     }
+
+    queryClient.invalidateQueries(CacheKeys.LOTS)
   }
 
   const openModal = (data: LotT | ShulkerT) => {

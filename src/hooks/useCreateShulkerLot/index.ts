@@ -25,6 +25,8 @@ export const useCreateShulkerLot = () => {
           }) ?? [],
       )
 
+      queryClient.invalidateQueries(CacheKeys.LOTS)
+
       toast.success({ message: ['Лот створено'] })
     },
     onError: (error: Error) => {
