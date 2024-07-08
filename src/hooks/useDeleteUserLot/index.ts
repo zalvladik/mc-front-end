@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from 'react-query'
-import { CacheKeys, CategoryEnum } from 'src/constants'
+import { CacheKeys } from 'src/constants'
 import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { useToast } from 'src/contexts/ToastProvider/useToast'
 import type { ItemT } from 'src/services/api/Items/types'
@@ -20,19 +20,34 @@ export const useDeleteUserLot = (afterSubmit: (value: void) => void) => {
         lots =>
           lots?.filter(lot => {
             if (lot.id === data.id) {
-              const lotElement: ItemT | ShulkerT = (lot?.shulker || lot?.item)!
+              const userItems =
+                queryClient.getQueryData<ItemT[]>(CacheKeys.USER_ITEMS) ?? []
 
-              if (lotElement.categories.includes(CategoryEnum.SHULKERS)) {
-                queryClient.setQueryData<ItemT[]>(CacheKeys.USER_SHULKERS, items => {
-                  return [...(items ?? []), lotElement]
-                })
-              } else {
+              const userShulkes =
+                queryClient.getQueryData<ShulkerT[]>(CacheKeys.USER_SHULKERS) ?? []
+
+              if (userItems.length && lot?.item) {
                 queryClient.setQueryData<ItemT[]>(CacheKeys.USER_ITEMS, items => {
-                  return [...(items ?? []), lotElement]
+                  return [...(items ?? []), lot!.item!]
                 })
               }
 
-              return false
+              if (userShulkes.length && lot?.shulker) {
+                queryClient.setQueryData<ShulkerT[]>(
+                  CacheKeys.USER_SHULKERS,
+                  shulkers => {
+                    return [...(shulkers ?? []), lot!.shulker!]
+                  },
+                )
+              }
+
+              if (!userItems.length) {
+                queryClient.invalidateQueries(CacheKeys.USER_ITEMS)
+              }
+
+              if (!userShulkes.length) {
+                queryClient.invalidateQueries(CacheKeys.USER_SHULKERS)
+              }
             }
 
             return true
