@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import ItemHoverDescription from 'src/components/ItemHoverDescription'
+import MoneyTable from 'src/components/MoneyTable'
 
 export const StyledItemHoverDescription = styled(ItemHoverDescription)`
   position: static;
@@ -12,6 +13,8 @@ export const StyledItemHoverDescription = styled(ItemHoverDescription)`
 export const Container = styled.div`
   position: relative;
   display: flex;
+
+  align-items: center;
   flex-direction: column;
   gap: 20px;
 
@@ -42,6 +45,18 @@ export const Container = styled.div`
     background-color: rgba(0, 0, 0, 0);
 
     translate: 0% 0%;
+  }
+`
+
+export const StyledMoneyTable = styled(MoneyTable)`
+  padding: 0px;
+  flex-direction: row;
+  gap: 80px;
+
+  & > li {
+    & > h1 {
+      padding: 0px;
+    }
   }
 `
 

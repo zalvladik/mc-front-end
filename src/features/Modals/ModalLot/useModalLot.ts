@@ -1,4 +1,5 @@
 import { useByeLotItem } from 'src/hooks/useByeLotItem'
+import { useByeLotShulker } from 'src/hooks/useByeLotShulker'
 import { useDeleteUserLot } from 'src/hooks/useDeleteUserLot'
 import { useGetShulkerItems } from 'src/hooks/useGetShulkerItems'
 
@@ -12,7 +13,10 @@ export const useModalLot = ({
 }: UseModalLotProps) => {
   const { mutate: mutateDelete, isLoading: isLoadingDelete } =
     useDeleteUserLot(afterSubmit)
-  const { mutate: mutateBye, isLoading: isLoadingBye } = useByeLotItem(afterSubmit)
+  const { mutate: mutateByeItem, isLoading: isLoadingByeItem } =
+    useByeLotItem(afterSubmit)
+  const { mutate: mutateByeShulker, isLoading: isLoadingByeShulker } =
+    useByeLotShulker(afterSubmit)
 
   const { data: dataShulkerItems = [], isLoading: isLoadingShulkerItems } =
     useGetShulkerItems(shulkerId, isShulker)
@@ -24,12 +28,18 @@ export const useModalLot = ({
       return
     }
 
-    mutateBye({ lotId: id })
+    if (isShulker) {
+      mutateByeShulker({ lotId: id })
+
+      return
+    }
+
+    mutateByeItem({ lotId: id })
   }
 
   return {
     toogleLot,
-    isLoading: isLoadingBye || isLoadingDelete,
+    isLoading: isLoadingByeItem || isLoadingDelete || isLoadingByeShulker,
     dataShulkerItems,
     isLoadingShulkerItems,
   }

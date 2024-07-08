@@ -4,6 +4,7 @@ import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { useToast } from 'src/contexts/ToastProvider/useToast'
 import type { ItemT } from 'src/services/api/Items/types'
 import Lot from 'src/services/api/Lot'
+import type { ShulkerT } from 'src/services/api/Shulker/types'
 
 export const useByeLotShulker = (afterSubmit: (value: void) => void) => {
   const { onClose } = useModals()
@@ -12,10 +13,10 @@ export const useByeLotShulker = (afterSubmit: (value: void) => void) => {
   const queryClient = useQueryClient()
 
   const { data, mutate, isLoading } = useMutation({
-    mutationFn: Lot.byeLot,
-    onSuccess: (data: ItemT) => {
-      queryClient.setQueryData<ItemT[]>(CacheKeys.USER_ITEMS, items => [
-        ...(items ?? []),
+    mutationFn: Lot.byeLotShulker,
+    onSuccess: (data: ItemT | ShulkerT) => {
+      queryClient.setQueryData<ItemT[]>(CacheKeys.USER_SHULKERS, shulkers => [
+        ...(shulkers ?? []),
         data,
       ])
 

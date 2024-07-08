@@ -12,7 +12,7 @@ const ModalAdvancements = ({
   return (
     <SettingsModalsLayout
       isOpen={isOpen}
-      closeModal={closeModal}
+      closeModal={() => {}}
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.92)' }}
     >
       <ButtonModalClose onClose={closeModal} />

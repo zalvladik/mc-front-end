@@ -12,7 +12,7 @@ export const useByeLotItem = (afterSubmit: (value: void) => void) => {
   const queryClient = useQueryClient()
 
   const { data, mutate, isLoading } = useMutation({
-    mutationFn: Lot.byeLot,
+    mutationFn: Lot.byeLotItem,
     onSuccess: (data: ItemT) => {
       queryClient.setQueryData<ItemT[]>(CacheKeys.USER_ITEMS, items => [
         ...(items ?? []),

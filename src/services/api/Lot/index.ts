@@ -42,9 +42,17 @@ class Lot {
       .json()
   }
 
-  async byeLot(body: ByeLotProps): Promise<ItemT> {
+  async byeLotItem(body: ByeLotProps): Promise<ItemT> {
     return api
-      .put(FetchEndpoint.LOT, {
+      .put(FetchEndpoint.LOT_ITEM, {
+        json: body,
+      })
+      .json()
+  }
+
+  async byeLotShulker(body: ByeLotProps): Promise<ItemT> {
+    return api
+      .put(FetchEndpoint.LOT_SHULKER, {
         json: body,
       })
       .json()

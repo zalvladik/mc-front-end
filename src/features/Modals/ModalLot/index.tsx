@@ -11,6 +11,7 @@ import {
   ItemOwner,
   ItemSlotWrapper,
   StyledItemHoverDescription,
+  StyledMoneyTable,
 } from 'src/features/Modals/ModalLot/styles'
 import type { ModalLotProps } from 'src/features/Modals/ModalLot/types'
 import { useModalLot } from 'src/features/Modals/ModalLot/useModalLot'
@@ -52,6 +53,7 @@ const ModalLot = ({
     >
       <ButtonModalClose onClose={closeModal} />
       <Container onClick={handleContainerClick}>
+        {isShulker && <StyledMoneyTable money={price} />}
         {isShulker ? (
           <ItemList
             items={dataShulkerItems}
@@ -93,7 +95,7 @@ const ModalLot = ({
         >
           {isDeleteLot
             ? 'Видалити'
-            : userMoney > price
+            : userMoney >= price
               ? 'Купити'
               : 'Недостатньо коштів'}
         </DefaultButton>
