@@ -1,4 +1,4 @@
-import type { EnchantsTypesEnum, ItemTypesEnchantsFinderEnum } from 'src/constants'
+import type { EnchantsTypesEnum } from 'src/components/Auction/AuctionEnchantFinder/constants'
 
 export type EnchantItemT = {
   enchantType: EnchantsTypesEnum
@@ -8,3 +8,7 @@ export type EnchantItemT = {
 }
 
 export type EnchantItemsTypesT = EnchantItemT[]
+
+export type EnchantTranslationsT = {
+  [key: string]: string
+}

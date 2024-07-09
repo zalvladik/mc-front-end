@@ -1,17 +1,25 @@
 import { useState } from 'react'
-import type { ArmorMaterialT, WeaponAndToolsMaterialT } from 'src/constants'
+import { FETCH_URL_IMG } from 'src/constants'
+
+import type {
+  ArmorMaterialT,
+  EnchantsEnum,
+  WeaponAndToolsMaterialT,
+} from 'src/components/Auction/AuctionEnchantFinder/constants'
 import {
+  armorMaterials,
   EnchantsTypesEnum,
-  FETCH_URL_IMG,
   ItemMaterialEnum,
   ItemTypesEnchantsFinderEnum,
-} from 'src/constants'
-
+  weaponAndToolsMaterial,
+} from 'src/components/Auction/AuctionEnchantFinder/constants'
 import type { EnchantItemsTypesT } from 'src/components/Auction/AuctionEnchantFinder/types'
 
 export const useAuctionEnchantFinder = () => {
   const [selectedEnchantType, setSelectedEnchantType] =
     useState<EnchantsTypesEnum | null>(null)
+
+  const [selectedEnchants, setSelectedEnchants] = useState<EnchantsEnum[]>([])
 
   const [helmetMaterial, setHelmetMaterial] = useState<ArmorMaterialT>(
     ItemMaterialEnum.NETHERITE,
@@ -43,23 +51,6 @@ export const useAuctionEnchantFinder = () => {
     ItemMaterialEnum.NETHERITE,
   )
 
-  const armorMaterials: ArmorMaterialT[] = [
-    'leather',
-    'chainmail',
-    'iron',
-    'golden',
-    'diamond',
-    'netherite',
-  ]
-
-  const weaponAndToolsMaterial: WeaponAndToolsMaterialT[] = [
-    'wooden',
-    'iron',
-    'golden',
-    'diamond',
-    'netherite',
-  ]
-
   const getNextArmorMaterial = (currentMaterial: ArmorMaterialT): ArmorMaterialT => {
     const currentIndex = armorMaterials.indexOf(currentMaterial)
     const nextIndex = (currentIndex + 1) % armorMaterials.length
@@ -78,6 +69,20 @@ export const useAuctionEnchantFinder = () => {
 
   const giveImageUrl = (itemType: string) => {
     return `${FETCH_URL_IMG}/${itemType.slice(0, 2)}/${itemType}.png`
+  }
+
+  const setSelectedEnchantsToggle = (enchant: EnchantsEnum) => {
+    if (selectedEnchants.includes(enchant)) {
+      const updatedSelectedEnchants = selectedEnchants.filter(
+        item => item !== enchant,
+      )
+
+      setSelectedEnchants(updatedSelectedEnchants)
+
+      return
+    }
+
+    setSelectedEnchants([...selectedEnchants, enchant])
   }
 
   const enchantItemsTypes: EnchantItemsTypesT[] = [
@@ -203,5 +208,7 @@ export const useAuctionEnchantFinder = () => {
     giveImageUrl,
     selectedEnchantType,
     setSelectedEnchantType,
+    selectedEnchants,
+    setSelectedEnchantsToggle,
   }
 }

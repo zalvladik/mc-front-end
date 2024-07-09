@@ -14,8 +14,6 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
 
-  padding: 10px;
-
   border-radius: 5px;
 
   background: radial-gradient(
@@ -46,8 +44,8 @@ export const EnchantItemContainer = styled.div`
   position: relative;
 
   border: none;
-  height: 100px;
-  width: 100px;
+  height: 108px;
+  width: 108px;
 
   transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
@@ -59,7 +57,7 @@ export const EnchantItemContainer = styled.div`
 
   &:hover {
     z-index: 20;
-    transform: scale(1.05);
+    transform: scale(1.03);
     cursor: pointer;
   }
 
@@ -83,39 +81,86 @@ export const LeftSection = styled.div`
   display: flex;
   flex-direction: column;
 
-  gap: 30px;
-
   align-items: center;
+
+  border-radius: 8px;
+  border: 1px solid black;
+
+  padding: 6px 12px;
+
+  background: radial-gradient(
+    circle,
+    rgba(30, 67, 89, 1) 0%,
+    rgba(20, 47, 61, 1) 100%
+  );
+
+  -webkit-box-shadow: inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75);
 
   & > h1 {
     font-family: 'Minecraft', sans-serif;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 500;
-
-    color: #ececec;
   }
 
   & > div {
     display: flex;
 
+    margin-top: 10px;
     gap: 10px;
   }
 `
 
-// export const ButtonsContainer = styled.div`
-//   width: 320px;
+export const RightSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-//   padding: 10px;
+  padding: 7px 13px;
 
-//   display: flex;
-//   flex-direction: column;
-//   gap: 10px;
+  & > h1 {
+    font-family: 'Minecraft', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+  }
+`
 
-//   & > div {
-//     margin: 0px auto;
+export const ButtonsContainer = styled.div`
+  width: 410px;
 
-//     & > div {
-//       font-size: 22px;
-//     }
-//   }
-// `
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`
+
+export const RecurseButtonsContainer = styled.div`
+  width: 390px;
+
+  padding: 10px;
+
+  border-radius: 8px;
+  border: 1px solid black;
+
+  background: radial-gradient(
+    circle,
+    rgba(100, 110, 120, 1) 0%,
+    rgba(30, 35, 40, 1) 100%
+  );
+
+  -webkit-box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
+  -moz-box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
+  box-shadow:
+    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`

@@ -13,7 +13,7 @@ export const Container = styled.div`
 
   &:hover {
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 
   & > div {
@@ -79,6 +79,8 @@ export const ButtonText = styled.div`
   font-family: 'Minecraft', sans-serif;
   font-weight: 500;
   font-size: 25px;
+
+  text-shadow: 3px 3px 2px rgba(0, 0, 0, 1);
 
   & > svg {
     animation: rotateAnimation 2s linear infinite;
