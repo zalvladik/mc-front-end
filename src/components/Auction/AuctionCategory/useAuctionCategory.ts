@@ -55,6 +55,12 @@ export const useAuctionCategory = () => {
       description: 'Інгредієнти',
     },
     {
+      category: 'enchanted_book',
+      style: { backgroundImage: `url(${baseUrl}/enchanted_book.png)` },
+
+      description: 'Книги зачарувань',
+    },
+    {
       category: 'shulkers',
       style: { backgroundImage: `url(${baseUrl}/shulker_box.png)` },
 

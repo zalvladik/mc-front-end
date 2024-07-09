@@ -84,7 +84,7 @@ export const ButtonCategory = styled.button<ButtonCategoryProps>`
 export const ButtonItems = styled.div<ButtonItemsProps>`
   z-index: 2;
   display: flex;
-  gap: 20px;
+  gap: 12px;
 
   border-radius: 3px;
 
@@ -110,8 +110,8 @@ export const ButtonItems = styled.div<ButtonItemsProps>`
   align-items: center;
 
   & > div:first-child {
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
 
     display: flex;
     align-items: center;

@@ -19,12 +19,19 @@ export const useAuctionPagination = () => {
 
   const { data } = useGetUserLots()
 
-  const { isUserLotsFragment, isCreateLotFragment, isBuyFragment } = isFragment
+  const {
+    isUserLotsFragment,
+    isCreateLotFragment,
+    isBuyFragment,
+    isEnchantFinderFragment,
+  } = isFragment
 
   const didShowUserLotsCount = isUserLotsFragment || isCreateLotFragment
 
   const didVanishPagesInfo = () => {
     if (isCreateLotFragment) return true
+
+    if (isEnchantFinderFragment) return true
 
     if (isBuyFragment) return !dataUserLots.length || totalPages <= 1
 

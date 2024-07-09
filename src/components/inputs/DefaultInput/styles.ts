@@ -8,6 +8,10 @@ export const Input = styled.input`
   border: 2px solid white;
   background: #161616;
 
+  transition:
+    transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    opacity 0.2s ease;
+
   @media screen and (max-width: 767px) {
     font-size: 16px;
   }

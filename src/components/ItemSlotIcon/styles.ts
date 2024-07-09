@@ -33,9 +33,6 @@ export const ItemIcon = styled.div`
 
   translate: -50% -50%;
 
-  width: 64px;
-  height: 64px;
-
   background-size: contain;
   background-repeat: no-repeat;
 `

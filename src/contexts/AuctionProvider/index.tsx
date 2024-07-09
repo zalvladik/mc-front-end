@@ -44,6 +44,7 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     isBuyFragment: AuctionFragment.BUY_LOT === auctionFragment,
     isCreateLotFragment: AuctionFragment.CREATE_LOT === auctionFragment,
     isUserLotsFragment: AuctionFragment.USER_LOTS === auctionFragment,
+    isEnchantFinderFragment: AuctionFragment.ENCHANT_FINDER === auctionFragment,
   }
 
   const {

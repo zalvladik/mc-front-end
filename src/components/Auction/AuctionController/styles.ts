@@ -18,7 +18,7 @@ export const ButtonsContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 
   & > div {
     margin: 0px auto;

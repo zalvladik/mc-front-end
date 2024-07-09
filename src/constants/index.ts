@@ -79,6 +79,7 @@ export enum AuctionFragment {
   BUY_LOT = 'buy_lot',
   CREATE_LOT = 'create_lot',
   USER_LOTS = 'user_lots',
+  ENCHANT_FINDER = 'enchant_finder',
 }
 
 export enum FetchEndpoint {
@@ -115,3 +116,63 @@ export const defaultUser: UserT = {
   itemCount: 0,
   lotCount: 0,
 }
+
+export enum EnchantsTypesEnum {
+  HELMET,
+  CHESTPLATE,
+  LEGGINGS,
+  BOOTS,
+  ELYTRA,
+  SWORD,
+  AXE,
+  TRIDENT,
+  MACE,
+  PICKAXE,
+  SHOVEL,
+  HOE,
+  BOW,
+  CROSSBOW,
+  FISHING_ROD,
+}
+
+export enum ItemTypesEnchantsFinderEnum {
+  HELMET = 'helmet',
+  CHESTPLATE = 'chestplate',
+  LEGGINGS = 'leggings',
+  BOOTS = 'boots',
+  ELYTRA = 'elytra',
+  SWORD = 'sword',
+  AXE = 'axe',
+  TRIDENT = 'trident',
+  MACE = 'mace',
+  PICKAXE = 'pickaxe',
+  SHOVEL = 'shovel',
+  HOE = 'hoe',
+  BOW = 'bow',
+  CROSSBOW = 'crossbow',
+  FISHING_ROD = 'fishing_rod',
+}
+
+export enum ItemMaterialEnum {
+  LEATHER = 'leather',
+  CHAINMAIL = 'chainmail',
+  IRON = 'iron',
+  GOLDEN = 'golden',
+  DIAMOND = 'diamond',
+  NETHERITE = 'netherite',
+}
+
+export type ArmorMaterialT =
+  | 'leather'
+  | 'iron'
+  | 'golden'
+  | 'diamond'
+  | 'netherite'
+  | 'chainmail'
+
+export type WeaponAndToolsMaterialT =
+  | 'wooden'
+  | 'iron'
+  | 'golden'
+  | 'diamond'
+  | 'netherite'

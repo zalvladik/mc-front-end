@@ -30,6 +30,7 @@ export type AuctionContextDataT = {
     isBuyFragment: boolean
     isCreateLotFragment: boolean
     isUserLotsFragment: boolean
+    isEnchantFinderFragment: boolean
   }
 }
 

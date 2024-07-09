@@ -13,6 +13,7 @@ import {
   AuctionCategory,
   AuctionController,
   AuctionCreateLot,
+  AuctionEnchantFinder,
   AuctionItemList,
   AuctionPagination,
   AuctionUserLots,
@@ -37,6 +38,7 @@ const AuctionPage = (): JSX.Element => {
       [AuctionFragment.BUY_LOT]: <AuctionItemList />,
       [AuctionFragment.CREATE_LOT]: <AuctionCreateLot />,
       [AuctionFragment.USER_LOTS]: <AuctionUserLots />,
+      [AuctionFragment.ENCHANT_FINDER]: <AuctionEnchantFinder />,
     }
 
     return components[auctionFragment]
@@ -51,6 +53,7 @@ const AuctionPage = (): JSX.Element => {
               value={searchValue}
               onChange={e => setSearchValue(e.target.value)}
               placeholder="Пошук..."
+              isVisible={isFragment.isBuyFragment || isFragment.isUserLotsFragment}
             />
 
             <DefaultButton
