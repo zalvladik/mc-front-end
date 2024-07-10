@@ -135,32 +135,3 @@ export const ButtonsContainer = styled.div`
   flex-direction: column;
   gap: 8px;
 `
-
-export const RecurseButtonsContainer = styled.div`
-  width: 390px;
-
-  padding: 10px;
-
-  border-radius: 8px;
-  border: 1px solid black;
-
-  background: radial-gradient(
-    circle,
-    rgba(100, 110, 120, 1) 0%,
-    rgba(30, 35, 40, 1) 100%
-  );
-
-  -webkit-box-shadow:
-    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
-    0px 0px 12px -5px rgba(255, 255, 255, 1);
-  -moz-box-shadow:
-    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
-    0px 0px 12px -5px rgba(255, 255, 255, 1);
-  box-shadow:
-    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
-    0px 0px 12px -5px rgba(255, 255, 255, 1);
-
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`

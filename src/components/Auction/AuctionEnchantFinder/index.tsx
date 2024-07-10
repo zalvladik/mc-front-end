@@ -2,9 +2,9 @@ import type { CSSProperties } from 'styled-components'
 
 import {
   EnchantsEnum,
-  enchantTranslations,
   type ItemTypesEnchantsFinderEnum,
 } from 'src/components/Auction/AuctionEnchantFinder/constants'
+import MinorEnchants from 'src/components/Auction/AuctionEnchantFinder/MinorEnchants'
 import {
   ButtonsContainer,
   Container,
@@ -13,10 +13,8 @@ import {
   EnchantItemIcon,
   EnchantTypeCategoryContainer,
   LeftSection,
-  RecurseButtonsContainer,
   RightSection,
 } from 'src/components/Auction/AuctionEnchantFinder/styles'
-import type { EnchantTranslationsT } from 'src/components/Auction/AuctionEnchantFinder/types'
 import { useAuctionEnchantFinder } from 'src/components/Auction/AuctionEnchantFinder/useAuctionEnchantFinder'
 import { useEnchantVariables } from 'src/components/Auction/AuctionEnchantFinder/useEnchantVariables'
 import DefaultButton from 'src/components/DefaultButton'
@@ -29,12 +27,13 @@ const AuctionEnchantFinder = (): JSX.Element => {
     setSelectedEnchantType,
     selectedEnchants,
     setSelectedEnchantsToggle,
+    setSelectedEnchants,
+    enchantTranslationsTypes,
+    setSelectedMinorEnchantsToggle,
   } = useAuctionEnchantFinder()
 
   const { enchantVariables, giveOtherEnchantsTypes, giveNegativeEnchantsTypes } =
     useEnchantVariables()
-
-  const enchantTranslationsTypes: EnchantTranslationsT = enchantTranslations
 
   return (
     <ContainerWrapper>
@@ -61,6 +60,7 @@ const AuctionEnchantFinder = (): JSX.Element => {
                           onClick()
                         }
 
+                        setSelectedEnchants([])
                         setSelectedEnchantType(enchantType)
                       }}
                     >
@@ -81,7 +81,7 @@ const AuctionEnchantFinder = (): JSX.Element => {
         <RightSection>
           {selectedEnchantType ? (
             <>
-              <h1>Чар для пошуку</h1>
+              <h1>Чари для пошуку</h1>
               <ButtonsContainer>
                 {selectedEnchantType &&
                   [
@@ -105,7 +105,7 @@ const AuctionEnchantFinder = (): JSX.Element => {
                         item === EnchantsEnum.BINDING_CURSE
 
                       const color = isNegativeEnchant ? '#aa0e0e' : '#ececec'
-                      const fontSize = isNegativeEnchant ? 22 : 24
+                      const fontSize = 22
                       const fontWeight = isNegativeEnchant ? 900 : 500
 
                       const textStyle: CSSProperties = {
@@ -116,28 +116,16 @@ const AuctionEnchantFinder = (): JSX.Element => {
 
                       if (Array.isArray(item)) {
                         return (
-                          <DefaultButton
-                            onClick={() => {}}
-                            style={{ width: '100%' }}
+                          <MinorEnchants
+                            key={i}
+                            item={item}
                             textStyle={textStyle}
-                            key="lmao"
-                          >
-                            lmao
-                          </DefaultButton>
-                          // <RecurseButtonsContainer key={selectedEnchantType + i}>
-                          //   {item.map(text => {
-                          //     return (
-                          //       <DefaultButton
-                          //         onClick={() => {}}
-                          //         style={{ width: '100%' }}
-                          //         textStyle={textStyle}
-                          //         key={text}
-                          //       >
-                          //         {enchantTranslationsTypes[text]}
-                          //       </DefaultButton>
-                          //     )
-                          //   })}
-                          // </RecurseButtonsContainer>
+                            style={{ zIndex: i === 0 ? 5 : 4 }}
+                            selectedEnchants={selectedEnchants}
+                            setSelectedMinorEnchantsToggle={
+                              setSelectedMinorEnchantsToggle
+                            }
+                          />
                         )
                       }
 

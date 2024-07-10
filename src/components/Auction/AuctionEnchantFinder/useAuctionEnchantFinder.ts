@@ -9,11 +9,15 @@ import type {
 import {
   armorMaterials,
   EnchantsTypesEnum,
+  enchantTranslations,
   ItemMaterialEnum,
   ItemTypesEnchantsFinderEnum,
   weaponAndToolsMaterial,
 } from 'src/components/Auction/AuctionEnchantFinder/constants'
-import type { EnchantItemsTypesT } from 'src/components/Auction/AuctionEnchantFinder/types'
+import type {
+  EnchantItemsTypesT,
+  EnchantTranslationsT,
+} from 'src/components/Auction/AuctionEnchantFinder/types'
 
 export const useAuctionEnchantFinder = () => {
   const [selectedEnchantType, setSelectedEnchantType] =
@@ -51,6 +55,8 @@ export const useAuctionEnchantFinder = () => {
     ItemMaterialEnum.NETHERITE,
   )
 
+  const enchantTranslationsTypes: EnchantTranslationsT = enchantTranslations
+
   const getNextArmorMaterial = (currentMaterial: ArmorMaterialT): ArmorMaterialT => {
     const currentIndex = armorMaterials.indexOf(currentMaterial)
     const nextIndex = (currentIndex + 1) % armorMaterials.length
@@ -83,6 +89,29 @@ export const useAuctionEnchantFinder = () => {
     }
 
     setSelectedEnchants([...selectedEnchants, enchant])
+  }
+
+  const setSelectedMinorEnchantsToggle = (
+    addEnchant: EnchantsEnum,
+    deleteEnchant?: EnchantsEnum,
+  ) => {
+    if (addEnchant === deleteEnchant) {
+      setSelectedEnchants(selectedEnchants.filter(item => addEnchant !== item))
+
+      return
+    }
+
+    if (!deleteEnchant) {
+      setSelectedEnchants([...selectedEnchants, addEnchant])
+
+      return
+    }
+
+    const updatedSelectedEnchants = selectedEnchants.map(item =>
+      item === deleteEnchant ? addEnchant : item,
+    )
+
+    setSelectedEnchants(updatedSelectedEnchants)
   }
 
   const enchantItemsTypes: EnchantItemsTypesT[] = [
@@ -210,5 +239,8 @@ export const useAuctionEnchantFinder = () => {
     setSelectedEnchantType,
     selectedEnchants,
     setSelectedEnchantsToggle,
+    setSelectedEnchants,
+    enchantTranslationsTypes,
+    setSelectedMinorEnchantsToggle,
   }
 }
