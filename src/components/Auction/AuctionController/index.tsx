@@ -1,13 +1,19 @@
 import {
   ButtonsContainer,
   Container,
+  EnchantItemIcon,
+  EnchantSearchInfo,
 } from 'src/components/Auction/AuctionController/styles'
 import { useAuctionController } from 'src/components/Auction/AuctionController/useAuctionController'
 import DefaultButton from 'src/components/DefaultButton'
 
+import { enchantTranslations } from '../AuctionEnchantFinder/constants'
+
 const AuctionController = (): JSX.Element => {
-  const { buttonsTexts, auctionFragment, setAuctionFragment } =
+  const { buttonsTexts, auctionFragment, setAuctionFragment, enchantSearchParams } =
     useAuctionController()
+
+  const { enchantType, enchants, itemType } = enchantSearchParams
 
   return (
     <Container>
@@ -27,6 +33,16 @@ const AuctionController = (): JSX.Element => {
           )
         })}
       </ButtonsContainer>
+
+      <EnchantSearchInfo>
+        <EnchantItemIcon />
+
+        <ul>
+          {enchants.map(item => {
+            return <li key={item}>{enchantTranslations[item]}</li>
+          })}
+        </ul>
+      </EnchantSearchInfo>
     </Container>
   )
 }

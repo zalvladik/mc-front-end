@@ -59,9 +59,17 @@ const AuctionEnchantFinder = (): JSX.Element => {
                       onClick={() => {
                         if (selectedEnchantType === enchantType) {
                           onClick()
+
+                          updateEnchantSearchParams({
+                            itemType,
+                          })
                         }
 
-                        updateEnchantSearchParams({ enchants: [], enchantType })
+                        updateEnchantSearchParams({
+                          enchants: [],
+                          itemType,
+                          enchantType,
+                        })
                       }}
                     >
                       <EnchantItemIcon

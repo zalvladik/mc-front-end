@@ -11,6 +11,16 @@ export const Container = styled.div`
   box-shadow: inset 0px 0px 16px 12px rgba(0, 0, 0, 0.6);
 `
 
+export const EnchantSearchInfo = styled.div`
+  & > ul {
+    list-style-type: none;
+    & > li {
+    }
+  }
+`
+
+export const EnchantItemIcon = styled.div``
+
 export const ButtonsContainer = styled.div`
   width: 320px;
 
