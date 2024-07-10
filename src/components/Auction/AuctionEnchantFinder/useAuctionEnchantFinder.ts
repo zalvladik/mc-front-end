@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { FETCH_URL_IMG } from 'src/constants'
 import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 
 import type {
