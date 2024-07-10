@@ -63,7 +63,7 @@ export const LeftSection = styled.div`
 
   & > h1 {
     font-family: 'Minecraft', sans-serif;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 500;
 
     text-shadow: 2.5px 2.5px 1px rgb(200, 200, 200, 0.5);
@@ -107,7 +107,7 @@ export const RightSection = styled.div`
 
   & > h1 {
     font-family: 'Minecraft', sans-serif;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 500;
 
     text-shadow: 2.5px 2.5px 1px rgb(200, 200, 200, 0.5);
@@ -121,5 +121,5 @@ export const ButtonsContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
 `
