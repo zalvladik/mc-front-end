@@ -18,16 +18,17 @@ const MinorEnchants = ({
     setSelected,
     overflowRef,
     minorEnchantsRef,
+    mainContainerRef,
     enchantTranslationsTypes,
   } = useMinorEnchants()
 
   const isSelectedFromHere = selectedEnchants.find(enchant => item.includes(enchant))
 
   return (
-    <div {...props}>
+    <div {...props} ref={mainContainerRef}>
       <DefaultButton
         onClick={() => setSelected(!selected)}
-        style={{ width: '100%' }}
+        style={{ width: '100%', opacity: !isSelectedFromHere ? 0.5 : 1 }}
         textStyle={textStyle}
       >
         {isSelectedFromHere ? enchantTranslationsTypes[isSelectedFromHere] : ''}
@@ -48,7 +49,7 @@ const MinorEnchants = ({
               }}
               style={{
                 width: '100%',
-                opacity: !selectedEnchants.includes(item) ? 0.4 : 1,
+                opacity: !selectedEnchants.includes(item) ? 0.5 : 1,
               }}
               textStyle={textStyle}
             >
