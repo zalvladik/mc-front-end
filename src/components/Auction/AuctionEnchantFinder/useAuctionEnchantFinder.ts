@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { FETCH_URL_IMG } from 'src/constants'
+import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 
 import type {
   ArmorMaterialT,
@@ -17,13 +18,29 @@ import {
 import type {
   EnchantItemsTypesT,
   EnchantTranslationsT,
+  UpdateEnchantSearchParamsT,
 } from 'src/components/Auction/AuctionEnchantFinder/types'
 
 export const useAuctionEnchantFinder = () => {
-  const [selectedEnchantType, setSelectedEnchantType] =
-    useState<EnchantsTypesEnum | null>(null)
+  const { enchantSearchParams, setEnchantSearchParams } = useAuction()
 
-  const [selectedEnchants, setSelectedEnchants] = useState<EnchantsEnum[]>([])
+  const { enchants: selectedEnchants } = enchantSearchParams
+
+  const updateEnchantSearchParams = ({
+    itemType,
+    enchantType,
+    enchants,
+  }: UpdateEnchantSearchParamsT) => {
+    const updatedParams = { ...enchantSearchParams }
+
+    if (itemType) updatedParams.itemType = itemType
+
+    if (enchantType) updatedParams.enchantType = enchantType
+
+    if (enchants) updatedParams.enchants = enchants
+
+    setEnchantSearchParams(updatedParams)
+  }
 
   const [helmetMaterial, setHelmetMaterial] = useState<ArmorMaterialT>(
     ItemMaterialEnum.NETHERITE,
@@ -83,12 +100,12 @@ export const useAuctionEnchantFinder = () => {
         item => item !== enchant,
       )
 
-      setSelectedEnchants(updatedSelectedEnchants)
+      updateEnchantSearchParams({ enchants: updatedSelectedEnchants })
 
       return
     }
 
-    setSelectedEnchants([...selectedEnchants, enchant])
+    updateEnchantSearchParams({ enchants: [...selectedEnchants, enchant] })
   }
 
   const setSelectedMinorEnchantsToggle = (
@@ -96,22 +113,23 @@ export const useAuctionEnchantFinder = () => {
     deleteEnchant?: EnchantsEnum,
   ) => {
     if (addEnchant === deleteEnchant) {
-      setSelectedEnchants(selectedEnchants.filter(item => addEnchant !== item))
+      const enchants = selectedEnchants.filter(item => addEnchant !== item)
+      updateEnchantSearchParams({ enchants })
 
       return
     }
 
     if (!deleteEnchant) {
-      setSelectedEnchants([...selectedEnchants, addEnchant])
+      updateEnchantSearchParams({ enchants: [...selectedEnchants, addEnchant] })
 
       return
     }
 
-    const updatedSelectedEnchants = selectedEnchants.map(item =>
+    const enchants = selectedEnchants.map(item =>
       item === deleteEnchant ? addEnchant : item,
     )
 
-    setSelectedEnchants(updatedSelectedEnchants)
+    updateEnchantSearchParams({ enchants })
   }
 
   const enchantItemsTypes: EnchantItemsTypesT[] = [
@@ -235,12 +253,11 @@ export const useAuctionEnchantFinder = () => {
   return {
     enchantItemsTypes,
     giveImageUrl,
-    selectedEnchantType,
-    setSelectedEnchantType,
+    enchantSearchParams,
     selectedEnchants,
     setSelectedEnchantsToggle,
-    setSelectedEnchants,
     enchantTranslationsTypes,
     setSelectedMinorEnchantsToggle,
+    updateEnchantSearchParams,
   }
 }

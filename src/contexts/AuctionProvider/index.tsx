@@ -6,6 +6,7 @@ import { AuctionContext } from 'src/contexts'
 import type {
   AuctionContextDataT,
   AuctionProviderT,
+  EnchantSearchParamsT,
 } from 'src/contexts/AuctionProvider/types'
 import { auctionUrlQueryParams } from 'src/helpers'
 import { useGetLots } from 'src/hooks/useGetLots'
@@ -14,6 +15,13 @@ import type { LotT } from 'src/services/api/Lot/types'
 
 const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   const navigate = useNavigate()
+
+  const [enchantSearchParams, setEnchantSearchParams] =
+    useState<EnchantSearchParamsT>({
+      enchants: [],
+      enchantType: '',
+      itemType: '',
+    })
 
   const [searchParams] = useSearchParams()
 
@@ -154,6 +162,8 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
       isLoadingUserLots,
       refetch,
       isFragment,
+      enchantSearchParams,
+      setEnchantSearchParams,
     }),
     [
       auctionFragment,

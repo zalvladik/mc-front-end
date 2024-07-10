@@ -23,17 +23,18 @@ const AuctionEnchantFinder = (): JSX.Element => {
   const {
     enchantItemsTypes,
     giveImageUrl,
-    selectedEnchantType,
-    setSelectedEnchantType,
-    selectedEnchants,
+    enchantSearchParams,
     setSelectedEnchantsToggle,
-    setSelectedEnchants,
     enchantTranslationsTypes,
     setSelectedMinorEnchantsToggle,
+    updateEnchantSearchParams,
   } = useAuctionEnchantFinder()
 
   const { enchantVariables, giveOtherEnchantsTypes, giveNegativeEnchantsTypes } =
     useEnchantVariables()
+
+  const { enchantType: selectedEnchantType, enchants: selectedEnchants } =
+    enchantSearchParams
 
   return (
     <ContainerWrapper>
@@ -60,8 +61,7 @@ const AuctionEnchantFinder = (): JSX.Element => {
                           onClick()
                         }
 
-                        setSelectedEnchants([])
-                        setSelectedEnchantType(enchantType)
+                        updateEnchantSearchParams({ enchants: [], enchantType })
                       }}
                     >
                       <EnchantItemIcon

@@ -9,7 +9,7 @@ import DefaultButton from 'src/components/DefaultButton'
 const MinorEnchants = ({
   item,
   textStyle,
-  selectedEnchants,
+  selectedEnchants = [],
   setSelectedMinorEnchantsToggle,
   ...props
 }: MinorEnchantsProps): JSX.Element => {
