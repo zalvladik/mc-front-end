@@ -1,19 +1,23 @@
 import {
   ButtonsContainer,
   Container,
-  EnchantItemIcon,
   EnchantSearchInfo,
 } from 'src/components/Auction/AuctionController/styles'
 import { useAuctionController } from 'src/components/Auction/AuctionController/useAuctionController'
+import {
+  enchantTranslations,
+  itemTypesEnchantsFinderTranslations,
+} from 'src/components/Auction/AuctionEnchantFinder/constants'
 import DefaultButton from 'src/components/DefaultButton'
-
-import { enchantTranslations } from '../AuctionEnchantFinder/constants'
+import ItemSlotIcon from 'src/components/ItemSlotIcon'
 
 const AuctionController = (): JSX.Element => {
   const { buttonsTexts, auctionFragment, setAuctionFragment, enchantSearchParams } =
     useAuctionController()
 
-  const { enchants } = enchantSearchParams
+  const { enchants, itemType } = enchantSearchParams
+
+  const enchantsTranslating = enchants.map(enchant => enchantTranslations[enchant])
 
   return (
     <Container>
@@ -34,15 +38,24 @@ const AuctionController = (): JSX.Element => {
         })}
       </ButtonsContainer>
 
-      <EnchantSearchInfo>
-        <EnchantItemIcon />
-
-        <ul>
-          {enchants.map(item => {
-            return <li key={item}>{enchantTranslations[item]}</li>
-          })}
-        </ul>
-      </EnchantSearchInfo>
+      {itemType && (
+        <EnchantSearchInfo>
+          <ItemSlotIcon
+            id={1}
+            amount={1}
+            style={{ margin: '0px auto' }}
+            display_name={itemTypesEnchantsFinderTranslations[itemType]}
+            type={itemType}
+            containerSize={120}
+            itemSize={80}
+            enchants={enchantsTranslating.length ? enchantsTranslating : null}
+            durability={null}
+            categories={[]}
+            items={[]}
+            description={null}
+          />
+        </EnchantSearchInfo>
+      )}
     </Container>
   )
 }

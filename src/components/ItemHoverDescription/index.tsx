@@ -10,6 +10,11 @@ import type {
 
 import { useItemHoverDescription } from './useItemHoverDescription'
 
+import {
+  EnchantsEnum,
+  enchantTranslations,
+} from '../Auction/AuctionEnchantFinder/constants'
+
 const ItemHoverDescription = ({
   durability,
   description = [],
@@ -62,6 +67,12 @@ const ItemHoverDescription = ({
               )
             }
 
+            const isNegativeEnchant =
+              enchantTranslations[EnchantsEnum.VANISHING_CURSE] === item ||
+              enchantTranslations[EnchantsEnum.BINDING_CURSE] === item
+
+            const color = isNegativeEnchant ? '#aa0e0e' : '#a8a8a8'
+
             return (
               <li
                 style={{
@@ -71,7 +82,7 @@ const ItemHoverDescription = ({
               >
                 <p
                   style={{
-                    color: '#a8a8a8',
+                    color,
                     textShadow: '2px 2px 1px rgb(168, 168, 168, 0.4)',
                   }}
                 >

@@ -72,7 +72,7 @@ export const LeftSection = styled.div`
   & > div {
     display: flex;
 
-    margin-top: 10px;
+    margin-top: 20px;
     gap: 10px;
   }
 `

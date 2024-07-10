@@ -57,10 +57,11 @@ const AuctionEnchantFinder = (): JSX.Element => {
                         durability={null}
                         type={itemTypeAs}
                         key={itemType}
-                        itemSize={68}
-                        containerSize={108}
+                        itemSize={60}
+                        containerSize={90}
                         display_name={display_name}
                         style={{
+                          cursor: 'pointer',
                           backgroundImage:
                             selectedEnchantType === enchantType
                               ? 'url(/assets/items_for_ui/slot_green.png)'
@@ -88,6 +89,16 @@ const AuctionEnchantFinder = (): JSX.Element => {
               </EnchantTypeCategoryContainer>
             ))}
           </div>
+          <DefaultButton
+            key="DefaultButton"
+            onClick={() => ''}
+            style={{
+              width: '100%',
+              opacity: selectedEnchantType && selectedEnchants.length ? 1 : 0.5,
+            }}
+          >
+            Пошук
+          </DefaultButton>
         </LeftSection>
         <RightSection>
           {selectedEnchantType ? (
