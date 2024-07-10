@@ -9,8 +9,6 @@ import {
   ButtonsContainer,
   Container,
   ContainerWrapper,
-  EnchantItemContainer,
-  EnchantItemIcon,
   EnchantTypeCategoryContainer,
   LeftSection,
   RightSection,
@@ -18,11 +16,11 @@ import {
 import { useAuctionEnchantFinder } from 'src/components/Auction/AuctionEnchantFinder/useAuctionEnchantFinder'
 import { useEnchantVariables } from 'src/components/Auction/AuctionEnchantFinder/useEnchantVariables'
 import DefaultButton from 'src/components/DefaultButton'
+import ItemSlotIcon from 'src/components/ItemSlotIcon'
 
 const AuctionEnchantFinder = (): JSX.Element => {
   const {
     enchantItemsTypes,
-    giveImageUrl,
     enchantSearchParams,
     setSelectedEnchantsToggle,
     enchantTranslationsTypes,
@@ -44,44 +42,49 @@ const AuctionEnchantFinder = (): JSX.Element => {
           <div>
             {enchantItemsTypes.map((category, i) => (
               <EnchantTypeCategoryContainer key={i}>
-                {category.map(({ itemType, enchantType, onClick = () => {} }) => {
-                  const itemTypeAs = itemType as ItemTypesEnchantsFinderEnum
+                {category.map(
+                  ({ display_name, itemType, enchantType, onClick = () => {} }) => {
+                    const itemTypeAs = itemType as ItemTypesEnchantsFinderEnum
 
-                  return (
-                    <EnchantItemContainer
-                      key={itemType}
-                      style={{
-                        backgroundImage:
-                          selectedEnchantType === enchantType
-                            ? 'url(/assets/items_for_ui/slot_green.png)'
-                            : 'url(/assets/items_for_ui/slot.png)',
-                      }}
-                      onClick={() => {
-                        if (selectedEnchantType === enchantType) {
-                          onClick()
+                    return (
+                      <ItemSlotIcon
+                        id={i}
+                        categories={[]}
+                        items={[]}
+                        amount={1}
+                        description={null}
+                        enchants={null}
+                        durability={null}
+                        type={itemTypeAs}
+                        key={itemType}
+                        itemSize={68}
+                        containerSize={108}
+                        display_name={display_name}
+                        style={{
+                          backgroundImage:
+                            selectedEnchantType === enchantType
+                              ? 'url(/assets/items_for_ui/slot_green.png)'
+                              : 'url(/assets/items_for_ui/slot.png)',
+                        }}
+                        onClick={() => {
+                          if (selectedEnchantType === enchantType) {
+                            onClick()
+
+                            updateEnchantSearchParams({
+                              itemType,
+                            })
+                          }
 
                           updateEnchantSearchParams({
+                            enchants: [],
                             itemType,
+                            enchantType,
                           })
-                        }
-
-                        updateEnchantSearchParams({
-                          enchants: [],
-                          itemType,
-                          enchantType,
-                        })
-                      }}
-                    >
-                      <EnchantItemIcon
-                        style={{
-                          backgroundImage: `url(${giveImageUrl(itemTypeAs)}`,
-                          width: 68,
-                          height: 68,
                         }}
                       />
-                    </EnchantItemContainer>
-                  )
-                })}
+                    )
+                  },
+                )}
               </EnchantTypeCategoryContainer>
             ))}
           </div>

@@ -90,10 +90,6 @@ export const useAuctionEnchantFinder = () => {
     return weaponAndToolsMaterial[nextIndex]
   }
 
-  const giveImageUrl = (itemType: string) => {
-    return `${FETCH_URL_IMG}/${itemType.slice(0, 2)}/${itemType}.png`
-  }
-
   const setSelectedEnchantsToggle = (enchant: EnchantsEnum) => {
     if (selectedEnchants.includes(enchant)) {
       const updatedSelectedEnchants = selectedEnchants.filter(
@@ -136,7 +132,7 @@ export const useAuctionEnchantFinder = () => {
     [
       {
         enchantType: EnchantsTypesEnum.HELMET,
-        text: 'Шолом',
+        display_name: 'Шолом',
         itemType: `${helmetMaterial}_${ItemTypesEnchantsFinderEnum.HELMET}`,
         onClick: () => {
           setHelmetMaterial(prevMaterial => getNextArmorMaterial(prevMaterial))
@@ -144,7 +140,7 @@ export const useAuctionEnchantFinder = () => {
       },
       {
         enchantType: EnchantsTypesEnum.CHESTPLATE,
-        text: 'Нагрудник',
+        display_name: 'Нагрудник',
         itemType: `${chestplateMaterial}_${ItemTypesEnchantsFinderEnum.CHESTPLATE}`,
         onClick: () => {
           setChestplateMaterial(prevMaterial => getNextArmorMaterial(prevMaterial))
@@ -152,7 +148,7 @@ export const useAuctionEnchantFinder = () => {
       },
       {
         enchantType: EnchantsTypesEnum.LEGGINGS,
-        text: 'Наголінники',
+        display_name: 'Наголінники',
         itemType: `${leggingsMaterial}_${ItemTypesEnchantsFinderEnum.LEGGINGS}`,
         onClick: () => {
           setLeggingsMaterial(prevMaterial => getNextArmorMaterial(prevMaterial))
@@ -160,7 +156,7 @@ export const useAuctionEnchantFinder = () => {
       },
       {
         enchantType: EnchantsTypesEnum.BOOTS,
-        text: 'Чоботи',
+        display_name: 'Чоботи',
         itemType: `${bootsMaterial}_${ItemTypesEnchantsFinderEnum.BOOTS}`,
         onClick: () => {
           setBootsMaterial(prevMaterial => getNextArmorMaterial(prevMaterial))
@@ -168,14 +164,14 @@ export const useAuctionEnchantFinder = () => {
       },
       {
         enchantType: EnchantsTypesEnum.ELYTRA,
-        text: 'Елітри',
+        display_name: 'Елітри',
         itemType: `${ItemTypesEnchantsFinderEnum.ELYTRA}`,
       },
     ],
     [
       {
         enchantType: EnchantsTypesEnum.SWORD,
-        text: 'Меч',
+        display_name: 'Меч',
         itemType: `${swordMaterial}_${ItemTypesEnchantsFinderEnum.SWORD}`,
         onClick: () => {
           setSwordMaterial(prevMaterial =>
@@ -185,22 +181,22 @@ export const useAuctionEnchantFinder = () => {
       },
       {
         enchantType: EnchantsTypesEnum.TRIDENT,
-        text: 'Тризубець',
+        display_name: 'Тризубець',
         itemType: `${ItemTypesEnchantsFinderEnum.TRIDENT}`,
       },
       {
         enchantType: EnchantsTypesEnum.BOW,
-        text: 'Лук',
+        display_name: 'Лук',
         itemType: `${ItemTypesEnchantsFinderEnum.BOW}`,
       },
       {
         enchantType: EnchantsTypesEnum.CROSSBOW,
-        text: 'Арбалет',
+        display_name: 'Арбалет',
         itemType: `${ItemTypesEnchantsFinderEnum.CROSSBOW}`,
       },
       {
         enchantType: EnchantsTypesEnum.MACE,
-        text: 'Булава',
+        display_name: 'Булава',
         itemType: `${ItemTypesEnchantsFinderEnum.MACE}`,
       },
     ],
@@ -208,7 +204,7 @@ export const useAuctionEnchantFinder = () => {
     [
       {
         enchantType: EnchantsTypesEnum.PICKAXE,
-        text: 'Кайло',
+        display_name: 'Кайло',
         itemType: `${pickaxeMaterial}_${ItemTypesEnchantsFinderEnum.PICKAXE}`,
         onClick: () => {
           setPickaxeMaterial(prevMaterial =>
@@ -218,7 +214,7 @@ export const useAuctionEnchantFinder = () => {
       },
       {
         enchantType: EnchantsTypesEnum.AXE,
-        text: 'Сокира',
+        display_name: 'Сокира',
         itemType: `${axeMaterial}_${ItemTypesEnchantsFinderEnum.AXE}`,
         onClick: () => {
           setAxeMaterial(prevMaterial => getNextWeaponAndToolsMaterial(prevMaterial))
@@ -226,7 +222,7 @@ export const useAuctionEnchantFinder = () => {
       },
       {
         enchantType: EnchantsTypesEnum.SHOVEL,
-        text: 'Лопата',
+        display_name: 'Лопата',
         itemType: `${shovelMaterial}_${ItemTypesEnchantsFinderEnum.SHOVEL}`,
         onClick: () => {
           setShovelMaterial(prevMaterial =>
@@ -236,7 +232,7 @@ export const useAuctionEnchantFinder = () => {
       },
       {
         enchantType: EnchantsTypesEnum.HOE,
-        text: 'Мотика',
+        display_name: 'Мотика',
         itemType: `${hoeMaterial}_${ItemTypesEnchantsFinderEnum.HOE}`,
         onClick: () => {
           setHoeMaterial(prevMaterial => getNextWeaponAndToolsMaterial(prevMaterial))
@@ -244,7 +240,7 @@ export const useAuctionEnchantFinder = () => {
       },
       {
         enchantType: EnchantsTypesEnum.FISHING_ROD,
-        text: 'Вудка',
+        display_name: 'Вудка',
         itemType: `${ItemTypesEnchantsFinderEnum.FISHING_ROD}`,
       },
     ],
@@ -252,7 +248,6 @@ export const useAuctionEnchantFinder = () => {
 
   return {
     enchantItemsTypes,
-    giveImageUrl,
     enchantSearchParams,
     selectedEnchants,
     setSelectedEnchantsToggle,

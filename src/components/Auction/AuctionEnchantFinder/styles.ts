@@ -13,8 +13,7 @@ export const Container = styled.div`
 
   width: 100%;
   height: 100%;
-
-  border-radius: 5px;
+  border-radius: 12px;
 
   background: radial-gradient(
     circle,
@@ -24,13 +23,13 @@ export const Container = styled.div`
 
   -webkit-box-shadow:
     inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
-    0px 0px 12px -5px rgba(255, 255, 255, 1);
+    0px 0px 8px 0px rgba(200, 200, 200, 1);
   -moz-box-shadow:
     inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
-    0px 0px 12px -5px rgba(255, 255, 255, 1);
+    0px 0px 8px 0px rgba(200, 200, 200, 1);
   box-shadow:
     inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
-    0px 0px 12px -5px rgba(255, 255, 255, 1);
+    0px 0px 8px 0px rgba(200, 200, 200, 1);
 `
 
 export const EnchantTypeCategoryContainer = styled.div`
@@ -40,51 +39,15 @@ export const EnchantTypeCategoryContainer = styled.div`
   gap: 10px;
 `
 
-export const EnchantItemContainer = styled.div`
-  position: relative;
-
-  border: none;
-  height: 108px;
-  width: 108px;
-
-  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: inherit;
-
-  background-image: url('/assets/items_for_ui/slot.png');
-
-  &:hover {
-    z-index: 20;
-    transform: scale(1.03);
-    cursor: pointer;
-  }
-
-  &:hover > div.itemCard {
-    display: flex;
-  }
-`
-
-export const EnchantItemIcon = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  translate: -50% -50%;
-
-  background-size: contain;
-  background-repeat: no-repeat;
-`
-
 export const LeftSection = styled.div`
   display: flex;
   flex-direction: column;
 
   align-items: center;
 
-  border-radius: 8px;
   border: 1px solid black;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 
   padding: 6px 12px;
 
@@ -120,6 +83,27 @@ export const RightSection = styled.div`
   align-items: center;
 
   padding: 7px 13px;
+
+  flex-grow: 1;
+
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+
+  background: radial-gradient(
+    circle,
+    rgba(80, 80, 80, 1) 0%,
+    rgba(40, 40, 40, 1) 100%
+  );
+
+  -webkit-box-shadow:
+    inset 0px 0px 50px 10px rgba(0, 0, 0, 1),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
+  -moz-box-shadow:
+    inset 0px 0px 50px 10px rgba(0, 0, 0, 1),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
+  box-shadow:
+    inset 0px 0px 50px 10px rgba(0, 0, 0, 1),
+    0px 0px 12px -5px rgba(255, 255, 255, 1);
 
   & > h1 {
     font-family: 'Minecraft', sans-serif;

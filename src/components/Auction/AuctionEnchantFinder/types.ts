@@ -5,7 +5,7 @@ import type {
 
 export type EnchantItemT = {
   enchantType: EnchantsTypesEnum
-  text: string
+  display_name: string
   itemType: string
   onClick?: () => void
 }

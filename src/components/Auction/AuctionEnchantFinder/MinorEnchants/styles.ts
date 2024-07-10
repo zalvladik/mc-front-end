@@ -38,23 +38,23 @@ export const MinorEnchantsContainer = styled.div`
 
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  border: 4px solid black;
+  border: 3px solid black;
   border-top: none;
 
   background: radial-gradient(
     circle,
-    rgba(70, 100, 120, 1) 0%,
-    rgba(60, 90, 100, 1) 100%
+    rgba(70, 70, 70, 1) 0%,
+    rgba(30, 30, 30, 1) 100%
   );
 
   -webkit-box-shadow:
-    inset 0px 0px 10px 3px rgba(0, 0, 0, 1),
+    inset 0px 0px 8px 2px rgba(0, 0, 0, 1),
     0px 0px 12px -5px rgba(255, 255, 255, 1);
   -moz-box-shadow:
-    inset 0px 0px 10px 3px rgba(0, 0, 0, 1),
+    inset 0px 0px 8px 2px rgba(0, 0, 0, 1),
     0px 0px 12px -5px rgba(255, 255, 255, 1);
   box-shadow:
-    inset 0px 0px 10px 3px rgba(0, 0, 0, 1),
+    inset 0px 0px 8px 2px rgba(0, 0, 0, 1),
     0px 0px 12px -5px rgba(255, 255, 255, 1);
 
   transition: transform 0.2s ease-in-out;
