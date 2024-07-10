@@ -113,7 +113,7 @@ const AuctionEnchantFinder = (): JSX.Element => {
                         item === EnchantsEnum.BINDING_CURSE
 
                       const color = isNegativeEnchant ? '#aa0e0e' : '#ececec'
-                      const fontSize = 22
+                      const fontSize = isNegativeEnchant ? 22 : 20
                       const fontWeight = isNegativeEnchant ? 900 : 500
 
                       const textStyle: CSSProperties = {

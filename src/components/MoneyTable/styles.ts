@@ -20,6 +20,8 @@ export const MoneyAmountContainer = styled.ul`
       font-size: 36px;
       font-weight: 500;
       color: #e2e2e2;
+
+      text-shadow: 3px 3px 1px rgba(100, 100, 100, 1);
     }
 
     & > div {

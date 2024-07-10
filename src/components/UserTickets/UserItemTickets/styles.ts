@@ -16,6 +16,8 @@ export const TicketIdWrapper = styled.div`
     right: 50%;
 
     translate: 50% 0%;
+
+    text-shadow: 2px 2px 1px rgba(100, 100, 100, 1);
   }
 `
 
@@ -56,6 +58,8 @@ export const Container = styled.div`
     font-family: 'Minecraft', sans-serif;
     font-size: 25px;
     translate: -50% 0%;
+
+    text-shadow: 3px 3px 1px rgba(80, 80, 80, 1);
   }
 
   & > button {

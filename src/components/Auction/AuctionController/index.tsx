@@ -13,7 +13,7 @@ const AuctionController = (): JSX.Element => {
   const { buttonsTexts, auctionFragment, setAuctionFragment, enchantSearchParams } =
     useAuctionController()
 
-  const { enchantType, enchants, itemType } = enchantSearchParams
+  const { enchants } = enchantSearchParams
 
   return (
     <Container>

@@ -102,6 +102,8 @@ export const LeftSection = styled.div`
     font-family: 'Minecraft', sans-serif;
     font-size: 20px;
     font-weight: 500;
+
+    text-shadow: 2.5px 2.5px 1px rgb(200, 200, 200, 0.5);
   }
 
   & > div {
@@ -123,6 +125,8 @@ export const RightSection = styled.div`
     font-family: 'Minecraft', sans-serif;
     font-size: 20px;
     font-weight: 500;
+
+    text-shadow: 2.5px 2.5px 1px rgb(200, 200, 200, 0.5);
   }
 `
 

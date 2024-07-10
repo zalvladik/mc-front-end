@@ -69,7 +69,14 @@ const ItemHoverDescription = ({
                 }}
                 key={i}
               >
-                <p style={{ color: '#a8a8a8' }}>{item}</p>
+                <p
+                  style={{
+                    color: '#a8a8a8',
+                    textShadow: '2px 2px 1px rgb(168, 168, 168, 0.4)',
+                  }}
+                >
+                  {item}
+                </p>
               </li>
             )
           })}

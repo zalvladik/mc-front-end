@@ -1,3 +1,4 @@
+import { VscLoading } from 'react-icons/vsc'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -81,19 +82,21 @@ export const ButtonText = styled.div`
   font-size: 25px;
 
   text-shadow: 3px 3px 2px rgba(0, 0, 0, 1);
+`
 
-  & > svg {
-    animation: rotateAnimation 2s linear infinite;
-    @keyframes rotateAnimation {
-      0% {
-        transform: rotate(0deg);
-      }
-      50% {
-        transform: rotate(240deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
+export const StyledVscLoading = styled(VscLoading)`
+  animation: rotateAnimation 2s linear infinite;
+  filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.8));
+
+  @keyframes rotateAnimation {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(240deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 `

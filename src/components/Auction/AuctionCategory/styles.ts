@@ -88,6 +88,8 @@ export const ButtonItems = styled.div<ButtonItemsProps>`
 
   border-radius: 3px;
 
+  text-shadow: 2px 2px 1px rgba(150, 150, 150, 0.7);
+
   background: ${({ isSelected }) =>
     isSelected
       ? `linear-gradient(

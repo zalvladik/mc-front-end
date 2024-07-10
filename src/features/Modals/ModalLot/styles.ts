@@ -82,17 +82,14 @@ export const ItemOwner = styled.div`
 
   font-size: 25px;
   font-family: 'Minecraft', sans-serif;
-  text-shadow:
-    0px 0px 15px #000000,
-    0px 0px 15px #000000;
+
+  text-shadow: 2px 2px 1px rgb(168, 168, 168, 0.7);
 
   & > span {
     color: purple;
 
     font-size: 30px;
     font-family: 'Minecraft', sans-serif;
-    text-shadow:
-      0px 0px 15px #000000,
-      0px 0px 15px #000000;
+    text-shadow: 2px 2px 1px rgb(128, 0, 128, 0.5);
   }
 `

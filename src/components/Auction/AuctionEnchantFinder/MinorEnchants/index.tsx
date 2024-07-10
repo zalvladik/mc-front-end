@@ -1,6 +1,7 @@
 import {
   MinorEnchantsContainer,
   OverflowMinorEnchants,
+  StyledFaArrowDownShortWide,
 } from 'src/components/Auction/AuctionEnchantFinder/MinorEnchants/styles'
 import type { MinorEnchantsProps } from 'src/components/Auction/AuctionEnchantFinder/MinorEnchants/types'
 import { useMinorEnchants } from 'src/components/Auction/AuctionEnchantFinder/MinorEnchants/useMinorEnchants'
@@ -31,7 +32,14 @@ const MinorEnchants = ({
         style={{ width: '100%', opacity: !isSelectedFromHere ? 0.5 : 1 }}
         textStyle={textStyle}
       >
-        {isSelectedFromHere ? enchantTranslationsTypes[isSelectedFromHere] : ''}
+        {isSelectedFromHere ? (
+          <>
+            {enchantTranslationsTypes[isSelectedFromHere]}
+            <StyledFaArrowDownShortWide size={30} />
+          </>
+        ) : (
+          <StyledFaArrowDownShortWide size={30} />
+        )}
       </DefaultButton>
 
       <OverflowMinorEnchants ref={overflowRef}>

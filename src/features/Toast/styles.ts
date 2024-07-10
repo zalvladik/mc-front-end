@@ -71,6 +71,8 @@ export const ToastText = styled.div`
       white-space: nowrap;
       font-family: 'Minecraft', sans-serif;
       font-weight: 500;
+
+      text-shadow: 3px 3px 1px rgba(80, 80, 80, 1);
     }
   }
 `

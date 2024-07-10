@@ -28,6 +28,8 @@ export const Title = styled.div`
     white-space: nowrap;
     font-size: 24px;
     font-family: 'Minecraft', sans-serif;
+
+    text-shadow: 2px 2px 1px rgb(168, 168, 168, 0.7);
   }
 `
 

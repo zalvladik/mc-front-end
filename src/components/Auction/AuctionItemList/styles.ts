@@ -42,6 +42,8 @@ export const TheadContainer = styled.div`
       font-family: 'Minecraft', sans-serif;
       font-size: 20px;
       font-weight: 500;
+
+      text-shadow: 2px 2px 1px rgba(120, 120, 120, 1);
     }
 
     & > div {
@@ -191,9 +193,7 @@ export const ItemDesriptionContainer = styled.div`
       font-size: 20px;
       font-weight: 500;
 
-      text-shadow:
-        0px 0px 25px #000000,
-        0px 0px 25px #000000;
+      text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
     }
   }
 `
@@ -209,9 +209,7 @@ export const ItemPriceContainer = styled.div`
     font-size: 25px;
     font-weight: 500;
 
-    text-shadow:
-      0px 0px 25px #000000,
-      0px 0px 25px #000000;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
   }
 
   & > div:last-child {
