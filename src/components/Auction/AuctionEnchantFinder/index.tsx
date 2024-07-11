@@ -2,6 +2,7 @@ import type { CSSProperties } from 'styled-components'
 
 import {
   EnchantsEnum,
+  enchantsWithMaxLvl,
   type ItemTypesEnchantsFinderEnum,
 } from 'src/components/Auction/AuctionEnchantFinder/constants'
 import MinorEnchants from 'src/components/Auction/AuctionEnchantFinder/MinorEnchants'
@@ -9,6 +10,7 @@ import {
   ButtonsContainer,
   Container,
   ContainerWrapper,
+  DefaultButtonWrapper,
   EnchantTypeCategoryContainer,
   LeftSection,
   RightSection,
@@ -26,6 +28,7 @@ const AuctionEnchantFinder = (): JSX.Element => {
     enchantTranslationsTypes,
     setSelectedMinorEnchantsToggle,
     updateEnchantSearchParams,
+    setEnchantLvl,
   } = useAuctionEnchantFinder()
 
   const { enchantVariables, giveOtherEnchantsTypes, giveNegativeEnchantsTypes } =
@@ -48,13 +51,6 @@ const AuctionEnchantFinder = (): JSX.Element => {
 
                     return (
                       <ItemSlotIcon
-                        id={i}
-                        categories={[]}
-                        items={[]}
-                        amount={1}
-                        description={null}
-                        enchants={null}
-                        durability={null}
                         type={itemTypeAs}
                         key={itemType}
                         itemSize={60}
@@ -77,7 +73,7 @@ const AuctionEnchantFinder = (): JSX.Element => {
                           }
 
                           updateEnchantSearchParams({
-                            enchants: [],
+                            enchants: {},
                             itemType,
                             enchantType,
                           })
@@ -94,7 +90,10 @@ const AuctionEnchantFinder = (): JSX.Element => {
             onClick={() => ''}
             style={{
               width: '100%',
-              opacity: selectedEnchantType && selectedEnchants.length ? 1 : 0.5,
+              opacity:
+                selectedEnchantType && Object.keys(selectedEnchants).length
+                  ? 1
+                  : 0.5,
             }}
           >
             Пошук
@@ -112,12 +111,19 @@ const AuctionEnchantFinder = (): JSX.Element => {
                     ...giveNegativeEnchantsTypes(selectedEnchantType),
                   ]
                     .sort((a, b) => {
-                      const newA = Array.isArray(a)
-                      const newB = Array.isArray(b)
+                      const isAArray = Array.isArray(a)
+                      const isBArray = Array.isArray(b)
 
-                      if (newA && !newB) return -1
+                      if (isAArray && !isBArray) return -1
 
-                      if (!newA && newB) return 1
+                      if (!isAArray && isBArray) return 1
+
+                      const isASelected = enchantsWithMaxLvl[a as EnchantsEnum] === 1
+                      const isBSelected = enchantsWithMaxLvl[b as EnchantsEnum] === 1
+
+                      if (isASelected && !isBSelected) return 1
+
+                      if (!isASelected && isBSelected) return -1
 
                       return 0
                     })
@@ -151,18 +157,39 @@ const AuctionEnchantFinder = (): JSX.Element => {
                         )
                       }
 
+                      const isSelectedEnchants = selectedEnchants[item]
+
                       return (
-                        <DefaultButton
-                          key={item}
-                          onClick={() => setSelectedEnchantsToggle(item)}
-                          style={{
-                            width: '100%',
-                            opacity: !selectedEnchants.includes(item) ? 0.4 : 1,
-                          }}
-                          textStyle={textStyle}
-                        >
-                          {enchantTranslationsTypes[item]}
-                        </DefaultButton>
+                        <DefaultButtonWrapper key={item}>
+                          <DefaultButton
+                            onClick={() => setSelectedEnchantsToggle(item)}
+                            style={{
+                              width: enchantsWithMaxLvl[item] === 1 ? '100%' : '83%',
+                              opacity: !isSelectedEnchants ? 0.4 : 1,
+                            }}
+                            textStyle={textStyle}
+                          >
+                            {enchantTranslationsTypes[item]}
+                          </DefaultButton>
+                          {enchantsWithMaxLvl[item] > 1 && (
+                            <DefaultButton
+                              onClick={() => {
+                                if (isSelectedEnchants) {
+                                  setEnchantLvl(item)
+                                } else {
+                                  setSelectedEnchantsToggle(item)
+                                }
+                              }}
+                              style={{
+                                width: '50px',
+                                opacity: !isSelectedEnchants ? 0.4 : 1,
+                              }}
+                              textStyle={textStyle}
+                            >
+                              {isSelectedEnchants}
+                            </DefaultButton>
+                          )}
+                        </DefaultButtonWrapper>
                       )
                     })}
               </ButtonsContainer>

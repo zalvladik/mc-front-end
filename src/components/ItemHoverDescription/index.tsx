@@ -71,7 +71,10 @@ const ItemHoverDescription = ({
               enchantTranslations[EnchantsEnum.VANISHING_CURSE] === item ||
               enchantTranslations[EnchantsEnum.BINDING_CURSE] === item
 
-            const color = isNegativeEnchant ? '#aa0e0e' : '#a8a8a8'
+            const color = isNegativeEnchant ? '#aa0e0e' : '#c8c8c8'
+            const textShadow = isNegativeEnchant
+              ? '3px 3px 1px #3e1515'
+              : '3px 3px #292929'
 
             return (
               <li
@@ -83,7 +86,7 @@ const ItemHoverDescription = ({
                 <p
                   style={{
                     color,
-                    textShadow: '2px 2px 1px rgb(168, 168, 168, 0.4)',
+                    textShadow,
                   }}
                 >
                   {item}

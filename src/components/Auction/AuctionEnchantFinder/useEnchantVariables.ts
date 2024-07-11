@@ -33,7 +33,7 @@ export const useEnchantVariables = () => {
     }
 
     if (enchantType === EnchantsTypesEnum.BOW) {
-      return [EnchantsEnum.PROTECTION]
+      return [EnchantsEnum.UNBREAKING]
     }
 
     return [...enchantVariables.all]

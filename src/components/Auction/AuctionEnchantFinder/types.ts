@@ -1,7 +1,6 @@
-import type {
-  EnchantsEnum,
-  EnchantsTypesEnum,
-} from 'src/components/Auction/AuctionEnchantFinder/constants'
+import type { EnchantsWithMaxLvlT } from 'src/contexts/AuctionProvider/types'
+
+import type { EnchantsTypesEnum } from 'src/components/Auction/AuctionEnchantFinder/constants'
 
 export type EnchantItemT = {
   enchantType: EnchantsTypesEnum
@@ -19,5 +18,5 @@ export type EnchantTranslationsT = {
 export type UpdateEnchantSearchParamsT = {
   itemType?: string
   enchantType?: EnchantsTypesEnum
-  enchants?: EnchantsEnum[]
+  enchants?: EnchantsWithMaxLvlT
 }

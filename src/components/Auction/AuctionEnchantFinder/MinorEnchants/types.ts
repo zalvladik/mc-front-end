@@ -1,4 +1,5 @@
 import type { HTMLProps } from 'react'
+import type { EnchantsWithMaxLvlT } from 'src/contexts/AuctionProvider/types'
 import type { CSSProperties } from 'styled-components'
 
 import type { EnchantsEnum } from 'src/components/Auction/AuctionEnchantFinder/constants'
@@ -6,7 +7,7 @@ import type { EnchantsEnum } from 'src/components/Auction/AuctionEnchantFinder/c
 export type MinorEnchantsProps = {
   item: EnchantsEnum[]
   textStyle: CSSProperties
-  selectedEnchants: EnchantsEnum[]
+  selectedEnchants: EnchantsWithMaxLvlT
   setSelectedMinorEnchantsToggle: (
     value1: EnchantsEnum,
     value2?: EnchantsEnum,

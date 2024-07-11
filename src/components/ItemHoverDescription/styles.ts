@@ -29,7 +29,7 @@ export const Title = styled.div`
     font-size: 24px;
     font-family: 'Minecraft', sans-serif;
 
-    text-shadow: 2px 2px 1px rgb(168, 168, 168, 0.7);
+    text-shadow: 3px 3px 1px rgb(168, 168, 168, 0.7);
   }
 `
 

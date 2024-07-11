@@ -43,8 +43,12 @@ export type AuctionContextDataT = {
 
 export type AuctionProviderT = ReactChildrenT
 
+export type EnchantsWithMaxLvlT = Partial<{
+  [key in EnchantsEnum]: number
+}>
+
 export type EnchantSearchParamsT = {
   enchantType: EnchantsTypesEnum | ''
-  enchants: EnchantsEnum[]
+  enchants: EnchantsWithMaxLvlT
   itemType: string | ''
 }

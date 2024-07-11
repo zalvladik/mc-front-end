@@ -4,7 +4,9 @@ import {
   EnchantSearchInfo,
 } from 'src/components/Auction/AuctionController/styles'
 import { useAuctionController } from 'src/components/Auction/AuctionController/useAuctionController'
+import type { EnchantsEnum } from 'src/components/Auction/AuctionEnchantFinder/constants'
 import {
+  enchantsWithMaxLvl,
   enchantTranslations,
   itemTypesEnchantsFinderTranslations,
 } from 'src/components/Auction/AuctionEnchantFinder/constants'
@@ -17,7 +19,10 @@ const AuctionController = (): JSX.Element => {
 
   const { enchants, itemType } = enchantSearchParams
 
-  const enchantsTranslating = enchants.map(enchant => enchantTranslations[enchant])
+  const enchantsTranslating = Object.keys(enchants).map(
+    enchant =>
+      `${enchantTranslations[enchant]} ${enchantsWithMaxLvl[enchant] > 1 ? enchants[enchant as EnchantsEnum] : ''}`,
+  )
 
   return (
     <Container>
@@ -41,18 +46,12 @@ const AuctionController = (): JSX.Element => {
       {itemType && (
         <EnchantSearchInfo>
           <ItemSlotIcon
-            id={1}
-            amount={1}
             style={{ margin: '0px auto' }}
             display_name={itemTypesEnchantsFinderTranslations[itemType]}
             type={itemType}
             containerSize={120}
             itemSize={80}
             enchants={enchantsTranslating.length ? enchantsTranslating : null}
-            durability={null}
-            categories={[]}
-            items={[]}
-            description={null}
           />
         </EnchantSearchInfo>
       )}

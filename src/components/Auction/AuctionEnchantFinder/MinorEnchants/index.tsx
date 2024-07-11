@@ -7,10 +7,12 @@ import type { MinorEnchantsProps } from 'src/components/Auction/AuctionEnchantFi
 import { useMinorEnchants } from 'src/components/Auction/AuctionEnchantFinder/MinorEnchants/useMinorEnchants'
 import DefaultButton from 'src/components/DefaultButton'
 
+import type { EnchantsEnum } from '../constants'
+
 const MinorEnchants = ({
   item,
   textStyle,
-  selectedEnchants = [],
+  selectedEnchants = {},
   setSelectedMinorEnchantsToggle,
   ...props
 }: MinorEnchantsProps): JSX.Element => {
@@ -23,7 +25,9 @@ const MinorEnchants = ({
     enchantTranslationsTypes,
   } = useMinorEnchants()
 
-  const isSelectedFromHere = selectedEnchants.find(enchant => item.includes(enchant))
+  const isSelectedFromHere = Object.keys(selectedEnchants).find(enchant =>
+    item.includes(enchant as EnchantsEnum),
+  )
 
   return (
     <div {...props} ref={mainContainerRef}>
@@ -53,11 +57,14 @@ const MinorEnchants = ({
             <DefaultButton
               key={item}
               onClick={() => {
-                setSelectedMinorEnchantsToggle(item, isSelectedFromHere)
+                setSelectedMinorEnchantsToggle(
+                  item,
+                  isSelectedFromHere as EnchantsEnum | undefined,
+                )
               }}
               style={{
                 width: '100%',
-                opacity: !selectedEnchants.includes(item) ? 0.5 : 1,
+                opacity: !selectedEnchants[item] ? 0.5 : 1,
               }}
               textStyle={textStyle}
             >

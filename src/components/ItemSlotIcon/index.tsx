@@ -13,7 +13,7 @@ import { useItemSlotIcon } from './useItemSlotIcon'
 
 const ItemSlotIcon = ({
   id,
-  amount,
+  amount = 1,
   type,
   enchants,
   durability,

@@ -4,9 +4,9 @@ import { useItemHoverDescription } from 'src/contexts/ItemHoverDescriptionProvid
 import type { UseItemSlotIconProps } from 'src/components/ItemSlotIcon/types'
 
 export const useItemSlotIcon = ({
-  description,
+  description = null,
   display_name,
-  durability,
+  durability = null,
   didShowDescription,
 }: UseItemSlotIconProps) => {
   const { onVisible, offVisible } = useItemHoverDescription()

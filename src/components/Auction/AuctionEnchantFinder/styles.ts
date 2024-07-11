@@ -123,3 +123,9 @@ export const ButtonsContainer = styled.div`
   flex-direction: column;
   gap: 9px;
 `
+
+export const DefaultButtonWrapper = styled.div`
+  display: flex;
+
+  justify-content: space-between;
+`

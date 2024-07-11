@@ -18,7 +18,7 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
 
   const [enchantSearchParams, setEnchantSearchParams] =
     useState<EnchantSearchParamsT>({
-      enchants: [],
+      enchants: {},
       enchantType: '',
       itemType: '',
     })

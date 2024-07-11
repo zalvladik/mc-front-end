@@ -9,6 +9,7 @@ import type {
 import {
   armorMaterials,
   EnchantsTypesEnum,
+  enchantsWithMaxLvl,
   enchantTranslations,
   ItemMaterialEnum,
   ItemTypesEnchantsFinderEnum,
@@ -90,17 +91,28 @@ export const useAuctionEnchantFinder = () => {
   }
 
   const setSelectedEnchantsToggle = (enchant: EnchantsEnum) => {
-    if (selectedEnchants.includes(enchant)) {
-      const updatedSelectedEnchants = selectedEnchants.filter(
-        item => item !== enchant,
-      )
+    if (selectedEnchants[enchant]) {
+      const newSelectedEnchants = { ...selectedEnchants }
 
-      updateEnchantSearchParams({ enchants: updatedSelectedEnchants })
+      delete newSelectedEnchants[enchant]
+
+      updateEnchantSearchParams({ enchants: newSelectedEnchants })
 
       return
     }
 
-    updateEnchantSearchParams({ enchants: [...selectedEnchants, enchant] })
+    updateEnchantSearchParams({ enchants: { ...selectedEnchants, [enchant]: 1 } })
+  }
+
+  const setEnchantLvl = (enchant: EnchantsEnum) => {
+    const newSelectedEnchants = { ...selectedEnchants }
+
+    newSelectedEnchants[enchant] =
+      newSelectedEnchants[enchant]! >= enchantsWithMaxLvl[enchant]
+        ? 1
+        : newSelectedEnchants[enchant]! + 1
+
+    updateEnchantSearchParams({ enchants: newSelectedEnchants })
   }
 
   const setSelectedMinorEnchantsToggle = (
@@ -108,23 +120,30 @@ export const useAuctionEnchantFinder = () => {
     deleteEnchant?: EnchantsEnum,
   ) => {
     if (addEnchant === deleteEnchant) {
-      const enchants = selectedEnchants.filter(item => addEnchant !== item)
-      updateEnchantSearchParams({ enchants })
+      const newSelectedEnchants = { ...selectedEnchants }
+
+      delete newSelectedEnchants[addEnchant]
+
+      updateEnchantSearchParams({ enchants: newSelectedEnchants })
 
       return
     }
 
     if (!deleteEnchant) {
-      updateEnchantSearchParams({ enchants: [...selectedEnchants, addEnchant] })
+      updateEnchantSearchParams({
+        enchants: { ...selectedEnchants, [addEnchant]: 1 },
+      })
 
       return
     }
 
-    const enchants = selectedEnchants.map(item =>
-      item === deleteEnchant ? addEnchant : item,
-    )
+    const newSelectedEnchants = { ...selectedEnchants }
 
-    updateEnchantSearchParams({ enchants })
+    delete newSelectedEnchants[deleteEnchant]
+
+    newSelectedEnchants[addEnchant] = 1
+
+    updateEnchantSearchParams({ enchants: newSelectedEnchants })
   }
 
   const enchantItemsTypes: EnchantItemsTypesT[] = [
@@ -253,5 +272,6 @@ export const useAuctionEnchantFinder = () => {
     enchantTranslationsTypes,
     setSelectedMinorEnchantsToggle,
     updateEnchantSearchParams,
+    setEnchantLvl,
   }
 }
