@@ -39,7 +39,7 @@ const ItemSlotIcon = ({
   return (
     <ItemSlotIconContainer
       ref={itemSlotIconRef}
-      id={`${id}`}
+      id={String(id)}
       style={{
         ...style,
         width: containerSize,
