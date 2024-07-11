@@ -1,4 +1,4 @@
-import type { HTMLProps, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import type { ItemT } from 'src/services/api/Items/types'
 
 export type ItemSlotIconProps = {
