@@ -25,6 +25,7 @@ const ItemSlotIcon = ({
   itemSize,
   fontSize = 25,
   onClick,
+  children,
 }: ItemSlotIconProps): JSX.Element => {
   const { itemSlotIconRef } = useItemSlotIcon({
     description: description || enchants,
@@ -56,6 +57,7 @@ const ItemSlotIcon = ({
           height: itemSize,
         }}
       />
+      {children}
       {amount > 1 && <ItemAmount style={{ fontSize }}>{amount}</ItemAmount>}
 
       {enchants && (

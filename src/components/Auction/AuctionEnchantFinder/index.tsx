@@ -128,6 +128,21 @@ const AuctionEnchantFinder = (): JSX.Element => {
                       return 0
                     })
                     .map((item, i) => {
+                      if (Array.isArray(item)) {
+                        return (
+                          <MinorEnchants
+                            key={i}
+                            item={item}
+                            style={{ zIndex: i === 0 ? 5 : 4 }}
+                            selectedEnchants={selectedEnchants}
+                            setEnchantLvl={setEnchantLvl}
+                            setSelectedMinorEnchantsToggle={
+                              setSelectedMinorEnchantsToggle
+                            }
+                          />
+                        )
+                      }
+
                       const isNegativeEnchant =
                         item === EnchantsEnum.VANISHING_CURSE ||
                         item === EnchantsEnum.BINDING_CURSE
@@ -142,21 +157,6 @@ const AuctionEnchantFinder = (): JSX.Element => {
                         fontWeight,
                       }
 
-                      if (Array.isArray(item)) {
-                        return (
-                          <MinorEnchants
-                            key={i}
-                            item={item}
-                            textStyle={textStyle}
-                            style={{ zIndex: i === 0 ? 5 : 4 }}
-                            selectedEnchants={selectedEnchants}
-                            setSelectedMinorEnchantsToggle={
-                              setSelectedMinorEnchantsToggle
-                            }
-                          />
-                        )
-                      }
-
                       const isSelectedEnchants = selectedEnchants[item]
 
                       return (
@@ -164,7 +164,7 @@ const AuctionEnchantFinder = (): JSX.Element => {
                           <DefaultButton
                             onClick={() => setSelectedEnchantsToggle(item)}
                             style={{
-                              width: enchantsWithMaxLvl[item] === 1 ? '100%' : '83%',
+                              width: enchantsWithMaxLvl[item] === 1 ? '100%' : '86%',
                               opacity: !isSelectedEnchants ? 0.4 : 1,
                             }}
                             textStyle={textStyle}

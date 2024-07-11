@@ -33,6 +33,7 @@ export const ButtonsContainer = styled.div`
 `
 
 export const EnchantSearchInfo = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -54,4 +55,36 @@ export const EnchantSearchInfo = styled.div`
   box-shadow:
     inset 0px 0px 30px 10px rgba(0, 0, 0, 0.75),
     0px 0px 5px 0px rgba(255, 255, 255, 0.8);
+`
+
+export const EnchantSearchInfoDelete = styled.div`
+  position: absolute;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  top: 50%;
+  left: 50%;
+
+  translate: -50% -50%;
+
+  z-index: 999;
+
+  width: 125px;
+  height: 125px;
+
+  opacity: 0;
+
+  transition:
+    transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    opacity 0.2s ease;
+
+  pointer-events: auto;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.3;
+  }
 `

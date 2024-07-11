@@ -68,8 +68,8 @@ const ItemHoverDescription = ({
             }
 
             const isNegativeEnchant =
-              enchantTranslations[EnchantsEnum.VANISHING_CURSE] === item ||
-              enchantTranslations[EnchantsEnum.BINDING_CURSE] === item
+              item.includes(enchantTranslations[EnchantsEnum.VANISHING_CURSE]) ||
+              item.includes(enchantTranslations[EnchantsEnum.BINDING_CURSE])
 
             const color = isNegativeEnchant ? '#aa0e0e' : '#c8c8c8'
             const textShadow = isNegativeEnchant

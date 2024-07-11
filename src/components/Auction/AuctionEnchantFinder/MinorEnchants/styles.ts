@@ -16,7 +16,7 @@ export const OverflowMinorEnchants = styled.div`
 
   overflow: hidden;
 
-  width: 390px;
+  width: 420px;
 
   z-index: 1;
 

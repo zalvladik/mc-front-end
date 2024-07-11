@@ -115,7 +115,7 @@ export const RightSection = styled.div`
 `
 
 export const ButtonsContainer = styled.div`
-  width: 410px;
+  width: 440px;
 
   padding: 10px;
 

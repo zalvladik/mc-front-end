@@ -163,7 +163,8 @@ export const ItemDesriptionContainer = styled.div`
 
       text-shadow:
         0px 0px 25px #000000,
-        0px 0px 25px #000000;
+        0px 0px 25px #000000,
+        2px 2px 1px rgba(0, 0, 0, 1);
     }
   }
 `
@@ -181,7 +182,8 @@ export const ItemPriceContainer = styled.div`
 
     text-shadow:
       0px 0px 25px #000000,
-      0px 0px 25px #000000;
+      0px 0px 25px #000000,
+      2px 2px 1px rgba(0, 0, 0, 1);
   }
 
   & > div:last-child {

@@ -1,3 +1,4 @@
+import type { HTMLProps } from 'react'
 import type { ItemT } from 'src/services/api/Items/types'
 
 export type ItemSlotIconProps = {
@@ -16,7 +17,7 @@ export type ItemSlotIconProps = {
   description?: string[] | null
   enchants?: string[] | null
   durability?: string | null
-}
+} & HTMLProps<HTMLDivElement>
 
 export type UseItemSlotIconProps = {
   description?: string[] | null
