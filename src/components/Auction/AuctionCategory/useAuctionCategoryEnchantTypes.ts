@@ -10,19 +10,24 @@ import {
 
 import type { EnchantItemsTypesT } from 'src/components/Auction/AuctionCategory/types'
 
+import type { UpdateEnchantSearchParamsT } from '../AuctionEnchantFinder/types'
+
 export const useAuctionCategoryEnchantTypes = () => {
   const { enchantSearchParams, setEnchantSearchParams, isFragment } = useAuction()
   const { offVisible } = useItemHoverDescription()
 
-  const updateEnchantSearchParams = (
-    itemType: string,
-    enchantType?: EnchantsTypesEnum,
-  ) => {
+  const updateEnchantSearchParams = ({
+    itemType,
+    enchantType,
+    enchants,
+  }: UpdateEnchantSearchParamsT) => {
     const updatedParams = { ...enchantSearchParams }
 
     if (itemType) updatedParams.itemType = itemType
 
     if (enchantType) updatedParams.enchantType = enchantType
+
+    if (enchants) updatedParams.enchants = enchants
 
     setEnchantSearchParams(updatedParams)
   }
@@ -66,14 +71,16 @@ export const useAuctionCategoryEnchantTypes = () => {
     const indexCurrentMaterial = armotMeterialList.indexOf(currentMaterial)
 
     if (indexCurrentMaterial === armotMeterialList.length - 1) {
-      updateEnchantSearchParams(`${armotMeterialList[0]}_${enchantType}`)
+      updateEnchantSearchParams({
+        itemType: `${armotMeterialList[0]}_${enchantType}`,
+      })
 
       return armotMeterialList[0]
     }
 
-    updateEnchantSearchParams(
-      `${armotMeterialList[indexCurrentMaterial + 1]}_${enchantType}`,
-    )
+    updateEnchantSearchParams({
+      itemType: `${armotMeterialList[indexCurrentMaterial + 1]}_${enchantType}`,
+    })
 
     return armotMeterialList[indexCurrentMaterial + 1]
   }
@@ -87,14 +94,16 @@ export const useAuctionCategoryEnchantTypes = () => {
     const indexCurrentMaterial = swordAndToolsMeterialList.indexOf(currentMaterial)
 
     if (indexCurrentMaterial === swordAndToolsMeterialList.length - 1) {
-      updateEnchantSearchParams(`${swordAndToolsMeterialList[0]}_${enchantType}`)
+      updateEnchantSearchParams({
+        itemType: `${swordAndToolsMeterialList[0]}_${enchantType}`,
+      })
 
       return swordAndToolsMeterialList[0]
     }
 
-    updateEnchantSearchParams(
-      `${swordAndToolsMeterialList[indexCurrentMaterial + 1]}_${enchantType}`,
-    )
+    updateEnchantSearchParams({
+      itemType: `${swordAndToolsMeterialList[indexCurrentMaterial + 1]}_${enchantType}`,
+    })
 
     return swordAndToolsMeterialList[indexCurrentMaterial + 1]
   }

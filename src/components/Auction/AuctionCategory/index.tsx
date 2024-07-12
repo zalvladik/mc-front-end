@@ -107,7 +107,11 @@ const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
                               return
                             }
 
-                            updateEnchantSearchParams(itemType, enchantType)
+                            updateEnchantSearchParams({
+                              itemType,
+                              enchantType,
+                              enchants: {},
+                            })
                           }}
                         />
                       )
