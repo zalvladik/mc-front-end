@@ -117,10 +117,10 @@ export const defaultUser: UserT = {
   lotCount: 0,
 }
 
-export const enchantsLvl: { [key: number]: string } = {
-  1: 'I',
-  2: 'II',
-  3: 'III',
-  4: 'IV',
-  5: 'V',
+export const enchantsLvl: { [key: string]: string } = {
+  '1': 'I',
+  '2': 'II',
+  '3': 'III',
+  '4': 'IV',
+  '5': 'V',
 }

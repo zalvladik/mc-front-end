@@ -89,10 +89,16 @@ const MinorEnchants = ({
                 {enchantsWithMaxLvl[item] > 1 && (
                   <DefaultButton
                     onClick={() => {
-                      if (!isSelectedFromHere) setSelectedMinorEnchantsToggle(item)
+                      if (!isSelectedFromHere) {
+                        setSelectedMinorEnchantsToggle(item)
+
+                        return
+                      }
 
                       if (isSelectedFromHere && isSelectedEnchant) {
                         setEnchantLvl(item)
+
+                        return
                       }
 
                       setSelectedMinorEnchantsToggle(

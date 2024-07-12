@@ -1,3 +1,5 @@
+import { enchantsLvl } from 'src/constants'
+
 import {
   Description,
   ItemHoverDescriptionContainer,
@@ -67,9 +69,11 @@ const ItemHoverDescription = ({
               )
             }
 
+            const [enchant, lvl] = item.split('$')
+
             const isNegativeEnchant =
-              item.includes(enchantTranslations[EnchantsEnum.VANISHING_CURSE]) ||
-              item.includes(enchantTranslations[EnchantsEnum.BINDING_CURSE])
+              enchant === EnchantsEnum.VANISHING_CURSE ||
+              enchant === EnchantsEnum.BINDING_CURSE
 
             const color = isNegativeEnchant ? '#aa0e0e' : '#c8c8c8'
             const textShadow = isNegativeEnchant
@@ -89,7 +93,7 @@ const ItemHoverDescription = ({
                     textShadow,
                   }}
                 >
-                  {item}
+                  {`${enchantTranslations[enchant]} ${lvl === '1' ? '' : enchantsLvl[lvl]}`}
                 </p>
               </li>
             )

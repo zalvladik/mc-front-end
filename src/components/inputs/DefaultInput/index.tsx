@@ -10,7 +10,7 @@ const DefaultInput = ({
     <Input
       style={{
         opacity: isVisible ? 1 : 0,
-        pointerEvents: isVisible ? 'none' : 'auto',
+        pointerEvents: isVisible ? 'auto' : 'none',
         ...style,
       }}
       {...props}
