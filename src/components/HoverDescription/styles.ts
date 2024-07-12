@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: none;
   flex-direction: column;
   border: 2px solid #555555;
-  border-radius: 5px;
+  border-radius: 6px;
   overflow: hidden;
   left: 50%;
   translate: -50% -120%;

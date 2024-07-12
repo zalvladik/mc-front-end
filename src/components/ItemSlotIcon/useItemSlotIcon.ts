@@ -18,7 +18,7 @@ export const useItemSlotIcon = ({
     const handleMouseEnter = () => {
       const element = itemSlotIconRef.current
 
-      if (!element) return
+      if (!element || !display_name) return
 
       const { top, left, width, height } = element.getBoundingClientRect()
 

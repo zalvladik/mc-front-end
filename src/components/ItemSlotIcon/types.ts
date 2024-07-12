@@ -9,7 +9,7 @@ export type ItemSlotIconProps = {
   itemSize: number
   didShowDescription?: boolean
   id?: number | string
-  display_name: string
+  display_name?: string
   type: string
   categories?: string[]
   items?: ItemT[]
@@ -22,7 +22,7 @@ export type ItemSlotIconProps = {
 
 export type UseItemSlotIconProps = {
   description?: string[] | null
-  display_name: string
+  display_name?: string
   durability?: string | null
   didShowDescription?: boolean
 }

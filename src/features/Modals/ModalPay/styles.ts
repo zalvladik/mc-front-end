@@ -61,7 +61,7 @@ export const ButtonWrapper = styled.div`
     background: none;
     color: white;
     padding: 10px 10px;
-    border-radius: 5px;
+    border-radius: 6px;
     border: 1px solid white;
     transition:
       color 0.2s ease,

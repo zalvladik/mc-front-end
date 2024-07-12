@@ -4,7 +4,7 @@ export const Container = styled.div`
   background-color: gray;
   user-select: none;
   position: relative;
-  border-radius: 5px;
+  border-radius: 6px;
   padding: 20px;
 
   cursor: cell;

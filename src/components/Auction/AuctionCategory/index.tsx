@@ -1,3 +1,4 @@
+import { itemTypesEnchantsFinderTranslations } from 'src/constants'
 import type { ItemTypesEnchantsFinderEnum } from 'src/types'
 
 import {
@@ -6,6 +7,8 @@ import {
   CategoryList,
   Container,
   DescriptionCategory,
+  EnchantSearchInfo,
+  EnchantSearchInfoDelete,
   EnchantTypeCategoryContainer,
   EnchantTypes,
 } from 'src/components/Auction/AuctionCategory/styles'
@@ -22,9 +25,12 @@ const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
     enchantSearchParams,
     updateEnchantSearchParams,
     isFragment,
+    offVisible,
+    enchantsForHoverDescription,
+    setEnchantSearchParams,
   } = useAuctionCategoryEnchantTypes()
 
-  const { enchantType: selectedEnchantType } = enchantSearchParams
+  const { enchantType: selectedEnchantType, itemType } = enchantSearchParams
 
   return (
     <Container {...props}>
@@ -65,47 +71,81 @@ const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
           </CategoryList>
         </div>
       ) : (
-        <EnchantTypes>
-          {' '}
-          <h1>Предмет для пошуку</h1>
-          <div>
-            {enchantItemsTypes.map((category, i) => (
-              <EnchantTypeCategoryContainer key={i}>
-                {category.map(
-                  ({ display_name, itemType, enchantType, onClick = () => {} }) => {
-                    const itemTypeAs = itemType as ItemTypesEnchantsFinderEnum
+        <>
+          <EnchantTypes>
+            <h1>Предмет для пошуку</h1>
+            <div>
+              {enchantItemsTypes.map((category, i) => (
+                <EnchantTypeCategoryContainer key={i}>
+                  {category.map(
+                    ({
+                      display_name,
+                      itemType,
+                      enchantType,
+                      onClick = () => {},
+                    }) => {
+                      const itemTypeAs = itemType as ItemTypesEnchantsFinderEnum
 
-                    return (
-                      <ItemSlotIcon
-                        type={itemTypeAs}
-                        key={itemType}
-                        itemSize={54}
-                        containerSize={80}
-                        display_name={display_name}
-                        style={{
-                          cursor: 'pointer',
-                          backgroundImage:
-                            selectedEnchantType === enchantType
-                              ? 'url(/assets/items_for_ui/slot_green.png)'
-                              : 'url(/assets/items_for_ui/slot.png)',
-                        }}
-                        onClick={() => {
-                          if (selectedEnchantType === enchantType) {
-                            onClick()
+                      return (
+                        <ItemSlotIcon
+                          type={itemTypeAs}
+                          key={itemType}
+                          itemSize={60}
+                          containerSize={90}
+                          display_name={display_name}
+                          style={{
+                            cursor: 'pointer',
+                            backgroundImage:
+                              selectedEnchantType === enchantType
+                                ? 'url(/assets/items_for_ui/slot_green.png)'
+                                : 'url(/assets/items_for_ui/slot.png)',
+                          }}
+                          onClick={() => {
+                            if (selectedEnchantType === enchantType) {
+                              onClick()
 
-                            updateEnchantSearchParams(itemType)
-                          }
+                              updateEnchantSearchParams(itemType)
+                            }
 
-                          updateEnchantSearchParams(itemType, enchantType)
-                        }}
-                      />
-                    )
-                  },
-                )}
-              </EnchantTypeCategoryContainer>
-            ))}
-          </div>
-        </EnchantTypes>
+                            updateEnchantSearchParams(itemType, enchantType)
+                          }}
+                        />
+                      )
+                    },
+                  )}
+                </EnchantTypeCategoryContainer>
+              ))}
+            </div>
+          </EnchantTypes>
+          <EnchantSearchInfo>
+            <ItemSlotIcon
+              style={{ margin: '0px auto' }}
+              display_name={itemTypesEnchantsFinderTranslations[itemType]}
+              type={itemType}
+              containerSize={86}
+              itemSize={58}
+              enchants={
+                enchantsForHoverDescription.length
+                  ? enchantsForHoverDescription
+                  : null
+              }
+            >
+              <EnchantSearchInfoDelete
+                isVisible={Boolean(!selectedEnchantType)}
+                onClick={() => {
+                  offVisible()
+                  setEnchantSearchParams({
+                    enchants: {},
+                    enchantType: '',
+                    itemType: '',
+                  })
+                }}
+              >
+                <div />
+              </EnchantSearchInfoDelete>
+            </ItemSlotIcon>
+          </EnchantSearchInfo>
+        </>
       )}
     </Container>
   )

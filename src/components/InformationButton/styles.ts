@@ -11,7 +11,7 @@ export const Container = styled.div`
   background-color: #222222;
 
   border: 0.5px solid white;
-  border-radius: 5px;
+  border-radius: 6px;
 
   opacity: 0.3;
 

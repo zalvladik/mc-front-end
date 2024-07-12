@@ -4,7 +4,7 @@ export const Input = styled.input`
   padding: 10px 20px;
   font-size: 30px;
   font-family: 'Minecraft';
-  border-radius: 5px;
+  border-radius: 6px;
   border: 2px solid white;
   background: #161616;
 

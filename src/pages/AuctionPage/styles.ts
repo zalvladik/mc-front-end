@@ -22,6 +22,12 @@ export const DefaultInputWrapper = styled.div`
       font-size: 20px;
       width: 340px;
     }
+
+    & > div:last-child {
+      position: absolute;
+
+      left: 0px;
+    }
   }
 `
 
@@ -51,6 +57,16 @@ export const Container = styled.div`
 
 export const BodyCenterContainer = styled.div<IsDisabeledByFragmentProps>`
   width: 850px;
+
+  background: ${props =>
+    props.disabled
+      ? `linear-gradient(
+    0deg,
+    rgba(15, 50, 70, 1) 0%,
+    rgba(15, 15, 15, 1) 40%,
+    rgba(15, 15, 15, 1) 100%
+  )`
+      : 'rgba(0,0,0,0)'};
 
   & > div {
     width: 100%;

@@ -31,6 +31,7 @@ const AuctionPage = (): JSX.Element => {
     findLotByName,
     money,
     isLoadingByeLots,
+    enchantSearchParams,
   } = useAuctionPage()
 
   const getFragment = (): JSX.Element => {
@@ -69,6 +70,21 @@ const AuctionPage = (): JSX.Element => {
             >
               Пошук
             </DefaultButton>
+
+            <div>
+              <DefaultButton
+                isLoading={isLoadingByeLots}
+                disabled={
+                  isLoadingByeLots ||
+                  !Object.keys(enchantSearchParams.enchants).length
+                }
+                onClick={() => {}}
+                style={{ width: 320 }}
+                isVisible={isFragment.isEnchantFinderFragment}
+              >
+                Пошук
+              </DefaultButton>
+            </div>
           </div>
           <MoneyTable money={money} style={{ flexDirection: 'row', gap: 80 }} />
         </DefaultInputWrapper>
@@ -82,7 +98,7 @@ const AuctionPage = (): JSX.Element => {
             />
             <AuctionCategoryDisabled disabled={isDisabledCategory} />
           </AuctionCategoryWrapper>
-          <BodyCenterContainer disabled={isDisabledCategory}>
+          <BodyCenterContainer disabled={isFragment.isCreateLotFragment}>
             {getFragment()}
           </BodyCenterContainer>
           <AuctionController />

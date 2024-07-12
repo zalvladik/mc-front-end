@@ -136,7 +136,7 @@ export const SelectContainer = styled.div`
 export const OptionFilter = styled.div`
   width: 60px;
   height: 60px;
-  border-radius: 5px;
+  border-radius: 6px;
   border: 2px solid white;
   background: #161616;
   display: flex;

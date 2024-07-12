@@ -10,8 +10,9 @@ export const Container = styled.div`
   padding: 15px 10px 10px 10px;
 
   width: 320px;
+  height: 100%;
 
-  border-top-left-radius: 8px;
+  border-radius: 8px;
 
   transition: opacity 0.3s ease-in-out;
 
@@ -31,30 +32,18 @@ export const DescriptionCategory = styled.div`
 `
 
 export const EnchantTypes = styled.div`
+  position: relative;
+
   display: flex;
   flex-direction: column;
 
   align-items: center;
 
-  border: 1px solid black;
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
-
   padding: 6px 12px;
-
-  background: radial-gradient(
-    circle,
-    rgba(30, 67, 89, 1) 0%,
-    rgba(20, 47, 61, 1) 100%
-  );
-
-  -webkit-box-shadow: inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75);
-  box-shadow: inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75);
 
   & > h1 {
     font-family: 'Minecraft', sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 500;
 
     text-shadow: 2.5px 2.5px 1px rgb(200, 200, 200, 0.5);
@@ -63,8 +52,8 @@ export const EnchantTypes = styled.div`
   & > div {
     display: flex;
 
-    margin-top: 20px;
-    gap: 10px;
+    margin-top: 16px;
+    gap: 6px;
   }
 `
 
@@ -166,4 +155,67 @@ export const EnchantTypeCategoryContainer = styled.div`
   flex-direction: column;
 
   gap: 10px;
+`
+
+export const EnchantSearchInfo = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  margin: 6px auto 0px auto;
+
+  width: 60%;
+
+  border-radius: 6px;
+  padding: 5px 0px;
+
+  -webkit-box-shadow:
+    inset 0px 0px 30px 10px rgba(0, 0, 0, 0.75),
+    0px 0px 5px 0px rgba(255, 255, 255, 0.8);
+  -moz-box-shadow:
+    inset 0px 0px 30px 10px rgba(0, 0, 0, 0.75),
+    0px 0px 5px 0px rgba(255, 255, 255, 0.8);
+  box-shadow:
+    inset 0px 0px 30px 10px rgba(0, 0, 0, 0.75),
+    0px 0px 5px 0px rgba(255, 255, 255, 0.8);
+`
+
+export const EnchantSearchInfoDelete = styled.div<{ isVisible: boolean }>`
+  position: absolute;
+
+  display: flex;
+
+  padding: 12px;
+
+  justify-content: center;
+  align-items: center;
+
+  top: 50%;
+  left: 50%;
+
+  translate: -50% -50%;
+
+  z-index: 999;
+
+  opacity: ${props => (props.isVisible ? 0.8 : 0)};
+
+  transition:
+    transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    opacity 0.2s ease;
+
+  pointer-events: auto;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  & > div {
+    width: 64px;
+    height: 64px;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('/assets/items_for_ui/barrier.png');
+  }
 `

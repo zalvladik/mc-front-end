@@ -12,7 +12,7 @@ export const ContainerWrapper = styled.div`
     background-color: gray;
     width: 120px;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 6px;
     height: 100%;
     display: flex;
     flex-direction: column;

@@ -80,7 +80,7 @@ export const TbodyContainer = styled.div`
 
   gap: 7px;
 
-  border-radius: 5px;
+  border-radius: 6px;
 
   background: radial-gradient(
     circle,
@@ -108,7 +108,7 @@ export const TbodyContainer = styled.div`
 
     padding: 4px 0px;
 
-    border-radius: 5px;
+    border-radius: 6px;
     background-color: rgba(200, 200, 200, 0.1);
 
     transition:
@@ -205,7 +205,7 @@ export const StyledSkeleton = styled(Skeleton)`
   padding: 10px;
   height: 90%;
 
-  border-radius: 5px;
+  border-radius: 6px;
 
   background: radial-gradient(
     circle,

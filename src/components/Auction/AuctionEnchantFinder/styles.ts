@@ -6,39 +6,16 @@ export const ContainerWrapper = styled.div`
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   position: relative;
 
+  align-items: center;
+
   width: max-content;
-  justify-content: space-between;
+  justify-content: start;
 
   width: 100%;
   height: 100%;
-  border-radius: 12px;
-
-  background: radial-gradient(
-    circle,
-    rgba(100, 110, 120, 1) 0%,
-    rgba(30, 35, 40, 1) 100%
-  );
-
-  -webkit-box-shadow:
-    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
-    0px 0px 8px 0px rgba(200, 200, 200, 1);
-  -moz-box-shadow:
-    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
-    0px 0px 8px 0px rgba(200, 200, 200, 1);
-  box-shadow:
-    inset 0px 0px 96px 28px rgba(0, 0, 0, 0.6),
-    0px 0px 8px 0px rgba(200, 200, 200, 1);
-`
-
-export const RightSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  width: 100%;
-  /* height: 100%; */
 
   border-radius: 12px;
 
@@ -59,6 +36,9 @@ export const RightSection = styled.div`
     0px 0px 12px -5px rgba(255, 255, 255, 1);
 
   & > h1 {
+    position: absolute;
+    top: 15px;
+
     font-family: 'Minecraft', sans-serif;
     font-size: 24px;
     font-weight: 500;
@@ -68,9 +48,11 @@ export const RightSection = styled.div`
 `
 
 export const ButtonsContainer = styled.div`
-  width: 440px;
+  width: 460px;
 
   padding: 10px;
+
+  margin-top: 50px;
 
   display: flex;
   flex-direction: column;

@@ -1,37 +1,13 @@
-import { MdDeleteForever } from 'react-icons/md'
-import {
-  enchantsWithMaxLvl,
-  enchantTranslations,
-  itemTypesEnchantsFinderTranslations,
-} from 'src/constants'
-import type { EnchantsEnum } from 'src/types'
-
 import {
   ButtonsContainer,
   Container,
-  EnchantSearchInfo,
-  EnchantSearchInfoDelete,
 } from 'src/components/Auction/AuctionController/styles'
 import { useAuctionController } from 'src/components/Auction/AuctionController/useAuctionController'
 import DefaultButton from 'src/components/DefaultButton'
-import ItemSlotIcon from 'src/components/ItemSlotIcon'
 
 const AuctionController = (): JSX.Element => {
-  const {
-    buttonsTexts,
-    auctionFragment,
-    setAuctionFragment,
-    enchantSearchParams,
-    offVisible,
-    setEnchantSearchParams,
-  } = useAuctionController()
-
-  const { enchants, itemType } = enchantSearchParams
-
-  const enchantsTranslating = Object.keys(enchants).map(
-    enchant =>
-      `${enchantTranslations[enchant]} ${enchantsWithMaxLvl[enchant] > 1 ? enchants[enchant as EnchantsEnum] : ''}`,
-  )
+  const { buttonsTexts, auctionFragment, setAuctionFragment } =
+    useAuctionController()
 
   return (
     <Container>
@@ -51,32 +27,6 @@ const AuctionController = (): JSX.Element => {
           )
         })}
       </ButtonsContainer>
-
-      {itemType && (
-        <EnchantSearchInfo>
-          <ItemSlotIcon
-            style={{ margin: '0px auto' }}
-            display_name={itemTypesEnchantsFinderTranslations[itemType]}
-            type={itemType}
-            containerSize={120}
-            itemSize={80}
-            enchants={enchantsTranslating.length ? enchantsTranslating : null}
-          >
-            <EnchantSearchInfoDelete
-              onClick={() => {
-                offVisible()
-                setEnchantSearchParams({
-                  enchants: {},
-                  enchantType: '',
-                  itemType: '',
-                })
-              }}
-            >
-              <MdDeleteForever size={100} fill="red" />
-            </EnchantSearchInfoDelete>
-          </ItemSlotIcon>
-        </EnchantSearchInfo>
-      )}
     </Container>
   )
 }

@@ -30,7 +30,7 @@ export const InventoryWrapper = styled.div`
     rgba(20, 46, 65, 1) 100%
   );
 
-  border-radius: 10px;
+  border-radius: 8px;
 
   -webkit-box-shadow:
     inset 0px 0px 40px 10px rgba(0, 0, 0, 0.75),

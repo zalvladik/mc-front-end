@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { armorMaterials, weaponAndToolsMaterial } from 'src/constants'
 import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
+import { useItemHoverDescription } from 'src/contexts/ItemHoverDescriptionProvider/useItemHoverDescription'
 import type { ArmorMaterialT, WeaponAndToolsMaterialT } from 'src/types'
 import {
   EnchantsTypesEnum,
@@ -12,6 +13,7 @@ import type { EnchantItemsTypesT } from 'src/components/Auction/AuctionCategory/
 
 export const useAuctionCategoryEnchantTypes = () => {
   const { enchantSearchParams, setEnchantSearchParams, isFragment } = useAuction()
+  const { offVisible } = useItemHoverDescription()
 
   const updateEnchantSearchParams = (
     itemType: string,
@@ -190,10 +192,19 @@ export const useAuctionCategoryEnchantTypes = () => {
     ],
   ]
 
+  const { enchants } = enchantSearchParams
+
+  const enchantsForHoverDescription = Object.entries(enchants).map(
+    ([enchant, lvl]) => `${enchant}$${lvl}`,
+  )
+
   return {
     enchantItemsTypes,
     enchantSearchParams,
     updateEnchantSearchParams,
     isFragment,
+    offVisible,
+    enchantsForHoverDescription,
+    setEnchantSearchParams,
   }
 }
