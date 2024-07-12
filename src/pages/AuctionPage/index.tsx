@@ -76,7 +76,8 @@ const AuctionPage = (): JSX.Element => {
                 isLoading={isLoadingByeLots}
                 disabled={
                   isLoadingByeLots ||
-                  !Object.keys(enchantSearchParams.enchants).length
+                  (!Object.keys(enchantSearchParams.enchants).length &&
+                    isFragment.isEnchantFinderFragment)
                 }
                 onClick={() => {}}
                 style={{ width: 320 }}
