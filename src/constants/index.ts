@@ -138,7 +138,8 @@ export const enchantVariables = {
   ],
   [EnchantsTypesEnum.ELYTRA]: [EnchantsEnum.BINDING_CURSE],
   [EnchantsTypesEnum.SWORD]: [
-    [EnchantsEnum.BANE_OF_ARTHROPODS, EnchantsEnum.SMITE, EnchantsEnum.SWEEPING],
+    [EnchantsEnum.BANE_OF_ARTHROPODS, EnchantsEnum.SMITE, EnchantsEnum.SHARPNESS],
+    EnchantsEnum.SWEEPING,
     EnchantsEnum.FIRE_ASPECT,
     EnchantsEnum.KNOCKBACK,
     EnchantsEnum.LOOTING,
