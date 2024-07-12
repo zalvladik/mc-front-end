@@ -55,7 +55,7 @@ export const TheadContainer = styled.div`
       width: 58%;
 
       & > div {
-        background-image: url('/assets/items_for_auction_ui/name_tag.png');
+        background-image: url('/assets/items_for_ui/name_tag.png');
       }
     }
 
@@ -63,7 +63,7 @@ export const TheadContainer = styled.div`
       width: 38%;
 
       & > div {
-        background-image: url('/assets/items_for_auction_ui/diamond.png');
+        background-image: url('/assets/items_for_ui/diamond.png');
       }
     }
   }

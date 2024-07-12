@@ -62,7 +62,23 @@ export const ButtonsContainer = styled.div`
 `
 
 export const DefaultButtonWrapper = styled.div`
+  position: relative;
   display: flex;
 
   justify-content: space-between;
 `
+
+// export const EnchantImg = styled.div`
+//   position: absolute;
+
+//   width: 36px;
+//   height: 36px;
+
+//   left: 0px;
+//   top: 50%;
+
+//   translate: -150% -50%;
+
+//   background-repeat: no-repeat;
+//   background-size: contain;
+// `

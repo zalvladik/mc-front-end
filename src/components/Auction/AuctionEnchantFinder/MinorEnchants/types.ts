@@ -3,7 +3,7 @@ import type { EnchantsWithMaxLvlT } from 'src/contexts/AuctionProvider/types'
 import type { EnchantsEnum } from 'src/types'
 
 export type MinorEnchantsProps = {
-  item: EnchantsEnum[]
+  enchants: EnchantsEnum[]
   selectedEnchants: EnchantsWithMaxLvlT
   setEnchantLvl: (value: EnchantsEnum) => void
   setSelectedMinorEnchantsToggle: (

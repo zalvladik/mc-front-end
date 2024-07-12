@@ -14,7 +14,7 @@ import DefaultButton from 'src/components/DefaultButton'
 import { DefaultButtonWrapper } from '../styles'
 
 const MinorEnchants = ({
-  item,
+  enchants,
   selectedEnchants = {},
   setSelectedMinorEnchantsToggle,
   setEnchantLvl,
@@ -30,7 +30,7 @@ const MinorEnchants = ({
   } = useMinorEnchants()
 
   const isSelectedFromHere = Object.keys(selectedEnchants).find(enchant =>
-    item.includes(enchant as EnchantsEnum),
+    enchants.includes(enchant as EnchantsEnum),
   )
 
   const textStyle: CSSProperties = {
@@ -66,7 +66,7 @@ const MinorEnchants = ({
             transform: selected ? 'translate(0%, 0%)' : 'translate(0%, -100%)',
           }}
         >
-          {item.map(item => {
+          {enchants.map(item => {
             const isSelectedEnchant = selectedEnchants[item as EnchantsEnum]
 
             return (
@@ -80,7 +80,9 @@ const MinorEnchants = ({
                     )
                   }}
                   style={{
-                    width: '86%',
+                    width: enchants.find(item => enchantsWithMaxLvl[item] > 1)
+                      ? '86%'
+                      : '100%',
                     opacity: isSelectedEnchant ? 1 : 0.4,
                   }}
                   textStyle={textStyle}

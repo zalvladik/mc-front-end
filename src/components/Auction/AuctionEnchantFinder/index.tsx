@@ -8,6 +8,7 @@ import {
   Container,
   ContainerWrapper,
   DefaultButtonWrapper,
+  // EnchantImg,
 } from 'src/components/Auction/AuctionEnchantFinder/styles'
 import { useAuctionEnchantFinder } from 'src/components/Auction/AuctionEnchantFinder/useAuctionEnchantFinder'
 import { useEnchantVariables } from 'src/components/Auction/AuctionEnchantFinder/useEnchantVariables'
@@ -63,7 +64,7 @@ const AuctionEnchantFinder = (): JSX.Element => {
                       return (
                         <MinorEnchants
                           key={i}
-                          item={item}
+                          enchants={item}
                           style={{ zIndex: i === 0 ? 5 : 4 }}
                           selectedEnchants={selectedEnchants}
                           setEnchantLvl={setEnchantLvl}
@@ -92,6 +93,11 @@ const AuctionEnchantFinder = (): JSX.Element => {
 
                     return (
                       <DefaultButtonWrapper key={item}>
+                        {/* <EnchantImg
+                          style={{
+                            backgroundImage: `url(/assets/items_for_ui/${enchantImages[item]})`,
+                          }}
+                        /> */}
                         <DefaultButton
                           onClick={() => setSelectedEnchantsToggle(item)}
                           style={{
