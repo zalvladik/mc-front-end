@@ -1,3 +1,5 @@
+import { enchantsWithMaxLvl } from 'src/constants'
+import type { EnchantsEnum } from 'src/types'
 import type { CSSProperties } from 'styled-components'
 
 import {
@@ -9,7 +11,6 @@ import type { MinorEnchantsProps } from 'src/components/Auction/AuctionEnchantFi
 import { useMinorEnchants } from 'src/components/Auction/AuctionEnchantFinder/MinorEnchants/useMinorEnchants'
 import DefaultButton from 'src/components/DefaultButton'
 
-import { type EnchantsEnum, enchantsWithMaxLvl } from '../constants'
 import { DefaultButtonWrapper } from '../styles'
 
 const MinorEnchants = ({
@@ -66,7 +67,7 @@ const MinorEnchants = ({
           }}
         >
           {item.map(item => {
-            const isSelectedEnchant = selectedEnchants[item]
+            const isSelectedEnchant = selectedEnchants[item as EnchantsEnum]
 
             return (
               <DefaultButtonWrapper key={item}>

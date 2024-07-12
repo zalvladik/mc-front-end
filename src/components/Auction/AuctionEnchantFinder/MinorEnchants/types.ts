@@ -1,7 +1,6 @@
 import type { HTMLProps } from 'react'
 import type { EnchantsWithMaxLvlT } from 'src/contexts/AuctionProvider/types'
-
-import type { EnchantsEnum } from 'src/components/Auction/AuctionEnchantFinder/constants'
+import type { EnchantsEnum } from 'src/types'
 
 export type MinorEnchantsProps = {
   item: EnchantsEnum[]

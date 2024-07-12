@@ -27,7 +27,7 @@ const AuctionCreateLotForm = ({
       />
       <DefaultButton
         isLoading={isLoading}
-        style={{ width: 300, marginBottom: 60 }}
+        style={{ width: 290 }}
         disabled={
           isLoading ||
           !Number(itemPrice) ||

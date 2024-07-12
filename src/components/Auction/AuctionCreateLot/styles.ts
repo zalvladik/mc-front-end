@@ -105,7 +105,6 @@ export const CreateLotContainer = styled.div`
 
   display: flex;
   justify-content: space-between;
-  align-items: end;
 `
 
 export const ShowItemContainer = styled.div`
@@ -114,10 +113,8 @@ export const ShowItemContainer = styled.div`
   width: 293px;
   height: 130px;
 
-  /* margin-top: 120px; */
+  margin-top: auto;
   margin-left: 20px;
-
-  align-items: end;
 
   background-repeat: no-repeat;
   background-size: contain;

@@ -9,6 +9,8 @@ export const Container = styled.div`
   background-color: rgba(15, 25, 35, 1);
   padding: 15px 10px 10px 10px;
 
+  width: 320px;
+
   border-top-left-radius: 8px;
 
   transition: opacity 0.3s ease-in-out;
@@ -18,10 +20,6 @@ export const Container = styled.div`
   box-shadow: inset 0px 0px 16px 12px rgba(0, 0, 0, 0.6);
 `
 
-export const CategoryContainer = styled.div`
-  width: 320px;
-`
-
 export const DescriptionCategory = styled.div`
   text-align: start;
 
@@ -29,6 +27,44 @@ export const DescriptionCategory = styled.div`
     font-family: 'Minecraft', sans-serif;
     font-size: 16px;
     font-weight: 500;
+  }
+`
+
+export const EnchantTypes = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  border: 1px solid black;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+
+  padding: 6px 12px;
+
+  background: radial-gradient(
+    circle,
+    rgba(30, 67, 89, 1) 0%,
+    rgba(20, 47, 61, 1) 100%
+  );
+
+  -webkit-box-shadow: inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px 0px 96px 28px rgba(0, 0, 0, 0.75);
+
+  & > h1 {
+    font-family: 'Minecraft', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+
+    text-shadow: 2.5px 2.5px 1px rgb(200, 200, 200, 0.5);
+  }
+
+  & > div {
+    display: flex;
+
+    margin-top: 20px;
+    gap: 10px;
   }
 `
 
@@ -123,4 +159,11 @@ export const ButtonItems = styled.div<ButtonItemsProps>`
     background-repeat: no-repeat;
     background-size: contain;
   }
+`
+
+export const EnchantTypeCategoryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
 `

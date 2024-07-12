@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { enchantTranslations } from 'src/constants'
 
-import { enchantTranslations } from 'src/components/Auction/AuctionEnchantFinder/constants'
 import type { EnchantTranslationsT } from 'src/components/Auction/AuctionEnchantFinder/types'
 
 export const useMinorEnchants = () => {

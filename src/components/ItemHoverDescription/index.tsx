@@ -1,4 +1,5 @@
-import { enchantsLvl } from 'src/constants'
+import { enchantsLvl, enchantTranslations } from 'src/constants'
+import { EnchantsEnum } from 'src/types'
 
 import {
   Description,
@@ -11,11 +12,6 @@ import type {
 } from 'src/components/ItemHoverDescription/types'
 
 import { useItemHoverDescription } from './useItemHoverDescription'
-
-import {
-  EnchantsEnum,
-  enchantTranslations,
-} from '../Auction/AuctionEnchantFinder/constants'
 
 const ItemHoverDescription = ({
   durability,

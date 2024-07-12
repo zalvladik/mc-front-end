@@ -1,15 +1,5 @@
 import type { EnchantsWithMaxLvlT } from 'src/contexts/AuctionProvider/types'
-
-import type { EnchantsTypesEnum } from 'src/components/Auction/AuctionEnchantFinder/constants'
-
-export type EnchantItemT = {
-  enchantType: EnchantsTypesEnum
-  display_name: string
-  itemType: string
-  onClick?: () => void
-}
-
-export type EnchantItemsTypesT = EnchantItemT[]
+import type { EnchantsTypesEnum } from 'src/types'
 
 export type EnchantTranslationsT = {
   [key: string]: string

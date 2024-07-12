@@ -1,4 +1,4 @@
-import type { IsBuyFragmentProps } from 'src/pages/AuctionPage/types'
+import type { IsDisabeledByFragmentProps } from 'src/pages/AuctionPage/types'
 import styled from 'styled-components'
 
 export const DefaultInputWrapper = styled.div`
@@ -31,6 +31,8 @@ export const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
+  height: 750px;
+
   margin-top: 80px;
 
   border-radius: 8px;
@@ -41,21 +43,14 @@ export const Container = styled.div`
 
   & > div {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 `
 
-export const BodyCenterContainer = styled.div<IsBuyFragmentProps>`
+export const BodyCenterContainer = styled.div<IsDisabeledByFragmentProps>`
   width: 850px;
-
-  background: ${props =>
-    props.isBuyFragment
-      ? `linear-gradient(
-    0deg,
-    rgba(15, 50, 70, 1) 0%,
-    rgba(15, 15, 15, 1) 40%,
-    rgba(15, 15, 15, 1) 100%
-  )`
-      : 'rgba(0,0,0,0)'};
 
   & > div {
     width: 100%;
@@ -70,13 +65,14 @@ export const BodyCenterContainer = styled.div<IsBuyFragmentProps>`
 
 export const BodyContainer = styled.div`
   display: flex;
+  flex: 1;
 `
 
 export const AuctionCategoryWrapper = styled.div`
   position: relative;
 `
 
-export const AuctionCategoryDisabled = styled.div<IsBuyFragmentProps>`
+export const AuctionCategoryDisabled = styled.div<IsDisabeledByFragmentProps>`
   position: absolute;
 
   top: 50%;
@@ -99,6 +95,6 @@ export const AuctionCategoryDisabled = styled.div<IsBuyFragmentProps>`
     opacity 0.3s ease-in-out,
     transform 0.3s ease-in-out;
 
-  opacity: ${props => (props.isBuyFragment ? 0 : 1)};
-  transform: ${props => (props.isBuyFragment ? 'scale(0)' : 'scale(1)')};
+  opacity: ${props => (props.disabled ? 1 : 0)};
+  transform: ${props => (props.disabled ? 'scale(1)' : 'scale(0)')};
 `

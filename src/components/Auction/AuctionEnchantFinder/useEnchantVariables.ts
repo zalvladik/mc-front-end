@@ -1,8 +1,5 @@
-import {
-  EnchantsEnum,
-  EnchantsTypesEnum,
-  enchantVariables,
-} from 'src/components/Auction/AuctionEnchantFinder/constants'
+import { enchantVariables } from 'src/constants'
+import { EnchantsEnum, EnchantsTypesEnum } from 'src/types'
 
 export const useEnchantVariables = () => {
   const isArmorType = (enchantType: EnchantsTypesEnum) => {

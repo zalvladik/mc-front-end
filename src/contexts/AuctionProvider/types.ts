@@ -5,12 +5,7 @@ import type {
 } from 'react-query'
 import type { AuctionFragment } from 'src/constants'
 import type { GetLotsResponse, LotT } from 'src/services/api/Lot/types'
-import type { ReactChildrenT } from 'src/types'
-
-import type {
-  EnchantsEnum,
-  EnchantsTypesEnum,
-} from 'src/components/Auction/AuctionEnchantFinder/constants'
+import type { EnchantsEnum, EnchantsTypesEnum, ReactChildrenT } from 'src/types'
 
 export type AuctionContextDataT = {
   auctionFragment: AuctionFragment

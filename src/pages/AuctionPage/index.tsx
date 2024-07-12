@@ -44,6 +44,9 @@ const AuctionPage = (): JSX.Element => {
     return components[auctionFragment]
   }
 
+  const isDisabledCategory =
+    isFragment.isUserLotsFragment || isFragment.isCreateLotFragment
+
   return (
     <Container>
       <div>
@@ -54,6 +57,7 @@ const AuctionPage = (): JSX.Element => {
               onChange={e => setSearchValue(e.target.value)}
               placeholder="Пошук..."
               isVisible={isFragment.isBuyFragment || isFragment.isUserLotsFragment}
+              style={{ width: 320 }}
             />
 
             <DefaultButton
@@ -72,13 +76,13 @@ const AuctionPage = (): JSX.Element => {
           <AuctionCategoryWrapper>
             <AuctionCategory
               style={{
-                opacity: isFragment.isBuyFragment ? 1 : 0.3,
-                pointerEvents: isFragment.isBuyFragment ? 'auto' : 'none',
+                opacity: isDisabledCategory ? 0.3 : 1,
+                pointerEvents: isDisabledCategory ? 'none' : 'auto',
               }}
             />
-            <AuctionCategoryDisabled isBuyFragment={isFragment.isBuyFragment} />
+            <AuctionCategoryDisabled disabled={isDisabledCategory} />
           </AuctionCategoryWrapper>
-          <BodyCenterContainer isBuyFragment={isFragment.isCreateLotFragment}>
+          <BodyCenterContainer disabled={isDisabledCategory}>
             {getFragment()}
           </BodyCenterContainer>
           <AuctionController />

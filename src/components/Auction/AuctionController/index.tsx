@@ -1,4 +1,10 @@
 import { MdDeleteForever } from 'react-icons/md'
+import {
+  enchantsWithMaxLvl,
+  enchantTranslations,
+  itemTypesEnchantsFinderTranslations,
+} from 'src/constants'
+import type { EnchantsEnum } from 'src/types'
 
 import {
   ButtonsContainer,
@@ -7,12 +13,6 @@ import {
   EnchantSearchInfoDelete,
 } from 'src/components/Auction/AuctionController/styles'
 import { useAuctionController } from 'src/components/Auction/AuctionController/useAuctionController'
-import type { EnchantsEnum } from 'src/components/Auction/AuctionEnchantFinder/constants'
-import {
-  enchantsWithMaxLvl,
-  enchantTranslations,
-  itemTypesEnchantsFinderTranslations,
-} from 'src/components/Auction/AuctionEnchantFinder/constants'
 import DefaultButton from 'src/components/DefaultButton'
 import ItemSlotIcon from 'src/components/ItemSlotIcon'
 

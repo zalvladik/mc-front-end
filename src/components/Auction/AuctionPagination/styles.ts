@@ -13,7 +13,7 @@ export const Container = styled.div`
   border-bottom-left-radius: 8px;
 
   border-top: 1px solid gray;
-  height: 62px;
+  height: 64px;
 
   background: linear-gradient(
     90deg,
