@@ -104,7 +104,7 @@ const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
                             if (selectedEnchantType === enchantType) {
                               onClick()
 
-                              updateEnchantSearchParams(itemType)
+                              return
                             }
 
                             updateEnchantSearchParams(itemType, enchantType)

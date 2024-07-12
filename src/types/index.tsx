@@ -34,7 +34,7 @@ export enum ItemTypesEnchantsFinderEnum {
   FISHING_ROD = 'fishing_rod',
 }
 
-export enum ItemMaterialEnum {
+export enum ArmorMaterialEnum {
   LEATHER = 'leather',
   CHAINMAIL = 'chainmail',
   IRON = 'iron',
@@ -43,20 +43,13 @@ export enum ItemMaterialEnum {
   NETHERITE = 'netherite',
 }
 
-export type ArmorMaterialT =
-  | 'leather'
-  | 'iron'
-  | 'golden'
-  | 'diamond'
-  | 'netherite'
-  | 'chainmail'
-
-export type WeaponAndToolsMaterialT =
-  | 'wooden'
-  | 'iron'
-  | 'golden'
-  | 'diamond'
-  | 'netherite'
+export enum SwordAndToolsMaterialEnum {
+  WOODEN = 'wooden',
+  IRON = 'iron',
+  GOLDEN = 'golden',
+  DIAMOND = 'diamond',
+  NETHERITE = 'netherite',
+}
 
 export enum EnchantsTypesEnum {
   HELMET = 'helmet',

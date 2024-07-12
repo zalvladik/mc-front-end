@@ -1,10 +1,5 @@
 import type { UserT } from 'src/contexts/UserProvider/types'
-import {
-  type ArmorMaterialT,
-  EnchantsEnum,
-  EnchantsTypesEnum,
-  type WeaponAndToolsMaterialT,
-} from 'src/types'
+import { EnchantsEnum, EnchantsTypesEnum } from 'src/types'
 
 export const FETCH_URL = import.meta.env.VITE_URL_BY_BACKEND
 
@@ -130,23 +125,6 @@ export const enchantsLvl: { [key: string]: string } = {
   '4': 'IV',
   '5': 'V',
 }
-
-export const armorMaterials: ArmorMaterialT[] = [
-  'leather',
-  'chainmail',
-  'iron',
-  'golden',
-  'diamond',
-  'netherite',
-]
-
-export const weaponAndToolsMaterial: WeaponAndToolsMaterialT[] = [
-  'wooden',
-  'iron',
-  'golden',
-  'diamond',
-  'netherite',
-]
 
 export const enchantVariables = {
   [EnchantsTypesEnum.HELMET]: [EnchantsEnum.AQUA_AFFINITY, EnchantsEnum.RESPIRATION],
