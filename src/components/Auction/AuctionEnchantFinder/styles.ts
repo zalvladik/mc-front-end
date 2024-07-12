@@ -48,11 +48,13 @@ export const Container = styled.div`
 `
 
 export const ButtonsContainer = styled.div`
-  width: 460px;
+  width: 500px;
 
   padding: 10px;
 
   margin-top: 50px;
+
+  translate: 30px 0px;
 
   display: flex;
   flex-direction: column;

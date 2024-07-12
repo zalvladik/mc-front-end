@@ -95,7 +95,7 @@ const AuctionEnchantFinder = (): JSX.Element => {
                         <DefaultButton
                           onClick={() => setSelectedEnchantsToggle(item)}
                           style={{
-                            width: enchantsWithMaxLvl[item] === 1 ? '100%' : '86%',
+                            width: '87%',
                             opacity: !isSelectedEnchants ? 0.4 : 1,
                           }}
                           textStyle={textStyle}

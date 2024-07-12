@@ -2,7 +2,7 @@ import { FaArrowDownShortWide } from 'react-icons/fa6'
 import styled from 'styled-components'
 
 export const ButtonsContainer = styled.div`
-  width: 410px;
+  width: 470px;
 
   padding: 10px;
 
@@ -16,7 +16,7 @@ export const OverflowMinorEnchants = styled.div`
 
   overflow: hidden;
 
-  width: 440px;
+  width: 480px;
 
   z-index: 1;
 

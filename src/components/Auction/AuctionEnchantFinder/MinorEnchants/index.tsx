@@ -80,7 +80,7 @@ const MinorEnchants = ({
                     )
                   }}
                   style={{
-                    width: enchantsWithMaxLvl[item] === 1 ? '100%' : '85%',
+                    width: '86%',
                     opacity: isSelectedEnchant ? 1 : 0.4,
                   }}
                   textStyle={textStyle}
