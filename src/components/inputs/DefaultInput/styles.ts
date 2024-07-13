@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+export const InputWrapper = styled.div`
+  position: relative;
+`
+
 export const Input = styled.input`
   padding: 10px 20px;
   font-size: 30px;
@@ -19,4 +23,18 @@ export const Input = styled.input`
   @media screen and (max-width: 390px) {
     font-size: 12px;
   }
+`
+
+export const RightIcon = styled.div`
+  position: absolute;
+  z-index: 9;
+
+  right: 16px;
+  top: 55%;
+
+  translate: 0% -50%;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('/assets/icons_for_ui/search.png');
 `

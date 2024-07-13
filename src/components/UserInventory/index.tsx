@@ -29,7 +29,8 @@ const UserInventory = (): JSX.Element => {
     <InventoryWrapper>
       <DefaultInputWrapper>
         <DefaultInput
-          style={{ zIndex: 2, position: 'absolute', right: 0, bottom: 0 }}
+          containerStyle={{ zIndex: 2, position: 'absolute', right: 0, bottom: 0 }}
+          rightIconSize={40}
           placeholder="Пошук"
           value={searchValue}
           onChange={e => searchFilter(e.target.value)}

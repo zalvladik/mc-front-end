@@ -14,7 +14,8 @@ const AuctionCreateLotForm = ({
   return (
     <AuctionCreateLotFormContainer>
       <DefaultInput
-        style={{ textAlign: 'center' }}
+        style={{ textAlign: 'center', width: 290 }}
+        searchIcon={false}
         placeholder="Ціна"
         value={itemPrice}
         onChange={e => {

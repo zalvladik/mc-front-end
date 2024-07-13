@@ -18,7 +18,7 @@ export const DefaultInputWrapper = styled.div`
     display: flex;
     gap: 30px;
 
-    & > input {
+    & .defaultInput {
       font-size: 20px;
       width: 340px;
     }

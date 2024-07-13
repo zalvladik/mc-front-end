@@ -32,8 +32,4 @@ export const AuctionCreateLotFormContainer = styled.div`
   box-shadow:
     inset 0px 0px 40px 10px rgba(0, 0, 0, 0.6),
     0px 0px 10px -5px rgba(255, 255, 255, 1);
-
-  & > input {
-    width: 290px;
-  }
 `
