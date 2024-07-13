@@ -8,7 +8,8 @@ import type { DefaultInputProps } from 'src/components/inputs/DefaultInput/types
 const DefaultInput = ({
   containerStyle,
   isVisible = true,
-  searchIcon = true,
+  rightIcon = true,
+  rightIconUrl = 'icons_for_ui/search.png',
   rightIconSize = 32,
   style,
   ...props
@@ -25,13 +26,14 @@ const DefaultInput = ({
           }}
           {...props}
         />
-        {searchIcon && (
+        {rightIcon && (
           <RightIcon
             style={{
               width: rightIconSize,
               height: rightIconSize,
               opacity: isVisible ? 1 : 0,
               pointerEvents: isVisible ? 'auto' : 'none',
+              backgroundImage: `url('/assets/${rightIconUrl}')`,
             }}
           />
         )}

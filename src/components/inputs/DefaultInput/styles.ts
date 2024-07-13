@@ -30,11 +30,10 @@ export const RightIcon = styled.div`
   z-index: 9;
 
   right: 16px;
-  top: 55%;
+  top: 50%;
 
   translate: 0% -50%;
 
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url('/assets/icons_for_ui/search.png');
 `

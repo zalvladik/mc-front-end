@@ -15,13 +15,14 @@ const AuctionCreateLotForm = ({
     <AuctionCreateLotFormContainer>
       <DefaultInput
         style={{ textAlign: 'center', width: 290 }}
-        searchIcon={false}
+        rightIconUrl="items_for_ui/deepslate_diamond_ore.png"
+        rightIconSize={40}
         placeholder="Ціна"
         value={itemPrice}
         onChange={e => {
           const value = Number(e.target.value)
 
-          if (value < 0) return
+          if (value < 0 || value > 15552) return
 
           setItemPrice(e.target.value)
         }}
