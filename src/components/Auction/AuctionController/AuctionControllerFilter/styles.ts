@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
 
   gap: 8px;
-  margin: auto 0px 10px 0px;
+  margin: auto 0px 0px 0px;
 
   justify-content: center;
 

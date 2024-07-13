@@ -21,8 +21,6 @@ export const useCreateItemLot = () => {
         items!.filter(item => data.item!.id !== item.id),
       )
 
-      queryClient.invalidateQueries(CacheKeys.LOTS)
-
       toast.success({ message: ['Лот створено'] })
     },
     onError: (error: Error) => {

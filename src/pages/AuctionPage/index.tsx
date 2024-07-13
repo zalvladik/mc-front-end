@@ -31,7 +31,6 @@ const AuctionPage = (): JSX.Element => {
     findLotByName,
     money,
     isLoadingByeLots,
-    enchantSearchParams,
   } = useAuctionPage()
 
   const getFragment = (): JSX.Element => {
@@ -45,8 +44,10 @@ const AuctionPage = (): JSX.Element => {
     return components[auctionFragment]
   }
 
-  const isDisabledCategory =
-    isFragment.isUserLotsFragment || isFragment.isCreateLotFragment
+  const { isUserLotsFragment, isCreateLotFragment, isEnchantFinderFragment } =
+    isFragment
+
+  const isDisabledCategory = isUserLotsFragment || isCreateLotFragment
 
   return (
     <Container>
@@ -56,38 +57,25 @@ const AuctionPage = (): JSX.Element => {
             <DefaultInput
               value={searchValue}
               onChange={e => setSearchValue(e.target.value)}
-              placeholder="Пошук..."
-              isVisible={isFragment.isBuyFragment || isFragment.isUserLotsFragment}
+              placeholder="Пошук предмета..."
+              disabled={
+                isCreateLotFragment || isEnchantFinderFragment || isLoadingByeLots
+              }
               style={{ width: 320 }}
             />
 
             <DefaultButton
               isLoading={isLoadingByeLots}
-              disabled={isLoadingByeLots}
+              disabled={
+                isCreateLotFragment || isLoadingByeLots || isUserLotsFragment
+              }
               onClick={findLotByName}
               style={{ width: 200 }}
-              isVisible={isFragment.isBuyFragment}
             >
               Пошук
             </DefaultButton>
-
-            <div>
-              <DefaultButton
-                isLoading={isLoadingByeLots}
-                disabled={
-                  isLoadingByeLots ||
-                  (!Object.keys(enchantSearchParams.enchants).length &&
-                    isFragment.isEnchantFinderFragment)
-                }
-                onClick={() => {}}
-                style={{ width: 320 }}
-                isVisible={isFragment.isEnchantFinderFragment}
-              >
-                Пошук
-              </DefaultButton>
-            </div>
           </div>
-          <MoneyTable money={money} style={{ flexDirection: 'row', gap: 80 }} />
+          <MoneyTable money={money} style={{ flexDirection: 'row', gap: 60 }} />
         </DefaultInputWrapper>
         <BodyContainer>
           <AuctionCategoryWrapper>
@@ -99,7 +87,7 @@ const AuctionPage = (): JSX.Element => {
             />
             <AuctionCategoryDisabled disabled={isDisabledCategory} />
           </AuctionCategoryWrapper>
-          <BodyCenterContainer disabled={isFragment.isCreateLotFragment}>
+          <BodyCenterContainer disabled={isCreateLotFragment}>
             {getFragment()}
           </BodyCenterContainer>
           <AuctionController />

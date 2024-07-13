@@ -17,7 +17,7 @@ export const MoneyAmountContainer = styled.ul`
     & > h1 {
       font-family: 'Minecraft', sans-serif;
       padding-left: 10px;
-      font-size: 36px;
+      font-size: 30px;
       font-weight: 500;
       color: #e2e2e2;
 

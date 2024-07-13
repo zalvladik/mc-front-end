@@ -9,9 +9,8 @@ import { useDefaultButton } from 'src/components/DefaultButton/useDefaultButton'
 const DefaultButton = ({
   color,
   children,
-  disabled,
+  disabled = false,
   isLoading,
-  isVisible = true,
   style,
   textStyle,
   ...props
@@ -22,7 +21,7 @@ const DefaultButton = ({
     <Container
       ref={containerRef}
       style={{
-        opacity: disabled ? 0.5 : isVisible ? 1 : 0,
+        opacity: disabled ? 0.4 : 1,
         pointerEvents: disabled ? 'none' : 'auto',
         ...style,
       }}

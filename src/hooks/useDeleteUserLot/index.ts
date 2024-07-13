@@ -54,7 +54,20 @@ export const useDeleteUserLot = (afterSubmit: (value: void) => void) => {
           }) ?? [],
       )
 
+      const userLots = queryClient.getQueryData<LotT[]>(CacheKeys.USER_LOTS) ?? []
+
+      if (userLots.length) {
+        queryClient.setQueryData<ShulkerT[]>(CacheKeys.USER_LOTS, userLots => {
+          return userLots?.filter(lot => lot.id !== data.id) ?? []
+        })
+      }
+
+      if (!userLots.length) {
+        queryClient.invalidateQueries(CacheKeys.USER_LOTS)
+      }
+
       afterSubmit()
+
       toast.success({ message: ['Лот видалено'] })
       onClose()
     },

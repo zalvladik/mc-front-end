@@ -5,6 +5,7 @@ export type DefaultInputProps = {
   containerStyle?: CSSProperties
   isVisible?: boolean
   rightIcon?: boolean
+  disabled?: boolean
   rightIconUrl?: string
   rightIconSize?: number
 } & InputHTMLAttributes<HTMLInputElement>

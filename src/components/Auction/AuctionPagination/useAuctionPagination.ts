@@ -33,12 +33,10 @@ export const useAuctionPagination = () => {
 
     if (isEnchantFinderFragment) return true
 
-    if (isBuyFragment) return !dataUserLots.length || totalPages <= 1
+    if (isUserLotsFragment) return !dataUserLots.length || totalPages <= 1
 
     if (isBuyFragment) {
-      return !dataByeLots.length && isLoadingByeLots
-        ? true
-        : (!dataByeLots.length && !isLoadingByeLots) || totalPages <= 1
+      return (!dataByeLots.length && !isLoadingByeLots) || totalPages <= 1
     }
   }
 

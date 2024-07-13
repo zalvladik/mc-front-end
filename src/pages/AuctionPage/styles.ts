@@ -9,10 +9,12 @@ export const DefaultInputWrapper = styled.div`
   justify-content: space-between;
   padding-right: 50px;
 
-  top: -24px;
+  top: -16px;
   left: 0px;
 
   translate: 0% -100%;
+
+  align-items: center;
 
   & > div {
     display: flex;
@@ -24,8 +26,6 @@ export const DefaultInputWrapper = styled.div`
     }
 
     & > div:last-child {
-      position: absolute;
-
       left: 0px;
     }
   }
@@ -39,7 +39,7 @@ export const Container = styled.div`
 
   height: 750px;
 
-  margin-top: 80px;
+  margin-top: 60px;
 
   border-radius: 8px;
 
