@@ -43,7 +43,7 @@ export const PlayerRoleImageWrapper = styled.div`
   & > div {
     position: relative;
 
-    &:hover > div.HoverDescription {
+    &:hover > div.hover_description {
       display: flex;
     }
   }

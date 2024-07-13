@@ -1,3 +1,4 @@
+import AuctionControlletFilter from 'src/components/Auction/AuctionController/AuctionControllerFilter'
 import {
   ButtonsContainer,
   Container,
@@ -27,6 +28,8 @@ const AuctionController = (): JSX.Element => {
           )
         })}
       </ButtonsContainer>
+
+      <AuctionControlletFilter />
     </Container>
   )
 }

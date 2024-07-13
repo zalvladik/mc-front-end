@@ -6,7 +6,7 @@ const HoverDescription = ({
   ...props
 }: HoverDescriptionProps): JSX.Element => {
   return (
-    <Container className="HoverDescription" {...props}>
+    <Container className="hover_description" {...props}>
       <Description>
         {description.map((item, i) => (
           <li

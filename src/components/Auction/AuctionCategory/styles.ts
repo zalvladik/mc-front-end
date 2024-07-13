@@ -60,7 +60,7 @@ export const EnchantTypes = styled.div`
 export const CategoryList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9.5px;
 
   padding: 10px;
   border-radius: 8px;
@@ -137,8 +137,8 @@ export const ButtonItems = styled.div<ButtonItemsProps>`
   align-items: center;
 
   & > div:first-child {
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
 
     display: flex;
     align-items: center;

@@ -80,7 +80,7 @@ export const Container = styled.div`
       cursor: pointer;
       transform: scale(1.05);
 
-      & > .HoverDescription {
+      & > .hover_description {
         display: flex;
         font-size: 20px;
       }

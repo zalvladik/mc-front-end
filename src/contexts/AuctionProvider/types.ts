@@ -34,6 +34,8 @@ export type AuctionContextDataT = {
   }
   enchantSearchParams: EnchantSearchParamsT
   setEnchantSearchParams: (value: EnchantSearchParamsT) => void
+  filterListParams: FilterListParamsT
+  setFilterListParams: (value: FilterListParamsT) => void
 }
 
 export type AuctionProviderT = ReactChildrenT
@@ -46,4 +48,11 @@ export type EnchantSearchParamsT = {
   enchantType: EnchantsTypesEnum | ''
   enchants: EnchantsWithMaxLvlT
   itemType: string | ''
+}
+
+export type FilterListParamsT = {
+  didNeedUserLots: boolean
+  didNeedShulkers: boolean
+  didNeedIdentical: boolean
+  didMoneyToUp: boolean
 }

@@ -68,7 +68,7 @@ export const DeleteItemTicket = styled.button<StyledDeleteItemTicketProps>`
     transform: scale(1.1);
     rotate: 0deg;
 
-    & > .HoverDescription {
+    & > .hover_description {
       display: flex;
       translate: -50% -160%;
 

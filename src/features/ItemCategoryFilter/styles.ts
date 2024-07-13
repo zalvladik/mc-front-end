@@ -29,7 +29,7 @@ export const CatogeryButton = styled.div`
     cursor: pointer;
     transform: scale(1.05);
 
-    & > div.HoverDescription {
+    & > div.hover_description {
       display: flex;
     }
   }

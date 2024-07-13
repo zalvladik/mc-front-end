@@ -54,7 +54,7 @@ export const ButtonsContainer = styled.div`
 
   margin-top: 50px;
 
-  translate: 30px 0px;
+  /* translate: 30px 0px; */
 
   display: flex;
   flex-direction: column;

@@ -25,7 +25,7 @@ export const Container = styled.div`
     cursor: pointer;
     transform: translate(0%, -100%) scale(1.05);
 
-    & > .HoverDescription {
+    & > .hover_description {
       display: flex;
       translate: -50% -150%;
     }
