@@ -1,12 +1,12 @@
 import { useQuery } from 'react-query'
 import { CacheKeys } from 'src/constants'
 import Lot from 'src/services/api/Lot'
-import type { GetLotsProps } from 'src/services/api/Lot/types'
+import type { GetEnchantLotsProps } from 'src/services/api/Lot/types'
 
-export const useGetLots = (payload: GetLotsProps) => {
+export const useGetEnchantLots = (payload: GetEnchantLotsProps) => {
   const { refetch, data, isLoading } = useQuery({
-    queryKey: [CacheKeys.LOTS, { ...payload }],
-    queryFn: () => Lot.getLots(payload),
+    queryKey: [CacheKeys.ENCHANT_LOTS, { ...payload }],
+    queryFn: () => Lot.getEnchantLots(payload),
     staleTime: 20 * 1000,
     cacheTime: 30 * 1000,
   })

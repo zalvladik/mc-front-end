@@ -48,6 +48,6 @@ export const useAuctionPagination = () => {
     maxLots: user.lotCount,
     didShowUserLotsCount,
     didVanishPagesInfo: Boolean(didVanishPagesInfo()),
-    isByeFragment: auctionFragment === AuctionFragment.BUY_LOT,
+    isByeFragment: auctionFragment === AuctionFragment.BUY_LOTS,
   }
 }

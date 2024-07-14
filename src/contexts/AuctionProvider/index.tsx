@@ -10,6 +10,7 @@ import type {
   FilterListParamsT,
 } from 'src/contexts/AuctionProvider/types'
 import { auctionUrlQueryParams } from 'src/helpers'
+import { useGetEnchantLots } from 'src/hooks/useGetEnchantLots'
 import { useGetLots } from 'src/hooks/useGetLots'
 import { useGetUserLots } from 'src/hooks/useGetUserLots'
 import type { LotT } from 'src/services/api/Lot/types'
@@ -21,7 +22,7 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     didNeedUserLots: false,
     didNeedShulkers: false,
     didNeedIdentical: false,
-    didMoneyToUp: false,
+    didPriceToUp: true,
   })
 
   const [enchantSearchParams, setEnchantSearchParams] =
@@ -38,11 +39,12 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   const display_nameOrType = searchParams.get('display_nameOrType') || ''
 
   const [auctionFragment, setAuctionFragment] = useState<AuctionFragment>(
-    AuctionFragment.BUY_LOT,
+    AuctionFragment.BUY_LOTS,
   )
 
   const [currentPageUserLots, setCurrentPageUserLots] = useState(1)
   const [currentPageByeLots, setCurrentPageByeLots] = useState(page)
+  const [currentPageEnchantLots, setCurrentPageEnchantLots] = useState(1)
 
   const [searchValueUserLots, setSearchValueUserLots] = useState('')
   const [searchValueByeLots, setSearchValueByeLots] = useState(display_nameOrType)
@@ -52,27 +54,37 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
 
   const [selectedCategory, setSelectedCategory] = useState(category)
 
-  const [storageTotalPages, setStorageTotalPages] = useState(1)
+  const [storageTotalPagesByeLots, setStorageTotalPagesByeLots] = useState(1)
+
+  const [storageTotalPagesEnchantLots, setStorageTotalPagesEnchantLots] = useState(1)
 
   const { data: dataUserLots, isLoading: isLoadingUserLots } = useGetUserLots()
 
   const isFragment = {
-    isBuyFragment: AuctionFragment.BUY_LOT === auctionFragment,
-    isCreateLotFragment: AuctionFragment.CREATE_LOT === auctionFragment,
+    isBuyFragment: AuctionFragment.BUY_LOTS === auctionFragment,
+    isCreateLotFragment: AuctionFragment.CREATE_LOTS === auctionFragment,
     isUserLotsFragment: AuctionFragment.USER_LOTS === auctionFragment,
-    isEnchantFinderFragment: AuctionFragment.ENCHANT_FINDER === auctionFragment,
+    isEnchantFinderFragment: AuctionFragment.ENCHANT_LOTS === auctionFragment,
   }
 
   const {
     refetch,
     data: dataByeLots,
-    totalPageByeLots,
+    totalPage: totalPageByeLots,
     isLoading: isLoadingByeLots,
   } = useGetLots({
     category: selectedCategory,
     page: currentPageByeLots,
     display_nameOrType: finalSearchValueByeLots,
+    ...filterListParams,
   })
+
+  const {
+    refetch: refetchEnchantSearch,
+    data: dataEnchantSearch,
+    totalPage: totalPageEnchantLots,
+    isLoading: isLoadingEnchantSearch,
+  } = useGetEnchantLots({ ...enchantSearchParams, ...filterListParams })
 
   useEffect(() => {
     setCurrentPageByeLots(1)
@@ -90,10 +102,17 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   }, [currentPageByeLots])
 
   useEffect(() => {
-    if (totalPageByeLots && totalPageByeLots !== storageTotalPages) {
-      setStorageTotalPages(totalPageByeLots)
+    if (totalPageByeLots && totalPageByeLots !== storageTotalPagesByeLots) {
+      setStorageTotalPagesByeLots(totalPageByeLots)
     }
-  }, [totalPageByeLots])
+
+    if (
+      totalPageEnchantLots &&
+      totalPageEnchantLots !== storageTotalPagesEnchantLots
+    ) {
+      setCurrentPageEnchantLots(totalPageEnchantLots)
+    }
+  }, [totalPageByeLots, storageTotalPagesEnchantLots])
 
   const filteredUserLots = dataUserLots.filter(lot => {
     const lotElement = (lot?.shulker || lot?.item)!
@@ -116,31 +135,40 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   }
 
   const getCurrentPage = (): number => {
-    if (auctionFragment === AuctionFragment.BUY_LOT) return currentPageByeLots
+    if (auctionFragment === AuctionFragment.BUY_LOTS) return currentPageByeLots
+
+    if (auctionFragment === AuctionFragment.ENCHANT_LOTS)
+      return currentPageEnchantLots
 
     return currentPageUserLots
   }
 
-  const getAuctionFragment = (): Dispatch<SetStateAction<number>> => {
-    if (auctionFragment === AuctionFragment.BUY_LOT) return setCurrentPageByeLots
+  const getSetCurrentPage = (): Dispatch<SetStateAction<number>> => {
+    if (auctionFragment === AuctionFragment.BUY_LOTS) return setCurrentPageByeLots
+
+    if (auctionFragment === AuctionFragment.ENCHANT_LOTS)
+      return setCurrentPageEnchantLots
 
     return setCurrentPageUserLots
   }
 
   const getTotalPages = (): number => {
-    if (auctionFragment === AuctionFragment.BUY_LOT) return storageTotalPages
+    if (auctionFragment === AuctionFragment.BUY_LOTS) return storageTotalPagesByeLots
+
+    if (auctionFragment === AuctionFragment.ENCHANT_LOTS)
+      return storageTotalPagesEnchantLots
 
     return tolalPageUserLots
   }
 
   const getSearchValue = (): string => {
-    if (auctionFragment === AuctionFragment.BUY_LOT) return searchValueByeLots
+    if (auctionFragment === AuctionFragment.BUY_LOTS) return searchValueByeLots
 
     return searchValueUserLots
   }
 
   const getSetSearchValue = (): Dispatch<SetStateAction<string>> => {
-    if (auctionFragment === AuctionFragment.BUY_LOT) return setSearchValueByeLots
+    if (auctionFragment === AuctionFragment.BUY_LOTS) return setSearchValueByeLots
 
     return setSearchValueUserLots
   }
@@ -158,7 +186,7 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
       currentPage: getCurrentPage(),
       totalPages: getTotalPages(),
       findLotByName,
-      setCurrentPage: getAuctionFragment(),
+      setCurrentPage: getSetCurrentPage(),
       setSearchValue: getSetSearchValue(),
       setSelectedCategory,
       searchValue: getSearchValue(),
@@ -184,7 +212,7 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
       isLoadingByeLots,
       isLoadingUserLots,
       dataByeLots,
-      storageTotalPages,
+      storageTotalPagesByeLots,
     ],
   )
 

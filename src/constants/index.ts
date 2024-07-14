@@ -67,6 +67,7 @@ export enum CacheKeys {
   USER_ITEMS = 'user_items',
   USER_ITEM_TICKETS = 'user_item_tickets',
   USER_LOTS = 'user_lots',
+  ENCHANT_LOTS = 'enchant_lots',
   LOTS = 'lots',
   ITEM_TICKET = 'item_ticket',
   USER_SKIN = 'user_skin',
@@ -77,10 +78,10 @@ export enum CacheKeys {
 }
 
 export enum AuctionFragment {
-  BUY_LOT = 'buy_lot',
-  CREATE_LOT = 'create_lot',
+  BUY_LOTS = 'buy_lots',
+  CREATE_LOTS = 'create_lots',
   USER_LOTS = 'user_lots',
-  ENCHANT_FINDER = 'enchant_finder',
+  ENCHANT_LOTS = 'enchant_lots',
 }
 
 export enum FetchEndpoint {

@@ -10,7 +10,7 @@ const AuctionControlletFilter = (): JSX.Element => {
   const {
     buttonFilterList,
     getImgSelectForFilter,
-    didMoneyToUp,
+    didPriceToUp,
     setFilterListParams,
     filterListParams,
   } = useAuctionControlletFilter()
@@ -33,12 +33,12 @@ const AuctionControlletFilter = (): JSX.Element => {
         onClick={() =>
           setFilterListParams({
             ...filterListParams,
-            didMoneyToUp: !didMoneyToUp,
+            didPriceToUp: !didPriceToUp,
           })
         }
       >
         <div style={{ backgroundImage: `url(/assets/items_for_ui/diamond.png)` }} />
-        <div>{didMoneyToUp ? '>' : '<'}</div>
+        <div>{didPriceToUp ? '>' : '<'}</div>
 
         <HoverDescription description={['Зниження/підвищення цін']} />
       </MoneyFilterParam>

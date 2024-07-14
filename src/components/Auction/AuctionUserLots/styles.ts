@@ -42,6 +42,8 @@ export const TheadContainer = styled.div`
       font-family: 'Minecraft', sans-serif;
       font-size: 20px;
       font-weight: 500;
+
+      text-shadow: 2px 2px 1px rgba(120, 120, 120, 1);
     }
 
     & > div {

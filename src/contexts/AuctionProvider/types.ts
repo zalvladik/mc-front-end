@@ -53,5 +53,5 @@ export type FilterListParamsT = {
   didNeedUserLots: boolean
   didNeedShulkers: boolean
   didNeedIdentical: boolean
-  didMoneyToUp: boolean
+  didPriceToUp: boolean
 }

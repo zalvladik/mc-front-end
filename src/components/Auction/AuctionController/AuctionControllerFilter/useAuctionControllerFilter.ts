@@ -3,7 +3,7 @@ import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 export const useAuctionControlletFilter = () => {
   const { filterListParams, setFilterListParams } = useAuction()
 
-  const { didNeedIdentical, didNeedShulkers, didNeedUserLots, didMoneyToUp } =
+  const { didNeedIdentical, didNeedShulkers, didNeedUserLots, didPriceToUp } =
     filterListParams
 
   const getImgSelectForFilter = (isSelected: boolean) => {
@@ -51,7 +51,7 @@ export const useAuctionControlletFilter = () => {
   return {
     buttonFilterList,
     getImgSelectForFilter,
-    didMoneyToUp,
+    didPriceToUp,
     setFilterListParams,
     filterListParams,
   }

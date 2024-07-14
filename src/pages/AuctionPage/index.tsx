@@ -35,10 +35,10 @@ const AuctionPage = (): JSX.Element => {
 
   const getFragment = (): JSX.Element => {
     const components: Record<AuctionFragment, JSX.Element> = {
-      [AuctionFragment.BUY_LOT]: <AuctionItemList />,
-      [AuctionFragment.CREATE_LOT]: <AuctionCreateLot />,
+      [AuctionFragment.BUY_LOTS]: <AuctionItemList />,
+      [AuctionFragment.CREATE_LOTS]: <AuctionCreateLot />,
       [AuctionFragment.USER_LOTS]: <AuctionUserLots />,
-      [AuctionFragment.ENCHANT_FINDER]: <AuctionEnchantFinder />,
+      [AuctionFragment.ENCHANT_LOTS]: <AuctionEnchantFinder />,
     }
 
     return components[auctionFragment]

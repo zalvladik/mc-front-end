@@ -6,6 +6,7 @@ import type {
   CreateLotItemProps,
   CreateLotShulkerProps,
   DeleteLotResponseT,
+  GetEnchantLotsProps,
   GetLotsProps,
   GetLotsResponse,
   LotT,
@@ -16,9 +17,29 @@ class Lot {
     page = 1,
     category,
     display_nameOrType,
+    didNeedShulkers,
+    didNeedUserLots,
+    didPriceToUp,
+    didNeedIdentical,
   }: GetLotsProps): Promise<GetLotsResponse> {
+    const query = `${FetchEndpoint.LOT}?page=${encodeURIComponent(page.toString())}
+      ${category ? `&category=${encodeURIComponent(category)}` : ''}
+      ${display_nameOrType ? `&display_nameOrType=${encodeURIComponent(display_nameOrType)}` : ''}
+      &didNeedShulkers=${encodeURIComponent(didNeedShulkers.toString())}
+      &didNeedUserLots=${encodeURIComponent(didNeedUserLots.toString())}
+      &didPriceToUp=${encodeURIComponent(didPriceToUp.toString())}
+      &didNeedIdentical=${encodeURIComponent(didNeedIdentical.toString())}`
+
+    return api(query.replace(/\s/g, '')).json()
+  }
+
+  async getEnchantLots({
+    enchantType,
+    enchants,
+    itemType,
+  }: GetEnchantLotsProps): Promise<GetLotsResponse> {
     return api(
-      `${FetchEndpoint.LOT}?page=${page}${category ? `&category=${category}` : ''}${display_nameOrType ? `&display_nameOrType=${display_nameOrType}` : ''}`,
+      `${FetchEndpoint.LOG_OUT}?enchantType=${enchantType}${enchants ? `&enchants=${enchants}` : ''}${itemType ? `&itemType=${itemType}` : ''}`,
     ).json()
   }
 
