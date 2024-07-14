@@ -68,6 +68,8 @@ export const useDeleteUserLot = (afterSubmit: (value: void) => void) => {
 
       afterSubmit()
 
+      queryClient.invalidateQueries([CacheKeys.LOTS])
+
       toast.success({ message: ['Лот видалено'] })
       onClose()
     },

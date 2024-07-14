@@ -9,7 +9,7 @@ export const useCreateShulkerLot = () => {
   const toast = useToast()
   const queryClient = useQueryClient()
 
-  const { data, mutate, isLoading, isSuccess } = useMutation({
+  const { data, mutate, isLoading } = useMutation({
     mutationFn: Lot.postShulkerLot,
     onSuccess: (data: LotT) => {
       queryClient.setQueryData<LotT[]>(CacheKeys.USER_LOTS, lots => [
@@ -25,6 +25,8 @@ export const useCreateShulkerLot = () => {
           }) ?? [],
       )
 
+      queryClient.invalidateQueries([CacheKeys.LOTS])
+
       toast.success({ message: ['Лот створено'] })
     },
     onError: (error: Error) => {
@@ -32,5 +34,5 @@ export const useCreateShulkerLot = () => {
     },
   })
 
-  return { mutate, data, isLoading, isSuccess }
+  return { mutate, data, isLoading }
 }

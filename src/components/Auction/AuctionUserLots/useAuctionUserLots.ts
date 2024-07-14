@@ -14,15 +14,12 @@ export const useAuctionUserLots = () => {
     setCurrentPage,
     currentPage,
     totalPages,
-    refetch,
   } = useAuction()
 
   const afterSubmit = () => {
     if (totalPages === currentPage && dataUserLots.length % 8 === 1) {
       setCurrentPage(totalPages - 1)
     }
-
-    refetch()
   }
 
   const openModal = (data: LotT | ShulkerT) => {

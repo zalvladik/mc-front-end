@@ -201,6 +201,7 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
       setEnchantSearchParams,
       filterListParams,
       setFilterListParams,
+      setStorageTotalPagesByeLots,
     }),
     [
       auctionFragment,

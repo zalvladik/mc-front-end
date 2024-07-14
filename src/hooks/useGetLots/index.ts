@@ -7,8 +7,8 @@ export const useGetLots = (payload: GetLotsProps) => {
   const { refetch, data, isLoading } = useQuery({
     queryKey: [CacheKeys.LOTS, { ...payload }],
     queryFn: () => Lot.getLots(payload),
-    staleTime: 20 * 1000,
-    cacheTime: 30 * 1000,
+    staleTime: 50 * 1000,
+    cacheTime: 60 * 1000,
   })
 
   return {
