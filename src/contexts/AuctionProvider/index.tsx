@@ -67,11 +67,22 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   } = useGetLots()
 
   useEffect(() => {
-    mutate({ page: 1, category: currentByeLotsCategory, ...filterListParams })
+    mutate({
+      page: 1,
+      category: currentByeLotsCategory,
+      display_nameOrType: currentByeLotDisplay_nameOrType,
+      ...filterListParams,
+    })
 
     updatePrevByeLotsSearchParams()
     updateNewByeLotsSearchParams({ page: 1 })
-    navigate(auctionUrlQueryParams(currentByeLotsCategory, 1))
+    navigate(
+      auctionUrlQueryParams(
+        currentByeLotsCategory,
+        1,
+        currentByeLotDisplay_nameOrType,
+      ),
+    )
   }, [currentByeLotsCategory])
 
   useEffect(() => {
