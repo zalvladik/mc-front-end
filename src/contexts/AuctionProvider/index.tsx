@@ -12,7 +12,7 @@ import { auctionUrlQueryParams } from 'src/helpers'
 import { useGetLots } from 'src/hooks/useGetLots'
 import { useGetUserLots } from 'src/hooks/useGetUserLots'
 import { useLotsSearchParams } from 'src/hooks/useLotsSearchParams'
-import type { UpdateNewByeLotsSearchParamsProps } from 'src/hooks/useLotsSearchParams/types'
+import type { EnchantSearchParamsT } from 'src/hooks/useLotsSearchParams/types'
 import type { LotT } from 'src/services/api/Lot/types'
 
 const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
@@ -31,19 +31,28 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     filterListParams,
   } = useLotsSearchParams()
 
-  const [currentPageUserLots, setCurrentPageUserLots] = useState(1)
+  const {
+    category: currentByeLotsCategory,
+    page: currentByeLotPage,
+    display_nameOrType: currentByeLotDisplay_nameOrType,
+  } = newByeLotsSearchParams
 
-  // const [currentPageEnchantLots, setCurrentPageEnchantLots] = useState(1)
+  const [enchantSearchParams, setEnchantSearchParams] =
+    useState<EnchantSearchParamsT>({
+      enchants: {},
+      enchantType: '',
+      itemType: '',
+    })
+
+  const [isFirstFetchByeLots, setIsFirstFetchByeLots] = useState(true)
+
+  const [fetchToggleByeLots, setFetchToggleByeLots] = useState(true)
+
+  const [currentPageUserLots, setCurrentPageUserLots] = useState(1)
 
   const [searchValueUserLots, setSearchValueUserLots] = useState('')
 
-  const [selectedCategory, setSelectedCategory] = useState(
-    newByeLotsSearchParams.category,
-  )
-
   const [storageTotalPagesByeLots, setStorageTotalPagesByeLots] = useState(1)
-
-  // const [storageTotalPagesEnchantLots, setStorageTotalPagesEnchantLots] = useState(1)
 
   const { data: dataUserLots, isLoading: isLoadingUserLots } = useGetUserLots()
 
@@ -55,7 +64,7 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   }
 
   const {
-    refetch,
+    refetch: refetchByeLots,
     data: dataByeLots,
     totalPage: totalPageByeLots,
     isLoading: isLoadingByeLots,
@@ -65,41 +74,35 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
       ...filterListParams,
     },
     isCanNewFetchGetByeLots,
+    fetchToggleByeLots,
+    setFetchToggleByeLots,
+    isFirstFetchByeLots,
+    setIsFirstFetchByeLots,
   )
 
-  // const {
-  //   refetch: refetchEnchantSearch,
-  //   data: dataEnchantSearch,
-  //   totalPage: totalPageEnchantLots,
-  //   isLoading: isLoadingEnchantSearch,
-  // } = useGetEnchantLots({ ...enchantSearchParams, ...filterListParams })
+  useEffect(() => {
+    setFetchToggleByeLots(true)
+
+    updateNewByeLotsSearchParams({ page: 1 })
+    navigate(auctionUrlQueryParams(currentByeLotsCategory, 1))
+  }, [currentByeLotsCategory])
 
   useEffect(() => {
-    setCurrentPageByeLots(1)
-    navigate(auctionUrlQueryParams(selectedCategory, 1))
-  }, [selectedCategory])
+    setFetchToggleByeLots(true)
 
-  useEffect(() => {
     navigate(
       auctionUrlQueryParams(
-        selectedCategory,
-        currentPageByeLots,
-        searchValueByeLots,
+        currentByeLotsCategory,
+        currentByeLotPage,
+        currentByeLotDisplay_nameOrType,
       ),
     )
-  }, [currentPageByeLots])
+  }, [currentByeLotPage])
 
   useEffect(() => {
     if (totalPageByeLots && totalPageByeLots !== storageTotalPagesByeLots) {
       setStorageTotalPagesByeLots(totalPageByeLots)
     }
-
-    // if (
-    //   totalPageEnchantLots &&
-    //   totalPageEnchantLots !== storageTotalPagesEnchantLots
-    // ) {
-    //   setCurrentPageEnchantLots(totalPageEnchantLots)
-    // }
   }, [totalPageByeLots])
 
   const filteredUserLots = dataUserLots.filter(lot => {
@@ -126,17 +129,14 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     if (auctionFragment === AuctionFragment.BUY_LOTS)
       return newByeLotsSearchParams.page
 
-    // if (auctionFragment === AuctionFragment.ENCHANT_LOTS)
-    //   return currentPageEnchantLots
-
     return currentPageUserLots
   }
 
-  const getSetCurrentPage = (): Dispatch<
-    SetStateAction<UpdateNewByeLotsSearchParamsProps>
-  > => {
+  const getSetCurrentPage = (): Dispatch<SetStateAction<any>> => {
     if (auctionFragment === AuctionFragment.BUY_LOTS)
-      return updateNewByeLotsSearchParams
+      return (value: number) => {
+        updateNewByeLotsSearchParams({ page: value })
+      }
 
     return setCurrentPageUserLots
   }
@@ -156,18 +156,33 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
 
   const getSetSearchValue = (): Dispatch<SetStateAction<any>> => {
     if (auctionFragment === AuctionFragment.BUY_LOTS)
-      return updateNewByeLotsSearchParams
+      return (value: string) => {
+        updateNewByeLotsSearchParams({ display_nameOrType: value })
+      }
 
     return setSearchValueUserLots
   }
 
   const findLotByName = (): void => {
-    updateNewByeLotsSearchParams(1)
-    navigate(auctionUrlQueryParams(selectedCategory, 1, searchValueByeLots))
+    if (!isCanNewFetchGetByeLots) return
+
+    updatePrevByeLotsSearchParams()
+    setFetchToggleByeLots(true)
+
+    refetchByeLots()
+
+    navigate(
+      auctionUrlQueryParams(
+        currentByeLotsCategory,
+        currentByeLotPage,
+        currentByeLotDisplay_nameOrType,
+      ),
+    )
   }
 
   const providerValue: AuctionContextDataT = useMemo(
     () => ({
+      isCanNewFetchGetByeLots,
       auctionFragment,
       setAuctionFragment,
       currentPage: getCurrentPage(),
@@ -175,27 +190,28 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
       findLotByName,
       setCurrentPage: getSetCurrentPage(),
       setSearchValue: getSetSearchValue(),
-      setSelectedCategory,
+      setSelectedCategory: (value: string) => {
+        updateNewByeLotsSearchParams({ category: value })
+      },
       searchValue: getSearchValue(),
-      selectedCategory,
+      selectedCategory: currentByeLotsCategory,
       dataUserLots: getUserLotsForPage(),
       dataByeLots,
       isLoadingByeLots,
       isLoadingUserLots,
-      refetch,
+      refetchByeLots,
       isFragment,
       enchantSearchParams,
       setEnchantSearchParams,
       filterListParams,
-      setFilterListParams,
+      updateFilterListParams,
       setStorageTotalPagesByeLots,
     }),
     [
       auctionFragment,
       findLotByName,
-      setSelectedCategory,
       setAuctionFragment,
-      selectedCategory,
+      currentByeLotsCategory,
       dataUserLots,
       isLoadingByeLots,
       isLoadingUserLots,

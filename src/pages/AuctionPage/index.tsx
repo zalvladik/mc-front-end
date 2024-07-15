@@ -31,6 +31,7 @@ const AuctionPage = (): JSX.Element => {
     findLotByName,
     money,
     isLoadingByeLots,
+    isCanNewFetchGetByeLots,
   } = useAuctionPage()
 
   const getFragment = (): JSX.Element => {
@@ -67,7 +68,10 @@ const AuctionPage = (): JSX.Element => {
             <DefaultButton
               isLoading={isLoadingByeLots}
               disabled={
-                isCreateLotFragment || isLoadingByeLots || isUserLotsFragment
+                isCreateLotFragment ||
+                isLoadingByeLots ||
+                isUserLotsFragment ||
+                !isCanNewFetchGetByeLots
               }
               onClick={findLotByName}
               style={{ width: 200 }}

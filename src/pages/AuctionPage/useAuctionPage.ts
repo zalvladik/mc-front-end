@@ -12,6 +12,7 @@ export const useAuctionPage = () => {
     setSearchValue,
     isLoadingByeLots,
     isFragment,
+    isCanNewFetchGetByeLots,
   } = useAuction()
 
   return {
@@ -23,5 +24,6 @@ export const useAuctionPage = () => {
     searchValue,
     setSearchValue,
     isLoadingByeLots,
+    isCanNewFetchGetByeLots,
   }
 }

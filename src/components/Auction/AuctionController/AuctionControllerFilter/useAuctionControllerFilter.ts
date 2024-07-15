@@ -1,7 +1,7 @@
 import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 
 export const useAuctionControlletFilter = () => {
-  const { filterListParams, setFilterListParams } = useAuction()
+  const { filterListParams, updateFilterListParams } = useAuction()
 
   const { didNeedIdentical, didNeedShulkers, didNeedUserLots, didPriceToUp } =
     filterListParams
@@ -18,7 +18,7 @@ export const useAuctionControlletFilter = () => {
       urlImg: '/assets/shulkers/shulker_box.webp',
       isSelected: didNeedShulkers,
       onClick: () => {
-        setFilterListParams({
+        updateFilterListParams({
           ...filterListParams,
           didNeedShulkers: !didNeedShulkers,
         })
@@ -29,7 +29,7 @@ export const useAuctionControlletFilter = () => {
       urlImg: '/assets/items_for_ui/player_head.png',
       isSelected: didNeedUserLots,
       onClick: () => {
-        setFilterListParams({
+        updateFilterListParams({
           ...filterListParams,
           didNeedUserLots: !didNeedUserLots,
         })
@@ -40,7 +40,7 @@ export const useAuctionControlletFilter = () => {
       urlImg: '/assets/items_for_ui/zombie_chiken.webp',
       isSelected: didNeedIdentical,
       onClick: () => {
-        setFilterListParams({
+        updateFilterListParams({
           ...filterListParams,
           didNeedIdentical: !didNeedIdentical,
         })
@@ -52,7 +52,7 @@ export const useAuctionControlletFilter = () => {
     buttonFilterList,
     getImgSelectForFilter,
     didPriceToUp,
-    setFilterListParams,
+    updateFilterListParams,
     filterListParams,
   }
 }

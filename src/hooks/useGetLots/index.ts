@@ -6,13 +6,22 @@ import type { GetLotsProps } from 'src/services/api/Lot/types'
 export const useGetLots = (
   payload: GetLotsProps,
   isCanNewFetchGetByeLots: boolean,
+  fetchToggle: boolean,
+  setFetchToggle: (value: boolean) => void,
+  isFirstFetchByeLots: boolean,
+  setIsFirstFetchByeLots: (value: boolean) => void,
 ) => {
+  console.log({ isFirstFetchByeLots, isCanNewFetchGetByeLots, fetchToggle })
   const { refetch, data, isLoading } = useQuery({
     queryKey: [CacheKeys.LOTS, { ...payload }],
     queryFn: () => Lot.getLots(payload),
-    enabled: isCanNewFetchGetByeLots,
+    enabled: isFirstFetchByeLots || (isCanNewFetchGetByeLots && fetchToggle),
     staleTime: 50 * 1000,
     cacheTime: 60 * 1000,
+    onSuccess: () => {
+      setIsFirstFetchByeLots(false)
+      setFetchToggle(false)
+    },
   })
 
   return {
