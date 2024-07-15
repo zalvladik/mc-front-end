@@ -10,7 +10,7 @@ import type {
   FilterListParamsT,
 } from 'src/contexts/AuctionProvider/types'
 import { auctionUrlQueryParams } from 'src/helpers'
-import { useGetEnchantLots } from 'src/hooks/useGetEnchantLots'
+// import { useGetEnchantLots } from 'src/hooks/useGetEnchantLots'
 import { useGetLots } from 'src/hooks/useGetLots'
 import { useGetUserLots } from 'src/hooks/useGetUserLots'
 import type { LotT } from 'src/services/api/Lot/types'
@@ -56,7 +56,7 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
 
   const [storageTotalPagesByeLots, setStorageTotalPagesByeLots] = useState(1)
 
-  const [storageTotalPagesEnchantLots, setStorageTotalPagesEnchantLots] = useState(1)
+  // const [storageTotalPagesEnchantLots, setStorageTotalPagesEnchantLots] = useState(1)
 
   const { data: dataUserLots, isLoading: isLoadingUserLots } = useGetUserLots()
 
@@ -79,12 +79,12 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     ...filterListParams,
   })
 
-  const {
-    refetch: refetchEnchantSearch,
-    data: dataEnchantSearch,
-    totalPage: totalPageEnchantLots,
-    isLoading: isLoadingEnchantSearch,
-  } = useGetEnchantLots({ ...enchantSearchParams, ...filterListParams })
+  // const {
+  //   refetch: refetchEnchantSearch,
+  //   data: dataEnchantSearch,
+  //   totalPage: totalPageEnchantLots,
+  //   isLoading: isLoadingEnchantSearch,
+  // } = useGetEnchantLots({ ...enchantSearchParams, ...filterListParams })
 
   useEffect(() => {
     setCurrentPageByeLots(1)
@@ -106,13 +106,13 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
       setStorageTotalPagesByeLots(totalPageByeLots)
     }
 
-    if (
-      totalPageEnchantLots &&
-      totalPageEnchantLots !== storageTotalPagesEnchantLots
-    ) {
-      setCurrentPageEnchantLots(totalPageEnchantLots)
-    }
-  }, [totalPageByeLots, storageTotalPagesEnchantLots])
+    // if (
+    //   totalPageEnchantLots &&
+    //   totalPageEnchantLots !== storageTotalPagesEnchantLots
+    // ) {
+    //   setCurrentPageEnchantLots(totalPageEnchantLots)
+    // }
+  }, [totalPageByeLots])
 
   const filteredUserLots = dataUserLots.filter(lot => {
     const lotElement = (lot?.shulker || lot?.item)!
@@ -155,8 +155,8 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   const getTotalPages = (): number => {
     if (auctionFragment === AuctionFragment.BUY_LOTS) return storageTotalPagesByeLots
 
-    if (auctionFragment === AuctionFragment.ENCHANT_LOTS)
-      return storageTotalPagesEnchantLots
+    // if (auctionFragment === AuctionFragment.ENCHANT_LOTS)
+    //   return storageTotalPagesEnchantLots
 
     return tolalPageUserLots
   }

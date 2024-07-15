@@ -10,7 +10,7 @@ export const TitleContainer = styled.div`
 
   padding: 5px 10px;
   margin: 0px auto;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 
   border-radius: 4px;
 

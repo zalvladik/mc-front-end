@@ -73,8 +73,8 @@ export const TheadContainer = styled.div`
 
 export const TbodyContainer = styled.div`
   width: 100%;
-  height: calc(90% - 3px);
 
+  height: 90%;
   display: flex;
   flex-direction: column;
 

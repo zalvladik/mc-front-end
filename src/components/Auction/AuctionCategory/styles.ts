@@ -26,7 +26,7 @@ export const DescriptionCategory = styled.div`
 
   & > p {
     font-family: 'Minecraft', sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
   }
 `
@@ -60,9 +60,9 @@ export const EnchantTypes = styled.div`
 export const CategoryList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 9.5px;
+  gap: 7px;
 
-  padding: 10px;
+  padding: 0px 10px;
   border-radius: 8px;
 `
 
@@ -137,8 +137,8 @@ export const ButtonItems = styled.div<ButtonItemsProps>`
   align-items: center;
 
   & > div:first-child {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
 
     display: flex;
     align-items: center;
