@@ -26,7 +26,7 @@ const MinorEnchants = ({
     overflowRef,
     minorEnchantsRef,
     mainContainerRef,
-    enchantTranslationsTypes,
+    enchantTranslations,
   } = useMinorEnchants()
 
   const isSelectedFromHere = Object.keys(selectedEnchants).find(enchant =>
@@ -47,7 +47,7 @@ const MinorEnchants = ({
       >
         {isSelectedFromHere ? (
           <>
-            {enchantTranslationsTypes[isSelectedFromHere]}
+            {enchantTranslations[isSelectedFromHere]}
             {!selected &&
               (enchantsWithMaxLvl[isSelectedFromHere] > 1
                 ? ` ${selectedEnchants[isSelectedFromHere as EnchantsEnum]} `
@@ -85,7 +85,7 @@ const MinorEnchants = ({
                   }}
                   textStyle={textStyle}
                 >
-                  {enchantTranslationsTypes[item]}
+                  {enchantTranslations[item]}
                 </DefaultButton>
                 {enchantsWithMaxLvl[item] > 1 && (
                   <DefaultButton

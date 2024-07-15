@@ -7,8 +7,6 @@ export const useAuctionEnchantFinder = () => {
 
   const { enchants: selectedEnchants } = newEnchantSearchParams
 
-  const enchantTranslationsTypes = enchantTranslations
-
   const setSelectedEnchantsToggle = (enchant: EnchantsEnum) => {
     if (selectedEnchants[enchant]) {
       const newSelectedEnchants = { ...selectedEnchants }
@@ -69,7 +67,7 @@ export const useAuctionEnchantFinder = () => {
     newEnchantSearchParams,
     selectedEnchants,
     setSelectedEnchantsToggle,
-    enchantTranslationsTypes,
+    enchantTranslations,
     setSelectedMinorEnchantsToggle,
     updateEnchantSearchParams,
     setEnchantLvl,

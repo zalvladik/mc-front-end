@@ -18,7 +18,7 @@ const AuctionEnchantFinder = (): JSX.Element => {
   const {
     newEnchantSearchParams,
     setSelectedEnchantsToggle,
-    enchantTranslationsTypes,
+    enchantTranslations,
     setSelectedMinorEnchantsToggle,
     setEnchantLvl,
   } = useAuctionEnchantFinder()
@@ -106,7 +106,7 @@ const AuctionEnchantFinder = (): JSX.Element => {
                           }}
                           textStyle={textStyle}
                         >
-                          {enchantTranslationsTypes[item]}
+                          {enchantTranslations[item]}
                         </DefaultButton>
                         {enchantsWithMaxLvl[item] > 1 && (
                           <DefaultButton

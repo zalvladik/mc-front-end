@@ -1,16 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { enchantTranslations } from 'src/constants'
 
-import type { EnchantTranslationsT } from 'src/components/Auction/AuctionEnchantFinder/types'
-
 export const useMinorEnchants = () => {
   const [selected, setSelected] = useState<boolean>(false)
 
   const overflowRef = useRef<HTMLDivElement>(null)
   const minorEnchantsRef = useRef<HTMLDivElement>(null)
   const mainContainerRef = useRef<HTMLDivElement>(null)
-
-  const enchantTranslationsTypes: EnchantTranslationsT = enchantTranslations
 
   useEffect(() => {
     if (overflowRef.current && minorEnchantsRef.current) {
@@ -46,6 +42,6 @@ export const useMinorEnchants = () => {
     overflowRef,
     minorEnchantsRef,
     mainContainerRef,
-    enchantTranslationsTypes,
+    enchantTranslations,
   }
 }
