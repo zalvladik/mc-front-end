@@ -43,16 +43,3 @@ export type AuctionProviderT = ReactChildrenT
 export type EnchantsWithMaxLvlT = Partial<{
   [key in EnchantsEnum]: number
 }>
-
-export type EnchantSearchParamsT = {
-  enchantType: EnchantsTypesEnum | ''
-  enchants: EnchantsWithMaxLvlT
-  itemType: string | ''
-}
-
-export type FilterListParamsT = {
-  didNeedUserLots: boolean
-  didNeedShulkers: boolean
-  didNeedIdentical: boolean
-  didPriceToUp: boolean
-}

@@ -1,58 +1,45 @@
 import type { Dispatch, SetStateAction } from 'react'
 import { useEffect, useMemo, useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { AuctionFragment } from 'src/constants'
 import { AuctionContext } from 'src/contexts'
 import type {
   AuctionContextDataT,
   AuctionProviderT,
-  EnchantSearchParamsT,
-  FilterListParamsT,
 } from 'src/contexts/AuctionProvider/types'
 import { auctionUrlQueryParams } from 'src/helpers'
 // import { useGetEnchantLots } from 'src/hooks/useGetEnchantLots'
 import { useGetLots } from 'src/hooks/useGetLots'
 import { useGetUserLots } from 'src/hooks/useGetUserLots'
+import { useLotsSearchParams } from 'src/hooks/useLotsSearchParams'
+import type { UpdateNewByeLotsSearchParamsProps } from 'src/hooks/useLotsSearchParams/types'
 import type { LotT } from 'src/services/api/Lot/types'
 
 const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   const navigate = useNavigate()
 
-  const [filterListParams, setFilterListParams] = useState<FilterListParamsT>({
-    didNeedUserLots: false,
-    didNeedShulkers: false,
-    didNeedIdentical: false,
-    didPriceToUp: true,
-  })
-
-  const [enchantSearchParams, setEnchantSearchParams] =
-    useState<EnchantSearchParamsT>({
-      enchants: {},
-      enchantType: '',
-      itemType: '',
-    })
-
-  const [searchParams] = useSearchParams()
-
-  const category = searchParams.get('category') || ''
-  const page = searchParams.get('page') ? Number(searchParams.get('page')) : 1
-  const display_nameOrType = searchParams.get('display_nameOrType') || ''
-
   const [auctionFragment, setAuctionFragment] = useState<AuctionFragment>(
     AuctionFragment.BUY_LOTS,
   )
 
+  const {
+    newByeLotsSearchParams,
+    updateFilterListParams,
+    updatePrevByeLotsSearchParams,
+    updateNewByeLotsSearchParams,
+    isCanNewFetchGetByeLots,
+    filterListParams,
+  } = useLotsSearchParams()
+
   const [currentPageUserLots, setCurrentPageUserLots] = useState(1)
-  const [currentPageByeLots, setCurrentPageByeLots] = useState(page)
-  const [currentPageEnchantLots, setCurrentPageEnchantLots] = useState(1)
+
+  // const [currentPageEnchantLots, setCurrentPageEnchantLots] = useState(1)
 
   const [searchValueUserLots, setSearchValueUserLots] = useState('')
-  const [searchValueByeLots, setSearchValueByeLots] = useState(display_nameOrType)
 
-  const [finalSearchValueByeLots, setfinalSearchValueByeLots] =
-    useState(display_nameOrType)
-
-  const [selectedCategory, setSelectedCategory] = useState(category)
+  const [selectedCategory, setSelectedCategory] = useState(
+    newByeLotsSearchParams.category,
+  )
 
   const [storageTotalPagesByeLots, setStorageTotalPagesByeLots] = useState(1)
 
@@ -72,12 +59,13 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     data: dataByeLots,
     totalPage: totalPageByeLots,
     isLoading: isLoadingByeLots,
-  } = useGetLots({
-    category: selectedCategory,
-    page: currentPageByeLots,
-    display_nameOrType: finalSearchValueByeLots,
-    ...filterListParams,
-  })
+  } = useGetLots(
+    {
+      ...newByeLotsSearchParams,
+      ...filterListParams,
+    },
+    isCanNewFetchGetByeLots,
+  )
 
   // const {
   //   refetch: refetchEnchantSearch,
@@ -135,19 +123,20 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   }
 
   const getCurrentPage = (): number => {
-    if (auctionFragment === AuctionFragment.BUY_LOTS) return currentPageByeLots
+    if (auctionFragment === AuctionFragment.BUY_LOTS)
+      return newByeLotsSearchParams.page
 
-    if (auctionFragment === AuctionFragment.ENCHANT_LOTS)
-      return currentPageEnchantLots
+    // if (auctionFragment === AuctionFragment.ENCHANT_LOTS)
+    //   return currentPageEnchantLots
 
     return currentPageUserLots
   }
 
-  const getSetCurrentPage = (): Dispatch<SetStateAction<number>> => {
-    if (auctionFragment === AuctionFragment.BUY_LOTS) return setCurrentPageByeLots
-
-    if (auctionFragment === AuctionFragment.ENCHANT_LOTS)
-      return setCurrentPageEnchantLots
+  const getSetCurrentPage = (): Dispatch<
+    SetStateAction<UpdateNewByeLotsSearchParamsProps>
+  > => {
+    if (auctionFragment === AuctionFragment.BUY_LOTS)
+      return updateNewByeLotsSearchParams
 
     return setCurrentPageUserLots
   }
@@ -155,27 +144,25 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   const getTotalPages = (): number => {
     if (auctionFragment === AuctionFragment.BUY_LOTS) return storageTotalPagesByeLots
 
-    // if (auctionFragment === AuctionFragment.ENCHANT_LOTS)
-    //   return storageTotalPagesEnchantLots
-
     return tolalPageUserLots
   }
 
   const getSearchValue = (): string => {
-    if (auctionFragment === AuctionFragment.BUY_LOTS) return searchValueByeLots
+    if (auctionFragment === AuctionFragment.BUY_LOTS)
+      return newByeLotsSearchParams.display_nameOrType
 
     return searchValueUserLots
   }
 
-  const getSetSearchValue = (): Dispatch<SetStateAction<string>> => {
-    if (auctionFragment === AuctionFragment.BUY_LOTS) return setSearchValueByeLots
+  const getSetSearchValue = (): Dispatch<SetStateAction<any>> => {
+    if (auctionFragment === AuctionFragment.BUY_LOTS)
+      return updateNewByeLotsSearchParams
 
     return setSearchValueUserLots
   }
 
   const findLotByName = (): void => {
-    setfinalSearchValueByeLots(searchValueByeLots)
-    setCurrentPageByeLots(1)
+    updateNewByeLotsSearchParams(1)
     navigate(auctionUrlQueryParams(selectedCategory, 1, searchValueByeLots))
   }
 

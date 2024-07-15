@@ -1,7 +1,7 @@
 import type {
   EnchantSearchParamsT,
   FilterListParamsT,
-} from 'src/contexts/AuctionProvider/types'
+} from 'src/hooks/useLotsSearchParams/types'
 import type { ItemT } from 'src/services/api/Items/types'
 import type { ShulkerT } from 'src/services/api/Shulker/types'
 
@@ -37,9 +37,9 @@ export type ByeLotProps = {
 }
 
 export type GetLotsProps = {
-  page?: number
-  category?: string
-  display_nameOrType?: string
+  page: number
+  category: string
+  display_nameOrType: string
 } & FilterListParamsT
 
 export type GetEnchantLotsProps = EnchantSearchParamsT & FilterListParamsT
