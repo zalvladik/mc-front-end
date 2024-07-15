@@ -14,7 +14,7 @@ export const useAuctionItemList = () => {
     isLoadingByeLots,
     dataByeLots,
     setCurrentPage,
-    refetch,
+    mutate,
     setStorageTotalPagesByeLots,
   } = useAuction()
 
@@ -22,14 +22,14 @@ export const useAuctionItemList = () => {
     const afterSubmit = () => {
       if (user.username !== lot.username) {
         updateUserMoney(user.money - lot.price)
-
-        refetch()
       }
 
       if (totalPages === currentPage && dataByeLots.length === 1) {
         setCurrentPage(totalPages - 1)
         setStorageTotalPagesByeLots(totalPages - 1)
       }
+
+      mutate()
     }
 
     onOpen({

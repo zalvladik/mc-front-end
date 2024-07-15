@@ -1,15 +1,21 @@
 import { useState } from 'react'
 import { CategoryEnum } from 'src/constants'
+import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 import { useCreateItemLot } from 'src/hooks/useCreateItemLot'
 import { useCreateShulkerLot } from 'src/hooks/useCreateShulkerLot'
 
 export const useAuctionCreateLotForm = () => {
+  const { mutate } = useAuction()
   const [itemPrice, setItemPrice] = useState('')
 
+  const afterSuccess = () => {
+    mutate()
+  }
+
   const { isLoading: isLoadingCreateItemLot, mutate: mutateCreateItemLot } =
-    useCreateItemLot()
+    useCreateItemLot(afterSuccess)
   const { isLoading: isLoadingCreateShulkerLot, mutate: mutateCreateShulkerLot } =
-    useCreateShulkerLot()
+    useCreateShulkerLot(afterSuccess)
 
   const createLotHanlder = (itemCategories?: string[], id?: number) => {
     const price = Number(itemPrice)

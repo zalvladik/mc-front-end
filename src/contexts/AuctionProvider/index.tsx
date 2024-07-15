@@ -44,10 +44,6 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
       itemType: '',
     })
 
-  const [isFirstFetchByeLots, setIsFirstFetchByeLots] = useState(true)
-
-  const [fetchToggleByeLots, setFetchToggleByeLots] = useState(true)
-
   const [currentPageUserLots, setCurrentPageUserLots] = useState(1)
 
   const [searchValueUserLots, setSearchValueUserLots] = useState('')
@@ -64,31 +60,21 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   }
 
   const {
-    refetch: refetchByeLots,
+    mutate,
     data: dataByeLots,
     totalPage: totalPageByeLots,
     isLoading: isLoadingByeLots,
-  } = useGetLots(
-    {
-      ...newByeLotsSearchParams,
-      ...filterListParams,
-    },
-    isCanNewFetchGetByeLots,
-    fetchToggleByeLots,
-    setFetchToggleByeLots,
-    isFirstFetchByeLots,
-    setIsFirstFetchByeLots,
-  )
+  } = useGetLots()
 
   useEffect(() => {
-    setFetchToggleByeLots(true)
+    mutate({ page: 1, ...filterListParams })
 
     updateNewByeLotsSearchParams({ page: 1 })
     navigate(auctionUrlQueryParams(currentByeLotsCategory, 1))
   }, [currentByeLotsCategory])
 
   useEffect(() => {
-    setFetchToggleByeLots(true)
+    mutate({ ...newByeLotsSearchParams, ...filterListParams })
 
     navigate(
       auctionUrlQueryParams(
@@ -167,9 +153,8 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     if (!isCanNewFetchGetByeLots) return
 
     updatePrevByeLotsSearchParams()
-    setFetchToggleByeLots(true)
 
-    refetchByeLots()
+    mutate({ ...newByeLotsSearchParams, ...filterListParams })
 
     navigate(
       auctionUrlQueryParams(
@@ -178,6 +163,10 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
         currentByeLotDisplay_nameOrType,
       ),
     )
+  }
+
+  const mutateToogle = (): void => {
+    mutate({ ...newByeLotsSearchParams, ...filterListParams })
   }
 
   const providerValue: AuctionContextDataT = useMemo(
@@ -199,7 +188,7 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
       dataByeLots,
       isLoadingByeLots,
       isLoadingUserLots,
-      refetchByeLots,
+      mutate: mutateToogle,
       isFragment,
       enchantSearchParams,
       setEnchantSearchParams,

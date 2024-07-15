@@ -1,4 +1,5 @@
 import type {
+  ByeLotsSearchParamsT,
   EnchantSearchParamsT,
   FilterListParamsT,
 } from 'src/hooks/useLotsSearchParams/types'
@@ -36,10 +37,6 @@ export type ByeLotProps = {
   lotId: number
 }
 
-export type GetLotsProps = {
-  page: number
-  category: string
-  display_nameOrType: string
-} & FilterListParamsT
+export type GetLotsProps = Partial<ByeLotsSearchParamsT> & FilterListParamsT
 
 export type GetEnchantLotsProps = EnchantSearchParamsT & FilterListParamsT

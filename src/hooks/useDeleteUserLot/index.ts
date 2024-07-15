@@ -26,27 +26,23 @@ export const useDeleteUserLot = (afterSubmit: (value: void) => void) => {
               const userShulkes =
                 queryClient.getQueryData<ShulkerT[]>(CacheKeys.USER_SHULKERS) ?? []
 
-              if (userItems.length && lot?.item) {
+              if (!userItems) {
+                queryClient.invalidateQueries(CacheKeys.USER_ITEMS)
+              } else {
                 queryClient.setQueryData<ItemT[]>(CacheKeys.USER_ITEMS, items => {
                   return [...(items ?? []), lot!.item!]
                 })
               }
 
-              if (userShulkes.length && lot?.shulker) {
+              if (!userShulkes) {
+                queryClient.invalidateQueries(CacheKeys.USER_SHULKERS)
+              } else {
                 queryClient.setQueryData<ShulkerT[]>(
                   CacheKeys.USER_SHULKERS,
                   shulkers => {
                     return [...(shulkers ?? []), lot!.shulker!]
                   },
                 )
-              }
-
-              if (!userItems.length) {
-                queryClient.invalidateQueries(CacheKeys.USER_ITEMS)
-              }
-
-              if (!userShulkes.length) {
-                queryClient.invalidateQueries(CacheKeys.USER_SHULKERS)
               }
             }
 
@@ -62,13 +58,11 @@ export const useDeleteUserLot = (afterSubmit: (value: void) => void) => {
         })
       }
 
-      if (!userLots.length) {
+      if (!userLots) {
         queryClient.invalidateQueries(CacheKeys.USER_LOTS)
       }
 
       afterSubmit()
-
-      queryClient.invalidateQueries([CacheKeys.LOTS])
 
       toast.success({ message: ['Лот видалено'] })
       onClose()

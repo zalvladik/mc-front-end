@@ -19,7 +19,6 @@ export const useAuctionControlletFilter = () => {
       isSelected: didNeedShulkers,
       onClick: () => {
         updateFilterListParams({
-          ...filterListParams,
           didNeedShulkers: !didNeedShulkers,
         })
       },
@@ -30,7 +29,6 @@ export const useAuctionControlletFilter = () => {
       isSelected: didNeedUserLots,
       onClick: () => {
         updateFilterListParams({
-          ...filterListParams,
           didNeedUserLots: !didNeedUserLots,
         })
       },
@@ -41,7 +39,6 @@ export const useAuctionControlletFilter = () => {
       isSelected: didNeedIdentical,
       onClick: () => {
         updateFilterListParams({
-          ...filterListParams,
           didNeedIdentical: !didNeedIdentical,
         })
       },

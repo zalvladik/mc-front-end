@@ -5,7 +5,7 @@ import type { ItemT } from 'src/services/api/Items/types'
 import Lot from 'src/services/api/Lot'
 import type { LotT } from 'src/services/api/Lot/types'
 
-export const useCreateShulkerLot = () => {
+export const useCreateShulkerLot = (afterSuccess: (value: void) => void) => {
   const toast = useToast()
   const queryClient = useQueryClient()
 
@@ -25,7 +25,7 @@ export const useCreateShulkerLot = () => {
           }) ?? [],
       )
 
-      queryClient.invalidateQueries([CacheKeys.LOTS])
+      afterSuccess()
 
       toast.success({ message: ['Лот створено'] })
     },

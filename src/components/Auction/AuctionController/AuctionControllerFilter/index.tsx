@@ -12,7 +12,6 @@ const AuctionControlletFilter = (): JSX.Element => {
     getImgSelectForFilter,
     didPriceToUp,
     updateFilterListParams,
-    filterListParams,
   } = useAuctionControlletFilter()
 
   return (
@@ -32,7 +31,6 @@ const AuctionControlletFilter = (): JSX.Element => {
       <MoneyFilterParam
         onClick={() =>
           updateFilterListParams({
-            ...filterListParams,
             didPriceToUp: !didPriceToUp,
           })
         }

@@ -1,14 +1,10 @@
-import type {
-  QueryObserverResult,
-  RefetchOptions,
-  RefetchQueryFilters,
-} from 'react-query'
 import type { AuctionFragment } from 'src/constants'
 import type {
   EnchantSearchParamsT,
   FilterListParamsT,
+  UpdateFilterListParamsProps,
 } from 'src/hooks/useLotsSearchParams/types'
-import type { GetLotsResponse, LotT } from 'src/services/api/Lot/types'
+import type { LotT } from 'src/services/api/Lot/types'
 import type { EnchantsEnum, ReactChildrenT } from 'src/types'
 
 export type AuctionContextDataT = {
@@ -28,9 +24,7 @@ export type AuctionContextDataT = {
   isLoadingUserLots: boolean
   dataUserLots: LotT[]
   dataByeLots: LotT[]
-  refetchByeLots: (
-    options?: (RefetchOptions & RefetchQueryFilters<unknown>) | undefined,
-  ) => Promise<QueryObserverResult<GetLotsResponse, unknown>>
+  mutate: (value: void) => void
   isFragment: {
     isBuyFragment: boolean
     isCreateLotFragment: boolean
@@ -40,7 +34,7 @@ export type AuctionContextDataT = {
   enchantSearchParams: EnchantSearchParamsT
   setEnchantSearchParams: (value: EnchantSearchParamsT) => void
   filterListParams: FilterListParamsT
-  updateFilterListParams: (value: FilterListParamsT) => void
+  updateFilterListParams: (value: UpdateFilterListParamsProps) => void
 }
 
 export type AuctionProviderT = ReactChildrenT

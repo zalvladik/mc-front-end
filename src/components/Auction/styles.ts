@@ -97,7 +97,7 @@ export const TbodyContainer = styled.div`
 
   padding: 10px;
 
-  gap: 9.5px;
+  gap: 9.3px;
 
   border-radius: 6px;
 
