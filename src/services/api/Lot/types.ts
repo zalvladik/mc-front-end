@@ -39,4 +39,5 @@ export type ByeLotProps = {
 
 export type GetLotsProps = Partial<ByeLotsSearchParamsT> & FilterListParamsT
 
-export type GetEnchantLotsProps = EnchantSearchParamsT & FilterListParamsT
+export type GetEnchantLotsProps = EnchantSearchParamsT &
+  FilterListParamsT & { page?: number }

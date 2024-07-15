@@ -7,23 +7,27 @@ export const useAuctionPage = () => {
   const {
     auctionFragment,
     setAuctionFragment,
-    findLotByName,
+    mutateByeLotsHandleButton,
     searchValue,
     setSearchValue,
     isLoadingByeLots,
     isFragment,
     isCanNewFetchGetByeLots,
+    isCanNewFetchGetEnchantItems,
+    mutateEnchantLotsHandleButton,
   } = useAuction()
 
   return {
     auctionFragment,
     setAuctionFragment,
     isFragment,
-    findLotByName,
+    mutateByeLotsHandleButton,
     money: user.money,
     searchValue,
     setSearchValue,
     isLoadingByeLots,
     isCanNewFetchGetByeLots,
+    isCanNewFetchGetEnchantItems,
+    mutateEnchantLotsHandleButton,
   }
 }

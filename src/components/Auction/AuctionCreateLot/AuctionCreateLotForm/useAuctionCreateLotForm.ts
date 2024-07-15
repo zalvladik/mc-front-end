@@ -5,11 +5,11 @@ import { useCreateItemLot } from 'src/hooks/useCreateItemLot'
 import { useCreateShulkerLot } from 'src/hooks/useCreateShulkerLot'
 
 export const useAuctionCreateLotForm = () => {
-  const { mutate } = useAuction()
+  const { mutateByeLotsHandle } = useAuction()
   const [itemPrice, setItemPrice] = useState('')
 
   const afterSuccess = () => {
-    mutate()
+    mutateByeLotsHandle()
   }
 
   const { isLoading: isLoadingCreateItemLot, mutate: mutateCreateItemLot } =

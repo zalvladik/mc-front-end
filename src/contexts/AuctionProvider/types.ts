@@ -3,18 +3,20 @@ import type {
   EnchantSearchParamsT,
   FilterListParamsT,
   UpdateFilterListParamsProps,
+  UpdateNewEnchantSearchParamsT,
 } from 'src/hooks/useLotsSearchParams/types'
 import type { LotT } from 'src/services/api/Lot/types'
 import type { EnchantsEnum, ReactChildrenT } from 'src/types'
 
 export type AuctionContextDataT = {
+  isCanNewFetchGetEnchantItems: boolean
   isCanNewFetchGetByeLots: boolean
   auctionFragment: AuctionFragment
   setAuctionFragment: (value: AuctionFragment) => void
   currentPage: number
   setCurrentPage: (value: number) => void
   totalPages: number
-  findLotByName: () => void
+  mutateByeLotsHandleButton: () => void
   searchValue: string
   setSearchValue: (value: string) => void
   selectedCategory: string
@@ -24,15 +26,17 @@ export type AuctionContextDataT = {
   isLoadingUserLots: boolean
   dataUserLots: LotT[]
   dataByeLots: LotT[]
-  mutate: (value: void) => void
+  mutateByeLotsHandle: (value: void) => void
+  mutateEnchantLotsHandle: (value: void) => void
+  mutateEnchantLotsHandleButton: (value: void) => void
   isFragment: {
     isBuyFragment: boolean
     isCreateLotFragment: boolean
     isUserLotsFragment: boolean
     isEnchantFinderFragment: boolean
   }
-  enchantSearchParams: EnchantSearchParamsT
-  setEnchantSearchParams: (value: EnchantSearchParamsT) => void
+  newEnchantSearchParams: EnchantSearchParamsT
+  updateEnchantSearchParams: (value: UpdateNewEnchantSearchParamsT) => void
   filterListParams: FilterListParamsT
   updateFilterListParams: (value: UpdateFilterListParamsProps) => void
 }
@@ -40,5 +44,5 @@ export type AuctionContextDataT = {
 export type AuctionProviderT = ReactChildrenT
 
 export type EnchantsWithMaxLvlT = Partial<{
-  [key in EnchantsEnum]: number
+  [key in EnchantsEnum | string]: number
 }>

@@ -36,7 +36,7 @@ const AuctionControlletFilter = (): JSX.Element => {
         }
       >
         <div style={{ backgroundImage: `url(/assets/items_for_ui/diamond.png)` }} />
-        <div>{didPriceToUp ? '>' : '<'}</div>
+        <div>{didPriceToUp ? '<' : '>'}</div>
 
         <HoverDescription description={['Зниження/підвищення цін']} />
       </MoneyFilterParam>

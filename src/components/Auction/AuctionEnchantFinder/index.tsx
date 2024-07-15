@@ -16,7 +16,7 @@ import DefaultButton from 'src/components/DefaultButton'
 
 const AuctionEnchantFinder = (): JSX.Element => {
   const {
-    enchantSearchParams,
+    newEnchantSearchParams,
     setSelectedEnchantsToggle,
     enchantTranslationsTypes,
     setSelectedMinorEnchantsToggle,
@@ -27,7 +27,7 @@ const AuctionEnchantFinder = (): JSX.Element => {
     useEnchantVariables()
 
   const { enchantType: selectedEnchantType, enchants: selectedEnchants } =
-    enchantSearchParams
+    newEnchantSearchParams
 
   return (
     <ContainerWrapper>

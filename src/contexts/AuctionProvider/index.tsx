@@ -8,11 +8,10 @@ import type {
   AuctionProviderT,
 } from 'src/contexts/AuctionProvider/types'
 import { auctionUrlQueryParams } from 'src/helpers'
-// import { useGetEnchantLots } from 'src/hooks/useGetEnchantLots'
+import { useGetEnchantLots } from 'src/hooks/useGetEnchantLots'
 import { useGetLots } from 'src/hooks/useGetLots'
 import { useGetUserLots } from 'src/hooks/useGetUserLots'
 import { useLotsSearchParams } from 'src/hooks/useLotsSearchParams'
-import type { EnchantSearchParamsT } from 'src/hooks/useLotsSearchParams/types'
 import type { LotT } from 'src/services/api/Lot/types'
 
 const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
@@ -26,9 +25,13 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     newByeLotsSearchParams,
     updateFilterListParams,
     updatePrevByeLotsSearchParams,
+    updatePrevEnchantSearchParams,
     updateNewByeLotsSearchParams,
     isCanNewFetchGetByeLots,
     filterListParams,
+    newEnchantSearchParams,
+    updateEnchantSearchParams,
+    isCanNewFetchGetEnchantItems,
   } = useLotsSearchParams()
 
   const {
@@ -36,13 +39,6 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     page: currentByeLotPage,
     display_nameOrType: currentByeLotDisplay_nameOrType,
   } = newByeLotsSearchParams
-
-  const [enchantSearchParams, setEnchantSearchParams] =
-    useState<EnchantSearchParamsT>({
-      enchants: {},
-      enchantType: '',
-      itemType: '',
-    })
 
   const [currentPageUserLots, setCurrentPageUserLots] = useState(1)
 
@@ -60,14 +56,21 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   }
 
   const {
-    mutate,
+    mutate: mutateByeLots,
     data: dataByeLots,
     totalPage: totalPageByeLots,
     isLoading: isLoadingByeLots,
   } = useGetLots()
 
+  const {
+    mutate: mutateEnchantLots,
+    // data: dataEnchantLots,
+    // totalPage: totalPageEnchantLots,
+    // isLoading: isLoadingEnchantLots,
+  } = useGetEnchantLots()
+
   useEffect(() => {
-    mutate({
+    mutateByeLots({
       page: 1,
       category: currentByeLotsCategory,
       display_nameOrType: currentByeLotDisplay_nameOrType,
@@ -86,7 +89,7 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   }, [currentByeLotsCategory])
 
   useEffect(() => {
-    mutate({ ...newByeLotsSearchParams, ...filterListParams })
+    mutateByeLots({ ...newByeLotsSearchParams, ...filterListParams })
 
     updatePrevByeLotsSearchParams()
     navigate(
@@ -162,12 +165,20 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     return setSearchValueUserLots
   }
 
-  const findLotByName = (): void => {
+  const mutateByeLotsHandle = (): void => {
+    mutateByeLots({ ...newByeLotsSearchParams, ...filterListParams })
+  }
+
+  const mutateEnchantLotsHandle = (): void => {
+    mutateEnchantLots({ ...newEnchantSearchParams, ...filterListParams })
+  }
+
+  const mutateByeLotsHandleButton = (): void => {
     if (!isCanNewFetchGetByeLots) return
 
     updatePrevByeLotsSearchParams()
 
-    mutate({ ...newByeLotsSearchParams, ...filterListParams })
+    mutateByeLotsHandle()
 
     navigate(
       auctionUrlQueryParams(
@@ -178,40 +189,47 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     )
   }
 
-  const mutateToogle = (): void => {
-    mutate({ ...newByeLotsSearchParams, ...filterListParams })
+  const mutateEnchantLotsHandleButton = (): void => {
+    if (!isCanNewFetchGetEnchantItems) return
+
+    updatePrevEnchantSearchParams()
+
+    mutateEnchantLotsHandle()
   }
 
   const providerValue: AuctionContextDataT = useMemo(
     () => ({
+      isCanNewFetchGetEnchantItems,
       isCanNewFetchGetByeLots,
       auctionFragment,
-      setAuctionFragment,
       currentPage: getCurrentPage(),
       totalPages: getTotalPages(),
-      findLotByName,
-      setCurrentPage: getSetCurrentPage(),
-      setSearchValue: getSetSearchValue(),
-      setSelectedCategory: (value: string) => {
-        updateNewByeLotsSearchParams({ category: value })
-      },
       searchValue: getSearchValue(),
       selectedCategory: currentByeLotsCategory,
       dataUserLots: getUserLotsForPage(),
       dataByeLots,
       isLoadingByeLots,
       isLoadingUserLots,
-      mutate: mutateToogle,
       isFragment,
-      enchantSearchParams,
-      setEnchantSearchParams,
+      newEnchantSearchParams,
       filterListParams,
+      setAuctionFragment,
       updateFilterListParams,
       setStorageTotalPagesByeLots,
+      updateEnchantSearchParams,
+      mutateByeLotsHandle,
+      mutateEnchantLotsHandle,
+      mutateByeLotsHandleButton,
+      mutateEnchantLotsHandleButton,
+      setCurrentPage: getSetCurrentPage(),
+      setSearchValue: getSetSearchValue(),
+      setSelectedCategory: (value: string) => {
+        updateNewByeLotsSearchParams({ category: value })
+      },
     }),
     [
       auctionFragment,
-      findLotByName,
+      mutateByeLotsHandleButton,
       setAuctionFragment,
       currentByeLotsCategory,
       dataUserLots,
@@ -219,6 +237,7 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
       isLoadingUserLots,
       dataByeLots,
       storageTotalPagesByeLots,
+      isCanNewFetchGetEnchantItems,
     ],
   )
 

@@ -14,7 +14,7 @@ export const useAuctionItemList = () => {
     isLoadingByeLots,
     dataByeLots,
     setCurrentPage,
-    mutate,
+    mutateByeLotsHandle,
     setStorageTotalPagesByeLots,
   } = useAuction()
 
@@ -29,7 +29,7 @@ export const useAuctionItemList = () => {
         setStorageTotalPagesByeLots(totalPages - 1)
       }
 
-      mutate()
+      mutateByeLotsHandle()
     }
 
     onOpen({

@@ -1,5 +1,5 @@
 import { itemTypesEnchantsFinderTranslations } from 'src/constants'
-import type { ItemTypesEnchantsFinderEnum } from 'src/types'
+import type { EnchantsTypesEnum, ItemTypesEnchantsFinderEnum } from 'src/types'
 
 import {
   ButtonCategory,
@@ -22,15 +22,14 @@ const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
   const { categories, selectedCategory, setSelectedCategory } = useAuctionCategory()
   const {
     enchantItemsTypes,
-    enchantSearchParams,
+    newEnchantSearchParams,
     updateEnchantSearchParams,
     isFragment,
     offVisible,
     enchantsForHoverDescription,
-    setEnchantSearchParams,
   } = useAuctionCategoryEnchantTypes()
 
-  const { enchantType: selectedEnchantType, itemType } = enchantSearchParams
+  const { enchantType: selectedEnchantType, itemType } = newEnchantSearchParams
 
   return (
     <Container {...props}>
@@ -137,9 +136,9 @@ const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
                 isVisible={Boolean(!selectedEnchantType)}
                 onClick={() => {
                   offVisible()
-                  setEnchantSearchParams({
+                  updateEnchantSearchParams({
                     enchants: {},
-                    enchantType: '',
+                    enchantType: '' as EnchantsTypesEnum,
                     itemType: '',
                   })
                 }}

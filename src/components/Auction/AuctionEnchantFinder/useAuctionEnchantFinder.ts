@@ -2,33 +2,12 @@ import { enchantsWithMaxLvl, enchantTranslations } from 'src/constants'
 import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 import type { EnchantsEnum } from 'src/types'
 
-import type {
-  EnchantTranslationsT,
-  UpdateEnchantSearchParamsT,
-} from 'src/components/Auction/AuctionEnchantFinder/types'
-
 export const useAuctionEnchantFinder = () => {
-  const { enchantSearchParams, setEnchantSearchParams } = useAuction()
+  const { newEnchantSearchParams, updateEnchantSearchParams } = useAuction()
 
-  const { enchants: selectedEnchants } = enchantSearchParams
+  const { enchants: selectedEnchants } = newEnchantSearchParams
 
-  const updateEnchantSearchParams = ({
-    itemType,
-    enchantType,
-    enchants,
-  }: UpdateEnchantSearchParamsT) => {
-    const updatedParams = { ...enchantSearchParams }
-
-    if (itemType) updatedParams.itemType = itemType
-
-    if (enchantType) updatedParams.enchantType = enchantType
-
-    if (enchants) updatedParams.enchants = enchants
-
-    setEnchantSearchParams(updatedParams)
-  }
-
-  const enchantTranslationsTypes: EnchantTranslationsT = enchantTranslations
+  const enchantTranslationsTypes = enchantTranslations
 
   const setSelectedEnchantsToggle = (enchant: EnchantsEnum) => {
     if (selectedEnchants[enchant]) {
@@ -87,7 +66,7 @@ export const useAuctionEnchantFinder = () => {
   }
 
   return {
-    enchantSearchParams,
+    newEnchantSearchParams,
     selectedEnchants,
     setSelectedEnchantsToggle,
     enchantTranslationsTypes,

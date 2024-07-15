@@ -14,7 +14,7 @@ export const useAuctionUserLots = () => {
     setCurrentPage,
     currentPage,
     totalPages,
-    mutate,
+    mutateByeLotsHandle,
   } = useAuction()
 
   const afterSubmit = () => {
@@ -22,7 +22,7 @@ export const useAuctionUserLots = () => {
       setCurrentPage(totalPages - 1)
     }
 
-    mutate()
+    mutateByeLotsHandle()
   }
 
   const openModal = (data: LotT | ShulkerT) => {

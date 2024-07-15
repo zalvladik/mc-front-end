@@ -20,10 +20,21 @@ export type ByeLotsSearchParamsT = {
   display_nameOrType: string | ''
 }
 
+export type UpdateNewEnchantSearchParamsT = {
+  itemType?: string
+  enchantType?: EnchantsTypesEnum
+  enchants?: EnchantsWithMaxLvlT
+}
+
 export type PrevByeLotsSearchParamsT = { [key: string]: any } & FilterListParamsT &
   ByeLotsSearchParamsT
 
 export type NewByeLotsSearchParamsT = { [key: string]: any } & ByeLotsSearchParamsT
+
+export type PrevEnchantSearchParamsT = { [key: string]: any } & FilterListParamsT &
+  EnchantSearchParamsT
+
+export type NewEnchantSearchParamsT = { [key: string]: any } & EnchantSearchParamsT
 
 export type UpdateFilterListParamsProps = Partial<FilterListParamsT>
 

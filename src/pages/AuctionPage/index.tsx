@@ -28,10 +28,12 @@ const AuctionPage = (): JSX.Element => {
     setSearchValue,
     auctionFragment,
     isFragment,
-    findLotByName,
+    mutateByeLotsHandleButton,
     money,
     isLoadingByeLots,
     isCanNewFetchGetByeLots,
+    isCanNewFetchGetEnchantItems,
+    mutateEnchantLotsHandleButton,
   } = useAuctionPage()
 
   const getFragment = (): JSX.Element => {
@@ -45,8 +47,12 @@ const AuctionPage = (): JSX.Element => {
     return components[auctionFragment]
   }
 
-  const { isUserLotsFragment, isCreateLotFragment, isEnchantFinderFragment } =
-    isFragment
+  const {
+    isUserLotsFragment,
+    isCreateLotFragment,
+    isEnchantFinderFragment,
+    isBuyFragment,
+  } = isFragment
 
   const isDisabledCategory = isUserLotsFragment || isCreateLotFragment
 
@@ -68,12 +74,15 @@ const AuctionPage = (): JSX.Element => {
             <DefaultButton
               isLoading={isLoadingByeLots}
               disabled={
-                isCreateLotFragment ||
-                isLoadingByeLots ||
-                isUserLotsFragment ||
-                !isCanNewFetchGetByeLots
+                isEnchantFinderFragment
+                  ? !isCanNewFetchGetEnchantItems
+                  : isLoadingByeLots || !isBuyFragment || !isCanNewFetchGetByeLots
               }
-              onClick={findLotByName}
+              onClick={() => {
+                if (isBuyFragment) mutateByeLotsHandleButton()
+
+                if (isEnchantFinderFragment) mutateEnchantLotsHandleButton()
+              }}
               style={{ width: 200 }}
             >
               Пошук

@@ -10,27 +10,10 @@ import {
 
 import type { EnchantItemsTypesT } from 'src/components/Auction/AuctionCategory/types'
 
-import type { UpdateEnchantSearchParamsT } from '../AuctionEnchantFinder/types'
-
 export const useAuctionCategoryEnchantTypes = () => {
-  const { enchantSearchParams, setEnchantSearchParams, isFragment } = useAuction()
+  const { newEnchantSearchParams, updateEnchantSearchParams, isFragment } =
+    useAuction()
   const { offVisible } = useItemHoverDescription()
-
-  const updateEnchantSearchParams = ({
-    itemType,
-    enchantType,
-    enchants,
-  }: UpdateEnchantSearchParamsT) => {
-    const updatedParams = { ...enchantSearchParams }
-
-    if (itemType) updatedParams.itemType = itemType
-
-    if (enchantType) updatedParams.enchantType = enchantType
-
-    if (enchants) updatedParams.enchants = enchants
-
-    setEnchantSearchParams(updatedParams)
-  }
 
   const [helmetMaterial, setHelmetMaterial] = useState<ArmorMaterialEnum>(
     ArmorMaterialEnum.NETHERITE,
@@ -259,7 +242,7 @@ export const useAuctionCategoryEnchantTypes = () => {
     ],
   ]
 
-  const { enchants } = enchantSearchParams
+  const { enchants } = newEnchantSearchParams
 
   const enchantsForHoverDescription = Object.entries(enchants).map(
     ([enchant, lvl]) => `${enchant}$${lvl}`,
@@ -267,11 +250,10 @@ export const useAuctionCategoryEnchantTypes = () => {
 
   return {
     enchantItemsTypes,
-    enchantSearchParams,
+    newEnchantSearchParams,
     updateEnchantSearchParams,
     isFragment,
     offVisible,
     enchantsForHoverDescription,
-    setEnchantSearchParams,
   }
 }

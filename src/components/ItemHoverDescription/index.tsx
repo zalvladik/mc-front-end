@@ -1,4 +1,4 @@
-import { enchantsLvl, enchantTranslations } from 'src/constants'
+import { enchantsLvl, enchantsWithMaxLvl, enchantTranslations } from 'src/constants'
 import { EnchantsEnum } from 'src/types'
 
 import {
@@ -89,7 +89,7 @@ const ItemHoverDescription = ({
                     textShadow,
                   }}
                 >
-                  {`${enchantTranslations[enchant]} ${lvl === '1' ? '' : enchantsLvl[lvl]}`}
+                  {`${enchantTranslations[enchant]} ${enchantsWithMaxLvl[enchant] === 1 ? '' : enchantsLvl[lvl]}`}
                 </p>
               </li>
             )
