@@ -45,7 +45,6 @@ const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
 
               return (
                 <ButtonCategory
-                  type="button"
                   onClick={() => {
                     if (isSelected) {
                       setSelectedCategory('')

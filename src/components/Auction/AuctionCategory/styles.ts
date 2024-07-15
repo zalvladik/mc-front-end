@@ -7,7 +7,7 @@ import type {
 
 export const Container = styled.div`
   background-color: rgba(15, 25, 35, 1);
-  padding: 15px 10px 10px 10px;
+  padding: 16px 10px 16px 10px;
 
   width: 320px;
   height: 100%;
@@ -60,13 +60,14 @@ export const EnchantTypes = styled.div`
 export const CategoryList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 7px;
+
+  gap: 8px;
 
   padding: 0px 10px;
   border-radius: 8px;
 `
 
-export const ButtonCategory = styled.button<ButtonCategoryProps>`
+export const ButtonCategory = styled.div<ButtonCategoryProps>`
   position: relative;
 
   display: flex;

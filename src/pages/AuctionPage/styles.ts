@@ -37,7 +37,7 @@ export const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  height: 750px;
+  height: 760px;
 
   margin-top: 60px;
 
@@ -69,13 +69,17 @@ export const BodyCenterContainer = styled.div<IsDisabeledByFragmentProps>`
       : 'rgba(0,0,0,0)'};
 
   & > div {
+    display: flex;
+
+    flex-direction: column;
+
     width: 100%;
     height: 100%;
 
     border-left: 2px solid gray;
     border-right: 2px solid gray;
 
-    padding: 10px 20px 10px 20px;
+    padding: 16px 20px;
   }
 `
 

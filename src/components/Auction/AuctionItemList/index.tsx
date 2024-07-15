@@ -1,14 +1,14 @@
 import { moneyCalculator, sliceText } from 'src/helpers'
 
+import { Container } from 'src/components/Auction/AuctionItemList/styles'
+import { useAuctionItemList } from 'src/components/Auction/AuctionItemList/useAuctionItemList'
 import {
-  Container,
   ItemDesriptionContainer,
   ItemPriceContainer,
   StyledSkeleton,
   TbodyContainer,
   TheadContainer,
-} from 'src/components/Auction/AuctionItemList/styles'
-import { useAuctionItemList } from 'src/components/Auction/AuctionItemList/useAuctionItemList'
+} from 'src/components/Auction/styles'
 import ItemSlotIcon from 'src/components/ItemSlotIcon'
 
 const AuctionItemList = (): JSX.Element => {

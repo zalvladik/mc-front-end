@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
 
   background-color: rgba(15, 25, 35, 1);
-  padding: 10px 10px 10px 10px;
+  padding: 16px 10px 16px 10px;
 
   border-top-right-radius: 8px;
 
@@ -16,8 +16,6 @@ export const Container = styled.div`
 
 export const ButtonsContainer = styled.div`
   width: 320px;
-
-  padding: 10px 0px;
 
   display: flex;
   flex-direction: column;
