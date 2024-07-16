@@ -8,7 +8,9 @@ import type {
   PrevEnchantSearchParamsT,
   UpdateFilterListParamsProps,
   UpdateNewByeLotsSearchParamsProps,
+  UpdateNewEnchantSearchParamsProps,
   UpdateNewEnchantSearchParamsT,
+  UpdatePrevEnchantSearchParams,
 } from 'src/hooks/useLotsSearchParams/types'
 import { EnchantsEnum } from 'src/types'
 
@@ -39,10 +41,11 @@ export const useLotsSearchParams = () => {
       enchants: {},
       enchantType: '',
       itemType: '',
+      page,
       ...filterListParams,
     })
 
-  const [newByeLotsSearchParams, setNewPrevByeLotsSearchParams] =
+  const [newByeLotsSearchParams, setNewByeLotsSearchParams] =
     useState<NewByeLotsSearchParamsT>({
       category,
       page,
@@ -54,14 +57,42 @@ export const useLotsSearchParams = () => {
       enchants: {},
       enchantType: '',
       itemType: '',
+      page,
     })
+
+  const updateNewEnchantSearchParams = ({
+    enchants,
+    enchantType,
+    itemType,
+    page,
+  }: UpdateNewEnchantSearchParamsProps) => {
+    const updatedParams = { ...newEnchantSearchParams }
+
+    if (enchants !== undefined) {
+      updatedParams.enchants = enchants
+    }
+
+    if (page !== undefined) {
+      updatedParams.page = page
+    }
+
+    if (itemType !== undefined) {
+      updatedParams.itemType = itemType
+    }
+
+    if (enchantType !== undefined) {
+      updatedParams.enchantType = enchantType
+    }
+
+    setNewEnchantSearchParams(updatedParams)
+  }
 
   const updateNewByeLotsSearchParams = ({
     category,
     page,
     display_nameOrType,
   }: UpdateNewByeLotsSearchParamsProps) => {
-    const updatedParams = { ...newByeLotsSearchParams, ...filterListParams }
+    const updatedParams = { ...newByeLotsSearchParams }
 
     if (category !== undefined) {
       updatedParams.category = category
@@ -75,14 +106,28 @@ export const useLotsSearchParams = () => {
       updatedParams.display_nameOrType = display_nameOrType
     }
 
-    setNewPrevByeLotsSearchParams(updatedParams)
+    setNewByeLotsSearchParams(updatedParams)
   }
 
   const updatePrevByeLotsSearchParams = () => {
     setPrevByeLotsSearchParams({ ...newByeLotsSearchParams, ...filterListParams })
   }
 
-  const updatePrevEnchantSearchParams = () => {
+  const updatePrevEnchantSearchParams = ({
+    isReset = false,
+  }: UpdatePrevEnchantSearchParams) => {
+    if (isReset) {
+      setPrevEnchantSearchParams({
+        enchants: {},
+        enchantType: '',
+        itemType: '',
+        page: 1,
+        ...filterListParams,
+      })
+
+      return
+    }
+
     setPrevEnchantSearchParams({ ...newEnchantSearchParams, ...filterListParams })
   }
 
@@ -107,8 +152,6 @@ export const useLotsSearchParams = () => {
       ...newEnchantSearchParams,
       ...filterListParams,
     }
-
-    // console.log({ prevEnchantSearchParams, newEnchantSearchParamsWithFilter })
 
     const {
       enchants: newEnchants,
@@ -162,11 +205,11 @@ export const useLotsSearchParams = () => {
   }: UpdateNewEnchantSearchParamsT) => {
     const updatedParams = { ...newEnchantSearchParams }
 
-    if (itemType) updatedParams.itemType = itemType
+    if (itemType !== undefined) updatedParams.itemType = itemType
 
-    if (enchantType) updatedParams.enchantType = enchantType
+    if (enchantType !== undefined) updatedParams.enchantType = enchantType
 
-    if (enchants) updatedParams.enchants = enchants
+    if (enchants !== undefined) updatedParams.enchants = enchants
 
     setNewEnchantSearchParams(updatedParams)
   }
@@ -206,6 +249,7 @@ export const useLotsSearchParams = () => {
     updateNewByeLotsSearchParams,
     updateEnchantSearchParams,
     updatePrevEnchantSearchParams,
+    updateNewEnchantSearchParams,
     isCanNewFetchGetByeLots: isCanNewFetchGetByeLots(),
     isCanNewFetchGetEnchantItems: isCanNewFetchGetEnchantItems(),
     filterListParams,

@@ -4,7 +4,7 @@ import Lot from 'src/services/api/Lot'
 import type { GetEnchantLotsProps } from 'src/services/api/Lot/types'
 
 export const useGetEnchantLots = () => {
-  const { mutate, data, isLoading } = useMutation({
+  const { mutate, data, isLoading, isSuccess } = useMutation({
     mutationKey: CacheKeys.ENCHANT_LOTS,
     mutationFn: (payload: GetEnchantLotsProps) => Lot.getEnchantLots(payload),
   })
@@ -14,5 +14,6 @@ export const useGetEnchantLots = () => {
     data: data?.lots ?? [],
     totalPage: data?.totalPages,
     isLoading,
+    isSuccess,
   }
 }

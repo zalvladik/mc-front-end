@@ -10,9 +10,12 @@ export const useAuctionPagination = () => {
     auctionFragment,
     dataUserLots,
     dataByeLots,
+    dataEnchantLots,
     totalPages,
     isLoadingByeLots,
+    isLoadingEnchantLots,
     isFragment,
+    didShowEnchantControlPanel,
   } = useAuction()
 
   const { user } = useUser()
@@ -31,7 +34,11 @@ export const useAuctionPagination = () => {
   const didVanishPagesInfo = () => {
     if (isCreateLotFragment) return true
 
-    if (isEnchantFinderFragment) return true
+    if (isEnchantFinderFragment) {
+      return didShowEnchantControlPanel
+        ? true
+        : (!dataEnchantLots.length && !isLoadingEnchantLots) || totalPages <= 1
+    }
 
     if (isUserLotsFragment) return !dataUserLots.length || totalPages <= 1
 

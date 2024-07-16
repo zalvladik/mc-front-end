@@ -1,9 +1,28 @@
 import { enchantsWithMaxLvl, enchantTranslations } from 'src/constants'
 import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
+import { useModals } from 'src/contexts/ModalProvider/useModals'
+import { useUser } from 'src/contexts/UserProvider/useUser'
+import type { LotT } from 'src/services/api/Lot/types'
 import type { EnchantsEnum } from 'src/types'
 
+import { Modals } from 'src/features/Modals/constants'
+
 export const useAuctionEnchantFinder = () => {
-  const { newEnchantSearchParams, updateEnchantSearchParams } = useAuction()
+  const { onOpen } = useModals()
+  const { user, updateUserMoney } = useUser()
+
+  const {
+    newEnchantSearchParams,
+    updateEnchantSearchParams,
+    dataEnchantLots,
+    isLoadingEnchantLots,
+    setCurrentPage,
+    setStorageTotalPagesEnchantLots,
+    totalPages,
+    mutateEnchantLotsHandle,
+    currentPage,
+    didShowEnchantControlPanel,
+  } = useAuction()
 
   const { enchants: selectedEnchants } = newEnchantSearchParams
 
@@ -63,6 +82,33 @@ export const useAuctionEnchantFinder = () => {
     updateEnchantSearchParams({ enchants: newSelectedEnchants })
   }
 
+  const openModal = (lot: LotT) => {
+    const afterSubmit = () => {
+      if (user.username !== lot.username) {
+        updateUserMoney(user.money - lot.price)
+      }
+
+      if (totalPages === currentPage && dataEnchantLots.length === 1) {
+        setCurrentPage(totalPages - 1)
+        setStorageTotalPagesEnchantLots(totalPages - 1)
+      }
+
+      mutateEnchantLotsHandle()
+    }
+
+    onOpen({
+      name: Modals.LOT,
+      data: {
+        ...lot,
+        isDeleteLot: user.username === lot.username,
+        userMoney: user.money,
+        afterSubmit,
+      },
+    })
+  }
+
+  const itemSlotIconProps = { containerSize: 58, itemSize: 38 }
+
   return {
     newEnchantSearchParams,
     selectedEnchants,
@@ -71,5 +117,11 @@ export const useAuctionEnchantFinder = () => {
     setSelectedMinorEnchantsToggle,
     updateEnchantSearchParams,
     setEnchantLvl,
+    dataEnchantLots,
+    isLoadingEnchantLots,
+    itemSlotIconProps,
+    openModal,
+    user,
+    didShowEnchantControlPanel,
   }
 }

@@ -208,7 +208,7 @@ export const EnchantSearchInfoDelete = styled.div<{ isVisible: boolean }>`
 
   &:hover {
     cursor: pointer;
-    opacity: 0.6;
+    opacity: 0.8;
   }
 
   & > div {
@@ -217,6 +217,5 @@ export const EnchantSearchInfoDelete = styled.div<{ isVisible: boolean }>`
 
     background-repeat: no-repeat;
     background-size: contain;
-    background-image: url('/assets/items_for_ui/barrier.png');
   }
 `

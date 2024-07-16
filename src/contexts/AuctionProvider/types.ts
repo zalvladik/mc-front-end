@@ -22,10 +22,16 @@ export type AuctionContextDataT = {
   selectedCategory: string
   setSelectedCategory: (value: string) => void
   setStorageTotalPagesByeLots: (value: number) => void
+  updatePrevEnchantSearchParams: (value: { isReset?: boolean }) => void
+  setStorageTotalPagesEnchantLots: (value: number) => void
+  didShowEnchantControlPanel: boolean
+  setDidShowEnchantControlPanel: (value: boolean) => void
   isLoadingByeLots: boolean
   isLoadingUserLots: boolean
+  isLoadingEnchantLots: boolean
   dataUserLots: LotT[]
   dataByeLots: LotT[]
+  dataEnchantLots: LotT[]
   mutateByeLotsHandle: (value: void) => void
   mutateEnchantLotsHandle: (value: void) => void
   mutateEnchantLotsHandleButton: (value: void) => void

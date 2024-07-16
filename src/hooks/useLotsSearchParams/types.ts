@@ -5,6 +5,7 @@ export type EnchantSearchParamsT = {
   enchantType: EnchantsTypesEnum | ''
   enchants: EnchantsWithMaxLvlT
   itemType: string | ''
+  page: number
 }
 
 export type FilterListParamsT = {
@@ -39,3 +40,7 @@ export type NewEnchantSearchParamsT = { [key: string]: any } & EnchantSearchPara
 export type UpdateFilterListParamsProps = Partial<FilterListParamsT>
 
 export type UpdateNewByeLotsSearchParamsProps = Partial<ByeLotsSearchParamsT>
+
+export type UpdateNewEnchantSearchParamsProps = Partial<EnchantSearchParamsT>
+
+export type UpdatePrevEnchantSearchParams = { isReset?: boolean }

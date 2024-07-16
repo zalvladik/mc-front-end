@@ -1,7 +1,13 @@
 import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 
 export const useAuctionCategory = () => {
-  const { selectedCategory, setSelectedCategory } = useAuction()
+  const {
+    selectedCategory,
+    setSelectedCategory,
+    setDidShowEnchantControlPanel,
+    didShowEnchantControlPanel,
+    updatePrevEnchantSearchParams,
+  } = useAuction()
   const baseUrl = '/assets/items_for_ui'
   const categories = [
     {
@@ -62,5 +68,12 @@ export const useAuctionCategory = () => {
     },
   ]
 
-  return { categories, selectedCategory, setSelectedCategory }
+  return {
+    categories,
+    selectedCategory,
+    setSelectedCategory,
+    setDidShowEnchantControlPanel,
+    didShowEnchantControlPanel,
+    updatePrevEnchantSearchParams,
+  }
 }

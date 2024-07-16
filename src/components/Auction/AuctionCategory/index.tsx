@@ -19,7 +19,14 @@ import { TitleContainer } from 'src/components/Auction/styles'
 import ItemSlotIcon from 'src/components/ItemSlotIcon'
 
 const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
-  const { categories, selectedCategory, setSelectedCategory } = useAuctionCategory()
+  const {
+    categories,
+    selectedCategory,
+    setSelectedCategory,
+    setDidShowEnchantControlPanel,
+    didShowEnchantControlPanel,
+    updatePrevEnchantSearchParams,
+  } = useAuctionCategory()
   const {
     enchantItemsTypes,
     newEnchantSearchParams,
@@ -135,15 +142,27 @@ const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
               <EnchantSearchInfoDelete
                 isVisible={Boolean(!selectedEnchantType)}
                 onClick={() => {
+                  if (!didShowEnchantControlPanel) {
+                    setDidShowEnchantControlPanel(true)
+
+                    return
+                  }
+
                   offVisible()
                   updateEnchantSearchParams({
                     enchants: {},
                     enchantType: '' as EnchantsTypesEnum,
                     itemType: '',
                   })
+
+                  updatePrevEnchantSearchParams({ isReset: true })
                 }}
               >
-                <div />
+                <div
+                  style={{
+                    backgroundImage: `url('/assets/items_for_ui/${didShowEnchantControlPanel ? 'barrier' : 'prev'}.png')`,
+                  }}
+                />
               </EnchantSearchInfoDelete>
             </ItemSlotIcon>
           </EnchantSearchInfo>
