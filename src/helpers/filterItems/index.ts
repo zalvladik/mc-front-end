@@ -12,7 +12,6 @@ export const filterItems = ({
   })
 
   const searchedItems = sortedById.filter(item => {
-    console.log(item)
     const type = item.type.toLowerCase()
     const value = searchValue.toLowerCase()
 

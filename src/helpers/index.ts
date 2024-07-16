@@ -117,7 +117,5 @@ export const auctionUrlQueryParams = (
     params.set('display_nameOrType', display_nameOrType)
   }
 
-  console.log({ category, page, display_nameOrType })
-
   return `${RoutesPath.AUCTION}/?${params.toString()}`
 }
