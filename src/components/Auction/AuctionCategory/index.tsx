@@ -117,6 +117,10 @@ const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
                               enchantType,
                               enchants: {},
                             })
+
+                            if (!didShowEnchantControlPanel) {
+                              setDidShowEnchantControlPanel(true)
+                            }
                           }}
                         />
                       )
