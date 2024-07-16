@@ -41,7 +41,10 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     display_nameOrType: currentByeLotDisplay_nameOrType,
   } = newByeLotsSearchParams
 
-  const { page: currentEnchantLotPage } = newEnchantSearchParams
+  const {
+    page: currentEnchantLotPage,
+    itemType: currenEnchantLotDisplay_nameOrType,
+  } = newEnchantSearchParams
 
   const [currentPageUserLots, setCurrentPageUserLots] = useState(1)
 
@@ -224,6 +227,14 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     mutateEnchantLotsHandle()
 
     setDidShowEnchantControlPanel(false)
+
+    navigate(
+      auctionUrlQueryParams(
+        undefined,
+        currentEnchantLotPage,
+        currenEnchantLotDisplay_nameOrType,
+      ),
+    )
   }
 
   const providerValue: AuctionContextDataT = useMemo(

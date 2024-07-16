@@ -56,5 +56,6 @@ export const useAuctionPagination = () => {
     didShowUserLotsCount,
     didVanishPagesInfo: Boolean(didVanishPagesInfo()),
     isByeFragment: auctionFragment === AuctionFragment.BUY_LOTS,
+    isEnchantFinderFragment,
   }
 }

@@ -48,7 +48,7 @@ export const useModalLot = ({
       return { backgroundImage: 'url(/assets/items_for_ui/slot_green.png)' }
     }
 
-    if (!category && isSuitableDisplayName) {
+    if (!category && (isSuitableDisplayName || isSuitableType)) {
       return { backgroundImage: 'url(/assets/items_for_ui/slot_green.png)' }
     }
 

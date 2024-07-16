@@ -108,11 +108,6 @@ const AuctionEnchantFinder = (): JSX.Element => {
 
                       return (
                         <DefaultButtonWrapper key={item}>
-                          {/* <EnchantImg
-                         style={{
-                           backgroundImage: `url(/assets/items_for_ui/${enchantImages[item]})`,
-                         }}
-                       /> */}
                           <DefaultButton
                             onClick={() => setSelectedEnchantsToggle(item)}
                             style={{

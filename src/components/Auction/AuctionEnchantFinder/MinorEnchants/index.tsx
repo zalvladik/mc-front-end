@@ -66,44 +66,44 @@ const MinorEnchants = ({
             transform: selected ? 'translate(0%, 0%)' : 'translate(0%, -100%)',
           }}
         >
-          {enchants.map(item => {
-            const isSelectedEnchant = selectedEnchants[item as EnchantsEnum]
+          {enchants.map(enchant => {
+            const isSelectedEnchant = selectedEnchants[enchant as EnchantsEnum]
 
             return (
-              <DefaultButtonWrapper key={item}>
+              <DefaultButtonWrapper key={enchant}>
                 <DefaultButton
-                  key={item}
+                  key={enchant}
                   onClick={() => {
                     setSelectedMinorEnchantsToggle(
-                      item,
+                      enchant,
                       isSelectedFromHere as EnchantsEnum | undefined,
                     )
                   }}
                   style={{
-                    width: enchantsWithMaxLvl[item] === 1 ? '100%' : '86%',
+                    width: enchantsWithMaxLvl[enchant] === 1 ? '100%' : '86%',
                     opacity: isSelectedEnchant ? 1 : 0.4,
                   }}
                   textStyle={textStyle}
                 >
-                  {enchantTranslations[item]}
+                  {enchantTranslations[enchant]}
                 </DefaultButton>
-                {enchantsWithMaxLvl[item] > 1 && (
+                {enchantsWithMaxLvl[enchant] > 1 && (
                   <DefaultButton
                     onClick={() => {
                       if (!isSelectedFromHere) {
-                        setSelectedMinorEnchantsToggle(item)
+                        setSelectedMinorEnchantsToggle(enchant)
 
                         return
                       }
 
                       if (isSelectedFromHere && isSelectedEnchant) {
-                        setEnchantLvl(item)
+                        setEnchantLvl(enchant)
 
                         return
                       }
 
                       setSelectedMinorEnchantsToggle(
-                        item,
+                        enchant,
                         isSelectedFromHere as EnchantsEnum | undefined,
                       )
                     }}

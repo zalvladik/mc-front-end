@@ -25,6 +25,7 @@ const AuctionPagination = (): JSX.Element => {
     maxLots,
     didVanishPagesInfo,
     isByeFragment,
+    isEnchantFinderFragment,
   } = useAuctionPagination()
 
   const pageNumbers = generatePageNumbers(currentPage, totalPages)
@@ -77,7 +78,7 @@ const AuctionPagination = (): JSX.Element => {
         {currentPage}/{totalPages}
       </CountItems>
 
-      <CountLots disabled={isByeFragment}>
+      <CountLots disabled={isByeFragment || isEnchantFinderFragment}>
         {currentUserLots}/{maxLots} ваші лоти
       </CountLots>
     </Container>
