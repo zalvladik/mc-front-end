@@ -2,8 +2,9 @@ import type { HTMLProps } from 'react'
 import type { EnchantsWithMaxLvlT } from 'src/contexts/AuctionProvider/types'
 import type { EnchantsEnum } from 'src/types'
 
-export type MinorEnchantsProps = {
-  enchants: (EnchantsEnum | EnchantsEnum[])[]
+export type SecondMinorEnchantsProps = {
+  enchants: EnchantsEnum[]
+  minorEnchants: EnchantsEnum[]
   selectedEnchants: EnchantsWithMaxLvlT
   setEnchantLvl: (value: EnchantsEnum) => void
   setSelectedMinorEnchantsToggle: (

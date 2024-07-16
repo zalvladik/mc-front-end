@@ -2,6 +2,7 @@ import { enchantsWithMaxLvl } from 'src/constants'
 import type { EnchantsEnum } from 'src/types'
 import type { CSSProperties } from 'styled-components'
 
+import SecondMinorEnchants from 'src/components/Auction/AuctionEnchantFinder/MinorEnchants/SecondMinorEnchants'
 import {
   MinorEnchantsContainer,
   OverflowMinorEnchants,
@@ -9,9 +10,8 @@ import {
 } from 'src/components/Auction/AuctionEnchantFinder/MinorEnchants/styles'
 import type { MinorEnchantsProps } from 'src/components/Auction/AuctionEnchantFinder/MinorEnchants/types'
 import { useMinorEnchants } from 'src/components/Auction/AuctionEnchantFinder/MinorEnchants/useMinorEnchants'
+import { DefaultButtonWrapper } from 'src/components/Auction/AuctionEnchantFinder/styles'
 import DefaultButton from 'src/components/DefaultButton'
-
-import { DefaultButtonWrapper } from '../styles'
 
 const MinorEnchants = ({
   enchants,
@@ -27,10 +27,12 @@ const MinorEnchants = ({
     minorEnchantsRef,
     mainContainerRef,
     enchantTranslations,
+    secondMinorEnchants,
+    setSecondMinorEnchants,
   } = useMinorEnchants()
 
-  const isSelectedFromHere = Object.keys(selectedEnchants).find(enchant =>
-    enchants.includes(enchant as EnchantsEnum),
+  const selectedFromHere = Object.keys(selectedEnchants).filter(enchant =>
+    enchants.flat().includes(enchant as EnchantsEnum),
   )
 
   const textStyle: CSSProperties = {
@@ -42,16 +44,23 @@ const MinorEnchants = ({
     <div {...props} ref={mainContainerRef}>
       <DefaultButton
         onClick={() => setSelected(!selected)}
-        style={{ width: '100%', opacity: !isSelectedFromHere ? 0.5 : 1 }}
+        style={{ width: '100%', opacity: !selectedFromHere ? 0.5 : 1 }}
         textStyle={textStyle}
       >
-        {isSelectedFromHere ? (
+        {selectedFromHere.length ? (
           <>
-            {enchantTranslations[isSelectedFromHere]}
-            {!selected &&
-              (enchantsWithMaxLvl[isSelectedFromHere] > 1
-                ? ` ${selectedEnchants[isSelectedFromHere as EnchantsEnum]} `
-                : '')}
+            {selectedFromHere.map((selectedEnchant, i) => (
+              <>
+                {enchantTranslations[selectedEnchant]}
+                {!selected &&
+                  (enchantsWithMaxLvl[selectedEnchant] > 1
+                    ? ` ${selectedEnchants[selectedEnchant as EnchantsEnum]} `
+                    : '')}
+                {selectedFromHere.length > 1 && i < selectedFromHere.length - 1
+                  ? ' + '
+                  : ''}
+              </>
+            ))}
             <StyledFaArrowDownShortWide size={30} />
           </>
         ) : (
@@ -69,14 +78,41 @@ const MinorEnchants = ({
           {enchants.map(enchant => {
             const isSelectedEnchant = selectedEnchants[enchant as EnchantsEnum]
 
+            if (Array.isArray(enchant)) {
+              const minorEnchantsWithoutArray = enchants.filter(
+                item => !Array.isArray(item),
+              )
+
+              return (
+                <SecondMinorEnchants
+                  key="SecondMinorEnchants"
+                  enchants={enchant}
+                  selectedEnchants={selectedEnchants}
+                  minorEnchants={minorEnchantsWithoutArray as EnchantsEnum[]}
+                  setSelectedMinorEnchantsToggle={setSelectedMinorEnchantsToggle}
+                  setEnchantLvl={setEnchantLvl}
+                  onClick={() => {
+                    if (!secondMinorEnchants.length) setSecondMinorEnchants(enchant)
+                  }}
+                />
+              )
+            }
+
             return (
               <DefaultButtonWrapper key={enchant}>
                 <DefaultButton
                   key={enchant}
                   onClick={() => {
+                    if (secondMinorEnchants.length) {
+                      setSelectedMinorEnchantsToggle(enchant, secondMinorEnchants)
+                      setSecondMinorEnchants([])
+
+                      return
+                    }
+
                     setSelectedMinorEnchantsToggle(
                       enchant,
-                      isSelectedFromHere as EnchantsEnum | undefined,
+                      selectedFromHere[0] as EnchantsEnum | undefined,
                     )
                   }}
                   style={{
@@ -90,13 +126,20 @@ const MinorEnchants = ({
                 {enchantsWithMaxLvl[enchant] > 1 && (
                   <DefaultButton
                     onClick={() => {
-                      if (!isSelectedFromHere) {
+                      if (secondMinorEnchants.length) {
+                        setSelectedMinorEnchantsToggle(enchant, secondMinorEnchants)
+                        setSecondMinorEnchants([])
+
+                        return
+                      }
+
+                      if (!selectedFromHere) {
                         setSelectedMinorEnchantsToggle(enchant)
 
                         return
                       }
 
-                      if (isSelectedFromHere && isSelectedEnchant) {
+                      if (selectedFromHere && isSelectedEnchant) {
                         setEnchantLvl(enchant)
 
                         return
@@ -104,7 +147,7 @@ const MinorEnchants = ({
 
                       setSelectedMinorEnchantsToggle(
                         enchant,
-                        isSelectedFromHere as EnchantsEnum | undefined,
+                        selectedFromHere[0] as EnchantsEnum | undefined,
                       )
                     }}
                     style={{

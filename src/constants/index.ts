@@ -150,7 +150,7 @@ export const enchantVariables = {
     [EnchantsEnum.SHARPNESS, EnchantsEnum.BANE_OF_ARTHROPODS, EnchantsEnum.SMITE],
   ],
   [EnchantsTypesEnum.TRIDENT]: [
-    [EnchantsEnum.CHANNELING, EnchantsEnum.LOYALTY, EnchantsEnum.RIPTIDE],
+    [[EnchantsEnum.CHANNELING, EnchantsEnum.LOYALTY], EnchantsEnum.RIPTIDE],
     EnchantsEnum.IMPALING,
   ],
   [EnchantsTypesEnum.MACE]: [],

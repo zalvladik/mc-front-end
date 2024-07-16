@@ -53,8 +53,22 @@ export const useAuctionEnchantFinder = () => {
 
   const setSelectedMinorEnchantsToggle = (
     addEnchant: EnchantsEnum,
-    deleteEnchant?: EnchantsEnum,
+    deleteEnchant?: EnchantsEnum | EnchantsEnum[],
   ) => {
+    if (Array.isArray(deleteEnchant)) {
+      const newSelectedEnchants = { ...selectedEnchants }
+
+      deleteEnchant.forEach(enchant => {
+        delete newSelectedEnchants[enchant]
+      })
+
+      newSelectedEnchants[addEnchant] = 1
+
+      updateEnchantSearchParams({ enchants: newSelectedEnchants })
+
+      return
+    }
+
     if (addEnchant === deleteEnchant) {
       const newSelectedEnchants = { ...selectedEnchants }
 

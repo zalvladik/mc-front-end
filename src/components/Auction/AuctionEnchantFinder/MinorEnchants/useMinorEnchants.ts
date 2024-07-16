@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { enchantTranslations } from 'src/constants'
+import type { EnchantsEnum } from 'src/types'
 
 export const useMinorEnchants = () => {
   const [selected, setSelected] = useState<boolean>(false)
+  const [secondMinorEnchants, setSecondMinorEnchants] = useState<EnchantsEnum[]>([])
 
   const overflowRef = useRef<HTMLDivElement>(null)
   const minorEnchantsRef = useRef<HTMLDivElement>(null)
@@ -43,5 +45,7 @@ export const useMinorEnchants = () => {
     minorEnchantsRef,
     mainContainerRef,
     enchantTranslations,
+    secondMinorEnchants,
+    setSecondMinorEnchants,
   }
 }
