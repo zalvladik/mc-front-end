@@ -20,15 +20,17 @@ export const useDeleteUserLot = (afterSubmit: (value: void) => void) => {
         lots =>
           lots?.filter(lot => {
             if (lot.id === data.id) {
-              const userItems =
-                queryClient.getQueryData<ItemT[]>(CacheKeys.USER_ITEMS) ?? []
+              const userItems = queryClient.getQueryData<ItemT[]>(
+                CacheKeys.USER_ITEMS,
+              )
 
-              const userShulkes =
-                queryClient.getQueryData<ShulkerT[]>(CacheKeys.USER_SHULKERS) ?? []
+              const userShulkes = queryClient.getQueryData<ShulkerT[]>(
+                CacheKeys.USER_SHULKERS,
+              )
 
               if (!userItems) {
                 queryClient.invalidateQueries(CacheKeys.USER_ITEMS)
-              } else {
+              } else if (userItems) {
                 queryClient.setQueryData<ItemT[]>(CacheKeys.USER_ITEMS, items => {
                   return [...(items ?? []), lot!.item!]
                 })
@@ -36,7 +38,7 @@ export const useDeleteUserLot = (afterSubmit: (value: void) => void) => {
 
               if (!userShulkes) {
                 queryClient.invalidateQueries(CacheKeys.USER_SHULKERS)
-              } else {
+              } else if (lot.shulker) {
                 queryClient.setQueryData<ShulkerT[]>(
                   CacheKeys.USER_SHULKERS,
                   shulkers => {
