@@ -120,6 +120,8 @@ const AuctionCategory = ({ ...props }: AuctionCategoryProps): JSX.Element => {
 
                             if (!didShowEnchantControlPanel) {
                               setDidShowEnchantControlPanel(true)
+
+                              updatePrevEnchantSearchParams({ isReset: true })
                             }
                           }}
                         />
