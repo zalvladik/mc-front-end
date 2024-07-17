@@ -153,7 +153,16 @@ export const enchantVariables = {
     [[EnchantsEnum.CHANNELING, EnchantsEnum.LOYALTY], EnchantsEnum.RIPTIDE],
     EnchantsEnum.IMPALING,
   ],
-  [EnchantsTypesEnum.MACE]: [],
+  [EnchantsTypesEnum.MACE]: [
+    [
+      EnchantsEnum.SMITE,
+      EnchantsEnum.BREACH,
+      EnchantsEnum.DENSITY,
+      EnchantsEnum.BANE_OF_ARTHROPODS,
+    ],
+    EnchantsEnum.WIND_BURST,
+    EnchantsEnum.FIRE_ASPECT,
+  ],
   [EnchantsTypesEnum.PICKAXE]: [],
   [EnchantsTypesEnum.SHOVEL]: [],
   [EnchantsTypesEnum.HOE]: [],
