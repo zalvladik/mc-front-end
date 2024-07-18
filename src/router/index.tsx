@@ -8,7 +8,7 @@ import { RoutesPath } from 'src/router/routes'
 const ErrorPage = lazy(() => import('src/pages/ErrorPage'))
 const HomePage = lazy(() => import('src/pages/HomePage'))
 const RulePage = lazy(() => import('src/pages/RulePage'))
-const WikiPage = lazy(() => import('src/pages/WikiPage'))
+// const WikiPage = lazy(() => import('src/pages/WikiPage'))
 const SignInPage = lazy(() => import('src/pages/SignInPage'))
 const InventoryPage = lazy(() => import('src/pages/InventoryPage'))
 const ProfilePage = lazy(() => import('src/pages/ProfilePage'))
@@ -32,7 +32,7 @@ export const Router = createBrowserRouter([
             path: RoutesPath.AUCTION,
             element: <AuctionLayout />,
           },
-          { path: RoutesPath.WIKI, element: <WikiPage /> },
+          // { path: RoutesPath.WIKI, element: <WikiPage /> },
         ],
       },
     ],

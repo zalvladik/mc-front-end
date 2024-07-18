@@ -84,7 +84,7 @@ const Navbar = (): JSX.Element => {
               >
                 Правила
               </button>
-              {isSuccess && (
+              {/* {isSuccess && (
                 <button
                   style={{ opacity: currentPath === RoutesPath.WIKI ? 1 : 0.5 }}
                   onClick={() =>
@@ -95,7 +95,7 @@ const Navbar = (): JSX.Element => {
                 >
                   Wiki
                 </button>
-              )}
+              )} */}
             </NavList>
           </div>
         )}
