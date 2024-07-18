@@ -8,10 +8,10 @@ import { RoutesPath } from 'src/router/routes'
 const ErrorPage = lazy(() => import('src/pages/ErrorPage'))
 const HomePage = lazy(() => import('src/pages/HomePage'))
 const RulePage = lazy(() => import('src/pages/RulePage'))
-const WikiPage = lazy(() => import('src/pages/WikiPage'))
-const SignInPage = lazy(() => import('src/pages/SignInPage'))
-const InventoryPage = lazy(() => import('src/pages/InventoryPage'))
-const ProfilePage = lazy(() => import('src/pages/ProfilePage'))
+// const WikiPage = lazy(() => import('src/pages/WikiPage'))
+// const SignInPage = lazy(() => import('src/pages/SignInPage'))
+// const InventoryPage = lazy(() => import('src/pages/InventoryPage'))
+// const ProfilePage = lazy(() => import('src/pages/ProfilePage'))
 
 export const Router = createBrowserRouter([
   {
@@ -21,20 +21,20 @@ export const Router = createBrowserRouter([
     children: [
       { path: RoutesPath.HOME, element: <HomePage /> },
       { path: RoutesPath.RULES, element: <RulePage /> },
-      { path: RoutesPath.SIGN_IN, element: <SignInPage /> },
-      {
-        path: RoutesPath.USER,
-        element: <AuthLayout />,
-        children: [
-          { path: RoutesPath.PROFILE, element: <ProfilePage /> },
-          { path: RoutesPath.INVENTORY, element: <InventoryPage /> },
-          {
-            path: RoutesPath.AUCTION,
-            element: <AuctionLayout />,
-          },
-          { path: RoutesPath.WIKI, element: <WikiPage /> },
-        ],
-      },
+      // { path: RoutesPath.SIGN_IN, element: <SignInPage /> },
+      // {
+      //   path: RoutesPath.USER,
+      //   element: <AuthLayout />,
+      //   children: [
+      //     { path: RoutesPath.PROFILE, element: <ProfilePage /> },
+      //     { path: RoutesPath.INVENTORY, element: <InventoryPage /> },
+      //     {
+      //       path: RoutesPath.AUCTION,
+      //       element: <AuctionLayout />,
+      //     },
+      //     { path: RoutesPath.WIKI, element: <WikiPage /> },
+      //   ],
+      // },
     ],
   },
 ])
