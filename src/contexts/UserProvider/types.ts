@@ -1,13 +1,12 @@
 import type { Role } from 'src/constants'
+import type { VipEnum } from 'src/types'
 
 export type UserT = {
   id: number
   username: string
   money: number
   role: Role[]
-  shulkerCount: number
-  itemCount: number
-  lotCount: number
+  vip: VipEnum | null
 }
 
 export type UserContextDataT = {

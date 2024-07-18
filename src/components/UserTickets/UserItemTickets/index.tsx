@@ -32,7 +32,7 @@ const UserItemTickets = (): JSX.Element => {
           )
         })}
 
-        <h1>Квитки {data.length}/5</h1>
+        <h1>{data.length}/5</h1>
       </Skeleton>
       <InformationButton
         onClick={() => {

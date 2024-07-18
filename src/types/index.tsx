@@ -113,3 +113,16 @@ export enum EnchantsEnum {
   INFINITY = 'infinity',
   FLAME = 'flame',
 }
+
+export enum VipEnum {
+  IRON = 'iron',
+  GOLDEN = 'golden',
+  DIAMOND = 'diamond',
+  NETHERITE = 'netherite',
+}
+
+export type VipParamsT = {
+  vipShulkerCount: number
+  vipItemCount: number
+  vipLotCount: number
+}

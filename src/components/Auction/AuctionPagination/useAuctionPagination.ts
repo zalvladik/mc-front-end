@@ -1,6 +1,7 @@
 import { AuctionFragment } from 'src/constants'
 import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 import { useUser } from 'src/contexts/UserProvider/useUser'
+import { getVipParams } from 'src/helpers/getVipParams'
 import { useGetUserLots } from 'src/hooks/useGetUserLots'
 
 export const useAuctionPagination = () => {
@@ -47,12 +48,14 @@ export const useAuctionPagination = () => {
     }
   }
 
+  const { vipLotCount } = getVipParams(user.vip)
+
   return {
     currentUserLots: data.length,
     currentPage,
     setCurrentPage,
     totalPages,
-    maxLots: user.lotCount,
+    vipLotCount,
     didShowUserLotsCount,
     didVanishPagesInfo: Boolean(didVanishPagesInfo()),
     isByeFragment: auctionFragment === AuctionFragment.BUY_LOTS,

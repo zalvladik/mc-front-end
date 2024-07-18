@@ -7,7 +7,8 @@ import {
 import { useShulkers } from 'src/components/UserTickets/UserShulkers/useShulkers'
 
 const UserShulker = (): JSX.Element => {
-  const { data, isLoading, showInfo, shulkerIconRefs, openModal } = useShulkers()
+  const { data, isLoading, showInfo, shulkerIconRefs, openModal, vipShulkerCount } =
+    useShulkers()
 
   const size = 80 + 160 / data.length
   const fontSize = 30 + 30 / data.length
@@ -41,6 +42,10 @@ const UserShulker = (): JSX.Element => {
             </button>
           )
         })}
+
+        <h1>
+          {data.length}/{vipShulkerCount}
+        </h1>
       </Skeleton>
 
       <InformationButton

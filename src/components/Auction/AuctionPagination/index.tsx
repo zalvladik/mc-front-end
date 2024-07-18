@@ -22,7 +22,7 @@ const AuctionPagination = (): JSX.Element => {
     currentPage,
     setCurrentPage,
     totalPages,
-    maxLots,
+    vipLotCount,
     didVanishPagesInfo,
     isByeFragment,
     isEnchantFinderFragment,
@@ -79,7 +79,7 @@ const AuctionPagination = (): JSX.Element => {
       </CountItems>
 
       <CountLots disabled={isByeFragment || isEnchantFinderFragment}>
-        {currentUserLots}/{maxLots} ваші лоти
+        {currentUserLots}/{vipLotCount} ваші лоти
       </CountLots>
     </Container>
   )

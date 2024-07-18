@@ -2,15 +2,20 @@ import { useEffect, useRef } from 'react'
 import { useItemHoverDescription } from 'src/contexts/ItemHoverDescriptionProvider/useItemHoverDescription'
 import { useModals } from 'src/contexts/ModalProvider/useModals'
 import { useToast } from 'src/contexts/ToastProvider/useToast'
+import { useUser } from 'src/contexts/UserProvider/useUser'
+import { getVipParams } from 'src/helpers/getVipParams'
 import { useGetUserShulkers } from 'src/hooks/useGetUserShulkers'
 
 import { Modals } from 'src/features/Modals/constants'
 
 export const useShulkers = () => {
+  const { user } = useUser()
   const { data = [], isLoading } = useGetUserShulkers()
   const toast = useToast()
 
   const { onOpen } = useModals()
+
+  const { vipShulkerCount } = getVipParams(user.vip)
 
   const openModal = (shulkerId: number): void => {
     onOpen({ name: Modals.SHULKER_ITEMS, data: { shulkerId } })
@@ -74,5 +79,5 @@ export const useShulkers = () => {
     }
   }, [data])
 
-  return { data, isLoading, showInfo, shulkerIconRefs, openModal }
+  return { data, isLoading, showInfo, shulkerIconRefs, openModal, vipShulkerCount }
 }

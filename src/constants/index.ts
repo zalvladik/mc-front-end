@@ -115,9 +115,7 @@ export const defaultUser: UserT = {
   username: '',
   money: 0,
   role: [Role.NOT_AUTH],
-  shulkerCount: 0,
-  itemCount: 0,
-  lotCount: 0,
+  vip: null,
 }
 
 export const enchantsLvl: { [key: string]: string } = {
@@ -347,6 +345,12 @@ export const enchantTranslations: { [key: string]: string } = {
 //   [EnchantsEnum.INFINITY]: 'Нескінченність',
 //   [EnchantsEnum.FLAME]: 'blaze_powder.png',
 // }
+
+export const ITEMS_COUNT = 27
+
+export const LOTS_COUNT = 8
+
+export const SHULKERS_COUNT = 2
 
 export const enchantsWithMaxLvl: { [key: string]: number } = {
   [EnchantsEnum.BANE_OF_ARTHROPODS]: 5,
