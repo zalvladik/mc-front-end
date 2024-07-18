@@ -22,6 +22,10 @@ const ProfilePage = (): JSX.Element => {
           <ButtonList>
             <DefaultButton onClick={openAdvancementsModal}>Досягнення</DefaultButton>
 
+            <DefaultButton disabled={isLoading} onClick={() => {}}>
+              VIP
+            </DefaultButton>
+
             <DefaultButton disabled={isLoading} onClick={logout}>
               Вийти
             </DefaultButton>
