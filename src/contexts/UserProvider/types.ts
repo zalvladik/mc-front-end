@@ -7,9 +7,13 @@ export type UserT = {
   money: number
   role: Role[]
   vip: VipEnum | null
+  vipExpirationDate: Date | null
 }
+
+export type UpdateUserT = Partial<UserT>
 
 export type UserContextDataT = {
   user: UserT
   updateUserMoney: (value: number) => void
+  updateUser: (value: UpdateUserT) => void
 }

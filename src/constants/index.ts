@@ -1,5 +1,5 @@
 import type { UserT } from 'src/contexts/UserProvider/types'
-import { EnchantsEnum, EnchantsTypesEnum } from 'src/types'
+import { EnchantsEnum, EnchantsTypesEnum, VipEnum } from 'src/types'
 
 export const FETCH_URL = import.meta.env.VITE_URL_BY_BACKEND
 
@@ -88,6 +88,7 @@ export enum FetchEndpoint {
   USER = 'user',
   USER_ITEMS = 'user/items',
   USER_SKIN = 'user/skin',
+  USER_VIP = 'user/vip',
   USER_ADVANCEMENTS = 'user/advancements',
   USER_ITEM_TICKETS = 'item_ticket/user_tickets',
   LOT_SHULKER = 'lot/shulker',
@@ -351,6 +352,20 @@ export const ITEMS_COUNT = 27
 export const LOTS_COUNT = 8
 
 export const SHULKERS_COUNT = 2
+
+export const vipMultipliers: Record<VipEnum, number> = {
+  [VipEnum.IRON]: 2,
+  [VipEnum.GOLDEN]: 4,
+  [VipEnum.DIAMOND]: 6,
+  [VipEnum.NETHERITE]: 8,
+}
+
+export const vipPrice: Record<VipEnum, number> = {
+  [VipEnum.IRON]: 16,
+  [VipEnum.GOLDEN]: 32,
+  [VipEnum.DIAMOND]: 48,
+  [VipEnum.NETHERITE]: 64,
+}
 
 export const enchantsWithMaxLvl: { [key: string]: number } = {
   [EnchantsEnum.BANE_OF_ARTHROPODS]: 5,

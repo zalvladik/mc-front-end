@@ -1,7 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useQueryClient } from 'react-query'
 import { UserContext } from 'src/contexts'
-import type { UserContextDataT, UserT } from 'src/contexts/UserProvider/types'
+import type {
+  UpdateUserT,
+  UserContextDataT,
+  UserT,
+} from 'src/contexts/UserProvider/types'
 import { SocketApi } from 'src/services/api/Socket'
 import type { ReactChildrenT } from 'src/types'
 
@@ -28,8 +32,34 @@ const UserProvider = ({
     setUser(prevUser => ({ ...prevUser, money: prevUser.money - dataMoney }))
   }
 
+  const updateUser = ({
+    id,
+    username,
+    money,
+    role,
+    vip,
+    vipExpirationDate,
+  }: UpdateUserT): void => {
+    const updatedUser = { ...user }
+
+    if (id !== undefined) updatedUser.id = id
+
+    if (username !== undefined) updatedUser.username = username
+
+    if (money !== undefined) updatedUser.money = money
+
+    if (role !== undefined) updatedUser.role = role
+
+    if (vip !== undefined) updatedUser.vip = vip
+
+    if (vipExpirationDate !== undefined)
+      updatedUser.vipExpirationDate = vipExpirationDate
+
+    setUser(updatedUser)
+  }
+
   const providerValue: UserContextDataT = useMemo(
-    () => ({ user, updateUserMoney }),
+    () => ({ user, updateUserMoney, updateUser }),
     [user],
   )
 

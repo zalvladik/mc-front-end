@@ -11,7 +11,8 @@ import DefaultButton from 'src/components/DefaultButton'
 import SkinComponent from 'src/components/SkinComponent'
 
 const ProfilePage = (): JSX.Element => {
-  const { user, isLoading, logout, openAdvancementsModal } = useProfilePage()
+  const { user, isLoading, logout, openAdvancementsModal, openVipModal } =
+    useProfilePage()
 
   return (
     <Container>
@@ -22,7 +23,7 @@ const ProfilePage = (): JSX.Element => {
           <ButtonList>
             <DefaultButton onClick={openAdvancementsModal}>Досягнення</DefaultButton>
 
-            <DefaultButton disabled={isLoading} onClick={() => {}}>
+            <DefaultButton disabled={isLoading} onClick={openVipModal}>
               VIP
             </DefaultButton>
 

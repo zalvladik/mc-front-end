@@ -34,6 +34,12 @@ export const api = ky.create({
         return res
       },
       async (_req, _opts, res) => {
+        const newAccessToken = res.headers.get('accessToken')
+
+        if (newAccessToken) {
+          localStorage.setItem(LocalStorageKey.ACCESS_TOKEN, newAccessToken)
+        }
+
         if (res.status >= 300 && res.status <= 500) {
           const body = await res.json()
           const message = body.message || 'Unknown error'
