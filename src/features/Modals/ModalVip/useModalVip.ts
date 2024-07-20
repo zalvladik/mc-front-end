@@ -1,17 +1,26 @@
 import { useState } from 'react'
 import { useToast } from 'src/contexts/ToastProvider/useToast'
 import { useByeVip } from 'src/hooks/useByeVip'
+import { useUpgradeVip } from 'src/hooks/useUpgradeVip'
 import type { VipEnum } from 'src/types'
 
-export const useModalVip = () => {
+export const useModalVip = (isByeVip: boolean) => {
   const [selectedVipType, setSelectedVipType] = useState<VipEnum>()
-  const { isLoading, mutate } = useByeVip()
+  const { isLoading: isLoadingByeVip, mutate: mutateByeVip } = useByeVip()
+  const { isLoading: isLoadingUpgradeVip, mutate: mutateUpgradeVip } =
+    useUpgradeVip()
   const toast = useToast()
 
-  const byeVip = () => {
+  const toogleVip = () => {
     if (!selectedVipType) return
 
-    mutate(selectedVipType)
+    if (isByeVip) {
+      mutateByeVip(selectedVipType)
+
+      return
+    }
+
+    mutateUpgradeVip(selectedVipType)
   }
 
   const showInfo = () => {
@@ -27,5 +36,11 @@ export const useModalVip = () => {
     })
   }
 
-  return { byeVip, showInfo, selectedVipType, setSelectedVipType, isLoading }
+  return {
+    toogleVip,
+    showInfo,
+    selectedVipType,
+    setSelectedVipType,
+    isLoading: isLoadingByeVip || isLoadingUpgradeVip,
+  }
 }

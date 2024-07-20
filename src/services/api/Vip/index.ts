@@ -7,7 +7,7 @@ class Vip {
     await api.post(FetchEndpoint.USER_VIP, { json: { vip } }).json()
   }
 
-  async update(vip: VipEnum): Promise<void> {
+  async upgradeVip(vip: VipEnum): Promise<void> {
     await api.put(FetchEndpoint.USER_VIP, { json: { vip } }).json()
   }
 }

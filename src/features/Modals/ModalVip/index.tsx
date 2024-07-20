@@ -30,8 +30,9 @@ const ModalVip = ({
 }: ModalVipProps): JSX.Element => {
   const { user } = data
 
-  const { byeVip, showInfo, selectedVipType, setSelectedVipType, isLoading } =
-    useModalVip()
+  const isByeVip = !user.vipExpirationDate
+  const { toogleVip, showInfo, selectedVipType, setSelectedVipType, isLoading } =
+    useModalVip(isByeVip)
 
   return (
     <SettingsModalsLayout
@@ -100,10 +101,10 @@ const ModalVip = ({
           isLoading={isLoading}
           style={{ width: 400, margin: '0px auto' }}
           onClick={() => {
-            byeVip()
+            toogleVip()
           }}
         >
-          Купити
+          {isByeVip ? 'Купити' : 'Покращити'}
         </DefaultButton>
 
         <InformationButton
