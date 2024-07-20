@@ -38,7 +38,7 @@ export const api = ky.create({
 
         if (newAccessToken) {
           localStorage.setItem(LocalStorageKey.ACCESS_TOKEN, newAccessToken)
-          // window.location.reload()
+          window.location.reload()
         }
 
         if (res.status >= 300 && res.status <= 500) {
