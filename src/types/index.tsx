@@ -69,6 +69,21 @@ export enum EnchantsTypesEnum {
   FISHING_ROD = 'fishing_rod',
 }
 
+export enum UkrainianMonths {
+  'січня' = 0,
+  'лютого' = 1,
+  'березня' = 2,
+  'квітня' = 3,
+  'травня' = 4,
+  'червня' = 5,
+  'липня' = 6,
+  'серпня' = 7,
+  'вересня' = 8,
+  'жовтня' = 9,
+  'листопада' = 10,
+  'грудня' = 11,
+}
+
 export enum EnchantsEnum {
   BANE_OF_ARTHROPODS = 'bane_of_arthropods',
   BLAST_PROTECTION = 'blast_protection',

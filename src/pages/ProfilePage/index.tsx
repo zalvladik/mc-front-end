@@ -1,9 +1,12 @@
+import { formatVipExpirationDate } from 'src/helpers/formatVipExprirationDate'
 import {
   ButtonList,
   Container,
   NickName,
   PlayerInfo,
   UserContainer,
+  VipDateInfo,
+  VipDateInfoContainer,
 } from 'src/pages/ProfilePage/styles'
 import useProfilePage from 'src/pages/ProfilePage/useProfilePage'
 
@@ -30,6 +33,29 @@ const ProfilePage = (): JSX.Element => {
             <DefaultButton disabled={isLoading} onClick={logout}>
               Вийти
             </DefaultButton>
+            {(() => {
+              if (!user.vipExpirationDate) return <></>
+
+              const { day, month, hours, minutes, seconds } =
+                formatVipExpirationDate(user.vipExpirationDate)
+
+              return (
+                <VipDateInfoContainer>
+                  <h3>Тривалість VIP</h3>
+                  {user.vipExpirationDate && (
+                    <VipDateInfo>
+                      <div>
+                        до {day} {month}
+                      </div>
+                      |
+                      <div>
+                        {hours} : {minutes} : {seconds}
+                      </div>
+                    </VipDateInfo>
+                  )}
+                </VipDateInfoContainer>
+              )
+            })()}
           </ButtonList>
         </PlayerInfo>
       </UserContainer>
