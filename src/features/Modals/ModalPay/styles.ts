@@ -11,14 +11,6 @@ export const StyledRuleCategory = styled(RuleCategory)`
   }
 `
 
-export const CloseButton = styled.img`
-  float: right;
-
-  &:hover {
-    cursor: pointer;
-  }
-`
-
 export const ContainerWrapper = styled.div`
   max-width: 800px;
   position: relative;
@@ -31,7 +23,11 @@ export const ContainerWrapper = styled.div`
 `
 
 export const Container = styled.div`
-  height: 470px;
+  display: flex;
+  flex-direction: column;
+
+  height: 80vh;
+
   overflow-y: auto;
 
   position: relative;
@@ -45,49 +41,6 @@ export const Container = styled.div`
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.8);
   }
-`
-
-export const ButtonWrapper = styled.div`
-  @media screen and (max-width: 750px) {
-    margin-top: 50px;
-  }
-
-  @media screen and (max-width: 390px) {
-    margin-top: 50px;
-  }
-
-  a {
-    font-size: 30px;
-    background: none;
-    color: white;
-    padding: 10px 10px;
-    border-radius: 6px;
-    border: 1px solid white;
-    transition:
-      color 0.2s ease,
-      border-color 0.2s ease;
-
-    @media screen and (max-width: 750px) {
-      font-size: 18px;
-    }
-
-    @media screen and (max-width: 390px) {
-      font-size: 16px;
-    }
-
-    &:hover {
-      cursor: pointer;
-      border-color: #209ac4;
-      color: #209ac4;
-    }
-  }
-`
-
-export const ButtonContainer = styled.div`
-  margin-top: 40px;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
 `
 
 export const Breeze = styled.img`
@@ -220,6 +173,10 @@ export const Info = styled.div`
     color: white;
     font-size: 18px;
     opacity: 0.9;
+
+    font-family: 'Minecraft', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
 
     & {
       @media screen and (max-width: 390px) {

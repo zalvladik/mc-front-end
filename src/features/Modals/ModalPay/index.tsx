@@ -1,8 +1,6 @@
+import LiqPay from 'src/features/liqPay'
 import {
   Breeze,
-  ButtonContainer,
-  ButtonWrapper,
-  CloseButton,
   Cloud1,
   Cloud2,
   Cloud3,
@@ -35,49 +33,22 @@ const ModalPay = ({
         <Cloud3 width="130" src="/assets/cloud_3.png" />
 
         <Container className="hidden_scroll-y">
-          <CloseButton width="30" src="assets/close.svg" onClick={closeModal} />
-
           <StyledRuleCategory
             category={category}
             rules={rules}
             categoryNum={1}
             style={{ paddingLeft: 30 }}
           />
-
           <Info>
-            <h1>Про оплату</h1>
+            <h1>Про оплату:</h1>
             <p>
-              Щоб купити прохідку, вам потрібно перейти на банку Monabank та оплатити
-              суму прохідки! <br />
+              Щоб купити прохідку, вам потрібно оплатити її, і вказати свій нікнейм!
             </p>
-            <h1>
-              На місяць - 50 грн. <br /> Назавжди - 250 грн.
-            </h1>
-            <p>
-              Під платіж, вкажіть Ваш discord, щоб з вами зв'язався Адміністратор!
-              Очікуйте відповіді протягом 24-48годин!
-            </p>
+            <p>Після покупки, ви одразу можете заходити на свій аккаунт.</p>
+            <p>Хорошої гри!</p>
           </Info>
-          <ButtonContainer>
-            <ButtonWrapper>
-              <a
-                target="_blank"
-                href="https://send.monobank.ua/jar/UbQzFQ5u7"
-                rel="noreferrer"
-              >
-                Купити прохідку
-              </a>
-            </ButtonWrapper>
-            <ButtonWrapper>
-              <a
-                target="_blank"
-                href="https://docs.google.com/forms/d/e/1FAIpQLScYLIipjEeJG3FLRG-1jtfjYGGahLSLQiYROPfp6ZDK0WOgAQ/viewform"
-                rel="noreferrer"
-              >
-                Денна прохідка
-              </a>
-            </ButtonWrapper>
-          </ButtonContainer>
+
+          <LiqPay />
         </Container>
       </ContainerWrapper>
     </SettingsModalsLayout>
