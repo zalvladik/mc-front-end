@@ -116,7 +116,7 @@ export enum EnchantsEnum {
 
 export enum VipEnum {
   IRON = 'iron',
-  GOLDEN = 'golden',
+  GOLD = 'gold',
   DIAMOND = 'diamond',
   NETHERITE = 'netherite',
 }

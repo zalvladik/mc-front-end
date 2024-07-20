@@ -1,24 +1,32 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useQueryClient } from 'react-query'
+import { defaultUser } from 'src/constants'
 import { UserContext } from 'src/contexts'
 import type {
   UpdateUserT,
   UserContextDataT,
   UserT,
 } from 'src/contexts/UserProvider/types'
+import { useCheckAuth } from 'src/hooks/useCheckAuth'
+import { useGetUser } from 'src/hooks/useGetUser'
 import { SocketApi } from 'src/services/api/Socket'
 import type { ReactChildrenT } from 'src/types'
 
-type UserProviderT = {
-  user: UserT
-} & ReactChildrenT
+type UserProviderT = ReactChildrenT
 
-const UserProvider = ({
-  children,
-  user: initialUser,
-}: UserProviderT): JSX.Element => {
-  const [user, setUser] = useState<UserT>(initialUser)
+const UserProvider = ({ children }: UserProviderT): JSX.Element => {
+  const [user, setUser] = useState<UserT>(defaultUser)
   const queryClient = useQueryClient()
+
+  const { isSuccess } = useCheckAuth()
+
+  const { user: userData } = useGetUser(isSuccess)
+
+  useEffect(() => {
+    if (userData.id) {
+      setUser(userData)
+    }
+  }, [userData])
 
   const updateUserMoney = (money: number): void => {
     setUser(prevUser => ({ ...prevUser, money }))

@@ -1,8 +1,15 @@
+import { vipPrice } from 'src/constants'
 import { VipEnum } from 'src/types'
 
 import ButtonModalClose from 'src/components/ButtonModalClose'
+import DefaultButton from 'src/components/DefaultButton'
+import InformationButton from 'src/components/InformationButton'
 
-import { Container } from 'src/features/Modals/ModalItemsInTicket/styles'
+import {
+  Container,
+  DisabledVipType,
+  VipListContainer,
+} from 'src/features/Modals/ModalVip/styles'
 import type { ModalVipProps } from 'src/features/Modals/ModalVip/types'
 import { useModalVip } from 'src/features/Modals/ModalVip/useModalVip'
 import SettingsModalsLayout from 'src/features/Modals/SettingsModalsLayout'
@@ -13,8 +20,9 @@ const ModalVip = ({
   handleContainerClick,
   data,
 }: ModalVipProps): JSX.Element => {
-  const { afterSubmit } = data
-  const { byeVip } = useModalVip({ afterSubmit })
+  const { user } = data
+
+  const { byeVip, showInfo, selectedVipType, setSelectedVipType } = useModalVip()
 
   return (
     <SettingsModalsLayout
@@ -24,11 +32,46 @@ const ModalVip = ({
     >
       <ButtonModalClose onClose={closeModal} />
       <Container onClick={handleContainerClick}>
-        <div
-          style={{ width: 100, height: 100, backgroundColor: 'red' }}
+        <VipListContainer>
+          {Object.values(VipEnum).map((vipType: VipEnum) => {
+            const isDisalbed = vipPrice[user.vip as VipEnum] >= vipPrice[vipType]
+            const isSelected = selectedVipType === vipType
+
+            return (
+              <div
+                key={vipType}
+                style={{
+                  opacity: isDisalbed ? 0.3 : isSelected ? 1 : 0.5,
+                  pointerEvents: isDisalbed ? 'none' : 'auto',
+                }}
+                onClick={() => {
+                  setSelectedVipType(vipType)
+                }}
+              >
+                <div
+                  style={{
+                    backgroundImage: `url(/assets/items_for_ui/${vipType}_block.webp)`,
+                  }}
+                />
+                {isDisalbed && <DisabledVipType />}
+              </div>
+            )
+          })}
+        </VipListContainer>
+        <DefaultButton
+          style={{ width: 400, margin: '0px auto' }}
           onClick={() => {
-            byeVip(VipEnum.IRON)
+            byeVip()
           }}
+        >
+          Купити
+        </DefaultButton>
+
+        <InformationButton
+          onClick={() => {
+            showInfo()
+          }}
+          style={{ left: 0, bottom: 0 }}
         />
       </Container>
     </SettingsModalsLayout>

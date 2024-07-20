@@ -20,7 +20,7 @@ const useProfilePage = () => {
   }
 
   const openVipModal = (): void => {
-    onOpen({ name: Modals.VIP, data: { afterSubmit } })
+    onOpen({ name: Modals.VIP, data: { afterSubmit, user } })
   }
 
   const logout = (): void => mutate()

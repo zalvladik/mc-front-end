@@ -1,14 +1,31 @@
+import { useState } from 'react'
+import { useToast } from 'src/contexts/ToastProvider/useToast'
 import { useByeVip } from 'src/hooks/useByeVip'
 import type { VipEnum } from 'src/types'
 
-import type { UseModalVipProps } from 'src/features/Modals/ModalVip/types'
+export const useModalVip = () => {
+  const [selectedVipType, setSelectedVipType] = useState<VipEnum>()
+  const { isLoading, mutate } = useByeVip()
+  const toast = useToast()
 
-export const useModalVip = ({ afterSubmit }: UseModalVipProps) => {
-  const { isLoading, mutate } = useByeVip(afterSubmit)
+  const byeVip = () => {
+    if (!selectedVipType) return
 
-  const byeVip = (vip: VipEnum) => {
-    mutate(vip)
+    mutate(selectedVipType)
   }
 
-  return { byeVip }
+  const showInfo = () => {
+    toast.info({
+      message: [
+        'Завдяки VIP, ви збільшуєте кількість:',
+        'лотів, предметів, шалкерів.',
+        'Він триває 7 днів',
+        'VIP можна покращити після покупки',
+      ],
+      autoHideDuration: 8,
+      fontSize: 20,
+    })
+  }
+
+  return { byeVip, showInfo, selectedVipType, setSelectedVipType }
 }
