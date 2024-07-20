@@ -35,8 +35,9 @@ export const api = ky.create({
       },
       async (_req, _opts, res) => {
         const newAccessToken = res.headers.get('access-token')
+        const xRefreshVip = res.headers.get('x-refresh-vip')
 
-        if (newAccessToken) {
+        if (newAccessToken && xRefreshVip === 'true') {
           localStorage.setItem(LocalStorageKey.ACCESS_TOKEN, newAccessToken)
           window.location.reload()
         }

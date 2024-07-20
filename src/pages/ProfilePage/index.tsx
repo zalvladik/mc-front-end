@@ -7,6 +7,7 @@ import {
   UserContainer,
   VipDateInfo,
   VipDateInfoContainer,
+  VipImage,
 } from 'src/pages/ProfilePage/styles'
 import useProfilePage from 'src/pages/ProfilePage/useProfilePage'
 
@@ -41,6 +42,11 @@ const ProfilePage = (): JSX.Element => {
 
               return (
                 <VipDateInfoContainer>
+                  <VipImage
+                    style={{
+                      backgroundImage: `url(/assets/items_for_ui/${user.vip}_block.webp)`,
+                    }}
+                  />
                   <h3>Тривалість VIP</h3>
                   {user.vipExpirationDate && (
                     <VipDateInfo>

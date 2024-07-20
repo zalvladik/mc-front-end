@@ -37,6 +37,8 @@ export const UserContainer = styled.div`
 `
 
 export const VipDateInfoContainer = styled.div`
+  position: relative;
+
   background-color: gray;
 
   padding: 20px 0px;
@@ -69,6 +71,20 @@ export const VipDateInfoContainer = styled.div`
 
     text-shadow: 3px 3px 2px rgba(0, 0, 0, 1);
   }
+`
+
+export const VipImage = styled.div`
+  position: absolute;
+  top: 10%;
+
+  translate: 40% -60%;
+
+  right: 0px;
+  width: 50px;
+  height: 50px;
+
+  background-repeat: no-repeat;
+  background-size: contain;
 `
 
 export const VipDateInfo = styled.div`

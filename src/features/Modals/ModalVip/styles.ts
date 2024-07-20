@@ -1,10 +1,18 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background: radial-gradient(
-    circle,
-    rgba(80, 80, 80, 1) 0%,
-    rgba(40, 40, 40, 1) 100%
+  background: rgb(78, 78, 78);
+  background: rgb(78, 78, 78);
+  background: linear-gradient(
+    137deg,
+    rgba(78, 78, 78, 1) 0%,
+    rgba(68, 68, 68, 1) 18%,
+    rgba(60, 60, 60, 1) 30%,
+    rgba(73, 73, 73, 1) 42%,
+    rgba(66, 66, 66, 1) 55%,
+    rgba(60, 60, 60, 1) 66%,
+    rgba(59, 59, 59, 1) 82%,
+    rgba(91, 91, 91, 1) 100%
   );
 
   -webkit-box-shadow:
@@ -20,6 +28,8 @@ export const Container = styled.div`
   position: relative;
   border: 1px solid black;
   border-radius: 8px;
+  border: 2px solid rgba(50, 50, 50, 1);
+
   padding: 10px;
 
   height: 400px;

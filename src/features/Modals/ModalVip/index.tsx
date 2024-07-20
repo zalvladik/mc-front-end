@@ -31,8 +31,14 @@ const ModalVip = ({
   const { user } = data
 
   const isByeVip = !user.vipExpirationDate
-  const { toogleVip, showInfo, selectedVipType, setSelectedVipType, isLoading } =
-    useModalVip(isByeVip)
+  const {
+    toogleVip,
+    showInfo,
+    selectedVipType,
+    setSelectedVipType,
+    isLoading,
+    buttonText,
+  } = useModalVip(isByeVip, user)
 
   return (
     <SettingsModalsLayout
@@ -45,10 +51,10 @@ const ModalVip = ({
         <h1>Покупка VIP</h1>
         <VipInfoListContainer>
           <VipInfoTitle key="vipInfoTitle">
-            <div>Ціна VIP:</div>
-            <div>Предметів:</div>
-            <div>Шалкерів:</div>
-            <div>Лотів:</div>
+            <div>Ціна VIP :</div>
+            <div>Предметів :</div>
+            <div>Шалкерів :</div>
+            <div>Лотів :</div>
           </VipInfoTitle>
           {Object.entries(vipPrice).map(([key, price]) => {
             const vipType = key as VipEnum
@@ -97,14 +103,18 @@ const ModalVip = ({
         </VipInfoListContainer>
 
         <DefaultButton
-          disabled={!selectedVipType}
+          disabled={
+            !selectedVipType ||
+            vipPrice[selectedVipType] > user.money ||
+            selectedVipType === user.vip
+          }
           isLoading={isLoading}
           style={{ width: 400, margin: '0px auto' }}
           onClick={() => {
             toogleVip()
           }}
         >
-          {isByeVip ? 'Купити' : 'Покращити'}
+          {buttonText()}
         </DefaultButton>
 
         <InformationButton

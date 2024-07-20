@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { vipPrice } from 'src/constants'
 import { useToast } from 'src/contexts/ToastProvider/useToast'
+import type { UserT } from 'src/contexts/UserProvider/types'
 import { useByeVip } from 'src/hooks/useByeVip'
 import { useUpgradeVip } from 'src/hooks/useUpgradeVip'
-import type { VipEnum } from 'src/types'
+import { VipEnum } from 'src/types'
 
-export const useModalVip = (isByeVip: boolean) => {
+export const useModalVip = (isByeVip: boolean, user: UserT) => {
   const [selectedVipType, setSelectedVipType] = useState<VipEnum>()
   const { isLoading: isLoadingByeVip, mutate: mutateByeVip } = useByeVip()
   const { isLoading: isLoadingUpgradeVip, mutate: mutateUpgradeVip } =
@@ -36,11 +38,40 @@ export const useModalVip = (isByeVip: boolean) => {
     })
   }
 
+  const getButtonText = (): string => {
+    if (isByeVip) {
+      if (user.money < vipPrice[selectedVipType as VipEnum]) {
+        return 'Недостатньо коштів'
+      }
+
+      if (!selectedVipType) return ''
+
+      return 'Купити'
+    }
+
+    if (!isByeVip) {
+      if (user.vip === VipEnum.NETHERITE) {
+        return 'У вас максимальна VIP'
+      }
+
+      if (!selectedVipType) return ''
+
+      if (user.money < vipPrice[selectedVipType as VipEnum]) {
+        return 'Недостатньо коштів'
+      }
+
+      return 'Покращити'
+    }
+
+    return ''
+  }
+
   return {
     toogleVip,
     showInfo,
     selectedVipType,
     setSelectedVipType,
     isLoading: isLoadingByeVip || isLoadingUpgradeVip,
+    buttonText: getButtonText,
   }
 }

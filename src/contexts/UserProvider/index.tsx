@@ -1,26 +1,29 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useQueryClient } from 'react-query'
-import { defaultUser } from 'src/constants'
+import { CacheKeys, defaultUser } from 'src/constants'
 import { UserContext } from 'src/contexts'
 import type {
   UpdateUserT,
   UserContextDataT,
   UserT,
 } from 'src/contexts/UserProvider/types'
-import { useCheckAuth } from 'src/hooks/useCheckAuth'
-import { useGetUser } from 'src/hooks/useGetUser'
 import { SocketApi } from 'src/services/api/Socket'
+import type { UserResponseT } from 'src/services/api/User/types'
 import type { ReactChildrenT } from 'src/types'
 
-type UserProviderT = ReactChildrenT
+type UserProviderT = {
+  user: UserT
+} & ReactChildrenT
 
-const UserProvider = ({ children }: UserProviderT): JSX.Element => {
-  const [user, setUser] = useState<UserT>(defaultUser)
+const UserProvider = ({
+  children,
+  user: initialUser,
+}: UserProviderT): JSX.Element => {
+  const [user, setUser] = useState<UserT>(initialUser)
   const queryClient = useQueryClient()
 
-  const { isSuccess } = useCheckAuth()
-
-  const { user: userData } = useGetUser(isSuccess)
+  const queryData = queryClient.getQueriesData<UserResponseT>(CacheKeys.USER)
+  const userData = queryData.length ? queryData[0][1] : defaultUser
 
   useEffect(() => {
     if (userData.id) {
