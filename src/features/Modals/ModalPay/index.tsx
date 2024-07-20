@@ -1,4 +1,4 @@
-import LiqPay from 'src/features/liqPay'
+import LiqPay from 'src/features/LiqPay'
 import {
   Breeze,
   Cloud1,

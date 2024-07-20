@@ -10,12 +10,28 @@ const LiqPay = (): JSX.Element => {
   const handleusernameChange = (event: ChangeEvent<HTMLInputElement>): void =>
     setUsername(String(event.target.value))
 
+  interface Window {
+    LiqPayCheckout?: {
+      init: (config: {
+        data: string
+        signature: string
+        embedTo: string
+        language: string
+        mode: string
+      }) => {
+        on: (event: string, callback: (data: any) => void) => any
+      }
+    }
+  }
+
   useEffect(() => {
     const scriptId = 'liqpay-script'
 
     const fetchPaymentData = async (): Promise<void> => {
+      const win = window as Window
+
       try {
-        if (!window.LiqPayCheckout) {
+        if (!win.LiqPayCheckout) {
           return
         }
 
@@ -33,19 +49,17 @@ const LiqPay = (): JSX.Element => {
 
         const { data, signature } = await response.json()
 
-        if (window.LiqPayCheckout) {
-          window.LiqPayCheckout.init({
+        if (win.LiqPayCheckout) {
+          win.LiqPayCheckout.init({
             data,
             signature,
             embedTo: '#liqpay_checkout',
             language: 'uk',
             mode: 'embed',
           })
-            .on('liqpay.callback', function (_) {})
-            .on('liqpay.ready', function (_) {
-              // ready
-            })
-            .on('liqpay.close', function (_) {
+            .on('liqpay.callback', () => {})
+            .on('liqpay.ready', () => {})
+            .on('liqpay.close', () => {
               // close
             })
         }
