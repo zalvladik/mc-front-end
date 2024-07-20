@@ -75,7 +75,7 @@ export const useAuctionCreateLot = () => {
   const itemCategoryFilterProps = {
     setSelectedCaterogies: filterByCaterogies,
     selectedCaterogies,
-    sizeItem: 20,
+    sizeItem: 24,
     isNeedShulkerCategory: true,
   }
 

@@ -60,8 +60,8 @@ export const StyledItemList = styled(ItemList)`
   }
 
   & > ${EmptySlot} {
-    width: 78.2px;
-    height: 78.2px;
+    width: 78px;
+    height: 78px;
   }
 `
 
