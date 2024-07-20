@@ -27,5 +27,5 @@ export const useModalVip = () => {
     })
   }
 
-  return { byeVip, showInfo, selectedVipType, setSelectedVipType }
+  return { byeVip, showInfo, selectedVipType, setSelectedVipType, isLoading }
 }

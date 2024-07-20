@@ -1,5 +1,11 @@
-import { vipPrice } from 'src/constants'
-import { VipEnum } from 'src/types'
+import {
+  ITEMS_COUNT,
+  LOTS_COUNT,
+  SHULKERS_COUNT,
+  vipMultipliers,
+  vipPrice,
+} from 'src/constants'
+import type { VipEnum } from 'src/types'
 
 import ButtonModalClose from 'src/components/ButtonModalClose'
 import DefaultButton from 'src/components/DefaultButton'
@@ -8,7 +14,9 @@ import InformationButton from 'src/components/InformationButton'
 import {
   Container,
   DisabledVipType,
-  VipListContainer,
+  VipInfo,
+  VipInfoListContainer,
+  VipInfoTitle,
 } from 'src/features/Modals/ModalVip/styles'
 import type { ModalVipProps } from 'src/features/Modals/ModalVip/types'
 import { useModalVip } from 'src/features/Modals/ModalVip/useModalVip'
@@ -22,7 +30,8 @@ const ModalVip = ({
 }: ModalVipProps): JSX.Element => {
   const { user } = data
 
-  const { byeVip, showInfo, selectedVipType, setSelectedVipType } = useModalVip()
+  const { byeVip, showInfo, selectedVipType, setSelectedVipType, isLoading } =
+    useModalVip()
 
   return (
     <SettingsModalsLayout
@@ -32,33 +41,63 @@ const ModalVip = ({
     >
       <ButtonModalClose onClose={closeModal} />
       <Container onClick={handleContainerClick}>
-        <VipListContainer>
-          {Object.values(VipEnum).map((vipType: VipEnum) => {
+        <h1>Покупка VIP</h1>
+        <VipInfoListContainer>
+          <VipInfoTitle key="vipInfoTitle">
+            <div>Ціна VIP:</div>
+            <div>Предметів:</div>
+            <div>Шалкерів:</div>
+            <div>Лотів:</div>
+          </VipInfoTitle>
+          {Object.entries(vipPrice).map(([key, price]) => {
+            const vipType = key as VipEnum
+
             const isDisalbed = vipPrice[user.vip as VipEnum] >= vipPrice[vipType]
             const isSelected = selectedVipType === vipType
 
             return (
-              <div
-                key={vipType}
+              <VipInfo
+                key={key}
                 style={{
                   opacity: isDisalbed ? 0.3 : isSelected ? 1 : 0.5,
                   pointerEvents: isDisalbed ? 'none' : 'auto',
-                }}
-                onClick={() => {
-                  setSelectedVipType(vipType)
+                  textAlign: 'center',
                 }}
               >
+                <div>{price}</div>
+                <div>{ITEMS_COUNT * vipMultipliers[vipType]}</div>
+                <div>{SHULKERS_COUNT * vipMultipliers[vipType]}</div>
+                <div>{LOTS_COUNT * vipMultipliers[vipType]}</div>
                 <div
                   style={{
-                    backgroundImage: `url(/assets/items_for_ui/${vipType}_block.webp)`,
+                    opacity: isDisalbed ? 0.3 : isSelected ? 1 : 0.5,
+                    pointerEvents: isDisalbed ? 'none' : 'auto',
                   }}
-                />
-                {isDisalbed && <DisabledVipType />}
-              </div>
+                  onClick={() => {
+                    if (isSelected) {
+                      setSelectedVipType(undefined)
+
+                      return
+                    }
+
+                    setSelectedVipType(vipType)
+                  }}
+                >
+                  <div
+                    style={{
+                      backgroundImage: `url(/assets/items_for_ui/${vipType}_block.webp)`,
+                    }}
+                  />
+                  {isDisalbed && <DisabledVipType />}
+                </div>
+              </VipInfo>
             )
           })}
-        </VipListContainer>
+        </VipInfoListContainer>
+
         <DefaultButton
+          disabled={!selectedVipType}
+          isLoading={isLoading}
           style={{ width: 400, margin: '0px auto' }}
           onClick={() => {
             byeVip()

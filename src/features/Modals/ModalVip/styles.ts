@@ -23,30 +23,83 @@ export const Container = styled.div`
   padding: 10px;
 
   height: 400px;
-  width: 600px;
+  width: 700px;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 15px;
 
   & > h1 {
     font-family: 'Minecraft', sans-serif;
-    padding-left: 20px;
+    font-size: 30px;
     font-weight: 500;
+
+    text-shadow: 2.5px 2.5px 2px rgba(0, 0, 0, 1);
+
+    margin-bottom: 20px;
+
+    text-align: center;
   }
 `
 
-export const VipListContainer = styled.div`
+export const DisabledVipType = styled.div`
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  translate: -50% -50%;
+
+  width: 80%;
+  height: 80%;
+
+  background-image: url('/assets/items_for_ui/barrier.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+`
+
+export const VipInfoListContainer = styled.div`
+  position: relative;
   display: flex;
-  gap: 10px;
-  width: max-content;
-  margin: 0px auto;
+
+  gap: 20px;
+`
+
+export const VipInfoTitle = styled.div`
+  position: absolute;
+
+  left: 0px;
+  top: 0px;
+
+  translate: -100%;
 
   & > div {
+    font-family: 'Minecraft', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+
+    text-shadow: 2.5px 2.5px 2px rgba(0, 0, 0, 1);
+  }
+`
+
+export const VipInfo = styled.div`
+  & > div {
+    font-family: 'Minecraft', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+
+    text-shadow: 2.5px 2.5px 2px rgba(0, 0, 0, 1);
+  }
+
+  & > div:last-child {
     position: relative;
 
     width: 80px;
     height: 80px;
+
+    margin-top: 20px;
 
     transition:
       transform 0.4s cubic-bezier(0.075, 0.82, 0.165, 1),
@@ -65,20 +118,4 @@ export const VipListContainer = styled.div`
       background-size: contain;
     }
   }
-`
-
-export const DisabledVipType = styled.div`
-  position: absolute;
-
-  top: 50%;
-  left: 50%;
-
-  translate: -50% -50%;
-
-  width: 80%;
-  height: 80%;
-
-  background-image: url('/assets/items_for_ui/barrier.png');
-  background-size: contain;
-  background-repeat: no-repeat;
 `

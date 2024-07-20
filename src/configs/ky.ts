@@ -6,7 +6,6 @@ import Auth from 'src/services/api/Auth'
 export const api = ky.create({
   prefixUrl: FETCH_URL,
   credentials: 'include',
-  cache: 'no-cache',
   hooks: {
     beforeRequest: [
       request =>
@@ -39,9 +38,8 @@ export const api = ky.create({
 
         if (newAccessToken) {
           localStorage.setItem(LocalStorageKey.ACCESS_TOKEN, newAccessToken)
+          window.location.reload()
         }
-
-        if (res.headers.get('x-vip-expired')) window.location.reload()
 
         if (res.status >= 300 && res.status <= 500) {
           const body = await res.json()
