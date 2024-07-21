@@ -62,7 +62,9 @@ const Navbar = (): JSX.Element => {
               )}
               {isSuccess && (
                 <button
-                  style={{ opacity: currentPath === RoutesPath.AUCTION ? 1 : 0.5 }}
+                  style={{
+                    opacity: currentPath.includes(RoutesPath.AUCTION) ? 1 : 0.5,
+                  }}
                   aria-disabled
                   onClick={() =>
                     currentPath.includes(RoutesPath.AUCTION)
