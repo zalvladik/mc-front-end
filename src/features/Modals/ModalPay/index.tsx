@@ -9,6 +9,7 @@ import {
   Container,
   ContainerWrapper,
   CreateOrderContainer,
+  CustomDescriptionPay,
   Info,
   StyledRuleCategory,
 } from 'src/features/Modals/ModalPay/styles'
@@ -57,16 +58,34 @@ const ModalPay = ({
             </p>
 
             <p>
-              Напишіть тільки і тільки свій нікнейм, і після успішної оплати вас
-              автоматично добавить на сервер.
+              Якщо ви хочете щоб вас автоматично добавили на сервер, добавте
+              приставку
+              <CustomDescriptionPay style={{ color: 'red' }}>
+                {' '}
+                uk-land$
+              </CustomDescriptionPay>
+              до свого ніку. <br />
+              Щоб це виглядало ось так
+              <CustomDescriptionPay style={{ color: 'red' }}>
+                {' '}
+                uk-land$
+              </CustomDescriptionPay>
+              nickname
             </p>
 
             <p>Хорошої гри!</p>
           </Info>
 
           <CreateOrderContainer>
-            <p style={{ opacity: isExistUsername ? 1 : 0 }}>
-              Такий гравець уже існує
+            <p
+              style={{
+                opacity: username.length >= 3 ? 1 : 0,
+                color: isExistUsername ? 'red' : 'green',
+              }}
+            >
+              {isExistUsername
+                ? 'Гравець з таким ніком уже існує'
+                : 'Цей нікнейм вільний'}
             </p>
 
             <DefaultInput
@@ -91,7 +110,7 @@ const ModalPay = ({
               <DefaultButton
                 disabled={
                   isLoading ||
-                  Boolean(username.length < 5) ||
+                  Boolean(username.length <= 2) ||
                   Boolean(isExistUsername)
                 }
                 style={{ width: 360 }}

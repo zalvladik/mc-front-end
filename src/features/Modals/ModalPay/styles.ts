@@ -11,6 +11,14 @@ export const StyledRuleCategory = styled(RuleCategory)`
   }
 `
 
+export const CustomDescriptionPay = styled.p`
+  display: inline;
+
+  font-family: 'Minecraft', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+`
+
 export const ContainerWrapper = styled.div`
   max-width: 800px;
   position: relative;
@@ -33,16 +41,19 @@ export const CreateOrderContainer = styled.div`
 
   & > p {
     font-family: 'Minecraft', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
-    color: red;
+
+    transition:
+      transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+      opacity 0.2s ease;
   }
 `
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 480px;
+  height: 490px;
   overflow-y: auto;
 
   position: relative;
@@ -165,7 +176,7 @@ export const Info = styled.div`
   display: flex;
   gap: 10px;
   flex-direction: column;
-  margin-top: 40px;
+  margin-top: 30px;
 
   h1 {
     font-family: 'Minecraft', sans-serif;
@@ -186,7 +197,6 @@ export const Info = styled.div`
 
   p {
     color: white;
-    font-size: 18px;
     opacity: 0.9;
 
     font-family: 'Minecraft', sans-serif;
