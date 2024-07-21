@@ -21,7 +21,7 @@ const PayForm = (): JSX.Element => {
       <PriceBox>
         <span>
           <h1>100₴</h1>
-          <p>на місяць</p>
+          <p>За сезон</p>
         </span>
         <ButtonsBox>
           <HeroButton
