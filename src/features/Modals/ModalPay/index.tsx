@@ -61,13 +61,13 @@ const ModalPay = ({
             <p>
               Якщо ви хочете щоб вас автоматично добавили на сервер, добавте
               приставку
-              <CustomDescriptionPay style={{ color: 'red' }}>
+              <CustomDescriptionPay style={{ color: 'rgb(2, 200, 48)' }}>
                 {' '}
                 uk-land$
               </CustomDescriptionPay>
               до свого ніку. <br />
               Щоб це виглядало ось так
-              <CustomDescriptionPay style={{ color: 'red' }}>
+              <CustomDescriptionPay style={{ color: 'rgb(2, 200, 48)' }}>
                 {' '}
                 uk-land$
               </CustomDescriptionPay>
@@ -81,7 +81,7 @@ const ModalPay = ({
             <p
               style={{
                 opacity: username.length >= 3 ? 1 : 0,
-                color: isExistUsername ? 'red' : 'green',
+                color: isExistUsername ? 'rgb(213, 11, 58)' : 'rgb(2, 200, 48)',
               }}
             >
               {isExistUsername
@@ -93,7 +93,7 @@ const ModalPay = ({
               disabled={isLoading}
               type="text"
               style={{
-                fontSize: 20,
+                fontSize: 24,
                 textAlign: 'center',
               }}
               rightIcon={false}
@@ -114,7 +114,7 @@ const ModalPay = ({
                   Boolean(username.length <= 2) ||
                   Boolean(isExistUsername)
                 }
-                style={{ width: 360 }}
+                style={{ width: 420 }}
                 isLoading={isLoading}
               >
                 Купити прохідку

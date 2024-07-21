@@ -53,7 +53,7 @@ export const CreateOrderContainer = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 510px;
+  height: 520px;
   overflow-y: auto;
 
   position: relative;
@@ -176,7 +176,7 @@ export const Info = styled.div`
   display: flex;
   gap: 10px;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 20px;
 
   h1 {
     font-family: 'Minecraft', sans-serif;
@@ -195,7 +195,7 @@ export const Info = styled.div`
     opacity: 0.9;
 
     font-family: 'Minecraft', sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
 
     & {
