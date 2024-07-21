@@ -53,7 +53,7 @@ export const CreateOrderContainer = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 490px;
+  height: 510px;
   overflow-y: auto;
 
   position: relative;
@@ -183,16 +183,11 @@ export const Info = styled.div`
     font-size: 25px;
     font-weight: 600;
     color: white;
-    & {
-      @media screen and (max-width: 390px) {
-        font-size: 20px;
-        font-weight: 300;
-      }
-    }
-  }
 
-  p + h1 {
-    margin-top: 30px;
+    @media screen and (max-width: 390px) {
+      font-size: 20px;
+      font-weight: 300;
+    }
   }
 
   p {
