@@ -22,16 +22,31 @@ export const ContainerWrapper = styled.div`
   }
 `
 
+export const CreateOrderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  gap: 20px;
+
+  margin: 20px auto;
+
+  & > p {
+    font-family: 'Minecraft', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: red;
+  }
+`
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-
-  height: 80vh;
-
+  height: 480px;
   overflow-y: auto;
 
   position: relative;
-  background-color: rgba(0, 0, 0, 0.35);
+  background-color: rgba(0, 0, 0, 0.8);
   border-radius: 10px;
   border: 2px solid white;
   padding: 40px 60px 30px 60px;

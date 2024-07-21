@@ -1,4 +1,6 @@
-import LiqPay from 'src/features/LiqPay'
+import DefaultButton from 'src/components/DefaultButton'
+import DefaultInput from 'src/components/inputs/DefaultInput'
+
 import {
   Breeze,
   Cloud1,
@@ -6,6 +8,7 @@ import {
   Cloud3,
   Container,
   ContainerWrapper,
+  CreateOrderContainer,
   Info,
   StyledRuleCategory,
 } from 'src/features/Modals/ModalPay/styles'
@@ -18,7 +21,14 @@ const ModalPay = ({
   closeModal,
   handleContainerClick,
 }: ModalDialogProps): JSX.Element => {
-  const { category, rules } = useModalPay()
+  const {
+    category,
+    rules,
+    handleusernameChange,
+    username,
+    isExistUsername,
+    isLoading,
+  } = useModalPay()
 
   return (
     <SettingsModalsLayout
@@ -42,13 +52,50 @@ const ModalPay = ({
           <Info>
             <h1>Про оплату:</h1>
             <p>
-              Щоб купити прохідку, вам потрібно оплатити її, і вказати свій нікнейм!
+              Щоб купити прохідку, вам потрібно оплатити її, і вказати свій нікнейм в
+              описі при поповнені банки!
             </p>
-            <p>Після покупки, ви одразу можете заходити на свій аккаунт.</p>
+
             <p>Хорошої гри!</p>
           </Info>
 
-          <LiqPay />
+          <CreateOrderContainer>
+            <p style={{ opacity: isExistUsername ? 1 : 0 }}>
+              Такий гравець уже існує
+            </p>
+
+            <DefaultInput
+              disabled={isLoading}
+              type="text"
+              style={{
+                fontSize: 20,
+                textAlign: 'center',
+              }}
+              rightIcon={false}
+              value={username}
+              onChange={handleusernameChange}
+              placeholder="Вкажіть ваш нікнейм"
+              required
+            />
+
+            <a
+              href="//send.monobank.ua/jar/2GuvBaak2S"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <DefaultButton
+                disabled={
+                  isLoading ||
+                  Boolean(username.length < 5) ||
+                  Boolean(isExistUsername)
+                }
+                style={{ width: 360 }}
+                isLoading={isLoading}
+              >
+                Купити прохідку
+              </DefaultButton>
+            </a>
+          </CreateOrderContainer>
         </Container>
       </ContainerWrapper>
     </SettingsModalsLayout>

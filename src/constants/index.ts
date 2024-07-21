@@ -63,6 +63,7 @@ export enum SelectAreaColors {
 }
 
 export enum CacheKeys {
+  WHITELIST = 'whitelist',
   USER = 'user',
   USER_ITEMS = 'user_items',
   USER_ITEM_TICKETS = 'user_item_tickets',
@@ -101,6 +102,7 @@ export enum FetchEndpoint {
   LOG_OUT = 'auth/log_out',
   REFRESH_TOKEN = 'auth/refresh_token',
   USER_SHULKERS = 'user/shulkers',
+  WHITELIST = 'whitelist',
 }
 
 export enum LocalStorageKey {
