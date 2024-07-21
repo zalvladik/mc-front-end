@@ -27,6 +27,10 @@ export const Container = styled.div`
     inset 0px 0px 16px 6px rgba(0, 0, 0, 0.8),
     0px 0px 12px -5px rgba(255, 255, 255, 0.8);
 
+  transition:
+    transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    opacity 0.2s ease;
+
   & > div {
     position: relative;
 

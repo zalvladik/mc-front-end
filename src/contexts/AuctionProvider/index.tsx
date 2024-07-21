@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuctionFragment } from 'src/constants'
 import { AuctionContext } from 'src/contexts'
@@ -46,6 +46,8 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
     itemType: currenEnchantLotDisplay_nameOrType,
   } = newEnchantSearchParams
 
+  const isFirstRender = useRef(true)
+
   const [currentPageUserLots, setCurrentPageUserLots] = useState(1)
 
   const [searchValueUserLots, setSearchValueUserLots] = useState('')
@@ -89,6 +91,12 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   }
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+
+      return
+    }
+
     mutateByeLots({
       page: 1,
       category: currentByeLotsCategory,
@@ -108,6 +116,12 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   }, [currentByeLotsCategory])
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+
+      return
+    }
+
     mutateByeLots({ ...newByeLotsSearchParams, ...filterListParams })
 
     updatePrevByeLotsSearchParams()
@@ -121,11 +135,23 @@ const AuctionProvider = ({ children }: AuctionProviderT): JSX.Element => {
   }, [currentByeLotPage])
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+
+      return
+    }
+
     mutateEnchantLotsHandle()
     updatePrevEnchantSearchParams({})
   }, [currentEnchantLotPage])
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+
+      return
+    }
+
     if (totalPageByeLots && totalPageByeLots !== storageTotalPagesByeLots) {
       setStorageTotalPagesByeLots(totalPageByeLots)
     }

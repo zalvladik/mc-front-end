@@ -1,7 +1,7 @@
 import { useAuction } from 'src/contexts/AuctionProvider/useAuction'
 
 export const useAuctionControlletFilter = () => {
-  const { filterListParams, updateFilterListParams } = useAuction()
+  const { filterListParams, updateFilterListParams, isFragment } = useAuction()
 
   const { didNeedIdentical, didNeedShulkers, didNeedUserLots, didPriceToUp } =
     filterListParams
@@ -11,6 +11,9 @@ export const useAuctionControlletFilter = () => {
       ? '/assets/icons_for_ui/confirm.png'
       : '/assets/icons_for_ui/cancel.png'
   }
+
+  const componentIsVanish =
+    isFragment.isCreateLotFragment || isFragment.isUserLotsFragment
 
   const buttonFilterList = [
     {
@@ -46,10 +49,10 @@ export const useAuctionControlletFilter = () => {
   ]
 
   return {
+    componentIsVanish,
     buttonFilterList,
     getImgSelectForFilter,
     didPriceToUp,
     updateFilterListParams,
-    filterListParams,
   }
 }

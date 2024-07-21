@@ -11,11 +11,17 @@ const AuctionControlletFilter = (): JSX.Element => {
     buttonFilterList,
     getImgSelectForFilter,
     didPriceToUp,
+    componentIsVanish,
     updateFilterListParams,
   } = useAuctionControlletFilter()
 
   return (
-    <Container>
+    <Container
+      style={{
+        opacity: componentIsVanish ? 0.4 : 1,
+        pointerEvents: componentIsVanish ? 'none' : 'auto',
+      }}
+    >
       {buttonFilterList.map(({ isSelected, description, urlImg, onClick }) => (
         <FilterParam key={description} onClick={onClick}>
           <div style={{ backgroundImage: `url(${urlImg})` }} />
