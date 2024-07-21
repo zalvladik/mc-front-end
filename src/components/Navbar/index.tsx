@@ -65,7 +65,7 @@ const Navbar = (): JSX.Element => {
                   style={{ opacity: currentPath === RoutesPath.AUCTION ? 1 : 0.5 }}
                   aria-disabled
                   onClick={() =>
-                    currentPath === RoutesPath.AUCTION
+                    currentPath.includes(RoutesPath.AUCTION)
                       ? undefined
                       : navigate(RoutesPath.AUCTION)
                   }
