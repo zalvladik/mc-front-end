@@ -27,9 +27,9 @@ export const CreateOrderContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: max-content;
-  gap: 20px;
+  gap: 12px;
 
-  margin: 20px auto;
+  margin: 10px auto 0px auto;
 
   & > p {
     font-family: 'Minecraft', sans-serif;
