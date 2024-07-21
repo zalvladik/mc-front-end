@@ -16,7 +16,7 @@ export const FormBox = styled.div`
 
 export const PriceBox = styled.div`
   padding: 40px 40px;
-  min-width: 250px;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +33,7 @@ export const PriceBox = styled.div`
     }
     & > h1 {
       font-family: 'Nunito Sans', sans-serif;
-      font-size: 100px;
+      font-size: 80px;
       font-weight: 800;
     }
   }
@@ -64,4 +64,8 @@ export const ButtonsBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  & > button {
+    font-family: 'Minecraft', sans-serif;
+    white-space: nowrap;
+  }
 `
