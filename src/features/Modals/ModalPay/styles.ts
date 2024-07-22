@@ -53,7 +53,6 @@ export const CreateOrderContainer = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 520px;
   overflow-y: auto;
 
   position: relative;
