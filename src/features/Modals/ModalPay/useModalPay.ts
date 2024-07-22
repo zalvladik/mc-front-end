@@ -27,7 +27,9 @@ export const useModalPay = () => {
 
   const { data = [], isLoading } = useGetUserWhitelist()
 
-  const isExistUsername = data?.find(item => item === username)
+  const isExistUsername = data?.find(
+    item => item.toLowerCase() === username.toLowerCase(),
+  )
 
   return {
     category,
