@@ -11,14 +11,6 @@ export const StyledRuleCategory = styled(RuleCategory)`
   }
 `
 
-export const CustomDescriptionPay = styled.p`
-  display: inline;
-
-  font-family: 'Minecraft', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-`
-
 export const ContainerWrapper = styled.div`
   max-width: 800px;
   position: relative;

@@ -9,7 +9,6 @@ import {
   Container,
   ContainerWrapper,
   CreateOrderContainer,
-  CustomDescriptionPay,
   Info,
   StyledRuleCategory,
 } from 'src/features/Modals/ModalPay/styles'
@@ -29,7 +28,10 @@ const ModalPay = ({
     username,
     isExistUsername,
     isLoading,
+    toUnicode,
   } = useModalPay()
+
+  const url = `https://send.monobank.ua/jar/2GuvBaak2S?a=100&t=uk-land$${toUnicode(username)}`
 
   return (
     <SettingsModalsLayout
@@ -54,24 +56,18 @@ const ModalPay = ({
             <h1>Про оплату:</h1>
             <p style={{ fontSize: 24, color: 'whitegray' }}>Ціна: 100₴</p>
             <p>
-              Щоб купити прохідку, вам потрібно оплатити її, і вказати свій нікнейм в
-              описі при поповнені банки!
+              Щоб купити прохідку, вам потрібно вказати свій нікнейм і натиснути
+              "Купити прохідку"
             </p>
 
             <p>
-              Якщо ви хочете щоб вас автоматично добавили на сервер, добавте
-              приставку
-              <CustomDescriptionPay style={{ color: 'rgb(2, 200, 48)' }}>
-                {' '}
-                uk-land$
-              </CustomDescriptionPay>
-              до свого ніку. <br />
-              Щоб це виглядало ось так
-              <CustomDescriptionPay style={{ color: 'rgb(2, 200, 48)' }}>
-                {' '}
-                uk-land$
-              </CustomDescriptionPay>
-              nickname
+              Вас автоматично добавить у whitelist сервера, якщо виникнуть проблеми
+              то зверніться до адміністрації.
+            </p>
+
+            <p style={{ color: 'rgb(213, 11, 58)' }}>
+              Не міняйне коментарій до оплати, він потрібен для автоматичного
+              добавлення на сервер.
             </p>
 
             <p>Хорошої гри!</p>
@@ -103,11 +99,7 @@ const ModalPay = ({
               required
             />
 
-            <a
-              href="//send.monobank.ua/jar/2GuvBaak2S"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href={url} target="_blank" rel="noreferrer">
               <DefaultButton
                 disabled={
                   isLoading ||

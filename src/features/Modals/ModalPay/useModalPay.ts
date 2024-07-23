@@ -31,6 +31,15 @@ export const useModalPay = () => {
     item => item.toLowerCase() === username.toLowerCase(),
   )
 
+  const toUnicode = (str: string): string => {
+    return str
+      .split('')
+      .map(
+        (char: string) => `\\u${char.charCodeAt(0).toString(16).padStart(4, '0')}`,
+      )
+      .join('')
+  }
+
   return {
     category,
     rules,
@@ -39,5 +48,6 @@ export const useModalPay = () => {
     handleusernameChange,
     username,
     isExistUsername,
+    toUnicode,
   }
 }
