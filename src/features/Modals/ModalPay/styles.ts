@@ -11,6 +11,38 @@ export const StyledRuleCategory = styled(RuleCategory)`
   }
 `
 
+export const ByeButton = styled.a`
+  padding: 10px 0px;
+  width: 230px;
+
+  width: 100%;
+
+  border-radius: 6px;
+  border: 1px solid white;
+  background: #161616;
+
+  transition:
+    transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    opacity 0.2s ease;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+  }
+
+  & > div {
+    width: 100%;
+
+    font-family: 'Minecraft', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+
+    text-shadow: 3px 3px 2px rgba(0, 0, 0, 1);
+
+    text-align: center;
+  }
+`
+
 export const ContainerWrapper = styled.div`
   max-width: 800px;
   position: relative;

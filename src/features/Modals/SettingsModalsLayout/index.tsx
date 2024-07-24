@@ -4,7 +4,6 @@ import type { ReactChildrenT } from 'src/types'
 
 import {
   ChildrenContainer,
-  Container,
   Modal,
 } from 'src/features/Modals/SettingsModalsLayout/styles'
 import type { ModalDialogProps } from 'src/features/Modals/types'
@@ -28,10 +27,8 @@ const SettingsModalsLayout = ({
   }, [])
 
   return (
-    <Modal style={style}>
-      <Container onClick={closeModal}>
-        <ChildrenContainer>{children}</ChildrenContainer>
-      </Container>
+    <Modal style={style} onClick={closeModal}>
+      <ChildrenContainer>{children}</ChildrenContainer>
     </Modal>
   )
 }

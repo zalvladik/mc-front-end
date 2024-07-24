@@ -1,8 +1,8 @@
-import DefaultButton from 'src/components/DefaultButton'
 import DefaultInput from 'src/components/inputs/DefaultInput'
 
 import {
   Breeze,
+  ByeButton,
   Cloud1,
   Cloud2,
   Cloud3,
@@ -33,6 +33,9 @@ const ModalPay = ({
 
   const url = `https://send.monobank.ua/jar/2GuvBaak2S?a=100&t=uk-land$${toUnicode(username)}`
 
+  const buttonIsDisabled =
+    isLoading || Boolean(username.length <= 2) || Boolean(isExistUsername)
+
   return (
     <SettingsModalsLayout
       isOpen={isOpen}
@@ -55,16 +58,12 @@ const ModalPay = ({
           <Info>
             <h1>Про оплату:</h1>
             <p style={{ fontSize: 24, color: 'whitegray' }}>Ціна: 100₴</p>
-            <p>
-              Щоб купити прохідку, вам потрібно вказати свій нікнейм і натиснути
-              "Купити прохідку"
-            </p>
 
             <p>
-              Вас автоматично добавить у whitelist сервера, якщо виникнуть проблеми
-              то зверніться до адміністрації.
+              Вас автоматично добавить у whitelist сервера.
+              <br />
+              Якщо виникнуть проблеми то зверніться до адміністрації.
             </p>
-
             <p style={{ color: 'rgb(213, 11, 58)' }}>
               Не міняйне коментарій до оплати, він потрібен для автоматичного
               добавлення на сервер.
@@ -85,33 +84,40 @@ const ModalPay = ({
                 : 'Цей нікнейм вільний'}
             </p>
 
-            <DefaultInput
-              disabled={isLoading}
-              type="text"
+            <div
               style={{
-                fontSize: 24,
-                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 16,
               }}
-              rightIcon={false}
-              value={username}
-              onChange={handleusernameChange}
-              placeholder="Вкажіть ваш нікнейм"
-              required
-            />
+            >
+              <DefaultInput
+                disabled={isLoading}
+                type="text"
+                style={{
+                  fontSize: 18,
+                  textAlign: 'center',
+                }}
+                rightIcon={false}
+                value={username}
+                onChange={handleusernameChange}
+                placeholder="Вкажіть ваш нікнейм"
+                required
+              />
 
-            <a href={url} target="_blank" rel="noreferrer">
-              <DefaultButton
-                disabled={
-                  isLoading ||
-                  Boolean(username.length <= 2) ||
-                  Boolean(isExistUsername)
-                }
-                style={{ width: 420 }}
-                isLoading={isLoading}
+              <ByeButton
+                href={url}
+                style={{
+                  opacity: buttonIsDisabled ? 0.4 : 1,
+                  pointerEvents: buttonIsDisabled ? 'none' : 'auto',
+                }}
+                target="_blank"
+                rel="noreferrer"
               >
-                Купити прохідку
-              </DefaultButton>
-            </a>
+                <div>Купити прохідку</div>
+              </ByeButton>
+            </div>
           </CreateOrderContainer>
         </Container>
       </ContainerWrapper>

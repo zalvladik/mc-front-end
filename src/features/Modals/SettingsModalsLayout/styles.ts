@@ -14,13 +14,6 @@ export const Modal = styled.div`
   align-items: center;
 `
 
-export const Container = styled.div`
-  position: relative;
-  padding: 0px 20px;
-  width: 100vw;
-  height: 100vh;
-`
-
 export const ChildrenContainer = styled.div`
   position: absolute;
   width: 100vw;
