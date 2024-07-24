@@ -18,14 +18,14 @@ const Navbar = (): JSX.Element => {
     isLoading,
   } = useNavBar()
 
+  const handleClick = (): void => {
+    window.location.href = 'https://mc-front-end.vercel.app/'
+  }
+
   return (
     <Header className={isScrollingUp ? '' : 'header hidden'}>
       <HeaderContainer>
-        <ButtonBack
-          onClick={() => {
-            if (currentPath !== '/') navigate('/')
-          }}
-        >
+        <ButtonBack onClick={handleClick}>
           <img src="/assets/logo.svg" alt="header logo" />
         </ButtonBack>
 
