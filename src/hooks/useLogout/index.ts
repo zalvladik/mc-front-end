@@ -17,7 +17,7 @@ export const useLogout = () => {
       sessionStorage.clear()
       toast.success({ message: ['Вихід з аккаунту'] })
 
-      navigate(RoutesPath.HOME)
+      navigate(RoutesPath.SIGN_IN)
     },
     onError: (error: Error) => {
       toast.error({ message: [error.message] })

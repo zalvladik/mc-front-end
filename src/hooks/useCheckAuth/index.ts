@@ -15,9 +15,9 @@ export const useCheckAuth = () => {
       localStorage.setItem(LocalStorageKey.ACCESS_TOKEN, data.accessToken)
     },
     onError: () => {
-      if (pathname === RoutesPath.HOME) return
+      if (pathname === RoutesPath.SIGN_IN) return
 
-      navigate(RoutesPath.HOME)
+      navigate(RoutesPath.SIGN_IN)
     },
   })
 

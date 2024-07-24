@@ -1,9 +1,7 @@
 import type { ChangeEvent } from 'react'
 import { Controller } from 'react-hook-form'
 import {
-  ButtonClose,
   Container,
-  CrossWrapper,
   Description,
   ErrorMessage,
   FormContainer,
@@ -16,25 +14,12 @@ import { useSignInPage } from 'src/pages/SignInPage/useSignInPage'
 import InputSignIn from 'src/features/InputSignIn'
 
 const SignInPage = (): JSX.Element => {
-  const {
-    navigate,
-    errors,
-    control,
-    trigger,
-    isFormFilled,
-    isLoading,
-    handleSubmit,
-  } = useSignInPage()
+  const { errors, control, trigger, isFormFilled, isLoading, handleSubmit } =
+    useSignInPage()
 
   return (
     <Container>
       <FormImage>
-        <ButtonClose onClick={() => navigate('/')}>
-          <CrossWrapper>
-            <div />
-            <div />
-          </CrossWrapper>
-        </ButtonClose>
         <FormContainer>
           <Controller
             name="username"
