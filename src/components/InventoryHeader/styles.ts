@@ -21,7 +21,7 @@ export const InventoryHeaderTitle = styled.div`
 
   & > p:last-child {
     font-family: 'Minecraft', sans-serif;
-    padding-left: 22px;
+    padding-left: 10px;
     font-weight: 500;
     font-size: 26px;
   }

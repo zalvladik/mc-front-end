@@ -1,13 +1,17 @@
 import { useState } from 'react'
 import { vipPrice } from 'src/constants'
 import { useToast } from 'src/contexts/ToastProvider/useToast'
-import type { UserT } from 'src/contexts/UserProvider/types'
+import { useUser } from 'src/contexts/UserProvider/useUser'
 import { useByeVip } from 'src/hooks/useByeVip'
 import { useUpgradeVip } from 'src/hooks/useUpgradeVip'
 import { VipEnum } from 'src/types'
 
-export const useModalVip = (isByeVip: boolean, user: UserT) => {
+export const useModalVip = () => {
+  const { user } = useUser()
+  const isByeVip = !user.vipExpirationDate
+
   const [selectedVipType, setSelectedVipType] = useState<VipEnum>()
+
   const { isLoading: isLoadingByeVip, mutate: mutateByeVip } = useByeVip()
   const { isLoading: isLoadingUpgradeVip, mutate: mutateUpgradeVip } =
     useUpgradeVip()
@@ -73,5 +77,6 @@ export const useModalVip = (isByeVip: boolean, user: UserT) => {
     setSelectedVipType,
     isLoading: isLoadingByeVip || isLoadingUpgradeVip,
     buttonText: getButtonText,
+    user,
   }
 }

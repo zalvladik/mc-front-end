@@ -1,4 +1,5 @@
 import { CategoryEnum } from 'src/constants'
+import { useUser } from 'src/contexts/UserProvider/useUser'
 
 import ButtonModalClose from 'src/components/ButtonModalClose'
 import DefaultButton from 'src/components/DefaultButton'
@@ -30,9 +31,10 @@ const ModalLot = ({
     price,
     isDeleteLot = true,
     id,
-    userMoney,
     afterSubmit,
   } = data
+
+  const { user } = useUser()
 
   const lotElement = (item || shulker)!
   const isShulker = lotElement.categories.includes(CategoryEnum.SHULKERS)
@@ -91,7 +93,7 @@ const ModalLot = ({
         )}
 
         <DefaultButton
-          disabled={isDeleteLot ? isLoading : price > userMoney || isLoading}
+          disabled={isDeleteLot ? isLoading : price > user.money || isLoading}
           isLoading={isLoading}
           onClick={() => toogleLot(id)}
           style={{
@@ -101,7 +103,7 @@ const ModalLot = ({
         >
           {isDeleteLot
             ? 'Видалити'
-            : userMoney >= price
+            : user.money >= price
               ? 'Купити'
               : 'Недостатньо коштів'}
         </DefaultButton>

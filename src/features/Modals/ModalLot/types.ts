@@ -11,7 +11,6 @@ export type ModalLotProps = {
     price: number
     id: number
     isDeleteLot: boolean
-    userMoney: number
     afterSubmit: (value: void) => void
   }
 } & ModalDialogProps

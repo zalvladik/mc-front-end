@@ -37,7 +37,6 @@ export const useAuctionItemList = () => {
       data: {
         ...lot,
         isDeleteLot: user.username === lot.username,
-        userMoney: user.money,
         afterSubmit,
       },
     })

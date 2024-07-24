@@ -29,64 +29,51 @@ const Navbar = (): JSX.Element => {
           <img src="/assets/logo.svg" alt="header logo" />
         </ButtonBack>
 
-        {!isLoading && (
-          <div>
-            <NavList>
-              <button
-                style={{
-                  opacity: isProfilePage ? 1 : 0.5,
-                }}
-                aria-disabled
-                onClick={() =>
-                  !isSuccess
-                    ? navigate(RoutesPath.SIGN_IN)
-                    : isProfilePage
-                      ? undefined
-                      : navigate(RoutesPath.PROFILE)
-                }
-              >
-                Кабінет
-              </button>
-              {isSuccess && (
-                <button
-                  style={{ opacity: currentPath === RoutesPath.INVENTORY ? 1 : 0.5 }}
-                  aria-disabled
-                  onClick={() =>
-                    currentPath === RoutesPath.INVENTORY
-                      ? undefined
-                      : navigate(RoutesPath.INVENTORY)
-                  }
-                >
-                  Інвентар
-                </button>
-              )}
-              {isSuccess && (
-                <button
-                  style={{
-                    opacity: currentPath.includes(RoutesPath.AUCTION) ? 1 : 0.5,
-                  }}
-                  aria-disabled
-                  onClick={() =>
-                    currentPath.includes(RoutesPath.AUCTION)
-                      ? undefined
-                      : navigate(RoutesPath.AUCTION)
-                  }
-                >
-                  Торгівля
-                </button>
-              )}
-              <button
-                style={{ opacity: currentPath === RoutesPath.RULES ? 1 : 0.5 }}
-                aria-disabled
-                onClick={() =>
-                  currentPath === RoutesPath.RULES
+        {!isLoading && isSuccess && (
+          <NavList>
+            <button
+              style={{
+                opacity: isProfilePage ? 1 : 0.5,
+              }}
+              aria-disabled
+              onClick={() =>
+                !isSuccess
+                  ? navigate(RoutesPath.SIGN_IN)
+                  : isProfilePage
                     ? undefined
-                    : navigate(RoutesPath.RULES)
-                }
-              >
-                Правила
-              </button>
-              {/* {isSuccess && (
+                    : navigate(RoutesPath.PROFILE)
+              }
+            >
+              Кабінет
+            </button>
+
+            <button
+              style={{ opacity: currentPath === RoutesPath.INVENTORY ? 1 : 0.5 }}
+              aria-disabled
+              onClick={() =>
+                currentPath === RoutesPath.INVENTORY
+                  ? undefined
+                  : navigate(RoutesPath.INVENTORY)
+              }
+            >
+              Інвентар
+            </button>
+
+            <button
+              style={{
+                opacity: currentPath.includes(RoutesPath.AUCTION) ? 1 : 0.5,
+              }}
+              aria-disabled
+              onClick={() =>
+                currentPath.includes(RoutesPath.AUCTION)
+                  ? undefined
+                  : navigate(RoutesPath.AUCTION)
+              }
+            >
+              Торгівля
+            </button>
+
+            {/* {isSuccess && (
                 <button
                   style={{ opacity: currentPath === RoutesPath.WIKI ? 1 : 0.5 }}
                   onClick={() =>
@@ -98,8 +85,7 @@ const Navbar = (): JSX.Element => {
                   Wiki
                 </button>
               )} */}
-            </NavList>
-          </div>
+          </NavList>
         )}
       </HeaderContainer>
     </Header>

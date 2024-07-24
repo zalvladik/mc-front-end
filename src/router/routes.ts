@@ -1,7 +1,5 @@
 export enum RoutesPath {
-  HOME = '/',
-  RULES = '/rules',
-  SIGN_IN = '/sign_in',
+  SIGN_IN = '/',
   USER = '/user',
   WIKI = '/user/wiki',
   PROFILE = '/user/profile',

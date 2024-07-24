@@ -5,13 +5,6 @@ export const FETCH_URL = import.meta.env.VITE_URL_BY_BACKEND
 
 export const FETCH_URL_IMG = `${FETCH_URL}/public`
 
-export enum ComponentIds {
-  STORE = 'store',
-  MAIN_TITLE = 'main_title',
-  ADVANTAGE = 'advantage',
-  SOCIAL = 'social',
-}
-
 export enum SocketTypes {
   INCREMENT_MONEY,
   DECREMENT_MONEY,

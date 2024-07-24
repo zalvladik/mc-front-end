@@ -59,6 +59,8 @@ export const HeaderContainer = styled.div`
 export const NavList = styled.div`
   display: flex;
 
+  gap: 20px;
+
   & > button {
     font-family: 'Minecraft', sans-serif;
 
@@ -81,10 +83,6 @@ export const NavList = styled.div`
       cursor: pointer;
       transform: scale(1.05);
     }
-  }
-
-  & > button + button {
-    margin-left: 60px;
   }
 
   @media screen and (max-width: 767px) {

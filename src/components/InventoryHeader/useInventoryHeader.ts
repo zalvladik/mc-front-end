@@ -6,5 +6,5 @@ export const useInventoryHeader = () => {
 
   const { data } = useGetItemsFromUser()
 
-  return { countItems: data?.length, user }
+  return { countItems: data?.length ?? 0, user }
 }

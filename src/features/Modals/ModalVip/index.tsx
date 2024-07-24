@@ -26,11 +26,7 @@ const ModalVip = ({
   isOpen,
   closeModal,
   handleContainerClick,
-  data,
 }: ModalVipProps): JSX.Element => {
-  const { user } = data
-
-  const isByeVip = !user.vipExpirationDate
   const {
     toogleVip,
     showInfo,
@@ -38,7 +34,8 @@ const ModalVip = ({
     setSelectedVipType,
     isLoading,
     buttonText,
-  } = useModalVip(isByeVip, user)
+    user,
+  } = useModalVip()
 
   return (
     <SettingsModalsLayout
@@ -66,8 +63,8 @@ const ModalVip = ({
               <VipInfo
                 key={key}
                 style={{
-                  opacity: isDisalbed ? 0.3 : isSelected ? 1 : 0.5,
-                  pointerEvents: isDisalbed ? 'none' : 'auto',
+                  opacity: isDisalbed || isLoading ? 0.3 : isSelected ? 1 : 0.5,
+                  pointerEvents: isDisalbed || isLoading ? 'none' : 'auto',
                   textAlign: 'center',
                 }}
               >
@@ -77,7 +74,7 @@ const ModalVip = ({
                 <div>{LOTS_COUNT * vipMultipliers[vipType]}</div>
                 <div
                   style={{
-                    opacity: isDisalbed ? 0.3 : isSelected ? 1 : 0.5,
+                    opacity: isDisalbed ? 0.8 : isSelected ? 1 : 0.6,
                     pointerEvents: isDisalbed ? 'none' : 'auto',
                   }}
                   onClick={() => {
@@ -106,7 +103,8 @@ const ModalVip = ({
           disabled={
             !selectedVipType ||
             vipPrice[selectedVipType] > user.money ||
-            selectedVipType === user.vip
+            selectedVipType === user.vip ||
+            isLoading
           }
           isLoading={isLoading}
           style={{ width: 400, margin: '0px auto' }}
