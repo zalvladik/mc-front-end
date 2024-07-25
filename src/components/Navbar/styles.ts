@@ -82,14 +82,4 @@ export const NavList = styled.div`
       transform: scale(1.05);
     }
   }
-
-  & > button + button {
-    margin-left: 60px;
-  }
-
-  @media screen and (max-width: 767px) {
-    & > button + button {
-      margin-left: 20px;
-    }
-  }
 `

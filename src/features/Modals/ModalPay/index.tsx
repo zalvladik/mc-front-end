@@ -1,4 +1,4 @@
-import DefaultInput from 'src/components/inputs/DefaultInput'
+import DefaultInput from 'src/components/DefaultInput'
 
 import {
   Breeze,

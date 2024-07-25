@@ -9,14 +9,11 @@ import {
 import { useNavBar } from 'src/components/Navbar/useNavbar'
 
 const Navbar = (): JSX.Element => {
-  const {
-    navigate,
-    isScrollingUp,
-    currentPath,
-    isProfilePage,
-    isSuccess,
-    isLoading,
-  } = useNavBar()
+  const { navigate, isScrollingUp, currentPath } = useNavBar()
+
+  const handleClick = (): void => {
+    window.location.href = 'https://mc-site-trade-integration.vercel.app/'
+  }
 
   return (
     <Header className={isScrollingUp ? '' : 'header hidden'}>
@@ -29,78 +26,22 @@ const Navbar = (): JSX.Element => {
           <img src="/assets/logo.svg" alt="header logo" />
         </ButtonBack>
 
-        {!isLoading && (
-          <div>
-            <NavList>
-              <button
-                style={{
-                  opacity: isProfilePage ? 1 : 0.5,
-                }}
-                aria-disabled
-                onClick={() =>
-                  !isSuccess
-                    ? navigate(RoutesPath.SIGN_IN)
-                    : isProfilePage
-                      ? undefined
-                      : navigate(RoutesPath.PROFILE)
-                }
-              >
-                Кабінет
-              </button>
-              {isSuccess && (
-                <button
-                  style={{ opacity: currentPath === RoutesPath.INVENTORY ? 1 : 0.5 }}
-                  aria-disabled
-                  onClick={() =>
-                    currentPath === RoutesPath.INVENTORY
-                      ? undefined
-                      : navigate(RoutesPath.INVENTORY)
-                  }
-                >
-                  Інвентар
-                </button>
-              )}
-              {isSuccess && (
-                <button
-                  style={{
-                    opacity: currentPath.includes(RoutesPath.AUCTION) ? 1 : 0.5,
-                  }}
-                  aria-disabled
-                  onClick={() =>
-                    currentPath.includes(RoutesPath.AUCTION)
-                      ? undefined
-                      : navigate(RoutesPath.AUCTION)
-                  }
-                >
-                  Торгівля
-                </button>
-              )}
-              <button
-                style={{ opacity: currentPath === RoutesPath.RULES ? 1 : 0.5 }}
-                aria-disabled
-                onClick={() =>
-                  currentPath === RoutesPath.RULES
-                    ? undefined
-                    : navigate(RoutesPath.RULES)
-                }
-              >
-                Правила
-              </button>
-              {/* {isSuccess && (
-                <button
-                  style={{ opacity: currentPath === RoutesPath.WIKI ? 1 : 0.5 }}
-                  onClick={() =>
-                    currentPath === RoutesPath.WIKI
-                      ? undefined
-                      : navigate(RoutesPath.WIKI)
-                  }
-                >
-                  Wiki
-                </button>
-              )} */}
-            </NavList>
-          </div>
-        )}
+        <NavList>
+          <button aria-disabled onClick={handleClick} style={{ opacity: 0.5 }}>
+            Кабінет
+          </button>
+          <button
+            style={{ opacity: currentPath === RoutesPath.RULES ? 1 : 0.5 }}
+            aria-disabled
+            onClick={() =>
+              currentPath === RoutesPath.RULES
+                ? undefined
+                : navigate(RoutesPath.RULES)
+            }
+          >
+            Правила
+          </button>
+        </NavList>
       </HeaderContainer>
     </Header>
   )
