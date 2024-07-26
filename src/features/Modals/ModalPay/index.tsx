@@ -31,7 +31,7 @@ const ModalPay = ({
     toUnicode,
   } = useModalPay()
 
-  const url = `https://send.monobank.ua/jar/2GuvBaak2S?a=100&t=uk-land$${toUnicode(username)}`
+  const url = `https://send.monobank.ua/jar/2GuvBaak2S?a=150&t=uk-land$${toUnicode(username)}`
 
   const buttonIsDisabled =
     isLoading || Boolean(username.length <= 2) || Boolean(isExistUsername)
