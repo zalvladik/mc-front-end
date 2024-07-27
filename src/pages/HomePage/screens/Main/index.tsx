@@ -38,9 +38,7 @@ const Main = (): JSX.Element => {
             styles={{ background: 'none', border: '1px solid white' }}
           />
         </ButtonsContainer>
-        <HeroText>
-          Приватний україномовний сервер на версії Minecraft 1.20.4
-        </HeroText>
+        <HeroText>Приватний україномовний сервер на версії Minecraft 1.21</HeroText>
       </Container>
     </HeroSection>
   )
