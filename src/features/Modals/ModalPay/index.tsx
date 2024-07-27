@@ -57,7 +57,7 @@ const ModalPay = ({
           />
           <Info>
             <h1>Про оплату:</h1>
-            <p style={{ fontSize: 24, color: 'whitegray' }}>Ціна: 100₴</p>
+            <p style={{ fontSize: 24, color: 'whitegray' }}>Ціна: 150₴</p>
 
             <p>
               Вас автоматично добавить у whitelist сервера.
