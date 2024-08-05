@@ -1,4 +1,4 @@
-import { RoutesPath } from 'src/router/routes'
+// import { RoutesPath } from 'src/router/routes'
 
 import {
   ButtonBack,
@@ -30,7 +30,7 @@ const Navbar = (): JSX.Element => {
           <button aria-disabled onClick={handleClick} style={{ opacity: 0.5 }}>
             Кабінет
           </button>
-          <button
+          {/* <button
             style={{ opacity: currentPath === RoutesPath.RULES ? 1 : 0.5 }}
             aria-disabled
             onClick={() =>
@@ -40,7 +40,7 @@ const Navbar = (): JSX.Element => {
             }
           >
             Правила
-          </button>
+          </button> */}
         </NavList>
       </HeaderContainer>
     </Header>
