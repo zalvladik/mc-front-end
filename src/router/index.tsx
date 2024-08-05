@@ -5,7 +5,7 @@ import { RoutesPath } from 'src/router/routes'
 
 const ErrorPage = lazy(() => import('src/pages/ErrorPage'))
 const HomePage = lazy(() => import('src/pages/HomePage'))
-const RulePage = lazy(() => import('src/pages/RulePage'))
+// const RulePage = lazy(() => import('src/pages/RulePage'))
 
 export const Router = createBrowserRouter([
   {
@@ -14,7 +14,7 @@ export const Router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: RoutesPath.HOME, element: <HomePage /> },
-      { path: RoutesPath.RULES, element: <RulePage /> },
+      // { path: RoutesPath.RULES, element: <RulePage /> },
     ],
   },
 ])
